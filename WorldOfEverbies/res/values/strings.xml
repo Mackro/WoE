@@ -2,7 +2,7 @@
 
     <string name="app_name">World of Everbies</string>
     <string name="hello_world">Hello World of Everbies!</string>
-    <string name="menu_settings">Settings</string>
+    <string name="menu_feed">Feed</string>
     <string name="title_activity_main">MainActivity</string>
 
 </resources>
