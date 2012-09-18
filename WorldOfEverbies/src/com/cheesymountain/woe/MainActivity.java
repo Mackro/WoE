@@ -33,6 +33,6 @@ public class MainActivity extends Activity {
     }
     
     public void change(View view){
-    	
+    	this.setContentView(R.layout.activity_stats);
     }
 }
