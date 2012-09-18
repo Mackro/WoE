@@ -2,7 +2,14 @@
 
     <string name="app_name">World of Everbies</string>
     <string name="hello_world">Hello World of Everbies!</string>
-    <string name="menu_feed">Feed</string>
+    
     <string name="title_activity_main">MainActivity</string>
+    
+    <string name="menu_item">Item</string>
+    <string name="menu_train" >Train</string>
+    <string name="menu_feed">Feed</string>
+    <string name="menu_work">Work</string>
+    <string name="menu_inter">Interact</string>
+    <string name="menu_invent">Inventory</string>
 
 </resources>
