@@ -1,6 +1,6 @@
+package com.cheesymountain.woe;
 import junit.framework.TestCase;
-import com.cheesymountain.woe.Everbie;
-import org.junit.Assert;
+import org.junit.*;
 
 public class EverbieTest extends TestCase {
 
@@ -13,10 +13,11 @@ public class EverbieTest extends TestCase {
 	}
 	
 	public void testConstructorandGetName(){
-		assertTrue(name.equalsIgnoreCase((everbie.GetName()));
+		assertTrue(name.equalsIgnoreCase((everbie.GetName())));
 		assertTrue(everbie.isAlive()==true);
 	}
 	//GnC = Getters and Changers
+	@Test
 	public void testGnCForHealth(){
 		int maxHealth = everbie.getMaxHealth();
 		assertTrue(everbie.getHealth()==1);
@@ -30,6 +31,7 @@ public class EverbieTest extends TestCase {
 		assertTrue(everbie.getHealth()==0);
 		assertTrue(everbie.isAlive()==false);
 	}
+	@Test
 	public void testGnCForFullness(){
 		assertTrue(everbie.getFullness()==50);
 		everbie.changeFullness(34);
@@ -41,6 +43,7 @@ public class EverbieTest extends TestCase {
 		everbie.changeFullness(-150);
 		assertTrue(everbie.getFullness()==0);
 	}
+	@Test
 	public void testGnCForHappiness(){
 		assertTrue(everbie.getHappiness()==50);
 		everbie.changeHappiness(34);
@@ -52,6 +55,7 @@ public class EverbieTest extends TestCase {
 		everbie.changeHappiness(-150);
 		assertTrue(everbie.getHappiness()==0);
 	}
+	@Test
 	public void testGnCForToxicity(){
 		assertTrue(everbie.getHappiness()==0);
 		everbie.changeHappiness(67);
@@ -64,6 +68,7 @@ public class EverbieTest extends TestCase {
 		assertTrue(everbie.getHappiness()==100);
 		assertTrue(everbie.isAlive()==false);
 	}
+	@Test
 	public void testGnCForStrength(){
 		assertTrue(everbie.getStrength()==1);
 		everbie.changeStrength(4);
@@ -74,6 +79,7 @@ public class EverbieTest extends TestCase {
 		assertTrue(everbie.getStrength()==0);
 		assertTrue(everbie.isAlive()==false);
 	}
+	@Test
 	public void testGnCForStamina(){
 		assertTrue(everbie.getStamina()==1);
 		everbie.changeStamina(4);
@@ -84,6 +90,7 @@ public class EverbieTest extends TestCase {
 		assertTrue(everbie.getStamina()==0);
 		assertTrue(everbie.isAlive()==false);
 	}
+	@Test
 	public void testGnCForIntelligence(){
 		assertTrue(everbie.getIntelligence()==1);
 		everbie.changeIntelligence(4);
@@ -94,6 +101,7 @@ public class EverbieTest extends TestCase {
 		assertTrue(everbie.getIntelligence()==0);
 		assertTrue(everbie.isAlive()==false);
 	}
+	@Test
 	public void testGnCForCharm(){
 		assertTrue(everbie.getCharm()==1);
 		everbie.changeCharm(8);
@@ -105,6 +113,7 @@ public class EverbieTest extends TestCase {
 		everbie.changeCharm(3);
 		assertTrue(everbie.getCharm()==1);
 	}
+	@Test
 	public void testGnCForCuteness(){
 		assertTrue(everbie.getCuteness()==1);
 		everbie.changeCuteness(8);
@@ -116,8 +125,9 @@ public class EverbieTest extends TestCase {
 		everbie.changeCuteness(3);
 		assertTrue(everbie.getCuteness()==1);
 	}
+	@Test
 	public void testGnCForMoney(){
-		int stMon = everbie.STARTING_MONEY;
+		int stMon = Everbie.STARTING_MONEY;
 		assertTrue(everbie.getMoney()==stMon);
 		everbie.changeMoney(40);
 		assertTrue(everbie.getMoney()==(stMon+40));
