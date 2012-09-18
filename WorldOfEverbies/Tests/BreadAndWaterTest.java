@@ -1,20 +1,36 @@
+package com.cheesymountain.woe;
+import com.cheesymountain.woe.Food;
+
 import junit.framework.TestCase;
 
 public class BreadAndWaterTest extends TestCase {
 
-	IFood food;
-	//fullnessModifier = 0 (temp value while class not created)
-	//cost = 56 (temp value while class not created)
+	Food food = new BreadAndWater();
+
+	@Test
 	public void testGetCost() {
-
-		food = new BreadAndWater();
-
-		assertTrue(food.getCost() != null && food.getCost == 56);
-
+		assertTrue(food.getCost() != null && food.getCost == 0);
 	}
 	
+	@Test
 	public void testGetFullnessModifier(){
-		food = new BreadAndWater();
-		assertTrue(food.fullnessModifier != null && food.fullnessModifier ==  0);
+		assertTrue(food.fullnessModifier != null && food.fullnessModifier ==  20);
 	}
+	
+	@Test
+	public void testGetHappinessModifier(){
+		assertTrue(food.getHappinessModifier() != null && food.getHappinessModifier() == -10);
+	}
+	
+	@Test
+	public void testGetToxicityModifier(){
+		assertTrue(food.getToxicityModifier() != null && food.getToxicityModifier() == 0);
+	}
+	
+	@Test
+	public void testGetName(){
+		assertTrue(food.getName() != null && food.getName().equalsIgnoreCase("bread and water"));
+	}
+		
+	
 }
