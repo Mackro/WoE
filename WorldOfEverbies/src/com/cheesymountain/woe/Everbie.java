@@ -4,9 +4,11 @@ public class Everbie {
 
 	private String name;
 	private int maxHealth, health, strength, intelligence, maxStamina, stamina,
-			charm, fullness, happiness, alcoholLevel, cuteness, money;
+			charm, fullness, happiness, toxicity, cuteness, money;
+	private boolean isAlive;
 
 	public Everbie(String name) {
+		isAlive = true;
 		this.name = name;
 		maxHealth = 1;
 		health = 1;
@@ -17,7 +19,7 @@ public class Everbie {
 		charm = 1;
 		fullness = 50;
 		happiness = 50;
-		alcoholLevel = 0;
+		toxicity = 0;
 		cuteness = 1;
 		money = 100;
 	}
@@ -25,7 +27,7 @@ public class Everbie {
 	public String GetName() {
 		return name;
 	}
-	
+
 	public int getMaxHealth() {
 		return maxHealth;
 	}
@@ -62,74 +64,91 @@ public class Everbie {
 		return happiness;
 	}
 
-	public int getAlcoholLevel() {
-		return alcoholLevel;
+	public int getToxicity() {
+		return toxicity;
 	}
 
 	public int getCuteness() {
 		return cuteness;
 	}
-	
-	public int getMoney(){
+
+	public int getMoney() {
 		return money;
 	}
-	
-	public void incrementMaxhealth(int i){
+
+	public void changeMaxhealth(int i) {
 		maxHealth += i;
 	}
-	
-	public void incrementHealth(int i){
-		health += i;
+
+	public void changeHealth(int i) {
+		if (health + i < maxHealth) {
+			health += i;
+		} else if (health + i > maxHealth) {
+			health = maxHealth;
+		} else if (health + i < 1) {
+			health = 0;
+			isAlive = false;
+		}
 	}
-	
-	public void incrementStrength(int i){
+
+	public void changeStrength(int i) {
 		strength += i;
 	}
-	
-	public void incrementIntelligence(int i){
+
+	public void changeIntelligence(int i) {
 		intelligence += i;
 	}
-	
-	public void incrementMaxStamina(int i){
+
+	public void changeMaxStamina(int i) {
 		maxStamina += i;
 	}
-	
-	public void incrementStamina(int i){
-		stamina += i;
+
+	public void changeStamina(int i) {
+		if (stamina + i < maxStamina) {
+			stamina += i;
+		} else if (stamina + i > maxStamina) {
+			stamina = maxStamina;
+		} else if (stamina + i < 1) {
+			stamina = 0;
+		}
 	}
-	
-	public void incrementCharm(int i){
-		charm  += i;
+
+	public void changeCharm(int i) {
+		charm += i;
 	}
-	
-	public void incrementFullness(int i){
+
+	public void changeFullness(int i) {
 		fullness += i;
 	}
-	
-	public void incrementHappiness(int i){
+
+	public void changeHappiness(int i) {
 		happiness += i;
 	}
-	
-	public void incrementAlocoholLevel(int i){
-		alcoholLevel += i;
+
+	public void changeToxicity(int i){
+		if(){
+		toxicity += i;
+		}
 	}
-	
-	public void incrementCuteness(int i){
+
+	public void changeCuteness(int i) {
 		cuteness += i;
 	}
-	
-	public void incrementMoney(int i){
+
+	public void changeMoney(int i) {
 		money += i;
 	}
-	
-	public void decrementMoney(int i){
-		money -= i;
-	}
-	
-	public void sleep(){
+
+	public void sleep() {
 		health = maxHealth;
 		stamina = maxStamina;
-		alcoholLevel = 0;
+		toxicity = 0;
+	}
+
+	public void eat(Food food) {
+		money -= food.getCost();
+		fullness += food.getFullnessModifier();
+		happiness += food.getHappinessModifier();
 	}
 
 }
