@@ -1,7 +1,7 @@
 package com.cheesymountain.woe;
 
 public class Everbie {
-
+	public static final int STARTING_MONEY = 100;
 	private String name;
 	private int maxHealth, health, strength, intelligence, maxStamina, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
@@ -21,7 +21,7 @@ public class Everbie {
 		happiness = 50;
 		toxicity = 0;
 		cuteness = 1;
-		money = 100;
+		money = STARTING_MONEY;
 	}
 
 	public String GetName() {
@@ -36,7 +36,7 @@ public class Everbie {
 		return health;
 	}
 
-	public int getstrength() {
+	public int getStrength() {
 		return strength;
 	}
 
@@ -77,6 +77,14 @@ public class Everbie {
 	}
 
 	public void changeMaxhealth(int i) {
+		if (maxHealth + i < 1 ){
+			maxHealth = 0;
+			health = 0;
+			isAlive = false;
+		}
+		if (maxHealth + i < health) {
+			health = maxHealth + i;
+		}
 		maxHealth += i;
 	}
 
@@ -92,14 +100,30 @@ public class Everbie {
 	}
 
 	public void changeStrength(int i) {
+		if (strength + i < 1){
+			strength = 0;
+			isAlive = false;
+		}
 		strength += i;
 	}
 
 	public void changeIntelligence(int i) {
+		if (intelligence + i < 1){
+			intelligence = 0;
+			isAlive = false;
+		}
 		intelligence += i;
 	}
 
 	public void changeMaxStamina(int i) {
+		if (maxStamina + i < 1 ){
+			maxStamina = 0;
+			stamina = 0;
+			isAlive = false;
+		}
+		if (maxStamina + i < stamina) {
+			stamina = maxStamina + i;
+		}
 		maxStamina += i;
 	}
 
@@ -118,16 +142,37 @@ public class Everbie {
 	}
 
 	public void changeFullness(int i) {
-		fullness += i;
+		if (fullness + i < 100){
+			fullness += i;
+		}
+		else if(fullness + i > 100){
+			fullness = 100;
+		}
+		else if(fullness + i < 1){
+			fullness = 0;
+		}
 	}
 
 	public void changeHappiness(int i) {
-		happiness += i;
+		if (happiness + i < 100){
+			happiness += i;
+		}
+		else if(happiness + i > 100){
+			happiness = 100;
+		}
+		else if(happiness + i < 1){
+			happiness = 0;
+		}
 	}
 
-	public void changeToxicity(int i){
-		if(){
-		toxicity += i;
+	public void changeToxicity(int i) {
+		if (toxicity + i < 100) {
+			toxicity += i;
+		} else if (toxicity + i > 99) {
+			toxicity = 100;
+			isAlive = false;
+		} else if (toxicity + i < 1) {
+			toxicity = 0;
 		}
 	}
 
@@ -136,7 +181,14 @@ public class Everbie {
 	}
 
 	public void changeMoney(int i) {
-		money += i;
+		if(i > 0){
+			money += i;
+		}
+		if (i < 0){
+			if(money + i > 0){
+				money += i;
+			}
+		}
 	}
 
 	public void sleep() {
