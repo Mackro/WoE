@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@+id/feedPet"
+            android:titleCondensed="Free food!"
+            android:title="Bread and Water"
+            android:menuCategory="alternative"
+            android:orderInCategory="1"
+            android:enabled="true"
+            android:visible="true">
+        </item>
+    </menu>
