@@ -1,11 +1,11 @@
 package com.cheesymountain.woe;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
-import com.cheesymountain.woe.Food;
 
-import junit.framework.TestCase;
 
-public class BreadAndWaterTest extends TestCase {
+public class BreadAndWaterTest{
 
 	Food food = new BreadAndWater();
 
