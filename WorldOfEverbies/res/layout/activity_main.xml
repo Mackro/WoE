@@ -12,8 +12,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:clickable="false"
-        android:minHeight="150"
-        android:minWidth="150"
+        android:minHeight="150dp"
+        android:minWidth="150dp"
         android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
