@@ -1,4 +1,6 @@
 package com.cheesymountain.woe;
+import org.junit.Test;
+
 import com.cheesymountain.woe.Food;
 
 import junit.framework.TestCase;
@@ -9,22 +11,22 @@ public class BreadAndWaterTest extends TestCase {
 
 	@Test
 	public void testGetCost() {
-		assertTrue(food.getCost() != null && food.getCost == 0);
+		assertTrue(food.getCost() == 0);
 	}
 	
 	@Test
 	public void testGetFullnessModifier(){
-		assertTrue(food.fullnessModifier != null && food.fullnessModifier ==  20);
+		assertTrue(food.getFullnessModifier() ==  20);
 	}
 	
 	@Test
 	public void testGetHappinessModifier(){
-		assertTrue(food.getHappinessModifier() != null && food.getHappinessModifier() == -10);
+		assertTrue(food.getHappinessModifier() == -10);
 	}
 	
 	@Test
 	public void testGetToxicityModifier(){
-		assertTrue(food.getToxicityModifier() != null && food.getToxicityModifier() == 0);
+		assertTrue(food.getToxicityModifier() == 0);
 	}
 	
 	@Test
