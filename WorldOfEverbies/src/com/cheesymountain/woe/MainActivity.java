@@ -3,8 +3,10 @@ package com.cheesymountain.woe;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends Activity {
 
@@ -24,9 +26,13 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item){
     	switch(item.getItemId()){
     		case R.id.menu_feed:
-    			this.setContentView(R.layout.feed_menu);
+    			this.setContentView(R.menu.feed_menu);
     			return true;
     	}
 		return false;
+    }
+    
+    public void change(View view){
+    	
     }
 }

@@ -13,21 +13,7 @@
         android:layout_marginTop="20dp"
         android:minHeight="150dp"
         android:minWidth="280dp"
-        android:src="@drawable/ic_launcher" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageButton1"
-        android:layout_alignRight="@+id/imageButton1"
-        android:layout_below="@+id/imageButton1"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:minHeight="260dp" >
-
-        <requestFocus />
-    </EditText>
+        android:src="@drawable/ic_launcher"
+        android:onClick="change" />
 
 </RelativeLayout>
