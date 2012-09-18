@@ -5,10 +5,10 @@ public class Everbie {
 	private String name;
 	private int maxHealth, health, strength, intelligence, maxStamina, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
-	private boolean isAlive;
+	private boolean Alive;
 
 	public Everbie(String name) {
-		isAlive = true;
+		Alive = true;
 		this.name = name;
 		maxHealth = 1;
 		health = 1;
@@ -80,7 +80,7 @@ public class Everbie {
 		if (maxHealth + i < 1 ){
 			maxHealth = 0;
 			health = 0;
-			isAlive = false;
+			Alive = false;
 		}
 		if (maxHealth + i < health) {
 			health = maxHealth + i;
@@ -95,14 +95,14 @@ public class Everbie {
 			health = maxHealth;
 		} else if (health + i < 1) {
 			health = 0;
-			isAlive = false;
+			Alive = false;
 		}
 	}
 
 	public void changeStrength(int i) {
 		if (strength + i < 1){
 			strength = 0;
-			isAlive = false;
+			Alive = false;
 		}
 		strength += i;
 	}
@@ -110,7 +110,7 @@ public class Everbie {
 	public void changeIntelligence(int i) {
 		if (intelligence + i < 1){
 			intelligence = 0;
-			isAlive = false;
+			Alive = false;
 		}
 		intelligence += i;
 	}
@@ -119,7 +119,7 @@ public class Everbie {
 		if (maxStamina + i < 1 ){
 			maxStamina = 0;
 			stamina = 0;
-			isAlive = false;
+			Alive = false;
 		}
 		if (maxStamina + i < stamina) {
 			stamina = maxStamina + i;
@@ -170,7 +170,7 @@ public class Everbie {
 			toxicity += i;
 		} else if (toxicity + i > 99) {
 			toxicity = 100;
-			isAlive = false;
+			Alive = false;
 		} else if (toxicity + i < 1) {
 			toxicity = 0;
 		}
@@ -201,6 +201,10 @@ public class Everbie {
 		money -= food.getCost();
 		fullness += food.getFullnessModifier();
 		happiness += food.getHappinessModifier();
+	}
+	
+	public boolean  isAlive(){
+		return Alive;
 	}
 
 }
