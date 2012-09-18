@@ -95,6 +95,35 @@ public class EverbieTest extends TestCase {
 		assertTrue(everbie.isAlive()==false);
 	}
 	public void testGnCForCharm(){
-		
+		assertTrue(everbie.getCharm()==1);
+		everbie.changeCharm(8);
+		assertTrue(everbie.getCharm()==9);
+		everbie.changeCharm(-4);
+		assertTrue(everbie.getCharm()==5);
+		everbie.changeCharm(-7);
+		assertTrue(everbie.getCharm()==-2);
+		everbie.changeCharm(3);
+		assertTrue(everbie.getCharm()==1);
+	}
+	public void testGnCForCuteness(){
+		assertTrue(everbie.getCuteness()==1);
+		everbie.changeCuteness(8);
+		assertTrue(everbie.getCuteness()==9);
+		everbie.changeCuteness(-4);
+		assertTrue(everbie.getCuteness()==5);
+		everbie.changeCuteness(-7);
+		assertTrue(everbie.getCuteness()==-2);
+		everbie.changeCuteness(3);
+		assertTrue(everbie.getCuteness()==1);
+	}
+	public void testGnCForMoney(){
+		int stMon = everbie.STARTING_MONEY;
+		assertTrue(everbie.getMoney()==stMon);
+		everbie.changeMoney(40);
+		assertTrue(everbie.getMoney()==(stMon+40));
+		everbie.changeMoney(-68);
+		assertTrue(everbie.getMoney()==stMon-28);
+		everbie.changeMoney(-stMon);
+		assertTrue(everbie.getMoney()==stMon-28);
 	}
 }
