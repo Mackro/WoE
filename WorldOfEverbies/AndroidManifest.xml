@@ -6,6 +6,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
+    <instrumentation android:name="android.test.InstrumentationTestRunner" android:functionalTest="true" android:targetPackage="com.cheesymountain.woe" android:icon="@drawable/ic_launcher"></instrumentation>
 
     <application
         android:icon="@drawable/ic_launcher"

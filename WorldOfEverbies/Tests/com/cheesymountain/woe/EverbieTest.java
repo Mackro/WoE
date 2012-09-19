@@ -1,8 +1,10 @@
 package com.cheesymountain.woe;
-import junit.framework.TestCase;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
-public class EverbieTest extends TestCase {
+import android.test.AndroidTestCase;
+
+public class EverbieTest extends AndroidTestCase {
 
 	String name = "Emil";
 	Everbie everbie;
