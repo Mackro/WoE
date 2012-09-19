@@ -11,5 +11,6 @@
     <string name="menu_work">Work</string>
     <string name="menu_inter">Interact</string>
     <string name="menu_invent">Inventory</string>
+    <string name="everbie_pic">This is your Everbie</string>
 
 </resources>

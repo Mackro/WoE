@@ -3,12 +3,15 @@ package com.cheesymountain.woe;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.res.Resources;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	
+	private Everbie everbie;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,25 @@ public class MainActivity extends Activity {
     }
     
     public void change(View view){
+    	everbie = Everbie.getEverbie();
+    	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm());
+    	((TextView)findViewById(R.id.cuteText)).setText(everbie.getCuteness());
+    	((TextView)findViewById(R.id.levelText)).setText(everbie.getLevel());
+    	((TextView)findViewById(R.id.strengthText)).setText(everbie.getStrength());
+    	((TextView)findViewById(R.id.staminaText)).setText(everbie.getStamina());
+    	((TextView)findViewById(R.id.intelligenceText)).setText(everbie.getIntelligence());
+    	
+    	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(everbie.getFullness());
+    	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(everbie.getHappiness());
+    	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(everbie.getToxicity());
+    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(everbie.getHealth());
+    	((ProgressBar)findViewById(R.id.healthBar)).setMax(everbie.getMaxHealth());
+   
+    	
     	this.setContentView(R.layout.activity_stats);
+    }
+    
+    public void back(View view){
+    	this.setContentView(R.layout.activity_main);
     }
 }
