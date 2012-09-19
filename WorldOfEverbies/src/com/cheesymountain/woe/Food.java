@@ -4,9 +4,7 @@ public abstract class Food {
 	
 	private String name;
 	private int cost;
-	private int fullnessModifier;
-	private int happinessModifier;
-	private int toxicityModifier;
+	private int fullnessModifier, happinessModifier, toxicityModifier;
 	
 	public Food(String name, int cost, int fullnessModifier, int happinessModifier, int toxicityModifier){
 		this.name = name;

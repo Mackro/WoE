@@ -1,13 +1,15 @@
 package com.cheesymountain.woe;
 
 public class Everbie {
+	
+	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
 	private String name;
 	private int maxHealth, health, strength, intelligence, maxStamina, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
 	private boolean Alive;
 
-	public Everbie(String name) {
+	private Everbie(String name) {
 		Alive = true;
 		this.name = name;
 		maxHealth = 1;
@@ -22,6 +24,19 @@ public class Everbie {
 		toxicity = 0;
 		cuteness = 1;
 		money = STARTING_MONEY;
+	}
+	
+	public synchronized static void createEverbie(String name){
+		if(everbie == null){
+			everbie = new Everbie(name);
+		}
+	}
+	
+	public synchronized static Everbie getEverbie(){
+		if (everbie == null){
+			everbie = new Everbie("Eibreve");
+		}
+		return everbie;
 	}
 
 	public String GetName() {
@@ -74,6 +89,10 @@ public class Everbie {
 
 	public int getMoney() {
 		return money;
+	}
+	
+	public int getLevel(){
+		return (strength + intelligence + stamina + Math.abs(charm) + Math.abs(cuteness))/5;
 	}
 
 	public void changeMaxhealth(int i) {
