@@ -225,5 +225,9 @@ public class Everbie {
 	public boolean  isAlive(){
 		return Alive;
 	}
-
+	
+	public synchronized void reset(){
+		everbie = null;
+	}
+	
 }
