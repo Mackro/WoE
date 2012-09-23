@@ -37,12 +37,12 @@ public class MainActivity extends Activity {
     
     public void change(View view){
     	everbie = Everbie.getEverbie();
-    	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm());
-    	((TextView)findViewById(R.id.cuteText)).setText(everbie.getCuteness());
-    	((TextView)findViewById(R.id.levelText)).setText(everbie.getLevel());
-    	((TextView)findViewById(R.id.strengthText)).setText(everbie.getStrength());
-    	((TextView)findViewById(R.id.staminaText)).setText(everbie.getStamina());
-    	((TextView)findViewById(R.id.intelligenceText)).setText(everbie.getIntelligence());
+    	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm() + "");
+    	((TextView)findViewById(R.id.cuteText)).setText(everbie.getCuteness() + "");
+    	((TextView)findViewById(R.id.levelText)).setText(everbie.getLevel() + "");
+    	((TextView)findViewById(R.id.strengthText)).setText(everbie.getStrength() + "");
+    	((TextView)findViewById(R.id.staminaText)).setText(everbie.getStamina() + "");
+    	((TextView)findViewById(R.id.intelligenceText)).setText(everbie.getIntelligence() + "");
     	
     	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(everbie.getFullness());
     	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(everbie.getHappiness());
