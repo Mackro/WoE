@@ -36,7 +36,11 @@ public class MainActivity extends Activity {
     }
     
     public void change(View view){
+    	//Will be removed when we make the real way to create an everbie
+    	Everbie.createEverbie("Kalle");
+    	//end of removal
     	everbie = Everbie.getEverbie();
+    	this.setContentView(R.layout.activity_stats);
     	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm() + "");
     	((TextView)findViewById(R.id.cuteText)).setText(everbie.getCuteness() + "");
     	((TextView)findViewById(R.id.levelText)).setText(everbie.getLevel() + "");
@@ -51,7 +55,6 @@ public class MainActivity extends Activity {
     	((ProgressBar)findViewById(R.id.healthBar)).setMax(everbie.getMaxHealth());
    
     	
-    	this.setContentView(R.layout.activity_stats);
     }
     
     public void back(View view){
