@@ -11,7 +11,8 @@ public class EverbieTest extends AndroidTestCase {
 	
 	@Before
 	public void before(){
-		everbie = new Everbie(name);
+		Everbie.createEverbie(name);
+		everbie = Everbie.getEverbie();
 	}
 	
 	public void testConstructorandGetName(){
