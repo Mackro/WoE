@@ -1,24 +1,25 @@
 package com.cheesymountain.woe;
+
 import org.junit.Before;
 import org.junit.Test;
-
 import android.test.AndroidTestCase;
 
-public class EverbieTest extends AndroidTestCase {
+public class EverbieTestFault extends AndroidTestCase {
 
 	String name = "Emil";
 	Everbie everbie;
 	
 	@Before
 	public void before(){
-		everbie = new Everbie(name);
+		Everbie.createEverbie(name);
+		everbie = Everbie.getEverbie();
 	}
 	
-	public void testConstructorandGetName(){
-		assertTrue(name.equalsIgnoreCase((everbie.GetName())));
+	public void testConstructorandAndName(){
+		assertTrue(name.equalsIgnoreCase(everbie.GetName()));
 		assertTrue(everbie.isAlive()==true);
 	}
-	//GnC = Getters and Changers
+	// GnC = Getters and Changers
 	@Test
 	public void testGnCForHealth(){
 		int maxHealth = everbie.getMaxHealth();
