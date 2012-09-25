@@ -17,7 +17,6 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	
 	private Everbie everbie;
-	private Log log;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,5 +73,8 @@ public class MainActivity extends Activity {
     	this.setContentView(R.layout.activity_main);
     }
     
+    public void updateLog(){
+    	((EditText)findViewById(R.id.log)).setText(Log.getLogString());
+    }
 
 }
