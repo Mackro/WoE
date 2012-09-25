@@ -2,7 +2,7 @@ package com.cheesymountain.woe;
 
 public class Everbie {
 	
-	public static final String defaultName = "Eibreve";
+	public static final String DEFAULT_NAME = "Eibreve";
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
 	private String name;
@@ -35,7 +35,7 @@ public class Everbie {
 	
 	public synchronized static Everbie getEverbie(){
 		if (everbie == null){
-			everbie = new Everbie(defaultName);
+			everbie = new Everbie(DEFAULT_NAME);
 		}
 		return everbie;
 	}
