@@ -13,6 +13,7 @@ public class Database extends Activity {
 	private static final String MY_EVERBIE = "everbie_data";
 	
 	public void save() throws IOException, FileNotFoundException{
+		System.out.println("save");
 		FileOutputStream fos = openFileOutput(MY_EVERBIE, Context.MODE_PRIVATE);
 		
 		Everbie everbie = Everbie.getEverbie();
@@ -26,6 +27,7 @@ public class Database extends Activity {
 	
 	@SuppressWarnings("null")
 	public void load() throws IOException, FileNotFoundException{
+		System.out.println("load");
 		FileInputStream fis = openFileInput(MY_EVERBIE);
 		byte[] newData = null;
 		fis.read(newData);
