@@ -40,7 +40,7 @@ public class Everbie {
 		return everbie;
 	}
 
-	public String GetName() {
+	public String getName() {
 		return name;
 	}
 
