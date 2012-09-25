@@ -1,7 +1,11 @@
 package com.cheesymountain.woe;
 
+import android.graphics.drawable.Drawable;
+
 public class Everbie {
 	
+	private Drawable image; 
+	public static final Drawable DEFAULT_IMAGE = new Drawable(R.drawable.wbe);
 	public static final String DEFAULT_NAME = "Eibreve";
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
@@ -9,8 +13,9 @@ public class Everbie {
 	private int maxHealth, health, strength, intelligence, maxStamina, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
 	private boolean Alive;
+	private static boolean exists;
 
-	private Everbie(String name) {
+	private Everbie(String name, Drawable image) {
 		Alive = true;
 		this.name = name;
 		maxHealth = 1;
@@ -27,17 +32,21 @@ public class Everbie {
 		money = STARTING_MONEY;
 	}
 	
-	public synchronized static void createEverbie(String name){
+	public synchronized static void createEverbie(String name, Drawable image){
 		if(everbie == null){
-			everbie = new Everbie(name);
+			everbie = new Everbie(name, image);
 		}
 	}
 	
 	public synchronized static Everbie getEverbie(){
 		if (everbie == null){
-			everbie = new Everbie(DEFAULT_NAME);
+			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE);
 		}
 		return everbie;
+	}
+	
+	public Drawable getImage(){
+		return image;
 	}
 
 	public String GetName() {
@@ -225,6 +234,10 @@ public class Everbie {
 	
 	public boolean  isAlive(){
 		return Alive;
+	}
+	
+	public static boolean doesExist(){
+		return exists;
 	}
 	
 	public synchronized void reset(){
