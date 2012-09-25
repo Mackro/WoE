@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item){
     	switch(item.getItemId()){
     		case R.id.menu_feed:
-    			getMenuInflater().inflate(R.menu.feed_menu, Menu.);
+    			//getMenuInflater().inflate(R.menu.feed_menu, Menu.);
     			return true;
     	}
 		return false;
