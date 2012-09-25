@@ -1,6 +1,8 @@
 package com.cheesymountain.woe;
 
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -12,10 +14,12 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	
 	private Everbie everbie;
+	private Log log;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
+    	log = Log.getLog();
         setContentView(R.layout.activity_main);
         //menu_feed
     }
@@ -61,4 +65,5 @@ public class MainActivity extends Activity {
     public void back(View view){
     	this.setContentView(R.layout.activity_main);
     }
+    
 }
