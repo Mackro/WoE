@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item){
     	switch(item.getItemId()){
     		case R.id.menu_feed:
-    			this.setContentView(R.menu.feed_menu);
+    			getMenuInflater().inflate(R.menu.feed_menu, Menu.);
     			return true;
     	}
 		return false;
@@ -51,8 +51,9 @@ public class MainActivity extends Activity {
     	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(everbie.getFullness());
     	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(everbie.getHappiness());
     	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(everbie.getToxicity());
-    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(everbie.getHealth());
     	((ProgressBar)findViewById(R.id.healthBar)).setMax(everbie.getMaxHealth());
+    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(everbie.getHealth());
+    	
    
     	
     }
