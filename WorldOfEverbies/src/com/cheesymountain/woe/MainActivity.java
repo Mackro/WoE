@@ -1,13 +1,16 @@
 package com.cheesymountain.woe;
 
 
-import java.util.List;
+import java.util.LinkedList;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.ActionMode;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -18,9 +21,10 @@ public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
-    	log = Log.getLog();
+        super.onCreate(savedInstanceState);
+        log = Log.getLog();
         setContentView(R.layout.activity_main);
+        updateLog();
         //menu_feed
     }
 
@@ -39,12 +43,17 @@ public class MainActivity extends Activity {
 		return false;
     }
     
+    public boolean onCreateActionMode(ActionMode mode, Menu menu){
+    	MenuInflater menuInflater = menu.getMenuInflater();
+    }
+    
     public void change(View view){
     	//Will be removed when we make the real way to create an everbie
     	Everbie.createEverbie("Kalle");
     	//end of removal
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
+    	((TextView)findViewById(R.id.nameText)).setText(everbie.getName() + "");
     	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm() + "");
     	((TextView)findViewById(R.id.cuteText)).setText(everbie.getCuteness() + "");
     	((TextView)findViewById(R.id.levelText)).setText(everbie.getLevel() + "");
@@ -66,4 +75,7 @@ public class MainActivity extends Activity {
     	this.setContentView(R.layout.activity_main);
     }
     
+    public void updateLog(){
+    	((EditText)findViewById(R.id.log)).setText(log.getLogString());
+    }
 }
