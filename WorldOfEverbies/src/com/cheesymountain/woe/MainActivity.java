@@ -1,7 +1,7 @@
 package com.cheesymountain.woe;
 
 
-import java.util.LinkedList;
+
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -21,8 +21,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        log = Log.getLog();
+
         setContentView(R.layout.activity_main);
         updateLog();
         //menu_feed
@@ -75,7 +74,5 @@ public class MainActivity extends Activity {
     	this.setContentView(R.layout.activity_main);
     }
     
-    public void updateLog(){
-    	((EditText)findViewById(R.id.log)).setText(log.getLogString());
-    }
+
 }
