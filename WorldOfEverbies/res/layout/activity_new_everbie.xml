@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/everbiePicsImageView"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="fill_horizontal" />
+
+    <EditText
+        android:id="@+id/everbieNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/everbiePicsImageView"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/everbieLongText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:editable="false"
+        android:layout_below="@+id/everbieNameText"
+        android:layout_above="@+id/everbieLayoutLinear"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <LinearLayout
+        android:id="@+id/everbieLayoutLinear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Exit"
+            android:onClick="exit" />
+        
+        <Button
+            android:id="@+id/createButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Create"
+            android:onClick="create" />
+    </LinearLayout>
+
+</RelativeLayout>
