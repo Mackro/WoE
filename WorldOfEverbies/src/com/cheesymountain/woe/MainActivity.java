@@ -36,9 +36,6 @@ public class MainActivity extends Activity {
     }
     
     public void change(View view){
-    	//Will be removed when we make the real way to create an everbie
-    	Everbie.createEverbie("Kalle");
-    	//end of removal
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
     	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm() + "");
