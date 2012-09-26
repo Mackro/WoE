@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 
         setContentView(R.layout.activity_main);
-        ((ImageButton)findViewById(R.id.mainImage)).setBackgroundResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
+        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
         updateLog();
         //menu_feed
     }
