@@ -48,7 +48,7 @@ public class Everbie {
 		return imageName;
 	}
 
-	public String GetName() {
+	public String getName() {
 		return name;
 	}
 
