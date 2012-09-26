@@ -4,19 +4,26 @@ import java.util.LinkedList;
 
 public class Log {
 
-
-	LinkedList<String> log;
+	private static Log log;
+	LinkedList<String> logList;
 	Everbie everbie;
 
-	public Log() {
-		log = new LinkedList<String>();
+	private Log() {
+		logList = new LinkedList<String>();
 		everbie = Everbie.getEverbie();
 	}
 	
-	public String getLog(){
+	public synchronized static Log getLog(){
+		if(log == null){
+			log = new Log();
+		}
+		return log;
+	}
+	
+	public String getLogList(){
 		String logString = "";
-		for(int i = 0; i < log.size(); i++ ){
-			logString += log.getFirst();
+		for(int i = 0; i <logList.size(); i++ ){
+			logString += logList.getFirst();
 		}
 		return logString;
 		
@@ -37,18 +44,18 @@ public class Log {
 
 	public void generateString(Food food) {
 
-		if (log.size() > 19) {
-			log.removeFirst();
+		if (logList.size() > 19) {
+			logList.removeFirst();
 		}
 
 		if (food.getHappinessModifier() > 0) {
-			log.addLast(everbie.getName() + " ate some " + food.getName()
+			logList.addLast(everbie.getName() + " ate some " + food.getName()
 					+ " and smiles at you");
 		} else if (food.getHappinessModifier() < 0) {
-			log.addLast(everbie.getName() + " ate some " + food.getName()
+			logList.addLast(everbie.getName() + " ate some " + food.getName()
 					+ ", and tries to stab you with a spoon");
 		}
-		log.addLast(everbie.getName() + " ate some " + food.getName());
+		logList.addLast(everbie.getName() + " ate some " + food.getName());
 	}
 
 	/**
