@@ -92,8 +92,8 @@ public class MainActivity extends Activity {
     }
     
     public void onPause(){
-    	database = new Database();
     	try {
+    		database = new Database();
 			database.save();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -105,8 +105,8 @@ public class MainActivity extends Activity {
     }
     
     public void onResume(){
-    	database = new Database();
     	try {
+    		database = new Database();
 			database.load();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
