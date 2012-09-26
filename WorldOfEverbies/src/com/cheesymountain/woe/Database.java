@@ -14,8 +14,11 @@ public class Database extends Activity {
 	
 	private static final String MY_EVERBIE = "everbie_data.txt";
 	
+	public Database() throws FileNotFoundException, IOException{
+		this.save();
+	}
+	
 	public void save() throws IOException, FileNotFoundException{
-		System.out.println("save");
 		OutputStream os = openFileOutput(MY_EVERBIE, Context.MODE_PRIVATE);
 		OutputStreamWriter osw = new OutputStreamWriter(os);
 		Everbie everbie = Everbie.getEverbie();
@@ -27,20 +30,18 @@ public class Database extends Activity {
 		os.close();
 	}
 	
-	@SuppressWarnings("null")
+	@SuppressWarnings("unused")
 	public void load() throws IOException, FileNotFoundException{
-		System.out.println("load");
 		FileInputStream fis = openFileInput(MY_EVERBIE);
 		InputStreamReader fisReader = new InputStreamReader(fis);
 		char[] newData = null;
 		fisReader.read(newData);
 		if(newData == null || newData.length == 0){
-			System.out.println("No Data Found when loading");
+			throw new RuntimeException();
 		}
-		String dataString = "";
+		String dataString = null;
 		for (int i=0;i<newData.length;i++){
 			dataString = dataString+newData[i];
 		}
-		System.out.println(dataString);
 	}
 }
