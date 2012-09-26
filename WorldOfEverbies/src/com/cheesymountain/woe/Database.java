@@ -19,7 +19,7 @@ public class Database extends Activity {
 		OutputStream os = openFileOutput(MY_EVERBIE, Context.MODE_PRIVATE);
 		OutputStreamWriter osw = new OutputStreamWriter(os);
 		Everbie everbie = Everbie.getEverbie();
-		String data = "\""+everbie.GetName()+
+		String data = "\""+everbie.getName()+
 				"\""+Integer.toString(everbie.getHealth())+
 				"\""+Integer.toString(everbie.getFullness())+
 				"\""+Integer.toString(everbie.getToxicity());
