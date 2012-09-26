@@ -4,9 +4,9 @@ import android.graphics.drawable.Drawable;
 
 public class Everbie {
 	
-	private Drawable image; 
-	//public static final Drawable DEFAULT_IMAGE = new Drawable(R.drawable.wbe);
+	private String imageName = "wbe"; 
 	public static final String DEFAULT_NAME = "Eibreve";
+	public static final String DEFAULT_IMAGE_NAME = "wbe";
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
 	private String name;
@@ -15,7 +15,7 @@ public class Everbie {
 	private boolean Alive;
 	private static boolean exists;
 
-	private Everbie(String name, Drawable image) {
+	private Everbie(String name, String imageName) {
 		Alive = true;
 		this.name = name;
 		maxHealth = 1;
@@ -30,23 +30,24 @@ public class Everbie {
 		toxicity = 0;
 		cuteness = 1;
 		money = STARTING_MONEY;
+		this.imageName = imageName;
 	}
 	
-	public synchronized static void createEverbie(String name, Drawable image){
+	public synchronized static void createEverbie(String name, String imageName){
 		if(everbie == null){
-			everbie = new Everbie(name, image);
+			everbie = new Everbie(name, imageName);
 		}
 	}
 	
 	public synchronized static Everbie getEverbie(){
 		if (everbie == null){
-			everbie = new Everbie(DEFAULT_NAME, null/*, DEFAULT_IMAGE*/);
+			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE_NAME);
 		}
 		return everbie;
 	}
 	
-	public Drawable getImage(){
-		return image;
+	public String getImageName(){
+		return imageName;
 	}
 
 	public String GetName() {
