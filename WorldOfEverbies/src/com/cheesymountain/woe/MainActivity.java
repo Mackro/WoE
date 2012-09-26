@@ -5,6 +5,7 @@ package com.cheesymountain.woe;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.ClipData.Item;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	
 	private Everbie everbie;
+	//private ActionMode.Callback actionMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,14 +37,25 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item){
     	switch(item.getItemId()){
     		case R.id.menu_feed:
-    			//getMenuInflater().inflate(R.menu.feed_menu, Menu.);
+    			startActionMode(null);
     			return true;
     	}
 		return false;
     }
     
     public boolean onCreateActionMode(ActionMode mode, Menu menu){
-    	MenuInflater menuInflater = menu.getMenuInflater();
+    	MenuInflater menuInflater = mode.getMenuInflater();
+    	menuInflater.inflate(R.menu.feed_menu, menu);
+    	return true;
+    }
+    
+    public boolean onActionItemClicked(ActionMode actionMode, MenuItem item){
+    	switch(item.getItemId()){
+    	case R.id.feedPet:
+    		new BreadAndWater();
+    		return true;
+    	}
+    	return false;
     }
     
     public void change(View view){
@@ -74,7 +87,7 @@ public class MainActivity extends Activity {
     }
     
     public void updateLog(){
-    	((EditText)findViewById(R.id.log)).setText(Log.getLogString());
+    	((EditText)findViewById(R.id.log)).setText(Log.getLogList());
     }
 
 }
