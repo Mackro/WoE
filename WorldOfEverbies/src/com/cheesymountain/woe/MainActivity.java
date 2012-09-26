@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 
         setContentView(R.layout.activity_main);
-        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
+        //((ImageButton)findViewById(R.id.mainImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
         updateLog();
         //menu_feed
     }
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
     	
-    	((ImageButton)findViewById(R.id.statsImage)).setBackgroundResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
+    	//((ImageButton)findViewById(R.id.statsImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
     	
     	((TextView)findViewById(R.id.nameText)).setText(everbie.getName() + "");
     	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm() + "");
