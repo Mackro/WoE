@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	
 	private Everbie everbie;
+	private Use use;
 	//private ActionMode.Callback actionMode;
 
     @Override
@@ -50,9 +51,10 @@ public class MainActivity extends Activity {
     }
     
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem item){
+    	use = new Use();
     	switch(item.getItemId()){
     	case R.id.feedPet:
-    		new BreadAndWater();
+    		use.activate(new BreadAndWater());
     		return true;
     	}
     	return false;
