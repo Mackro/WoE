@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 public class Everbie {
 	
 	private Drawable image; 
-	public static final Drawable DEFAULT_IMAGE = new Drawable(R.drawable.wbe);
+	//public static final Drawable DEFAULT_IMAGE = new Drawable(R.drawable.wbe);
 	public static final String DEFAULT_NAME = "Eibreve";
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
@@ -40,7 +40,7 @@ public class Everbie {
 	
 	public synchronized static Everbie getEverbie(){
 		if (everbie == null){
-			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE);
+			everbie = new Everbie(DEFAULT_NAME, null/*, DEFAULT_IMAGE*/);
 		}
 		return everbie;
 	}
@@ -236,7 +236,7 @@ public class Everbie {
 		return Alive;
 	}
 	
-	public static boolean doesExist(){
+	public static boolean exists(){
 		return exists;
 	}
 	
