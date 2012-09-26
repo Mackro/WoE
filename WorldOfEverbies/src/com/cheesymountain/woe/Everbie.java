@@ -1,6 +1,5 @@
 package com.cheesymountain.woe;
 
-import android.graphics.drawable.Drawable;
 
 public class Everbie {
 	
@@ -13,7 +12,6 @@ public class Everbie {
 	private int maxHealth, health, strength, intelligence, maxStamina, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
 	private boolean Alive;
-	private static boolean exists;
 
 	private Everbie(String name, String imageName) {
 		Alive = true;
@@ -238,7 +236,7 @@ public class Everbie {
 	}
 	
 	public static boolean exists(){
-		return exists;
+		return everbie != null;
 	}
 	
 	public synchronized void reset(){
