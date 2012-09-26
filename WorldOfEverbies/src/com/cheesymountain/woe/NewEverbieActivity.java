@@ -11,6 +11,9 @@ public class NewEverbieActivity extends Activity {
 	private int[] imageId = {
 		R.drawable.wbe,
 	};
+	private String[] imageDescription = {
+		"Mogno:\nThe Mogno race are known for their sharp calws and short temper.",
+	};
 	private int selectedImage = 0;
 
 	@Override
@@ -21,7 +24,7 @@ public class NewEverbieActivity extends Activity {
 			startActivity(main);
 		}
 		setContentView(R.layout.activity_new_everbie);
-		((TextView)findViewById(R.id.everbieLongText)).setText("Mogno:\nThe Mogno race are known for their sharp calws and short temper.");
+		((TextView)findViewById(R.id.everbieLongText)).setText(imageDescription[0]);
 		((ImageView)findViewById(R.id.everbiePicsImageView)).setImageResource(imageId[0]);
 	}
 	
@@ -31,13 +34,6 @@ public class NewEverbieActivity extends Activity {
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
 	}
-	/*
-	public void onResume(){
-		if(Everbie.exists()){
-			Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
-			startActivity(main);
-		}
-	}*/
 	
 	
 	public void exit(View view){
