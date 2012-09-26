@@ -25,15 +25,17 @@
         <requestFocus />
     </EditText>
 
-    <TextView
+    <EditText
         android:id="@+id/everbieLongText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:editable="false"
         android:layout_below="@+id/everbieNameText"
         android:layout_above="@+id/everbieLayoutLinear"
-        android:ems="10" />
+        android:ems="10"
+        android:inputType="textMultiLine" />
 
     <LinearLayout
         android:id="@+id/everbieLayoutLinear"
