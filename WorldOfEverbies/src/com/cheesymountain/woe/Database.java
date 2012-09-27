@@ -9,13 +9,18 @@ import java.io.OutputStreamWriter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 
 public class Database extends Activity {
 	
 	private static final String MY_EVERBIE = "everbie_data.txt";
 	
-	public Database() throws FileNotFoundException, IOException{
-		this.save();
+	public Database(){
+		
+	}
+	
+	public void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
 	}
 	
 	public void save() throws IOException, FileNotFoundException{
