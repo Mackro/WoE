@@ -31,7 +31,7 @@ public class Everbie {
 	}
 	
 	
-	public synchronized static void CreateEverbie (String name, int[] values, boolean alive, String imageName){
+	public synchronized static void createEverbie (String name, String imageName){
 		if(everbie == null){
 			everbie = new Everbie(name, imageName);
 			
@@ -211,7 +211,7 @@ public class Everbie {
 		toxicity = 0;
 	}
 	
-	public void RestoreEverbie(String name, int[] values, boolean alive, String imageName){
+	public void restoreEverbie(String name, int[] values, boolean alive, String imageName){
 		setName(name);
 		maxHealth = values[0];
 		health = values[1];
