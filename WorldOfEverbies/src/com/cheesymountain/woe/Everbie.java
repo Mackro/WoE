@@ -9,18 +9,17 @@ public class Everbie {
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
 	private String name;
-	private int maxHealth, health, strength, intelligence, maxStamina, stamina,
+	private int maxHealth, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
-	private boolean Alive;
+	private boolean alive;
 
 	private Everbie(String name, String imageName) {
-		Alive = true;
+		alive = true;
 		this.name = name;
 		maxHealth = 1;
 		health = 1;
 		strength = 1;
 		intelligence = 1;
-		maxStamina = 1;
 		stamina = 1;
 		charm = 1;
 		fullness = 50;
@@ -31,9 +30,12 @@ public class Everbie {
 		this.imageName = imageName;
 	}
 	
-	public synchronized static void createEverbie(String name, String imageName){
+	
+	public synchronized static void CreateEverbie (String name, int[] values, boolean alive, String imageName){
 		if(everbie == null){
 			everbie = new Everbie(name, imageName);
+			
+			
 		}
 	}
 	
@@ -66,10 +68,6 @@ public class Everbie {
 
 	public int getIntelligence() {
 		return intelligence;
-	}
-
-	public int getMaxStamina() {
-		return maxStamina;
 	}
 
 	public int getStamina() {
@@ -108,7 +106,7 @@ public class Everbie {
 		if (maxHealth + i < 1 ){
 			maxHealth = 0;
 			health = 0;
-			Alive = false;
+			alive = false;
 		}
 		if (maxHealth + i < health) {
 			health = maxHealth + i;
@@ -123,14 +121,14 @@ public class Everbie {
 			health = maxHealth;
 		} else if (health + i < 1) {
 			health = 0;
-			Alive = false;
+			alive = false;
 		}
 	}
 
 	public void changeStrength(int i) {
 		if (strength + i < 1){
 			strength = 0;
-			Alive = false;
+			alive = false;
 		}
 		strength += i;
 	}
@@ -138,31 +136,16 @@ public class Everbie {
 	public void changeIntelligence(int i) {
 		if (intelligence + i < 1){
 			intelligence = 0;
-			Alive = false;
+			alive = false;
 		}
 		intelligence += i;
 	}
 
-	public void changeMaxStamina(int i) {
-		if (maxStamina + i < 1 ){
-			maxStamina = 0;
-			stamina = 0;
-			Alive = false;
-		}
-		if (maxStamina + i < stamina) {
-			stamina = maxStamina + i;
-		}
-		maxStamina += i;
-	}
-
 	public void changeStamina(int i) {
-		if (stamina + i < maxStamina) {
-			stamina += i;
-		} else if (stamina + i > maxStamina) {
-			stamina = maxStamina;
-		} else if (stamina + i < 1) {
+		if (stamina + i < 1) {
 			stamina = 0;
 		}
+		stamina += i;
 	}
 
 	public void changeCharm(int i) {
@@ -198,7 +181,7 @@ public class Everbie {
 			toxicity += i;
 		} else if (toxicity + i > 99) {
 			toxicity = 100;
-			Alive = false;
+			alive = false;
 		} else if (toxicity + i < 1) {
 			toxicity = 0;
 		}
@@ -218,11 +201,31 @@ public class Everbie {
 			}
 		}
 	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
 
 	public void sleep() {
 		health = maxHealth;
-		stamina = maxStamina;
 		toxicity = 0;
+	}
+	
+	public void RestoreEverbie(String name, int[] values, boolean alive, String imageName){
+		setName(name);
+		maxHealth = values[0];
+		health = values[1];
+		strength = values[2];
+		intelligence = values[3];
+		stamina = values[4];
+		charm = values[5];
+		fullness = values[6];
+		happiness = values[7];
+		toxicity = values[8];
+		cuteness = values[9];
+		money = values[10];
+		this.alive = alive;
+		this.imageName = imageName;
 	}
 
 	public void eat(Food food) {
@@ -232,7 +235,7 @@ public class Everbie {
 	}
 	
 	public boolean  isAlive(){
-		return Alive;
+		return alive;
 	}
 	
 	public static boolean exists(){
