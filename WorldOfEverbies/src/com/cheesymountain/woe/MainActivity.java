@@ -1,12 +1,16 @@
 package com.cheesymountain.woe;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import android.widget.*;
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.view.*;
+import android.os.Bundle;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {
