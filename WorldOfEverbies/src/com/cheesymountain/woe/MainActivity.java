@@ -1,8 +1,5 @@
 package com.cheesymountain.woe;
 
-
-
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import android.widget.*;
@@ -16,7 +13,6 @@ public class MainActivity extends Activity {
 	
 	private Everbie everbie;
 	private Use use;
-	private Database database;
 	//private ActionMode.Callback actionMode;
 
     @Override
@@ -32,6 +28,47 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+    
+    @Override
+    public void onBackPressed(){
+    	
+    }
+    
+    public void onSaveInstanceState(Bundle savedInstanceState){
+    	super.onSaveInstanceState(savedInstanceState);
+    	savedInstanceState.putString("Name", everbie.getName());
+    	savedInstanceState.putInt("maxHealth", everbie.getMaxHealth());
+    	savedInstanceState.putInt("health", everbie.getHealth());
+    	savedInstanceState.putInt("Strength", everbie.getStrength());
+    	savedInstanceState.putInt("Intelligence", everbie.getIntelligence());
+    	savedInstanceState.putInt("stamina", everbie.getStamina());
+    	savedInstanceState.putInt("charm", everbie.getCharm());
+    	savedInstanceState.putInt("fullness", everbie.getFullness());
+    	savedInstanceState.putInt("happiness", everbie.getHappiness());
+    	savedInstanceState.putInt("toxicity", everbie.getToxicity());
+    	savedInstanceState.putInt("cuteness", everbie.getCuteness());
+    	savedInstanceState.putInt("money", everbie.getMoney());
+    	savedInstanceState.putBoolean("Alive", everbie.isAlive());
+    	savedInstanceState.putString("imagePath", everbie.getImageName());
+    }
+    
+    public void onRestoreInstanceState(Bundle savedInstanceState){
+    	super.onRestoreInstanceState(savedInstanceState);
+    	int[] values = {savedInstanceState.getInt("maxHealth"),
+    	savedInstanceState.getInt("health"),
+    	savedInstanceState.getInt("Strength"),
+    	savedInstanceState.getInt("intelligence"),
+    	savedInstanceState.getInt("stamina"),
+    	savedInstanceState.getInt("charm"),
+    	savedInstanceState.getInt("fullness"),
+    	savedInstanceState.getInt("happiness"),
+    	savedInstanceState.getInt("toxicity"),
+    	savedInstanceState.getInt("cuteness"),
+    	savedInstanceState.getInt("money")};
+    	everbie.restoreEverbie(savedInstanceState.getString("Name"), values,
+    			savedInstanceState.getBoolean("alive"), savedInstanceState.getString("imagePath"));
+    	
     }
     
     public boolean onOptionsItemSelected(MenuItem item){
@@ -89,31 +126,5 @@ public class MainActivity extends Activity {
     
     public void updateLog(){
     	((EditText)findViewById(R.id.log)).setText(Log.getLog().getLogList());
-    }
-    
-    public void onPause(){
-    	try {
-    		database = new Database();
-			database.save();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    public void onResume(){
-    	try {
-    		database = new Database();
-			database.load();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
+    }    
 }
