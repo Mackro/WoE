@@ -1,9 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
-    tools:context="com.cheesymountain.woe.MainActivity" >
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
 
     <ImageButton
         android:id="@+id/mainImage"
@@ -16,8 +15,8 @@
         android:contentDescription="@string/everbie_pic"
         android:minHeight="150dp"
         android:minWidth="280dp"
-        android:onClick="change"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:onClick="change" />
 
     <EditText
         android:id="@+id/log"

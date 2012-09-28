@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
         //((ImageButton)findViewById(R.id.mainImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
         updateLog();
         //menu_feed
+        use = new Use();
     }
 
     @Override
@@ -94,7 +95,6 @@ public class MainActivity extends Activity {
     }
     
     public boolean onContestItemSelected(MenuItem item){
-		Use use = new Use();
     	switch(item.getItemId()){
     	case R.id.feedPet:
     		use.activate(new BreadAndWater());
@@ -102,7 +102,9 @@ public class MainActivity extends Activity {
     	}
     	return false;
     }
-    
+
+    /*
+     * Something very wrong here!!  
     public boolean onCreateActionMode(ActionMode mode, Menu menu){
     	MenuInflater menuInflater = mode.getMenuInflater();
     	menuInflater.inflate(R.menu.feed_menu, menu);
@@ -119,6 +121,7 @@ public class MainActivity extends Activity {
     	return false;
     }
 
+    */
     public void change(View view){
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
@@ -145,6 +148,7 @@ public class MainActivity extends Activity {
     
     public void back(View view){
     	this.setContentView(R.layout.activity_main);
+    	updateLog();
     }
     
     public void updateLog(){
