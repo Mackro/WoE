@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbarAlwaysDrawVerticalTrack="true" >
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    tools:context="com.cheesymountain.woe.MainActivity" >
 
     <ImageButton
         android:id="@+id/mainImage"
@@ -17,7 +18,7 @@
         android:minWidth="280dp"
         android:onClick="change"
         android:src="@drawable/ic_launcher" />
-
+
     <EditText
         android:id="@+id/log"
         android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
         android:layout_marginTop="14dp"
         android:clickable="false"
         android:ems="10"
+        android:focusableInTouchMode="false"
         android:inputType="text|textMultiLine"
         android:selectAllOnFocus="false" >
 
