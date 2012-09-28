@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.ActionMode;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -76,12 +77,29 @@ public class MainActivity extends Activity {
     }
     
     public boolean onOptionsItemSelected(MenuItem item){
-    	switch(item.getItemId()){
-    		case R.id.menu_feed:
-    			startActionMode(null);
-    			return true;
-    	}
+		switch(item.getItemId()){
+			case R.id.menu_feed:
+				//inflate feedmenu
+				return true;
+		}
 		return false;
+    }
+    
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
+    	super.onCreateContextMenu(menu, view, menuInfo);
+    	MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.feed_menu, menu);
+    }
+    
+    public boolean onContestItemSelected(MenuItem item){
+		Use use = new Use();
+    	switch(item.getItemId()){
+    	case R.id.feedPet:
+    		use.activate(new BreadAndWater());
+    		return true;
+    	}
+    	return false;
     }
     
     public boolean onCreateActionMode(ActionMode mode, Menu menu){
