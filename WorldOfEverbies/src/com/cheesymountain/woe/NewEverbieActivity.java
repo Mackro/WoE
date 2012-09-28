@@ -19,15 +19,16 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		R.drawable.ic_launcher,
 		R.drawable.ic_action_search,
 	};
+	private String swipeDescription = "\n\n<swipe left/right to switch race>";
 	private String[] imageDescription = {
-			"Mogno:\nThe Mogno race are known for their sharp calws and short temper.",
-			"Mogno:\nThe Mogno race are known for their sharp calws and short temper.",
-			"Mogno:\nThe Mogno race are known for their sharp calws and short temper.",
+			"Mogno:\nThe Mogno race are known for their sharp claws and short temper.",
+			"Rokash:\nThe Rokash race are known for beeing much cuter than the other races but also more hostile.",
+			"Skrom:\nThe Skrom race are known for their sharp intelect and oversized belly.",
 	};
 	private int selectedImage = 0;
 	
 	private ImageView pictures;
-	private TextView name;
+	private EditText name;
 	private TextView description;
 	private SimpleGestureFilter detector; 
 
@@ -39,17 +40,22 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 			startActivity(main);
 		}
 		setContentView(R.layout.activity_new_everbie);
+		
 		description = ((TextView)findViewById(R.id.everbieLongText));
-		description.setText(imageDescription[0]);
+		description.setText(imageDescription[0] + swipeDescription);
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
 		pictures.setImageResource(imageId[0]);
-		name = (TextView)findViewById(R.id.everbieNameText);
+		name = (EditText)findViewById(R.id.everbieNameText);
+		name.setHint("Enter Name Here");
 
         detector = new SimpleGestureFilter(this,this);
 	}
 	
 	public void create(View view){
 		String name = this.name.getText().toString();
+		if(name == null || name.equals("") || name.startsWith(" ")){
+			return;
+		}
 		Everbie.createEverbie(name, getResources().getResourceEntryName(imageId[selectedImage]));
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
@@ -64,12 +70,12 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 				}
 				break;
 			case SimpleGestureFilter.SWIPE_LEFT:
-				if(selectedImage < imageId.length){
+				if(selectedImage < imageId.length-1){
 					pictures.setImageResource(imageId[++selectedImage]);
 				}
 				break;
 		}
-		description.setText(imageDescription[selectedImage]);
+		description.setText(imageDescription[selectedImage] + swipeDescription);
 	}
 	
 	public void exit(View view){
