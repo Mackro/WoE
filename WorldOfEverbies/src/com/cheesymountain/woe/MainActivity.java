@@ -79,7 +79,8 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
 			case R.id.menu_feed:
-				//inflate feedmenu
+				use.activate(new BreadAndWater());
+				//inflate feedmenu shall be implemented
 				return true;
 		}
 		return false;
@@ -117,7 +118,7 @@ public class MainActivity extends Activity {
     	}
     	return false;
     }
-    
+
     public void change(View view){
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
