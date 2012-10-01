@@ -3,10 +3,7 @@ package com.cheesymountain.woe;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.ActionMode;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -18,15 +15,14 @@ public class MainActivity extends Activity {
 	
 	private Everbie everbie;
 	private Use use;
-	//private ActionMode.Callback actionMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    	
         setContentView(R.layout.activity_main);
         //((ImageButton)findViewById(R.id.mainImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
         updateLog();
-        //menu_feed
         use = new Use();
     }
 
@@ -73,55 +69,32 @@ public class MainActivity extends Activity {
     	savedInstanceState.getInt("cuteness"),
     	savedInstanceState.getInt("money")};
     	everbie.restoreEverbie(savedInstanceState.getString("Name"), values,
-    			savedInstanceState.getBoolean("alive"), savedInstanceState.getString("imagePath"));
-    	
+    			savedInstanceState.getBoolean("alive"), savedInstanceState.getString("imagePath"));	
     }
     
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
-			case R.id.menu_feed:
+			case R.id.BreadAndWater:
 				use.activate(new BreadAndWater());
-				//inflate feedmenu shall be implemented
 				return true;
+			case R.id.Melon:
+				use.activate(new Melon());
 		}
 		return false;
     }
     
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
-    	super.onCreateContextMenu(menu, view, menuInfo);
-    	MenuInflater inflater = getMenuInflater();
-    	inflater.inflate(R.menu.feed_menu, menu);
-    }
-    
     public boolean onContestItemSelected(MenuItem item){
     	switch(item.getItemId()){
-    	case R.id.feedPet:
+    	case R.id.BreadAndWater:
     		use.activate(new BreadAndWater());
+    		return true;
+    	case R.id.Melon:
+    		use.activate(new Melon());
     		return true;
     	}
     	return false;
-    }
-
-    /*
-     * Something very wrong here!!  
-    public boolean onCreateActionMode(ActionMode mode, Menu menu){
-    	MenuInflater menuInflater = mode.getMenuInflater();
-    	menuInflater.inflate(R.menu.feed_menu, menu);
-    	return true;
     }
     
-    public boolean onActionItemClicked(ActionMode actionMode, MenuItem item){
-    	use = new Use();
-    	switch(item.getItemId()){
-    	case R.id.feedPet:
-    		use.activate(new BreadAndWater());
-    		return true;
-    	}
-    	return false;
-    }
-
-    */
     public void change(View view){
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);

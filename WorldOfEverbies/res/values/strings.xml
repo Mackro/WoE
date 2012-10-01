@@ -5,8 +5,8 @@
     
     <string name="title_activity_main">MainActivity</string>
     
-    <string name="menu_item">Item</string>
-    <string name="menu_train" >Train</string>
+    <string name="menu_store">Store</string>
+    <string name="menu_training" >Training</string>
     <string name="menu_feed">Feed</string>
     <string name="menu_work">Work</string>
     <string name="menu_inter">Interact</string>
