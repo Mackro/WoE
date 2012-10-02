@@ -2,6 +2,12 @@ package com.cheesymountain.woe;
 
 import java.util.LinkedList;
 
+import com.cheesymountain.woe.food.Food;
+import com.cheesymountain.woe.interact.Interaction;
+import com.cheesymountain.woe.item.Item;
+import com.cheesymountain.woe.training.Training;
+import com.cheesymountain.woe.work.Work;
+
 
 public class Log {
 
@@ -109,7 +115,7 @@ public class Log {
 		}
 		logList.addLast(everbie.getName()+ " ate som " + food.getName() + " and is now"
 				+ (food.getHappinessModifier()>0?" happier": (food.getHappinessModifier()<0?" angrier":" the same"))
-				+ (food.getToxicityModifier()>0?" but became sicker":(item.getStrengthModifier()<0?" and became healthier":"")) 
+				+ (food.getToxicityModifier()>0?" but became sicker":(food.getToxicityModifier()<0?" and became healthier":"")) 
 				+ " than before and not as hungry \n");
 	}
 	
