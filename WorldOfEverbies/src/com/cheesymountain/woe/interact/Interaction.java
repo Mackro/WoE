@@ -1,5 +1,10 @@
 package com.cheesymountain.woe.interact;
-
+/**
+ * Abstract class that describes the different interactions available in WoE.
+ * 
+ * @author Markus Otterberg
+ *
+ */
 public abstract class Interaction {
 	private int happinessModifier;
 	private int charmModifier;
