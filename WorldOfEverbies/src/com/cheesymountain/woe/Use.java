@@ -28,5 +28,12 @@ public class Use {
 			Everbie.getEverbie().changeCuteness(interact.getCutenessModifier());
 			Everbie.getEverbie().changeHappiness(interact.getHappinessModifier());
 		}
+		
+	/*	if(o instanceof Item){
+			Item item = (Item)o;
+			Log.getLog().itemUsed(item);
+			Everbie.getEverbie().changeStrength(item.getStrengthModifier());
+			Everbie.getEverbie().changeIntelligence(item.getIntelligenceModifier());
+		}*/
 	}
 }

@@ -80,21 +80,28 @@ public class MainActivity extends Activity {
 				return true;
 			case R.id.Melon:
 				use.activate(new Melon());
+				return true;
+			case R.id.dogWalking:
+	    		use.activate(new DogWalking());
+	    		return true;
+	    	case R.id.sellLemonade:
+	    		use.activate(new SellLemonade());
+	    		return true;
+	    	case R.id.consulting:
+	    		use.activate(new Consulting());
+	    		return true;
 		}
 		return false;
     }
     
     public boolean onContestItemSelected(MenuItem item){
     	switch(item.getItemId()){
-    	case R.id.BreadAndWater:
-    		use.activate(new BreadAndWater());
-    		return true;
-    	case R.id.Melon:
-    		use.activate(new Melon());
-    		return true;
-    	case R.id.DogWalking:
-    		use.activate(new DogWalking());
-    		return true;
+	    	case R.id.BreadAndWater:
+	    		use.activate(new BreadAndWater());
+	    		return true;
+	    	case R.id.Melon:
+	    		use.activate(new Melon());
+	    		return true;
     	}
     	return false;
     }
