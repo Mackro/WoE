@@ -1,4 +1,4 @@
-package com.cheesymountain.woe;
+package com.cheesymountain.woe.interact;
 
 public abstract class Interaction {
 	private int happinessModifier;
@@ -50,4 +50,10 @@ public abstract class Interaction {
 	public int getCutenessModifier(){
 		return this.cutenessModifer;
 	}
+	
+	/**
+	 * Returns the name of the current interaction
+	 * @return the name of this interaction
+	 */
+	public abstract String getName();
 }

@@ -1,5 +1,6 @@
 package com.cheesymountain.woe;
 
+import com.cheesymountain.woe.interact.Interaction;
 import com.cheesymountain.woe.work.Work;
 
 public class Use {
