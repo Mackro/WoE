@@ -2,6 +2,8 @@ package com.cheesymountain.woe;
 
 import com.cheesymountain.woe.food.Food;
 import com.cheesymountain.woe.interact.Interaction;
+import com.cheesymountain.woe.item.Item;
+import com.cheesymountain.woe.training.Training;
 import com.cheesymountain.woe.work.Work;
 
 /**
@@ -20,6 +22,7 @@ public class Use {
 		if(o instanceof Food){
 			Food food = (Food)o;
 			Log.getLog().foodGiven(food);
+			Everbie.getEverbie().changeMoney(-food.getCost());
 			Everbie.getEverbie().changeFullness(food.getFullnessModifier());
 			Everbie.getEverbie().changeHappiness(food.getHappinessModifier());
 			Everbie.getEverbie().changeToxicity(food.getToxicityModifier());
@@ -27,7 +30,7 @@ public class Use {
 
 		if(o instanceof Work){
 			Work work = (Work)o;
-			//Log.getLog().workStarted(work);
+			Log.getLog().workStarted(work);
 			Everbie.getEverbie().changeMoney(work.getSalary());
 			Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 			Everbie.getEverbie().changeHealth(work.getHealthModifier());
@@ -35,7 +38,7 @@ public class Use {
 
 		if(o instanceof Interaction){
 			Interaction interact = (Interaction)o;
-			//Log.getLog().interactionMade(work);
+			Log.getLog().interactionMade(interact);
 			Everbie.getEverbie().changeCharm(interact.getCharmModifier());
 			Everbie.getEverbie().changeCuteness(interact.getCutenessModifier());
 			Everbie.getEverbie().changeHappiness(interact.getHappinessModifier());
@@ -44,13 +47,15 @@ public class Use {
 		if(o instanceof Item){
 			Item item = (Item)o;
 			Log.getLog().itemUsed(item);
+			Everbie.getEverbie().changeMoney(-item.getCost());
 			Everbie.getEverbie().changeStrength(item.getStrengthModifier());
 			Everbie.getEverbie().changeIntelligence(item.getIntelligenceModifier());
 			Everbie.getEverbie().changeCharm(item.getCharmModifier());
 			Everbie.getEverbie().changeCuteness(item.getCutenessModifier());
-			Everbie.getEverbie().changeHappiness(item.getHeppinessModifier());
+			Everbie.getEverbie().changeHappiness(item.getHappinessModifier());
 			Everbie.getEverbie().changeHealth(item.getHealthModifier());
 			Everbie.getEverbie().changeStamina(item.getStaminaModifier());
+			Everbie.getEverbie().changeToxicity(item.getToxicityModifier());
 		}
 		
 		if(o instanceof Training){
