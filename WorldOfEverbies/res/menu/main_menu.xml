@@ -3,6 +3,7 @@
         <menu>
             <item android:id="@+id/BreadAndWater" android:menuCategory="alternative" android:titleCondensed="Free Food!!" android:title="Bread &amp; Water" android:enabled="true" android:visible="true"/>
             <item android:id="@+id/Melon" android:enabled="true" android:visible="true" android:orderInCategory="2" android:titleCondensed="A juicy fruit" android:menuCategory="alternative" android:title="Melon"/>
+            <item android:id="@+id/ribEyeStake" android:menuCategory="alternative" android:title="ribEyeStake" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Rib-Eye Steak"/>
         </menu>
     </item>
     <item android:id="@+id/store_menu" android:menuCategory="alternative" android:titleCondensed="Store" android:visible="true" android:title="@string/menu_store" android:orderInCategory="2" android:enabled="true">
@@ -15,7 +16,11 @@
         <menu></menu>
     </item>
     <item android:id="@+id/interact_menu" android:title="@string/menu_inter" android:menuCategory="alternative" android:orderInCategory="5" android:titleCondensed="Interact" android:visible="true" android:enabled="true">
-        <menu></menu>
+        <menu>
+            <item android:id="@+id/chat" android:menuCategory="alternative" android:title="chat" android:enabled="true" android:orderInCategory="1" android:visible="true" android:titleCondensed="Chat"/>
+            <item android:id="@+id/comb" android:menuCategory="alternative" android:title="comb" android:enabled="true" android:orderInCategory="2" android:visible="true" android:titleCondensed="Comb"/>
+            <item android:id="@+id/snuggle" android:menuCategory="alternative" android:title="snuggle" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Snuggle"/>
+        </menu>
     </item>
     <item android:id="@+id/work_menu" android:titleCondensed="Work" android:visible="true" android:title="@string/menu_work" android:menuCategory="alternative" android:orderInCategory="6" android:enabled="true">
         <menu>
