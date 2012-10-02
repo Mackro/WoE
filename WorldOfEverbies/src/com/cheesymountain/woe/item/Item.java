@@ -84,7 +84,7 @@ public abstract class Item {
 	 * @returns returns the value by which the everbie's stamina is modified.
 	 */
 
-	public int getstaminaModifier() {
+	public int getStaminaModifier() {
 		return staminaModifier;
 	}
 
