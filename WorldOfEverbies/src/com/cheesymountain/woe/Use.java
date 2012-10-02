@@ -1,10 +1,20 @@
 package com.cheesymountain.woe;
 
+import com.cheesymountain.woe.food.Food;
 import com.cheesymountain.woe.interact.Interaction;
 import com.cheesymountain.woe.work.Work;
-
+/**
+ * @author Karl-Agnes
+ *
+ * A class for activating/using different items or activities.
+ */
 public class Use {
-	
+	/**
+	 * Activates the desired event which could be a food,
+	 * an item or an activity.
+	 * 
+	 * @param o	the instance of what should happen
+	 */
 	public void activate(Object o){
 		if(o instanceof Food){
 			Food food = (Food)o;
@@ -21,7 +31,7 @@ public class Use {
 			Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 			Everbie.getEverbie().changeHealth(work.getHealthModifier());
 		}
-	
+
 		if(o instanceof Interaction){
 			Interaction interact = (Interaction)o;
 			//Log.getLog().interactionMade(work);

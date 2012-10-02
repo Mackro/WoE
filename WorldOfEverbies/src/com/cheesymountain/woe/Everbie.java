@@ -1,5 +1,7 @@
 package com.cheesymountain.woe;
 
+import com.cheesymountain.woe.food.Food;
+
 
 public class Everbie {
 	

@@ -2,6 +2,8 @@ package com.cheesymountain.woe;
 
 import java.util.LinkedList;
 
+import com.cheesymountain.woe.food.Food;
+
 public class Log {
 
 	private static Log log;

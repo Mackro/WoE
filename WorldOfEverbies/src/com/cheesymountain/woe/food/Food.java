@@ -1,4 +1,4 @@
-package com.cheesymountain.woe;
+package com.cheesymountain.woe.food;
 
 public abstract class Food {
 	
