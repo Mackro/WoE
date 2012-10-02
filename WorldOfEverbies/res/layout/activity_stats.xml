@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView6"
-        android:text="Cute:"
+        android:text="Cuteness:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView

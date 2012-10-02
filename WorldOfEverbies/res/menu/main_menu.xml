@@ -7,7 +7,13 @@
         </menu>
     </item>
     <item android:id="@+id/store_menu" android:menuCategory="alternative" android:titleCondensed="Store" android:visible="true" android:title="@string/menu_store" android:orderInCategory="2" android:enabled="true">
-        <menu></menu>
+        <menu>
+            <item android:id="@+id/healthPotion" android:titleCondensed="Health Potion" android:visible="true" android:title="Health Potion" android:menuCategory="alternative" android:orderInCategory="1" android:enabled="true"/>
+            <item android:id="@+id/kettleBell" android:titleCondensed="Kettle Bell" android:visible="true" android:title="Kettle Bell" android:menuCategory="alternative" android:orderInCategory="2" android:enabled="true"/>
+            <item android:id="@+id/ribbon" android:titleCondensed="Ribbon" android:visible="true" android:title="Ribbon" android:menuCategory="alternative" android:orderInCategory="3" android:enabled="true"/>
+            <item android:id="@+id/book" android:titleCondensed="Book" android:visible="true" android:title="Book" android:menuCategory="alternative" android:orderInCategory="4" android:enabled="true"/>
+            <item android:id="@+id/skippingRope" android:titleCondensed="SkippingRope" android:visible="true" android:title="Skipping Rope" android:menuCategory="alternative" android:orderInCategory="5" android:enabled="true"/>
+        </menu>
     </item>
     <item android:id="@+id/training_menu" android:title="@string/menu_training" android:menuCategory="alternative" android:orderInCategory="3" android:titleCondensed="Training" android:visible="true" android:enabled="true">
         <menu></menu>
