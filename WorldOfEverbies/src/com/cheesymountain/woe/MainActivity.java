@@ -1,5 +1,7 @@
 package com.cheesymountain.woe;
 
+import com.cheesymountain.woe.food.BreadAndWater;
+import com.cheesymountain.woe.food.Melon;
 import com.cheesymountain.woe.work.*;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,8 +14,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
+/**
+ * Main Activity that keeps most of the controlling
+ * functionality such as saving and loading game and
+ * handles events from OptionsMenu. Moreover it controls
+ * the exitGame functionality and what buttons can activate it.
+ * 
+ * @author CheesyMountain
+ * 
+ */
 public class MainActivity extends Activity {
-	
+
 	private Everbie everbie;
 	private Use use;
 
@@ -38,6 +49,7 @@ public class MainActivity extends Activity {
     	
     }
     
+    @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
     	super.onSaveInstanceState(savedInstanceState);
     	savedInstanceState.putString("Name", everbie.getName());
@@ -56,6 +68,7 @@ public class MainActivity extends Activity {
     	savedInstanceState.putString("imagePath", everbie.getImageName());
     }
     
+    @Override
     public void onRestoreInstanceState(Bundle savedInstanceState){
     	super.onRestoreInstanceState(savedInstanceState);
     	int[] values = {savedInstanceState.getInt("maxHealth"),
@@ -73,6 +86,7 @@ public class MainActivity extends Activity {
     			savedInstanceState.getBoolean("alive"), savedInstanceState.getString("imagePath"));	
     }
     
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
 			case R.id.BreadAndWater:
@@ -80,25 +94,31 @@ public class MainActivity extends Activity {
 				return true;
 			case R.id.Melon:
 				use.activate(new Melon());
+				return true;
+			case R.id.dogWalking:
+	    		use.activate(new DogWalking());
+	    		return true;
+	    	case R.id.sellLemonade:
+	    		use.activate(new SellLemonade());
+	    		return true;
+	    	case R.id.consulting:
+	    		use.activate(new Consulting());
+	    		return true;
 		}
 		return false;
     }
     
-    public boolean onContestItemSelected(MenuItem item){
-    	switch(item.getItemId()){
-    	case R.id.BreadAndWater:
-    		use.activate(new BreadAndWater());
-    		return true;
-    	case R.id.Melon:
-    		use.activate(new Melon());
-    		return true;
-    	case R.id.DogWalking:
-    		use.activate(new DogWalking());
-    		return true;
-    	}
-    	return false;
+    @Override
+    public void onOptionsMenuClosed(Menu menu) {
+    	super.onOptionsMenuClosed(menu);
+    	updateLog();
     }
     
+    //TODO Write More javadoc here
+    /**
+     * 
+     * @param view
+     */
     public void change(View view){
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
@@ -123,11 +143,20 @@ public class MainActivity extends Activity {
     	
     }
     
+    //TODO write Javadoc here
+    /**
+     * 
+     * @param view
+     */
     public void back(View view){
     	this.setContentView(R.layout.activity_main);
     	updateLog();
     }
     
+    /**
+     * Rewrites the TextArea with the current version
+     * of the Log.
+     */
     public void updateLog(){
     	((EditText)findViewById(R.id.log)).setText(Log.getLog().getLogList());
     }    

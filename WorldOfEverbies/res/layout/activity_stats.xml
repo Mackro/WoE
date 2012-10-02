@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView6"
-        android:text="Cute:"
+        android:text="Cuteness:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -148,9 +148,9 @@
         android:layout_alignRight="@+id/imageButton1"
         android:layout_alignTop="@+id/textView2"
         android:progress="100" />
-
+
     <ProgressBar
-        android:id="@+id/happinessBar"
+        android:id="@+id/fullnessBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -159,9 +159,9 @@
         android:layout_alignRight="@+id/fullnessBar"
         android:layout_toRightOf="@+id/textView6"
         android:progress="50" />
-
+
     <ProgressBar
-        android:id="@+id/fullnessBar"
+        android:id="@+id/happinessBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

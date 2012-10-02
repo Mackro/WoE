@@ -2,8 +2,6 @@ package com.cheesymountain.woe;
 
 import java.util.LinkedList;
 
-import com.cheesymountain.woe.work.Work;
-import com.cheesymountain.woe.item.Item;
 
 public class Log {
 
