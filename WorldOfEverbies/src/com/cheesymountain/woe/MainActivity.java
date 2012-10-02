@@ -1,5 +1,6 @@
 package com.cheesymountain.woe;
 
+import com.cheesymountain.woe.work.*;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
@@ -90,6 +91,9 @@ public class MainActivity extends Activity {
     		return true;
     	case R.id.Melon:
     		use.activate(new Melon());
+    		return true;
+    	case R.id.DogWalking:
+    		use.activate(new DogWalking());
     		return true;
     	}
     	return false;
