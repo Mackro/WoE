@@ -18,9 +18,10 @@ package com.cheesymountain.woe;
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
 
-import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
-
 import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -28,6 +29,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
 
 /**
  * Controller class when creating a new Everbie that handles swipe events
@@ -39,6 +42,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 
 	
 	private int selectedImage = 0;
+	private static final int DIALOG_INVALIDNAME_ID = 0;
 	
 	private ImageView pictures;
 	private EditText name;
@@ -68,14 +72,35 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	 * Is called automatically when pressing the create button.
 	 * @param view - the view from which create button was pressed
 	 */
+	@SuppressWarnings("deprecation")
 	public void create(View view){
 		String name = this.name.getText().toString();
-		if(name == null || name.equals("") || name.startsWith(" ")){
+		name = name.trim();
+		if(name == null || name.equals("")){
+			showDialog(DIALOG_INVALIDNAME_ID);
 			return;
 		}
 		Everbie.createEverbie(name, getResources().getResourceEntryName(RaceDescription.IMAGE_ID[selectedImage]));
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
+	}
+	
+	@Override
+	public Dialog onCreateDialog(int i){
+		switch(i){
+			case DIALOG_INVALIDNAME_ID:
+				Builder builder = new Builder(this);
+				builder.setMessage("Please enter a valid name.");
+				builder.setCancelable(false);
+				builder.setNeutralButton("Okay, I will", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+					}
+				});
+				return builder.create();
+			default:
+				return null;
+		}
 	}
 
 	/**

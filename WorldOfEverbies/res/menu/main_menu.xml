@@ -3,7 +3,7 @@
         <menu>
             <item android:id="@+id/BreadAndWater" android:menuCategory="alternative" android:titleCondensed="Free Food!!" android:title="Bread &amp; Water" android:enabled="true" android:visible="true"/>
             <item android:id="@+id/Melon" android:enabled="true" android:visible="true" android:orderInCategory="2" android:titleCondensed="A juicy fruit" android:menuCategory="alternative" android:title="Melon"/>
-            <item android:id="@+id/ribEyeStake" android:menuCategory="alternative" android:title="ribEyeStake" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Rib-Eye Steak"/>
+            <item android:id="@+id/ribEyeStake" android:menuCategory="alternative" android:title="Rib-Eye Steak" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Rib-Eye Steak"/>
         </menu>
     </item>
     <item android:id="@+id/store_menu" android:menuCategory="alternative" android:titleCondensed="Store" android:visible="true" android:title="@string/menu_store" android:orderInCategory="2" android:enabled="true">
@@ -16,25 +16,29 @@
         </menu>
     </item>
     <item android:id="@+id/training_menu" android:title="@string/menu_training" android:menuCategory="alternative" android:orderInCategory="3" android:titleCondensed="Training" android:visible="true" android:enabled="true">
-        <menu></menu>
+        <menu>
+            <item android:id="@+id/chess" android:enabled="true" android:title="Chess" android:visible="true" android:titleCondensed="Chess" android:orderInCategory="1" android:menuCategory="alternative"/>
+            <item android:id="@+id/running" android:enabled="true" android:title="Running" android:visible="true" android:titleCondensed="Running" android:orderInCategory="2" android:menuCategory="alternative"/>
+            <item android:id="@+id/workingOut" android:enabled="true" android:title="Working Out" android:visible="true" android:titleCondensed="Working Out" android:orderInCategory="3" android:menuCategory="alternative"/>
+        </menu>
     </item>
     <item android:id="@+id/inverntory_menu" android:titleCondensed="Inventory" android:visible="true" android:title="@string/menu_invent" android:menuCategory="alternative" android:orderInCategory="4" android:enabled="true">
         <menu></menu>
     </item>
     <item android:id="@+id/interact_menu" android:title="@string/menu_inter" android:menuCategory="alternative" android:orderInCategory="5" android:titleCondensed="Interact" android:visible="true" android:enabled="true">
         <menu>
-            <item android:id="@+id/chat" android:menuCategory="alternative" android:title="chat" android:enabled="true" android:orderInCategory="1" android:visible="true" android:titleCondensed="Chat"/>
-            <item android:id="@+id/comb" android:menuCategory="alternative" android:title="comb" android:enabled="true" android:orderInCategory="2" android:visible="true" android:titleCondensed="Comb"/>
-            <item android:id="@+id/snuggle" android:menuCategory="alternative" android:title="snuggle" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Snuggle"/>
+            <item android:id="@+id/chat" android:menuCategory="alternative" android:title="Chat" android:enabled="true" android:orderInCategory="1" android:visible="true" android:titleCondensed="Chat"/>
+            <item android:id="@+id/comb" android:menuCategory="alternative" android:title="Comb" android:enabled="true" android:orderInCategory="2" android:visible="true" android:titleCondensed="Comb"/>
+            <item android:id="@+id/snuggle" android:menuCategory="alternative" android:title="Snuggle" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Snuggle"/>
         </menu>
     </item>
     <item android:id="@+id/work_menu" android:titleCondensed="Work" android:visible="true" android:title="@string/menu_work" android:menuCategory="alternative" android:orderInCategory="6" android:enabled="true">
         <menu>
-            <item android:id="@+id/dogWalking" android:menuCategory="alternative" android:visible="true" android:title="DogWalking" android:orderInCategory="1" android:enabled="true" android:titleCondensed="DogWalking"/>
-            <item android:id="@+id/sellLemonade" android:menuCategory="alternative" android:orderInCategory="2" android:title="Lemonade" android:enabled="true" android:visible="true" android:titleCondensed="Sell Lemonade"/>
+            <item android:id="@+id/dogWalking" android:menuCategory="alternative" android:visible="true" android:title="Dog Walking" android:orderInCategory="1" android:enabled="true" android:titleCondensed="Dog Walking"/>
+            <item android:id="@+id/sellLemonade" android:menuCategory="alternative" android:orderInCategory="2" android:title="Sell Lemonade" android:enabled="true" android:visible="true" android:titleCondensed="Sell Lemonade"/>
             <item android:id="@+id/consulting" android:menuCategory="alternative" android:title="Consulting" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Consulting"/>
-            <item android:id="@+id/plumbing" android:menuCategory="alternative" android:title="plumbing" android:enabled="true" android:orderInCategory="4" android:visible="true" android:titleCondensed="Plumbing"/>
-            <item android:id="@+id/motelCleaning" android:menuCategory="alternative" android:title="motelCleaning" android:enabled="true" android:orderInCategory="5" android:visible="true" android:titleCondensed="Motel Cleaning"/>
+            <item android:id="@+id/plumbing" android:menuCategory="alternative" android:title="Plumbing" android:enabled="true" android:orderInCategory="4" android:visible="true" android:titleCondensed="Plumbing"/>
+            <item android:id="@+id/motelCleaning" android:menuCategory="alternative" android:title="MotelCleaning" android:enabled="true" android:orderInCategory="5" android:visible="true" android:titleCondensed="Motel Cleaning"/>
         </menu>
     </item>
 </menu>

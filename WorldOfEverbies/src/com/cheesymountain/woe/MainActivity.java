@@ -1,7 +1,9 @@
 package com.cheesymountain.woe;
 
-import com.cheesymountain.woe.food.BreadAndWater;
-import com.cheesymountain.woe.food.Melon;
+import com.cheesymountain.woe.food.*;
+import com.cheesymountain.woe.interact.*;
+import com.cheesymountain.woe.item.*;
+import com.cheesymountain.woe.training.*;
 import com.cheesymountain.woe.work.*;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -95,14 +97,56 @@ public class MainActivity extends Activity {
 			case R.id.Melon:
 				use.activate(new Melon());
 				return true;
+			case R.id.ribEyeStake:
+				use.activate(new RibEyeSteak());
+				return true;
+			case R.id.chat:
+				use.activate(new Chat());
+				return true;
+			case R.id.comb:
+				use.activate(new Comb());
+				return true;
+			case R.id.snuggle:
+				use.activate(new Snuggle());
+				return true;
+			case R.id.book:
+				use.activate(new Book());
+				return true;
+			case R.id.healthPotion:
+				use.activate(new HealthPotion());
+				return true;
+			case R.id.kettleBell:
+				use.activate(new Kettlebell());
+				return true;
+			case R.id.ribbon:
+				use.activate(new Ribbon());
+				return true;
+			case R.id.skippingRope:
+				use.activate(new SkippingRope());
+				return true;
+			case R.id.chess:
+				use.activate(new Chess());
+				return true;
+			case R.id.running:
+				use.activate(new Running());
+				return true;
+			case R.id.workingOut:
+				use.activate(new WorkingOut());
+				return true;
+	    	case R.id.consulting:
+	    		use.activate(new Consulting());
+	    		return true;
 			case R.id.dogWalking:
 	    		use.activate(new DogWalking());
 	    		return true;
+			case R.id.motelCleaning:
+				use.activate(new MotelCleaning());
+				return true;
+			case R.id.plumbing:
+				use.activate(new Plumbing());
+				return true;
 	    	case R.id.sellLemonade:
 	    		use.activate(new SellLemonade());
-	    		return true;
-	    	case R.id.consulting:
-	    		use.activate(new Consulting());
 	    		return true;
 		}
 		return false;
