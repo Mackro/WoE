@@ -30,7 +30,7 @@ public class Log {
 	public String getLogList(){
 		String logString = "";
 		Object[] o = logList.toArray();
-		for(int i = 0; i <logList.size(); i++ ){
+		for(int i = 1; i <= logList.size(); i++ ){
 			if(o[logList.size()-1] instanceof String){
 				logString += (String)o[logList.size() - i];
 			}
