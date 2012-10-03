@@ -8,7 +8,12 @@ import com.cheesymountain.woe.item.Item;
 import com.cheesymountain.woe.training.Training;
 import com.cheesymountain.woe.work.Work;
 
-
+/**
+ * Contains and creates a logged string with information about what
+ * the Everbie is up to.
+ * @author Cheesy Mountain
+ *
+ */
 public class Log {
 
 	private static Log log;
@@ -20,6 +25,11 @@ public class Log {
 		everbie = Everbie.getEverbie();
 	}
 	
+	
+	/**
+	 * Returns a pointer that references to the Log if one exists otherwise creates a new one
+	 * @return a pointer to the log
+	 */
 	public synchronized static Log getLog(){
 		if(log == null){
 			log = new Log();
@@ -27,38 +37,70 @@ public class Log {
 		return log;
 	}
 	
+	/**
+	 * Returns a plain String containing the text that will be displayed
+	 * @return a long text
+	 */
 	public String getLogList(){
 		String logString = "";
-		Object[] o = logList.toArray();
-		for(int i = 1; i <= logList.size(); i++ ){
-			if(o[logList.size()-1] instanceof String){
-				logString += (String)o[logList.size() - i];
-			}
+		String[] entry = logList.toArray(new String[logList.size()]);
+		for(int i = 0; i < logList.size(); i++ ){
+			logString += entry[i];
 		}
 		return logString;
 		
 	}
 
+	/**
+	 * Is called when food is given to the Everbie to configure the 
+	 * String correctly
+	 * @param food - the food given
+	 */
 	public void foodGiven(Food food) {
 		generateString(food);
 	}
 	
+	/**
+	 * Is called when work is given to the Everbie to configure the 
+	 * String correctly
+	 * @param work - the work to do
+	 */
 	public void workDone(Work work){
 		generateString(work);
 	}
 	
+	/**
+	 * Is called when training is completed by the Everbie to configure the 
+	 * String correctly
+	 * @param train
+	 */
 	public void trainingDone(Training train){
 		generateString(train);
 	}
 	
+	/**
+	 * Is called when the user interacts with the Everbie to configure the 
+	 * String correctly
+	 * @param interact - the interaction choosen
+	 */
 	public void interactionMade(Interaction interact){
 		generateString(interact);
 	}
 	
+	/**
+	 * Is called when item is given to the Everbie to configure the 
+	 * String correctly
+	 * @param item - the item given
+	 */
 	public void itemUsed(Item item){
 		generateString(item);
 	}
 	
+	/**
+	 * Is called when training is started to the Everbie to configure the 
+	 * log correctly
+	 * @param train - the type of training started
+	 */
 	public void trainingStarted(Training train){
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -66,6 +108,11 @@ public class Log {
 		logList.addLast(everbie.getName() +" began to workout by starting with " + train.getName() + "\n");
 	}
 	
+	/**
+	 * Is called when work is started by the Everbie to configure the 
+	 * log correctly
+	 * @param work - the kind of work started
+	 */
 	public void workStarted(Work work){
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -73,7 +120,11 @@ public class Log {
 		logList.addLast(everbie.getName() +" started to work as " + work.getName() + "\n");
 	}
 	
-	public void generateString(Training train) {
+	/**
+	 * Adds a modified string to the log with the corresponding action
+	 * @param train - the training done
+	 */
+	private void generateString(Training train) {
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -86,7 +137,11 @@ public class Log {
 				+ " intelligence and grew hungrier");
 	}
 
-	public void generateString(Interaction interact) {
+	/**
+	 * Adds a modified string to the log with the corresponding action
+	 * @param interact - the interaction choosen
+	 */
+	private void generateString(Interaction interact) {
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -99,7 +154,11 @@ public class Log {
 				+ (interact.getHappinessModifier()>0?" happier than":interact.getHappinessModifier()<0?" angrier than":" the same as") + " before");
 	}
 
-	public void generateString(Work work) {
+	/**
+	 * Adds a modified string to the log with the corresponding action
+	 * @param work - the work done
+	 */
+	private void generateString(Work work) {
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -110,7 +169,11 @@ public class Log {
 				+ " and earned " + work.getSalary());
 	}
 
-	public void generateString(Food food) {
+	/**
+	 * Adds a modified string to the log with the corresponding action
+	 * @param food - the food given
+	 */
+	private void generateString(Food food) {
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -121,7 +184,11 @@ public class Log {
 				+ " than before and not as hungry \n");
 	}
 	
-	public void generateString(Item item) {
+	/**
+	 * Adds a modified string to the log with the corresponding action
+	 * @param item - the item given
+	 */
+	private void generateString(Item item) {
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
