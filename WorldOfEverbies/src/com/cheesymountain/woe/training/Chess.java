@@ -1,5 +1,8 @@
 package com.cheesymountain.woe.training;
 
+/**
+ * @author Rickard Hallberg
+ */
 public class Chess extends Training{
 	
 	private static String name = "chess";
@@ -7,7 +10,7 @@ public class Chess extends Training{
 	private static int staminaModifier = 0;
 	private static int intelligenceModifier = 2;
 	private static int fullnessModifier = -3;
-
+	
 	public Chess() {
 		super(strengthModifier, intelligenceModifier, staminaModifier, fullnessModifier);
 

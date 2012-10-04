@@ -1,5 +1,8 @@
 package com.cheesymountain.woe.training;
 
+/**
+ * @author Rickard Hallberg
+ */
 public class WorkingOut extends Training {
 
 	private static String name = "working out";
