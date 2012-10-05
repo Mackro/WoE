@@ -52,9 +52,12 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		if(Everbie.exists()){
+		if(savedInstanceState != null){
+		if(savedInstanceState.get("name")!=null){
+			onRestoreInstanceState(savedInstanceState);
 			Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 			startActivity(main);
+		}
 		}
 		setContentView(R.layout.activity_new_everbie);
 		
@@ -67,6 +70,24 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 
         detector = new SimpleGestureFilter(this,this);
 	}
+    
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState){
+    	super.onRestoreInstanceState(savedInstanceState);
+    	int[] values = {savedInstanceState.getInt("maxHealth"),
+    	savedInstanceState.getInt("health"),
+    	savedInstanceState.getInt("Strength"),
+    	savedInstanceState.getInt("intelligence"),
+    	savedInstanceState.getInt("stamina"),
+    	savedInstanceState.getInt("charm"),
+    	savedInstanceState.getInt("fullness"),
+    	savedInstanceState.getInt("happiness"),
+    	savedInstanceState.getInt("toxicity"),
+    	savedInstanceState.getInt("cuteness"),
+    	savedInstanceState.getInt("money")};
+    	Everbie.getEverbie().restoreEverbie(savedInstanceState.getString("Name"), values,
+    			savedInstanceState.getBoolean("alive"), savedInstanceState.getString("imagePath"));	
+    }
 	
 	/**
 	 * Is called automatically when pressing the create button.
