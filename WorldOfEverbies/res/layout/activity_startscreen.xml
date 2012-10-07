@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/start_screen"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/startContinueText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="23dp"
+        android:text="Continue Game"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:onClick="continueGame"
+        android:clickable="true" />
+
+    <TextView
+        android:id="@+id/startCreateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/startContinueText"
+        android:layout_below="@+id/startContinueText"
+        android:layout_marginTop="42dp"
+        android:text="Start New Game"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:onClick="newGame"
+        android:clickable="true" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/startCreateText"
+        android:layout_below="@+id/startCreateText"
+        android:layout_marginTop="29dp"
+        android:text="Exit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:onClick="exitGame"
+        android:clickable="true" />
+
+"
+
+</RelativeLayout>

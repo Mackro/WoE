@@ -13,7 +13,7 @@ public class RaceDescription {
 	public static int[] IMAGE_ID = {
 		R.drawable.mogno,
 		R.drawable.rokash,
-		R.drawable.ic_launcher,
+		R.drawable.tragani,
 		R.drawable.skrom,
 	};
 	//Will be removed if there is time to implement a more intuitive way to show that

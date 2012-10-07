@@ -3,7 +3,7 @@
     <string name="app_name">World of Everbies</string>
     <string name="hello_world">Hello World of Everbies!</string>
     
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">World of Everbies</string>
     
     <string name="menu_store">Store</string>
     <string name="menu_training" >Training</string>
@@ -12,5 +12,7 @@
     <string name="menu_inter">Interact</string>
     <string name="menu_invent">Inventory</string>
     <string name="everbie_pic">This is your Everbie</string>
+    <string name="title_activity_create">Create Everbie</string>
+    <string name="title_activity_start">World of Everbies</string>
 
 </resources>

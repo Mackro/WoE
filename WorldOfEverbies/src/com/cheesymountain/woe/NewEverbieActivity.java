@@ -149,7 +149,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	 * @param view - the view from which exit button was pressed
 	 */
 	public void exit(View view){
-		System.exit(0);
+		onBackPressed();
 	}
 
 	/**
