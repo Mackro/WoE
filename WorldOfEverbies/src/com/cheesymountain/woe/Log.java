@@ -50,51 +50,6 @@ public class Log {
 		return logString;
 		
 	}
-
-	/**
-	 * Is called when food is given to the Everbie to configure the 
-	 * String correctly
-	 * @param food - the food given
-	 */
-	public void foodGiven(Food food) {
-		generateString(food);
-	}
-	
-	/**
-	 * Is called when work is given to the Everbie to configure the 
-	 * String correctly
-	 * @param work - the work to do
-	 */
-	public void workDone(Work work){
-		generateString(work);
-	}
-	
-	/**
-	 * Is called when training is completed by the Everbie to configure the 
-	 * String correctly
-	 * @param train
-	 */
-	public void trainingDone(Training train){
-		generateString(train);
-	}
-	
-	/**
-	 * Is called when the user interacts with the Everbie to configure the 
-	 * String correctly
-	 * @param interact - the interaction choosen
-	 */
-	public void interactionMade(Interaction interact){
-		generateString(interact);
-	}
-	
-	/**
-	 * Is called when item is given to the Everbie to configure the 
-	 * String correctly
-	 * @param item - the item given
-	 */
-	public void itemUsed(Item item){
-		generateString(item);
-	}
 	
 	/**
 	 * Is called when training is started to the Everbie to configure the 
@@ -119,12 +74,45 @@ public class Log {
 		}
 		logList.addLast(everbie.getName() +" started to work as " + work.getName() + "\n");
 	}
+
+	/**
+	 * Is called when food is given to the Everbie to configure the 
+	 * String correctly
+	 * @param food - the food given
+	 */
+	public void foodGiven(Food food) {
+
+		if (logList.size() > 19) {
+			logList.removeFirst();
+		}
+		logList.addLast(everbie.getName()+ " ate som " + food.getName() + " and is now"
+				+ (food.getHappinessModifier()>0?" happier": (food.getHappinessModifier()<0?" angrier":" the same"))
+				+ (food.getToxicityModifier()>0?" but became sicker":(food.getToxicityModifier()<0?" and became healthier":"")) 
+				+ " than before and not as hungry \n");
+	}
 	
 	/**
-	 * Adds a modified string to the log with the corresponding action
-	 * @param train - the training done
+	 * Is called when work is given to the Everbie to configure the 
+	 * String correctly
+	 * @param work - the work to do
 	 */
-	private void generateString(Training train) {
+	public void workDone(Work work){
+
+		if (logList.size() > 19) {
+			logList.removeFirst();
+		}
+		logList.addLast(everbie.getName() + " worked as " + work.getName() + " for " + work.getTime() 
+				+ " hours and has now become " + 
+				(work.getHappinessModifier()>0?" happier": (work.getHappinessModifier()<0?" angrier":" tired"))
+				+ " and earned " + work.getSalary());
+	}
+	
+	/**
+	 * Is called when training is completed by the Everbie to configure the 
+	 * String correctly
+	 * @param train
+	 */
+	public void trainingDone(Training train){
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -136,12 +124,13 @@ public class Log {
 				+ " stamina  and gained" + (train.getIntelligenceModifier()>0?" increased":train.getIntelligenceModifier()<0?" decreased":" no")
 				+ " intelligence and grew hungrier");
 	}
-
+	
 	/**
-	 * Adds a modified string to the log with the corresponding action
+	 * Is called when the user interacts with the Everbie to configure the 
+	 * String correctly
 	 * @param interact - the interaction choosen
 	 */
-	private void generateString(Interaction interact) {
+	public void interactionMade(Interaction interact){
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -154,41 +143,13 @@ public class Log {
 				+ (interact.getHappinessModifier()>0?" happier than":interact.getHappinessModifier()<0?" angrier than":" the same as") + " before");
 	}
 
-	/**
-	 * Adds a modified string to the log with the corresponding action
-	 * @param work - the work done
-	 */
-	private void generateString(Work work) {
-
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
-		logList.addLast(everbie.getName() + " worked as " + work.getName() + " for " + work.getTime() 
-				+ " hours and has now become " + 
-				(work.getHappinessModifier()>0?" happier": (work.getHappinessModifier()<0?" angrier":" tired"))
-				+ " and earned " + work.getSalary());
-	}
-
-	/**
-	 * Adds a modified string to the log with the corresponding action
-	 * @param food - the food given
-	 */
-	private void generateString(Food food) {
-
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
-		logList.addLast(everbie.getName()+ " ate som " + food.getName() + " and is now"
-				+ (food.getHappinessModifier()>0?" happier": (food.getHappinessModifier()<0?" angrier":" the same"))
-				+ (food.getToxicityModifier()>0?" but became sicker":(food.getToxicityModifier()<0?" and became healthier":"")) 
-				+ " than before and not as hungry \n");
-	}
 	
 	/**
-	 * Adds a modified string to the log with the corresponding action
+	 * Is called when item is given to the Everbie to configure the 
+	 * String correctly
 	 * @param item - the item given
 	 */
-	private void generateString(Item item) {
+	public void itemUsed(Item item){
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
