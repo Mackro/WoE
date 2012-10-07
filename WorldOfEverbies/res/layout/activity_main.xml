@@ -17,8 +17,8 @@
         android:minWidth="280dp"
         android:src="@drawable/ic_launcher"
         android:onClick="change" />
-
-    <EditText
+
+    <TextView
         android:id="@+id/log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,11 +29,13 @@
         android:layout_marginTop="14dp"
         android:clickable="false"
         android:ems="10"
-        android:focusableInTouchMode="false"
-        android:inputType="text|textMultiLine"
+        android:gravity="bottom"
+        android:scrollHorizontally="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
         android:selectAllOnFocus="false" >
 
         <requestFocus />
-    </EditText>
+    </TextView>
 
 </RelativeLayout>

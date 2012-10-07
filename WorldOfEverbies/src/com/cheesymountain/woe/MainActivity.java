@@ -1,19 +1,33 @@
 package com.cheesymountain.woe;
 
-import com.cheesymountain.woe.food.*;
-import com.cheesymountain.woe.interact.*;
-import com.cheesymountain.woe.item.*;
-import com.cheesymountain.woe.training.*;
-import com.cheesymountain.woe.work.*;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.cheesymountain.woe.food.BreadAndWater;
+import com.cheesymountain.woe.food.Melon;
+import com.cheesymountain.woe.food.RibEyeSteak;
+import com.cheesymountain.woe.interact.Chat;
+import com.cheesymountain.woe.interact.Comb;
+import com.cheesymountain.woe.interact.Snuggle;
+import com.cheesymountain.woe.item.Book;
+import com.cheesymountain.woe.item.HealthPotion;
+import com.cheesymountain.woe.item.Kettlebell;
+import com.cheesymountain.woe.item.Ribbon;
+import com.cheesymountain.woe.item.SkippingRope;
+import com.cheesymountain.woe.training.Chess;
+import com.cheesymountain.woe.training.Running;
+import com.cheesymountain.woe.training.WorkingOut;
+import com.cheesymountain.woe.work.Consulting;
+import com.cheesymountain.woe.work.DogWalking;
+import com.cheesymountain.woe.work.MotelCleaning;
+import com.cheesymountain.woe.work.Plumbing;
+import com.cheesymountain.woe.work.SellLemonade;
 
 @SuppressLint("NewApi")
 /**
@@ -71,91 +85,77 @@ public class MainActivity extends Activity {
     }
     
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState){
-    	super.onRestoreInstanceState(savedInstanceState);
-    	int[] values = {savedInstanceState.getInt("maxHealth"),
-    	savedInstanceState.getInt("health"),
-    	savedInstanceState.getInt("Strength"),
-    	savedInstanceState.getInt("intelligence"),
-    	savedInstanceState.getInt("stamina"),
-    	savedInstanceState.getInt("charm"),
-    	savedInstanceState.getInt("fullness"),
-    	savedInstanceState.getInt("happiness"),
-    	savedInstanceState.getInt("toxicity"),
-    	savedInstanceState.getInt("cuteness"),
-    	savedInstanceState.getInt("money")};
-    	everbie.restoreEverbie(savedInstanceState.getString("Name"), values,
-    			savedInstanceState.getBoolean("alive"), savedInstanceState.getString("imagePath"));	
-    }
-    
-    @Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
 			case R.id.BreadAndWater:
 				use.activate(new BreadAndWater());
-				return true;
+	    		break;
 			case R.id.Melon:
 				use.activate(new Melon());
-				return true;
+	    		break;
 			case R.id.ribEyeStake:
 				use.activate(new RibEyeSteak());
-				return true;
+	    		break;
 			case R.id.chat:
 				use.activate(new Chat());
-				return true;
+	    		break;
 			case R.id.comb:
 				use.activate(new Comb());
-				return true;
+	    		break;
 			case R.id.snuggle:
 				use.activate(new Snuggle());
-				return true;
+	    		break;
 			case R.id.book:
 				use.activate(new Book());
-				return true;
+	    		break;
 			case R.id.healthPotion:
 				use.activate(new HealthPotion());
-				return true;
+	    		break;
 			case R.id.kettleBell:
 				use.activate(new Kettlebell());
-				return true;
+	    		break;
 			case R.id.ribbon:
 				use.activate(new Ribbon());
-				return true;
+	    		break;
 			case R.id.skippingRope:
 				use.activate(new SkippingRope());
-				return true;
+	    		break;
 			case R.id.chess:
 				use.activate(new Chess());
-				return true;
+	    		break;
 			case R.id.running:
 				use.activate(new Running());
-				return true;
+	    		break;
 			case R.id.workingOut:
 				use.activate(new WorkingOut());
-				return true;
+	    		break;
 	    	case R.id.consulting:
 	    		use.activate(new Consulting());
-	    		return true;
+	    		break;
 			case R.id.dogWalking:
 	    		use.activate(new DogWalking());
-	    		return true;
+	    		break;
 			case R.id.motelCleaning:
 				use.activate(new MotelCleaning());
-				return true;
+	    		break;
 			case R.id.plumbing:
 				use.activate(new Plumbing());
-				return true;
+	    		break;
 	    	case R.id.sellLemonade:
 	    		use.activate(new SellLemonade());
-	    		return true;
+	    		break;
+	    	default:
+	    		return false;
 		}
-		return false;
+		updateLog();
+		return true;
     }
     
     @Override
     public void onOptionsMenuClosed(Menu menu) {
     	super.onOptionsMenuClosed(menu);
-    	updateLog();
+    /*	View view = this.getCurrentFocus();
+    	this.setContentView(view);*/
     }
     
     //TODO Write More javadoc here
@@ -182,15 +182,12 @@ public class MainActivity extends Activity {
     	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(everbie.getToxicity());
     	((ProgressBar)findViewById(R.id.healthBar)).setMax(everbie.getMaxHealth());
     	((ProgressBar)findViewById(R.id.healthBar)).setProgress(everbie.getHealth());
-    	
-   
-    	
     }
     
-    //TODO write Javadoc here
     /**
+     * A method called whenever the "back" button is pressed/tapped on the phone.
      * 
-     * @param view
+     * @param view the view that is currently active when the button is pressed.
      */
     public void back(View view){
     	this.setContentView(R.layout.activity_main);
@@ -202,6 +199,6 @@ public class MainActivity extends Activity {
      * of the Log.
      */
     public void updateLog(){
-    	((EditText)findViewById(R.id.log)).setText(Log.getLog().getLogList());
+    	((TextView)findViewById(R.id.log)).setText(Log.getLog().getLogList());
     }    
 }
