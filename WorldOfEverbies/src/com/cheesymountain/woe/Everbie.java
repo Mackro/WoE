@@ -11,15 +11,16 @@ package com.cheesymountain.woe;
  */
 public class Everbie {
 	
-	private String imageName = "wbe"; 
+	private String imageName = "mogno"; 
 	public static final String DEFAULT_NAME = "Eibreve";
-	public static final String DEFAULT_IMAGE_NAME = "wbe";
+	public static final String DEFAULT_IMAGE_NAME = "mogno";
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
 	private String name;
 	private int maxHealth, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
 	private boolean alive;
+	private long occupiedSeconds = 0;
 
 	private Everbie(String name, String imageName) {
 		alive = true;
@@ -36,6 +37,8 @@ public class Everbie {
 		cuteness = 1;
 		money = STARTING_MONEY;
 		this.imageName = imageName;
+		
+		new Occupied().start();
 	}
 	
 	/**
@@ -46,8 +49,6 @@ public class Everbie {
 	public synchronized static void createEverbie (String name, String imageName){
 		if(!Everbie.exists()){
 			everbie = new Everbie(name, imageName);
-			
-			
 		}
 	}
 	
@@ -293,13 +294,13 @@ public class Everbie {
 	 * @param i - the value to de-/increase by
 	 */
 	public void changeToxicity(int i) {
-		if (toxicity + i < 100) {
+		 if (toxicity + i < 1) {
+			toxicity = 0;
+		}else if (toxicity + i < 100) {
 			toxicity += i;
 		} else if (toxicity + i > 99) {
 			toxicity = 100;
 			alive = false;
-		} else if (toxicity + i < 1) {
-			toxicity = 0;
 		}
 	}
 
@@ -314,16 +315,14 @@ public class Everbie {
 	/**
 	 * Changes the amount of money the Everbie currently possesses
 	 * @param i - the value to de-/increase by
+	 * @return <code>true</code> if money was added or subtracted correctly, <code>false</code> otherwise
 	 */
-	public void changeMoney(int i) {
-		if(i > 0){
+	public boolean changeMoney(int i) {
+		if(money + i > 0){
 			money += i;
+			return true;
 		}
-		if (i < 0){
-			if(money + i > 0){
-				money += i;
-			}
-		}
+		return false;
 	}
 	
 	/**
@@ -332,6 +331,15 @@ public class Everbie {
 	 */
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	/**
+	 * Sets the amount of time the Everbie should be occupied
+	 * @param seconds - the amount of seconds to be occupied
+	 */
+	public void setOccupiedSeconds(long seconds){
+		if(seconds > 0)
+			this.occupiedSeconds = seconds;
 	}
 
 	/**
@@ -374,6 +382,14 @@ public class Everbie {
 	public boolean  isAlive(){
 		return alive;
 	}
+
+	/**
+	 * Returns an boolean to determine if the Everbie is occupied or not
+	 * @return <code>true</code> if the Everbie is occupied, <code>false</code> otherwise
+	 */
+	public boolean isOccupied(){
+		return occupiedSeconds > 0;
+	}
 	
 	/**
 	 * Returns an boolean to determine if the Everbie is initiated or not
@@ -388,6 +404,20 @@ public class Everbie {
 	 */
 	public synchronized void reset(){
 		everbie = null;
+	}
+	
+	private class Occupied extends Thread{
+				
+		@Override
+		public void run(){
+			while(Everbie.getEverbie().isAlive()){
+				try{
+					Thread.sleep(1000);
+				}catch(InterruptedException ie){}
+				if(Everbie.getEverbie().occupiedSeconds > 0)
+					Everbie.getEverbie().occupiedSeconds--;
+			}
+		}
 	}
 	
 }
