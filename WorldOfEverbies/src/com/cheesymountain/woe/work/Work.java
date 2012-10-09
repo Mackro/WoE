@@ -10,7 +10,7 @@ package com.cheesymountain.woe.work;
  */
 public abstract class Work {
 
-	private int time, salary, happinessModifier, healthModifier;
+	private int time, salary, happinessModifier, healthModifier, minutesWorking;
 	
 	/**
 	 * The public constructor that is called from all subclasses with the specific values of that subclass.
@@ -20,11 +20,12 @@ public abstract class Work {
 	 * @param happinessModifier an int describing how the Everbies happiness will be affected from working
 	 * @param healthModifier an int describing how your Everbies health will be affected from working
 	 */
-	public Work(int time, int salary, int happinessModifier, int healthModifier){
+	public Work(int time, int salary, int happinessModifier, int healthModifier, int minutesWorking){
 		this.time = time;
 		this.salary = salary;
 		this.happinessModifier = happinessModifier;
 		this.healthModifier = healthModifier;
+		this.minutesWorking = minutesWorking;
 	}
 	
 	/**
