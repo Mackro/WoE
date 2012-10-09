@@ -1,5 +1,7 @@
 package com.cheesymountain.woe;
 
+import android.util.Log;
+
 
 /**
  * A representation of an Everbie.
@@ -21,12 +23,13 @@ public class Everbie {
 			charm, fullness, happiness, toxicity, cuteness, money;
 	private boolean alive;
 	private long occupiedSeconds = 0;
+	private int starvation, standardStarvation;
 
 	private Everbie(String name, String imageName) {
 		alive = true;
 		this.name = name;
-		maxHealth = 1;
-		health = 1;
+		maxHealth = 20;
+		health = 20;
 		strength = 1;
 		intelligence = 1;
 		stamina = 1;
@@ -37,8 +40,10 @@ public class Everbie {
 		cuteness = 1;
 		money = STARTING_MONEY;
 		this.imageName = imageName;
+		starvation = standardStarvation = 1;
 		
 		new Occupied().start();
+		new Hunger().start();
 	}
 	
 	/**
@@ -245,6 +250,7 @@ public class Everbie {
 			alive = false;
 		}
 		stamina += i;
+		maxHealth = 20+(int)((stamina/2)+0.5);
 	}
 
 	/**
@@ -338,8 +344,28 @@ public class Everbie {
 	 * @param seconds - the amount of seconds to be occupied
 	 */
 	public void setOccupiedSeconds(long seconds){
-		if(seconds > 0)
+		if(seconds > 0){
 			this.occupiedSeconds = seconds;
+			this.starvation = 3;
+		}
+	}
+
+	/**
+	 * Sets the amount of time the Everbie should be occupied
+	 * @param minutes - the amount of minutes to be occupied
+	 */
+	public void setOccupiedMinutes(int minutes){
+		if(minutes > 0 && minutes*60 > 0)
+			setOccupiedSeconds(minutes*60);
+	}
+
+	/**
+	 * Sets the amount of time the Everbie should be occupied
+	 * @param hours - the amount of hours to be occupied
+	 */
+	public void setOccupiedHours(int hours){
+		if(hours > 0 && hours*60 > 0)
+			setOccupiedMinutes(hours*60);
 	}
 
 	/**
@@ -405,7 +431,7 @@ public class Everbie {
 	public synchronized void reset(){
 		everbie = null;
 	}
-	
+
 	private class Occupied extends Thread{
 				
 		@Override
@@ -414,8 +440,27 @@ public class Everbie {
 				try{
 					Thread.sleep(1000);
 				}catch(InterruptedException ie){}
-				if(Everbie.getEverbie().occupiedSeconds > 0)
+				if(Everbie.getEverbie().occupiedSeconds > 0){
 					Everbie.getEverbie().occupiedSeconds--;
+				}else if(starvation != standardStarvation){
+					starvation = standardStarvation;
+				}
+				Log.d("Loop", occupiedSeconds + "");
+			}
+		}
+	}
+	
+	
+	private class Hunger extends Thread{
+				
+		@Override
+		public void run(){
+			while(Everbie.getEverbie().isAlive()){
+				try{
+					Thread.sleep(600000);
+				}catch(InterruptedException ie){}
+				Everbie.getEverbie().fullness -= Everbie.getEverbie().starvation;
+				Log.d("Loop", fullness + "");
 			}
 		}
 	}
