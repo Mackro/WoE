@@ -21,7 +21,7 @@
         android:src="@drawable/ic_action_search" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/statsNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/statsImage"
@@ -31,101 +31,101 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/statsLevelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView12"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsMoneyLabel"
         android:text="Level:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
      <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/statsMoneyLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsNameLabel"
         android:text="Money:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/statsHealthLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsLevelLabel"
         android:text="Health:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/statsHappinessLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsHealthLabel"
         android:text="Happiness:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/statsFullnessLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView9"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsHappinessLabel"
         android:text="Fullness:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/statsToxicityLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView10"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsFullnessLabel"
         android:text="Toxcity:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/statsStrengthLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView11"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsToxicityLabel"
         android:text="Strength:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/statsStaminaLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsStrengthLabel"
         android:text="Stamina:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/statsIntelligenceLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView5"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsStaminaLabel"
         android:text="Intelligence:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/statsCutenessLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView6"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsIntelligenceLabel"
         android:text="Cuteness:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/statsCharmLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView8"
+        android:layout_alignLeft="@+id/statsNameLabel"
+        android:layout_below="@+id/statsCutenessLabel"
         android:text="Charm:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -133,9 +133,9 @@
         android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_toRightOf="@+id/textView6"
+        android:layout_alignBaseline="@+id/statsNameLabel"
+        android:layout_alignBottom="@+id/statsNameLabel"
+        android:layout_toRightOf="@+id/statsIntelligenceLabel"
         android:text="nameText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
@@ -143,9 +143,9 @@
         android:id="@+id/moneyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView12"
-        android:layout_alignBottom="@+id/textView12"
-        android:layout_toRightOf="@+id/textView12"
+        android:layout_alignBaseline="@+id/statsMoneyLabel"
+        android:layout_alignBottom="@+id/statsMoneyLabel"
+        android:layout_toRightOf="@+id/statsMoneyLabel"
         android:layout_alignLeft="@+id/nameText"
         android:text="moneyText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -154,7 +154,7 @@
         android:id="@+id/levelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
+        android:layout_above="@+id/statsHealthLabel"
         android:layout_alignLeft="@+id/nameText"
         android:text="LevelText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -166,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/nameText"
         android:layout_alignRight="@+id/imageButton1"
-        android:layout_alignTop="@+id/textView2"
+        android:layout_alignTop="@+id/statsHealthLabel"
         android:progress="100" />
 
     <ProgressBar
@@ -174,10 +174,10 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView11"
+        android:layout_above="@+id/statsToxicityLabel"
         android:layout_alignLeft="@+id/nameText"
         android:layout_alignRight="@+id/fullnessBar"
-        android:layout_toRightOf="@+id/textView6"
+        android:layout_toRightOf="@+id/statsIntelligenceLabel"
         android:progress="50" />
 
     <ProgressBar
@@ -185,7 +185,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignBottom="@+id/statsHappinessLabel"
         android:layout_alignLeft="@+id/nameText"
         android:layout_alignRight="@+id/healthBar"
         android:progress="50" />
@@ -195,7 +195,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView11"
+        android:layout_alignBottom="@+id/statsToxicityLabel"
         android:layout_alignLeft="@+id/nameText"
         android:layout_alignRight="@+id/happinessBar" />
 
@@ -203,9 +203,9 @@
         android:id="@+id/strengthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBaseline="@+id/statsStrengthLabel"
         android:layout_alignLeft="@+id/nameText"
-        android:layout_toRightOf="@+id/textView6"
+        android:layout_toRightOf="@+id/statsIntelligenceLabel"
         android:text="StrengthText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -213,9 +213,9 @@
         android:id="@+id/staminaText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView6"
+        android:layout_above="@+id/statsIntelligenceLabel"
         android:layout_alignLeft="@+id/nameText"
-        android:layout_toRightOf="@+id/textView6"
+        android:layout_toRightOf="@+id/statsIntelligenceLabel"
         android:text="StaminaText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -223,8 +223,8 @@
         android:id="@+id/intelligenceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView6"
-        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignBaseline="@+id/statsIntelligenceLabel"
+        android:layout_alignBottom="@+id/statsIntelligenceLabel"
         android:layout_alignLeft="@+id/nameText"
         android:text="IntelligenceText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -233,7 +233,7 @@
         android:id="@+id/cuteText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView7"
+        android:layout_above="@+id/statsCharmLabel"
         android:layout_alignLeft="@+id/nameText"
         android:text="CuteText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -242,10 +242,10 @@
         android:id="@+id/charmText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView7"
-        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignBaseline="@+id/statsCharmLabel"
+        android:layout_alignBottom="@+id/statsCharmLabel"
         android:layout_alignLeft="@+id/nameText"
         android:text="CharmText"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
 </RelativeLayout>
