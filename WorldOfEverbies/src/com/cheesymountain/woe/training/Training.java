@@ -8,7 +8,7 @@ package com.cheesymountain.woe.training;
  */
 public abstract class Training {
 	
-	private int strengthModifier, intelligenceModifier, staminaModifier, fullnessModifier;
+	private int strengthModifier, intelligenceModifier, staminaModifier, fullnessModifier, minutesTraining;
 	
 	/**
 	 * This is the constructor that is called for from all subclasses.
@@ -18,11 +18,12 @@ public abstract class Training {
 	 * @param staminaModifier
 	 * @param fullnessModifier
 	 */
-	public Training(int strengthModifier, int intelligenceModifier, int staminaModifier, int fullnessModifier){
+	public Training(int strengthModifier, int intelligenceModifier, int staminaModifier, int fullnessModifier, int minutesTraining){
 		this.fullnessModifier = fullnessModifier;
 		this.intelligenceModifier = intelligenceModifier;
 		this.staminaModifier = staminaModifier;
 		this.strengthModifier = strengthModifier;
+		this.minutesTraining = minutesTraining;
 	}
 	/**
 	 * @return a string with the name of the type of training
@@ -55,5 +56,9 @@ public abstract class Training {
 	 */
 	public int getFullnessModifier(){
 		return fullnessModifier;
+	}
+	
+	public int getMinutesTraining(){
+		return minutesTraining;
 	}
 }

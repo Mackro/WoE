@@ -10,9 +10,10 @@ public class Chess extends Training{
 	private static int staminaModifier = 0;
 	private static int intelligenceModifier = 2;
 	private static int fullnessModifier = -3;
+	private static int minutesTraining = 50;
 	
 	public Chess() {
-		super(strengthModifier, intelligenceModifier, staminaModifier, fullnessModifier);
+		super(strengthModifier, intelligenceModifier, staminaModifier, fullnessModifier, minutesTraining);
 
 	}
 

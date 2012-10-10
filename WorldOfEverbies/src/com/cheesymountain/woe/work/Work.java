@@ -60,4 +60,8 @@ public abstract class Work {
 	public int getHealthModifier(){
 		return healthModifier;
 	}
+	
+	public int getMinutesWorking(){
+		return minutesWorking;
+	}
 }
