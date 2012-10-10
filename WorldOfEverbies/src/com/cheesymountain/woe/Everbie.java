@@ -30,9 +30,9 @@ import android.util.Log;
  */
 public class Everbie {
 	
-	private String imageName = "mogno"; 
+	private int imageId = 0; 
 	public static final String DEFAULT_NAME = "Eibreve";
-	public static final String DEFAULT_IMAGE_NAME = "mogno";
+	public static final int DEFAULT_IMAGE_ID = 0;
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
 	private String name;
@@ -42,7 +42,7 @@ public class Everbie {
 	private long occupiedSeconds = 0;
 	private int starvation, standardStarvation;
 
-	private Everbie(String name, String imageName) {
+	private Everbie(String name, int imageId) {
 		alive = true;
 		this.name = name;
 		maxHealth = 20;
@@ -56,7 +56,7 @@ public class Everbie {
 		toxicity = 0;
 		cuteness = 1;
 		money = STARTING_MONEY;
-		this.imageName = imageName;
+		this.imageId = imageId;
 		starvation = standardStarvation = 1;
 		
 		new Hunger().start();
@@ -65,11 +65,11 @@ public class Everbie {
 	/**
 	 * Creates an Everbie unless one already exists.
 	 * @param name - the name of the Everbie to be created
-	 * @param imageName - the image of the Everbie to be created
+	 * @param imageId - the image's id of the Everbie to be created
 	 */
-	public synchronized static void createEverbie (String name, String imageName){
+	public synchronized static void createEverbie (String name, int imageId){
 		if(!Everbie.exists()){
-			everbie = new Everbie(name, imageName);
+			everbie = new Everbie(name, imageId);
 		}
 	}
 	
@@ -80,17 +80,17 @@ public class Everbie {
 	 */
 	public synchronized static Everbie getEverbie(){
 		if (!Everbie.exists()){
-			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE_NAME);
+			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE_ID);
 		}
 		return everbie;
 	}
 	
 	/**
-	 * Returns the name of the image of the current Everbie
-	 * @return the image's name
+	 * Returns the id of the image of the current Everbie
+	 * @return the image's id number
 	 */
-	public String getImageName(){
-		return imageName;
+	public int getImageId(){
+		return imageId;
 	}
 
 	/**
@@ -399,9 +399,9 @@ public class Everbie {
 	 * @param name - the name of the Everbie
 	 * @param values - an array with all stats
 	 * @param alive - a boolean to determine if the Everbie is alive
-	 * @param imageName - the image's name
+	 * @param imageId - the image's id number
 	 */
-	public void restoreEverbie(String name, int[] values, boolean alive, String imageName){
+	public void restoreEverbie(String name, int[] values, boolean alive, int imageId){
 		setName(name);
 		maxHealth = values[0];
 		health = values[1];
@@ -415,7 +415,7 @@ public class Everbie {
 		cuteness = values[9];
 		money = values[10];
 		this.alive = alive;
-		this.imageName = imageName;
+		this.imageId = imageId;
 	}
 	
 	/**
