@@ -52,6 +52,9 @@ public class Use {
 			Everbie.getEverbie().changeMoney(work.getSalary());
 			Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 			Everbie.getEverbie().changeHealth(work.getHealthModifier());
+			if(!Everbie.getEverbie().isOccupied()){
+				Log.getLog().isBusy();
+			}
 			Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
 		}
 
@@ -84,6 +87,9 @@ public class Use {
 			Everbie.getEverbie().changeStamina(train.getStaminaModifier());
 			Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
 			Everbie.getEverbie().changeFullness(train.getFullnessModifier());
+			if(Everbie.getEverbie().isOccupied()){
+				Log.getLog().isBusy();
+			}
 			Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
 		}
 	}

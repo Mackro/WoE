@@ -73,6 +73,14 @@ public class Log {
 		
 	}
 	
+	public void isBusy(){
+		if (logList.size() > 19) {
+			logList.removeFirst();
+		}
+		logList.addLast(everbie.getName() + " is busy at the moment but will be ready within " + 
+		everbie.getOccupiedMinutes() + 1);
+	}
+	
 	/**
 	 * Is called when training is started to the Everbie to configure the 
 	 * log correctly
