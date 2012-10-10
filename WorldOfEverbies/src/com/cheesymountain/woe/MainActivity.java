@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -66,7 +67,7 @@ public class MainActivity extends Activity {
     	super.onCreate(savedInstanceState);
     	
         setContentView(R.layout.activity_main);
-        //((ImageButton)findViewById(R.id.mainImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
+        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(everbie.getImageId());
         updateLog();
         use = new Use();
     }
@@ -164,6 +165,7 @@ public class MainActivity extends Activity {
 	    	default:
 	    		return false;
 		}
+		this.setContentView(R.layout.activity_main);
 		updateLog();
 		return true;
     }
@@ -184,7 +186,7 @@ public class MainActivity extends Activity {
     	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
     	
-    	//((ImageButton)findViewById(R.id.statsImage)).setImageResource(getResources().getIdentifier(everbie.getImageName(), "drawable", getPackageName()));
+    	 ((ImageButton)findViewById(R.id.mainImage)).setImageResource(everbie.getImageId());
     	
     	((TextView)findViewById(R.id.nameText)).setText(everbie.getName() + "");
     	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm() + "");
