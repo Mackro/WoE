@@ -1,5 +1,22 @@
 package com.cheesymountain.woe;
-
+/*=============================================================
+ * Copyright 2012, Cheesy Mountain Production
+ * 
+ * This file is part of World of Everbies.
+ * 
+ * World of Everbies is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * World of Everbies is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
+================================================================*/
 import android.util.Log;
 
 
@@ -42,7 +59,6 @@ public class Everbie {
 		this.imageName = imageName;
 		starvation = standardStarvation = 1;
 		
-		new Occupied().start();
 		new Hunger().start();
 	}
 	
@@ -347,6 +363,7 @@ public class Everbie {
 		if(seconds > 0){
 			this.occupiedSeconds = seconds;
 			this.starvation = 3;
+			new Occupied().start();
 		}
 	}
 
@@ -436,13 +453,12 @@ public class Everbie {
 				
 		@Override
 		public void run(){
-			while(Everbie.getEverbie().isAlive()){
+			while(Everbie.getEverbie().isAlive() && Everbie.getEverbie().occupiedSeconds > 0){
 				try{
 					Thread.sleep(1000);
 				}catch(InterruptedException ie){}
-				if(Everbie.getEverbie().occupiedSeconds > 0){
-					Everbie.getEverbie().occupiedSeconds--;
-				}else if(starvation != standardStarvation){
+				Everbie.getEverbie().occupiedSeconds--;
+				if(Everbie.getEverbie().occupiedSeconds <= 0 && starvation != standardStarvation){
 					starvation = standardStarvation;
 				}
 				Log.d("Loop", occupiedSeconds + "");
