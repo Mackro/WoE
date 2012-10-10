@@ -34,6 +34,7 @@ public class Use {
 			Everbie.getEverbie().changeMoney(work.getSalary());
 			Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 			Everbie.getEverbie().changeHealth(work.getHealthModifier());
+			Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
 		}
 
 		if(o instanceof Interaction){
@@ -65,6 +66,7 @@ public class Use {
 			Everbie.getEverbie().changeStamina(train.getStaminaModifier());
 			Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
 			Everbie.getEverbie().changeFullness(train.getFullnessModifier());
+			Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
 		}
 	}
 }
