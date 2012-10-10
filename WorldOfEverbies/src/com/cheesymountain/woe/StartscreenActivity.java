@@ -33,15 +33,17 @@ public class StartscreenActivity extends Activity {
 	public void continueGame(View view){
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
+		finish();
 	}
 	
 	public void newGame(View view){
 		Intent main = new Intent("com.cheesymountain.woe.NEWEVERBIEACTIVITY");
 		startActivity(main);
+		finish();
 	}
 	
 	public void exitGame(View view){
-		System.exit(0);
+		finish();
 	}
 	
 }

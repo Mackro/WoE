@@ -19,6 +19,7 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,16 +60,14 @@ import com.cheesymountain.woe.work.SellLemonade;
  */
 public class MainActivity extends Activity {
 
-	private Everbie everbie;
 	private Use use;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	
-        setContentView(R.layout.activity_main);
-        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(everbie.getImageId());
-        updateLog();
+    	//calling back method to remove duplicated code.
+        back(null);
         use = new Use();
     }
 
@@ -80,26 +79,28 @@ public class MainActivity extends Activity {
     
     @Override
     public void onBackPressed(){
-    	
+    	Intent start = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
+		startActivity(start);
+		finish();
     }
     
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
     	super.onSaveInstanceState(savedInstanceState);
-    	savedInstanceState.putString("Name", everbie.getName());
-    	savedInstanceState.putInt("maxHealth", everbie.getMaxHealth());
-    	savedInstanceState.putInt("health", everbie.getHealth());
-    	savedInstanceState.putInt("Strength", everbie.getStrength());
-    	savedInstanceState.putInt("Intelligence", everbie.getIntelligence());
-    	savedInstanceState.putInt("stamina", everbie.getStamina());
-    	savedInstanceState.putInt("charm", everbie.getCharm());
-    	savedInstanceState.putInt("fullness", everbie.getFullness());
-    	savedInstanceState.putInt("happiness", everbie.getHappiness());
-    	savedInstanceState.putInt("toxicity", everbie.getToxicity());
-    	savedInstanceState.putInt("cuteness", everbie.getCuteness());
-    	savedInstanceState.putInt("money", everbie.getMoney());
-    	savedInstanceState.putBoolean("Alive", everbie.isAlive());
-    	savedInstanceState.putString("imagePath", everbie.getImageName());
+    	savedInstanceState.putString("Name", Everbie.getEverbie().getName());
+    	savedInstanceState.putInt("maxHealth", Everbie.getEverbie().getMaxHealth());
+    	savedInstanceState.putInt("health", Everbie.getEverbie().getHealth());
+    	savedInstanceState.putInt("Strength", Everbie.getEverbie().getStrength());
+    	savedInstanceState.putInt("Intelligence", Everbie.getEverbie().getIntelligence());
+    	savedInstanceState.putInt("stamina", Everbie.getEverbie().getStamina());
+    	savedInstanceState.putInt("charm", Everbie.getEverbie().getCharm());
+    	savedInstanceState.putInt("fullness", Everbie.getEverbie().getFullness());
+    	savedInstanceState.putInt("happiness", Everbie.getEverbie().getHappiness());
+    	savedInstanceState.putInt("toxicity", Everbie.getEverbie().getToxicity());
+    	savedInstanceState.putInt("cuteness", Everbie.getEverbie().getCuteness());
+    	savedInstanceState.putInt("money", Everbie.getEverbie().getMoney());
+    	savedInstanceState.putBoolean("Alive", Everbie.getEverbie().isAlive());
+    	savedInstanceState.putInt("imagePath", Everbie.getEverbie().getImageId());
     }
     
     @Override
@@ -183,24 +184,23 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void change(View view){
-    	everbie = Everbie.getEverbie();
     	this.setContentView(R.layout.activity_stats);
     	
-    	 ((ImageButton)findViewById(R.id.mainImage)).setImageResource(everbie.getImageId());
+    	 ((ImageButton)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
     	
-    	((TextView)findViewById(R.id.nameText)).setText(everbie.getName() + "");
-    	((TextView)findViewById(R.id.charmText)).setText(everbie.getCharm() + "");
-    	((TextView)findViewById(R.id.cuteText)).setText(everbie.getCuteness() + "");
-    	((TextView)findViewById(R.id.levelText)).setText(everbie.getLevel() + "");
-    	((TextView)findViewById(R.id.strengthText)).setText(everbie.getStrength() + "");
-    	((TextView)findViewById(R.id.staminaText)).setText(everbie.getStamina() + "");
-    	((TextView)findViewById(R.id.intelligenceText)).setText(everbie.getIntelligence() + "");
+    	((TextView)findViewById(R.id.nameText)).setText(Everbie.getEverbie().getName() + "");
+    	((TextView)findViewById(R.id.charmText)).setText(Everbie.getEverbie().getCharm() + "");
+    	((TextView)findViewById(R.id.cuteText)).setText(Everbie.getEverbie().getCuteness() + "");
+    	((TextView)findViewById(R.id.levelText)).setText(Everbie.getEverbie().getLevel() + "");
+    	((TextView)findViewById(R.id.strengthText)).setText(Everbie.getEverbie().getStrength() + "");
+    	((TextView)findViewById(R.id.staminaText)).setText(Everbie.getEverbie().getStamina() + "");
+    	((TextView)findViewById(R.id.intelligenceText)).setText(Everbie.getEverbie().getIntelligence() + "");
     	
-    	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(everbie.getFullness());
-    	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(everbie.getHappiness());
-    	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(everbie.getToxicity());
-    	((ProgressBar)findViewById(R.id.healthBar)).setMax(everbie.getMaxHealth());
-    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(everbie.getHealth());
+    	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(Everbie.getEverbie().getFullness());
+    	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(Everbie.getEverbie().getHappiness());
+    	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(Everbie.getEverbie().getToxicity());
+    	((ProgressBar)findViewById(R.id.healthBar)).setMax(Everbie.getEverbie().getMaxHealth());
+    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(Everbie.getEverbie().getHealth());
     }
     
     /**
@@ -210,6 +210,7 @@ public class MainActivity extends Activity {
      */
     public void back(View view){
     	this.setContentView(R.layout.activity_main);
+        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(Everbie.getEverbie().getImageId());
     	updateLog();
     }
     

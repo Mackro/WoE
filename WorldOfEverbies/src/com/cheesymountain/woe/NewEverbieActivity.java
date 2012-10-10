@@ -104,6 +104,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		Everbie.createEverbie(name, RaceDescription.IMAGE_ID[selectedImage]);
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
+		finish();
 	}
 	
 	@Override
@@ -149,7 +150,9 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	 * @param view - the view from which exit button was pressed
 	 */
 	public void exit(View view){
-		onBackPressed();
+    	Intent start = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
+		startActivity(start);
+		finish();
 	}
 
 	/**

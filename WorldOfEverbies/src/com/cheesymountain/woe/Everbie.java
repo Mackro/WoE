@@ -36,7 +36,7 @@ public class Everbie {
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 100;
 	private String name;
-	private int maxHealth, health, strength, intelligence, stamina,
+	private int maxHealthModifier, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
 	private boolean alive;
 	private long occupiedSeconds = 0;
@@ -45,8 +45,7 @@ public class Everbie {
 	private Everbie(String name, int imageId) {
 		alive = true;
 		this.name = name;
-		maxHealth = 20;
-		health = 20;
+		health = maxHealthModifier = 20;
 		strength = 1;
 		intelligence = 1;
 		stamina = 1;
@@ -106,7 +105,7 @@ public class Everbie {
 	 * @return the maximum health points
 	 */
 	public int getMaxHealth() {
-		return maxHealth;
+		return (int)(maxHealthModifier + (stamina/2 + strength/4)*Math.PI);
 	}
 
 	/**
@@ -198,19 +197,42 @@ public class Everbie {
 	}
 
 	/**
+	 * Returns the amount of time the Everbie is occupied
+	 * @param seconds - the amount of seconds occupied
+	 */
+	public long getOccupiedSeconds(){
+		return occupiedSeconds;
+	}
+
+	/**
+	 * Returns the amount of time the Everbie should is occupied
+	 * @param minutes - the amount of minutes occupied
+	 */
+	public int getOccupiedMinutes(){
+		return (int) (getOccupiedSeconds()/60);
+	}
+
+	/**
+	 * Returns the amount of time the Everbie should is occupied
+	 * @param hours - the amount of hours occupied
+	 */
+	public int getOccupiedHours(){
+		return getOccupiedMinutes()/60;
+	}
+
+	/**
 	 * Changes the maximum amount of health points the current Everbie can have 
 	 * @param i - the value to de-/increase by
 	 */
-	public void changeMaxhealth(int i) {
-		if (maxHealth + i < 1 ){
-			maxHealth = 0;
+	public void changeMaxHealth(int i) {
+		maxHealthModifier += i;
+		if (getMaxHealth() < 1 ){
 			health = 0;
 			alive = false;
 		}
-		if (maxHealth + i < health) {
-			health = maxHealth + i;
+		if (getMaxHealth() < health) {
+			health = getMaxHealth();
 		}
-		maxHealth += i;
 	}
 
 	/**
@@ -219,10 +241,10 @@ public class Everbie {
 	 * @param i - the value to de-/increase by
 	 */
 	public void changeHealth(int i) {
-		if (health + i < maxHealth) {
+		if (health + i < maxHealthModifier) {
 			health += i;
-		} else if (health + i > maxHealth) {
-			health = maxHealth;
+		} else if (health + i > maxHealthModifier) {
+			health = maxHealthModifier;
 		} else if (health + i < 1) {
 			health = 0;
 			alive = false;
@@ -266,7 +288,6 @@ public class Everbie {
 			alive = false;
 		}
 		stamina += i;
-		maxHealth = 20+(int)((stamina/2)+0.5);
 	}
 
 	/**
@@ -390,7 +411,7 @@ public class Everbie {
 	 * and reduce his/her toxicity level
 	 */
 	public void sleep() {
-		health = maxHealth;
+		health = maxHealthModifier;
 		toxicity = 0;
 	}
 	
@@ -403,7 +424,7 @@ public class Everbie {
 	 */
 	public void restoreEverbie(String name, int[] values, boolean alive, int imageId){
 		setName(name);
-		maxHealth = values[0];
+		maxHealthModifier = values[0];
 		health = values[1];
 		strength = values[2];
 		intelligence = values[3];
