@@ -86,7 +86,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
     	savedInstanceState.getInt("cuteness"),
     	savedInstanceState.getInt("money")};
     	Everbie.getEverbie().restoreEverbie(savedInstanceState.getString("Name"), values,
-    			savedInstanceState.getBoolean("alive"), savedInstanceState.getString("imagePath"));	
+    			savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));	
     }
 	
 	/**
@@ -101,7 +101,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 			showDialog(DIALOG_INVALIDNAME_ID);
 			return;
 		}
-		Everbie.createEverbie(name, getResources().getResourceEntryName(RaceDescription.IMAGE_ID[selectedImage]));
+		Everbie.createEverbie(name, RaceDescription.IMAGE_ID[selectedImage]);
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
 	}
