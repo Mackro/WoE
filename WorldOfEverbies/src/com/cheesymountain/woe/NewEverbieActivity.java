@@ -1,6 +1,6 @@
 package com.cheesymountain.woe;
 /*=============================================================
- * Copyright 2012, Markus Otterberg
+ * Copyright 2012, Cheesy Mountain Production
  * 
  * This file is part of World of Everbies.
  * 
