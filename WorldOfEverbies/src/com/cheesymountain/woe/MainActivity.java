@@ -109,10 +109,10 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
-			case R.id.return_menu:
+			/*case R.id.return_menu:
 				Intent intent = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
 				startActivity(intent);
-				finish();
+				finish();*/
 			case R.id.BreadAndWater:
 				use.activate(new BreadAndWater());
 	    		break;
