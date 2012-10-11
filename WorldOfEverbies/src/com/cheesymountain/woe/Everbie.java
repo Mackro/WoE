@@ -34,7 +34,7 @@ public class Everbie {
 	public static final String DEFAULT_NAME = "Eibreve";
 	public static final int DEFAULT_IMAGE_ID = 0;
 	private static Everbie everbie;
-	public static final int STARTING_MONEY = 100;
+	public static final int STARTING_MONEY = 0;
 	private String name;
 	private int maxHealthModifier, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
@@ -453,6 +453,12 @@ public class Everbie {
 	 */
 	public boolean isOccupied(){
 		return occupiedSeconds > 0;
+	}
+	
+	
+	// method only used during testing
+	public void resetOccupied(){
+		occupiedSeconds = 0;
 	}
 	
 	/**
