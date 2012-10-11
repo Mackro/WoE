@@ -19,6 +19,9 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -61,6 +64,7 @@ import com.cheesymountain.woe.work.SellLemonade;
 public class MainActivity extends Activity {
 
 	private Use use;
+	private static final int DIALOG_EXIT_APP_ID = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,11 +81,10 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void onBackPressed(){
-    	Intent start = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
-		startActivity(start);
-		finish();
+    	showDialog(DIALOG_EXIT_APP_ID);
     }
     
     @Override
@@ -106,6 +109,10 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
+			case R.id.return_menu:
+				Intent intent = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
+				startActivity(intent);
+				finish();
 			case R.id.BreadAndWater:
 				use.activate(new BreadAndWater());
 	    		break;
@@ -166,10 +173,32 @@ public class MainActivity extends Activity {
 	    	default:
 	    		return false;
 		}
-		this.setContentView(R.layout.activity_main);
-		updateLog();
+		back(null);
 		return true;
     }
+    
+    @Override
+	public Dialog onCreateDialog(int i){
+		switch(i){
+			case DIALOG_EXIT_APP_ID:
+				Builder builder = new Builder(this);
+				builder.setMessage("Are you sure you want to Exit World of Everbies?");
+				builder.setCancelable(true);
+				builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+					}
+				});
+				builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+					}
+				});
+				return builder.create();
+			default:
+				return null;
+		}
+	}
     
     @Override
     public void onOptionsMenuClosed(Menu menu) {
@@ -189,6 +218,7 @@ public class MainActivity extends Activity {
     	 ((ImageButton)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
     	
     	((TextView)findViewById(R.id.nameText)).setText(Everbie.getEverbie().getName() + "");
+    	((TextView)findViewById(R.id.moneyText)).setText(Everbie.getEverbie().getMoney() + "");
     	((TextView)findViewById(R.id.charmText)).setText(Everbie.getEverbie().getCharm() + "");
     	((TextView)findViewById(R.id.cuteText)).setText(Everbie.getEverbie().getCuteness() + "");
     	((TextView)findViewById(R.id.levelText)).setText(Everbie.getEverbie().getLevel() + "");

@@ -54,7 +54,7 @@ public class UseTest {
 				Log.e("Error", "Didn't change Everbie's variables correctly when given: "+food.getName());
 			}
 		}
-		Log.i("testFood Done", "testFood Done");
+		Log.i("UseTest", "testFood Done");
 	}
 	
 	public void testWork(){
@@ -91,7 +91,7 @@ public class UseTest {
 				Log.e("Error", "Not changed attributes correctly when performing: "+work.getName());
 			}
 		}
-		Log.i("testWork done", "testWork Done");
+		Log.i("UseTest", "testWork Done");
 	}
 	
 	public void testInteraction(){
@@ -122,7 +122,7 @@ public class UseTest {
 				Log.e("Error", "Not changed attributes correctly when doing: "+interaction.getName());
 			}
 		}
-		Log.i("testInteraction Done", "testInteraction Done");
+		Log.i("UseTest", "testInteraction Done");
 	}
 	
 	public void testItem(){
@@ -168,7 +168,7 @@ public class UseTest {
 				Log.e("Error", "Not changed attributes correctly when doing: "+item.getName());
 			}
 		}
-		Log.i("testItem done", "testItem Done");
+		Log.i("UseTest", "testItem Done");
 	}
 	
 	public void testTraining(){
@@ -201,6 +201,6 @@ public class UseTest {
 				Log.e("Error", "Not changed attributes correctly when doing: "+training.getName());
 			}
 		}
-		Log.i("testTraining done", "testTraining Done");
+		Log.i("UseTest", "testTraining Done");
 	}
 }
