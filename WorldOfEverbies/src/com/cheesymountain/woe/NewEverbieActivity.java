@@ -161,12 +161,8 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	public void onDoubleTap() {
 		/* Do nothing */
 	}
-	
 
-	/**
-	 * Inherited from SimpleGestureListener
-	 * @author Amir
-	 */
+	@Override
 	public boolean dispatchTouchEvent(MotionEvent me){ 
 		this.detector.onTouchEvent(me);
 		return super.dispatchTouchEvent(me); 
