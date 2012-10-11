@@ -23,6 +23,7 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -212,6 +213,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
      */
     public void updateLog(){
     	((TextView)findViewById(R.id.log)).setText(Log.getLog().getLogList());
+    	((TextView)findViewById(R.id.log)).setMovementMethod(new ScrollingMovementMethod());
     }
 
 	public void onSwipe(int direction) {
