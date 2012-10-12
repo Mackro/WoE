@@ -4,7 +4,7 @@
             <item android:id="@+id/BreadAndWater" android:menuCategory="alternative" android:titleCondensed="Free Food!!" android:title="Bread &amp; Water" android:enabled="true" android:visible="true"/>
             <item android:id="@+id/Melon" android:enabled="true" android:visible="true" android:orderInCategory="2" android:titleCondensed="A juicy fruit" android:menuCategory="alternative" android:title="Melon"/>
             <item android:id="@+id/ribEyeStake" android:menuCategory="alternative" android:title="Rib-Eye Steak" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Rib-Eye Steak"/>
-        	<item android:menuCategory="alternative" android:checkable="false" android:enabled="false" android:visible="true" android:title="Oi: " android:id="@+id/menuOi" android:orderInCategory="4" android:onClick="#"/>
+        	<item android:id="@+id/menuOiFeed" android:menuCategory="alternative" android:checkable="false" android:enabled="false" android:visible="true" android:title="Oi: " android:orderInCategory="4" />
         </menu>
     </item>
     <item android:id="@+id/store_menu" android:menuCategory="alternative" android:titleCondensed="Store" android:visible="true" android:title="@string/menu_store" android:orderInCategory="2" android:enabled="true">
@@ -14,6 +14,7 @@
             <item android:id="@+id/ribbon" android:titleCondensed="Ribbon" android:visible="true" android:title="Ribbon" android:menuCategory="alternative" android:orderInCategory="3" android:enabled="true"/>
             <item android:id="@+id/book" android:titleCondensed="Book" android:visible="true" android:title="Book" android:menuCategory="alternative" android:orderInCategory="4" android:enabled="true"/>
             <item android:id="@+id/skippingRope" android:titleCondensed="SkippingRope" android:visible="true" android:title="Skipping Rope" android:menuCategory="alternative" android:orderInCategory="5" android:enabled="true"/>
+        	<item android:id="@+id/menuOiStore" android:menuCategory="alternative" android:checkable="false" android:enabled="false" android:visible="true" android:title="Oi: " android:orderInCategory="6" />
         </menu>
     </item>
     <item android:id="@+id/training_menu" android:title="@string/menu_training" android:menuCategory="alternative" android:orderInCategory="3" android:titleCondensed="Training" android:visible="true" android:enabled="true">
