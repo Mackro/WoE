@@ -32,7 +32,6 @@ public class Everbie {
 	
 	private int imageId = 0; 
 	public static final String DEFAULT_NAME = "Eibreve";
-	public static final int DEFAULT_IMAGE_ID = 0;
 	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 0;
@@ -43,7 +42,7 @@ public class Everbie {
 	private long occupiedSeconds = 0;
 	private int starvation, standardStarvation;
 
-	private Everbie(String name, int imageId, Race race) {
+	private Everbie(String name, Race race) {
 		alive = true;
 		this.name = name;
 		health = maxHealthModifier = race.getMaxHealth();
@@ -56,7 +55,7 @@ public class Everbie {
 		toxicity = 0;
 		cuteness = race.getCuteness();
 		money = STARTING_MONEY;
-		this.imageId = imageId;
+		this.imageId = race.getImageId();
 		starvation = standardStarvation = 1;
 		
 		new Hunger().start();
@@ -67,9 +66,9 @@ public class Everbie {
 	 * @param name - the name of the Everbie to be created
 	 * @param imageId - the image's id of the Everbie to be created
 	 */
-	public synchronized static void createEverbie (String name, int imageId, Race race){
+	public synchronized static void createEverbie (String name, Race race){
 		if(!Everbie.exists()){
-			everbie = new Everbie(name, imageId, race);
+			everbie = new Everbie(name, race);
 		}
 	}
 	
@@ -80,7 +79,7 @@ public class Everbie {
 	 */
 	public synchronized static Everbie getEverbie(){
 		if (!Everbie.exists()){
-			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE_ID, DEFAULT_RACE);
+			everbie = new Everbie(DEFAULT_NAME, DEFAULT_RACE);
 		}
 		return everbie;
 	}
@@ -242,10 +241,10 @@ public class Everbie {
 	 * @param i - the value to de-/increase by
 	 */
 	public void changeHealth(int i) {
-		if (health + i < maxHealthModifier) {
+		if (health + i < getMaxHealth()) {
 			health += i;
-		} else if (health + i > maxHealthModifier) {
-			health = maxHealthModifier;
+		} else if (health + i > getMaxHealth()) {
+			health = getMaxHealth();
 		} else if (health + i < 1) {
 			health = 0;
 			alive = false;

@@ -36,38 +36,52 @@ public class Use {
 	 * 
 	 * @param o	the instance of what should happen
 	 */
-	public void activate(Object o){
-		if(o instanceof Food){
-			Food food = (Food)o;
+	public void activate(Food food){
+		if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return;
+		}
+		if(Everbie.getEverbie().getMoney() - food.getCost() > 0){
 			Log.getLog().foodGiven(food);
 			Everbie.getEverbie().changeMoney(-food.getCost());
 			Everbie.getEverbie().changeFullness(food.getFullnessModifier());
 			Everbie.getEverbie().changeHappiness(food.getHappinessModifier());
 			Everbie.getEverbie().changeToxicity(food.getToxicityModifier());
+			return;
 		}
+		Log.getLog().notEnoughMoney();
+	}
 
-		if(o instanceof Work){
-			Work work = (Work)o;
-			Log.getLog().workStarted(work);
-			Everbie.getEverbie().changeMoney(work.getSalary());
-			Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
-			Everbie.getEverbie().changeHealth(work.getHealthModifier());
-			if(Everbie.getEverbie().isOccupied()){
-				Log.getLog().isBusy();
-			}
-			Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
-		}
 
-		if(o instanceof Interaction){
-			Interaction interact = (Interaction)o;
-			Log.getLog().interactionMade(interact);
-			Everbie.getEverbie().changeCharm(interact.getCharmModifier());
-			Everbie.getEverbie().changeCuteness(interact.getCutenessModifier());
-			Everbie.getEverbie().changeHappiness(interact.getHappinessModifier());
+	public void activate(Work work){
+		if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return;
 		}
-		
-		if(o instanceof Item){
-			Item item = (Item)o;
+		Log.getLog().workStarted(work);
+		Everbie.getEverbie().changeMoney(work.getSalary());
+		Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
+		Everbie.getEverbie().changeHealth(work.getHealthModifier());
+		Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
+	}
+
+	public void activate(Interaction interact){
+		if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return;
+		}
+		Log.getLog().interactionMade(interact);
+		Everbie.getEverbie().changeCharm(interact.getCharmModifier());
+		Everbie.getEverbie().changeCuteness(interact.getCutenessModifier());
+		Everbie.getEverbie().changeHappiness(interact.getHappinessModifier());
+	}
+
+	public void activate(Item item){
+		if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return;
+		}
+		if(Everbie.getEverbie().getMoney() - item.getCost() > 0){
 			Log.getLog().itemUsed(item);
 			Everbie.getEverbie().changeMoney(-item.getCost());
 			Everbie.getEverbie().changeStrength(item.getStrengthModifier());
@@ -78,19 +92,22 @@ public class Use {
 			Everbie.getEverbie().changeHealth(item.getHealthModifier());
 			Everbie.getEverbie().changeStamina(item.getStaminaModifier());
 			Everbie.getEverbie().changeToxicity(item.getToxicityModifier());
+			return;
 		}
-		
-		if(o instanceof Training){
-			Training train = (Training)o;
-			Log.getLog().trainingStarted(train);
-			Everbie.getEverbie().changeStrength(train.getStrengthModifier());
-			Everbie.getEverbie().changeStamina(train.getStaminaModifier());
-			Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
-			Everbie.getEverbie().changeFullness(train.getFullnessModifier());
-			if(Everbie.getEverbie().isOccupied()){
-				Log.getLog().isBusy();
-			}
-			Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
+		Log.getLog().notEnoughMoney();
+	}
+
+	public void activate(Training train){
+		if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return;
 		}
+		Log.getLog().trainingStarted(train);
+		Everbie.getEverbie().changeStrength(train.getStrengthModifier());
+		Everbie.getEverbie().changeStamina(train.getStaminaModifier());
+		Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
+		Everbie.getEverbie().changeFullness(train.getFullnessModifier());
+		Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
 	}
 }
+

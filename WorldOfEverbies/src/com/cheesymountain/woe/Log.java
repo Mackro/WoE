@@ -73,6 +73,22 @@ public class Log {
 		
 	}
 	
+	/**
+	 * Is called when there is unsufficent money to buy items or food 
+	 * and the Log should be configured correctly
+	 */
+	public void notEnoughMoney(){
+		if (logList.size() > 19) {
+			logList.removeFirst();
+		}
+		logList.addLast("Not enough Oi!");
+	}
+	
+	/**
+	 * Is called when the Everbie is busy when the owner has tried to 
+	 * use some other activity and the Log should be configured 
+	 * correctly
+	 */
 	public void isBusy(){
 		if (logList.size() > 19) {
 			logList.removeFirst();
