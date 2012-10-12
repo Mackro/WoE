@@ -10,13 +10,13 @@
         android:id="@+id/statsImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="false"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:maxWidth="150dp"
+        android:maxWidth="720dp"
         android:minHeight="150dp"
-        android:minWidth="280dp"
+        android:minWidth="300dp"
         android:onClick="back"
         android:src="@drawable/ic_action_search" />
 

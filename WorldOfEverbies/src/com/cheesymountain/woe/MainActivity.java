@@ -19,15 +19,20 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.MotionEvent;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
 import com.cheesymountain.woe.food.BreadAndWater;
 import com.cheesymountain.woe.food.Melon;
 import com.cheesymountain.woe.food.RibEyeSteak;
@@ -58,17 +63,18 @@ import com.cheesymountain.woe.work.SellLemonade;
  * @author CheesyMountain
  * 
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SimpleGestureListener{
 
 	private Use use;
+	private SimpleGestureFilter detector;
+	private static final int DIALOG_EXIT_APP_ID = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-    	
-    	//calling back method to remove duplicated code.
-        back(null);
+    	this.onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
         use = new Use();
+        detector = new SimpleGestureFilter(this, this);
     }
 
     @Override
@@ -89,9 +95,7 @@ public class MainActivity extends Activity {
     
     @Override
     public void onBackPressed(){
-    	Intent start = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
-		startActivity(start);
-		finish();
+    	showDialog(DIALOG_EXIT_APP_ID);
     }
     
     @Override
@@ -116,6 +120,10 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
+			case R.id.return_menu:
+				Intent intent = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
+				startActivity(intent);
+				finish();
 			case R.id.BreadAndWater:
 				use.activate(new BreadAndWater());
 	    		break;
@@ -176,53 +184,38 @@ public class MainActivity extends Activity {
 	    	default:
 	    		return false;
 		}
-		this.setContentView(R.layout.activity_main);
-		updateLog();
+		onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 		return true;
     }
     
     @Override
+	public Dialog onCreateDialog(int i){
+		switch(i){
+			case DIALOG_EXIT_APP_ID:
+				Builder builder = new Builder(this);
+				builder.setMessage("Are you sure you want to Exit World of Everbies?");
+				builder.setCancelable(true);
+				builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+					}
+				});
+				builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+					}
+				});
+				return builder.create();
+			default:
+				return null;
+		}
+	}
+    
+    @Override
     public void onOptionsMenuClosed(Menu menu) {
     	super.onOptionsMenuClosed(menu);
-    /*	View view = this.getCurrentFocus();
-    	this.setContentView(view);*/
     }
-    
-    //TODO Write More javadoc here
-    /**
-     * 
-     * @param view
-     */
-    public void change(View view){
-    	this.setContentView(R.layout.activity_stats);
-    	
-    	 ((ImageButton)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
-    	
-    	((TextView)findViewById(R.id.nameText)).setText(Everbie.getEverbie().getName() + "");
-    	((TextView)findViewById(R.id.charmText)).setText(Everbie.getEverbie().getCharm() + "");
-    	((TextView)findViewById(R.id.cuteText)).setText(Everbie.getEverbie().getCuteness() + "");
-    	((TextView)findViewById(R.id.levelText)).setText(Everbie.getEverbie().getLevel() + "");
-    	((TextView)findViewById(R.id.strengthText)).setText(Everbie.getEverbie().getStrength() + "");
-    	((TextView)findViewById(R.id.staminaText)).setText(Everbie.getEverbie().getStamina() + "");
-    	((TextView)findViewById(R.id.intelligenceText)).setText(Everbie.getEverbie().getIntelligence() + "");
-    	
-    	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(Everbie.getEverbie().getFullness());
-    	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(Everbie.getEverbie().getHappiness());
-    	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(Everbie.getEverbie().getToxicity());
-    	((ProgressBar)findViewById(R.id.healthBar)).setMax(Everbie.getEverbie().getMaxHealth());
-    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(Everbie.getEverbie().getHealth());
-    }
-    
-    /**
-     * A method called whenever the "back" button is pressed/tapped on the phone.
-     * 
-     * @param view the view that is currently active when the button is pressed.
-     */
-    public void back(View view){
-    	this.setContentView(R.layout.activity_main);
-        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(Everbie.getEverbie().getImageId());
-    	updateLog();
-    }
+
     
     /**
      * Rewrites the TextArea with the current version
@@ -230,5 +223,46 @@ public class MainActivity extends Activity {
      */
     public void updateLog(){
     	((TextView)findViewById(R.id.log)).setText(Log.getLog().getLogList());
-    }    
+    	((TextView)findViewById(R.id.log)).setMovementMethod(new ScrollingMovementMethod());
+    }
+
+	public void onSwipe(int direction) {
+		switch(direction){
+			case SimpleGestureFilter.SWIPE_RIGHT:
+				this.setContentView(R.layout.activity_main);
+		        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(Everbie.getEverbie().getImageId());
+		    	updateLog();
+		    	break;
+			case SimpleGestureFilter.SWIPE_LEFT:
+				this.setContentView(R.layout.activity_stats);
+		    	
+		    	 ((ImageButton)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
+		    	
+		    	((TextView)findViewById(R.id.nameText)).setText(Everbie.getEverbie().getName() + "");
+		    	((TextView)findViewById(R.id.moneyText)).setText(Everbie.getEverbie().getMoney() + "");
+		    	((TextView)findViewById(R.id.charmText)).setText(Everbie.getEverbie().getCharm() + "");
+		    	((TextView)findViewById(R.id.cuteText)).setText(Everbie.getEverbie().getCuteness() + "");
+		    	((TextView)findViewById(R.id.levelText)).setText(Everbie.getEverbie().getLevel() + "");
+		    	((TextView)findViewById(R.id.strengthText)).setText(Everbie.getEverbie().getStrength() + "");
+		    	((TextView)findViewById(R.id.staminaText)).setText(Everbie.getEverbie().getStamina() + "");
+		    	((TextView)findViewById(R.id.intelligenceText)).setText(Everbie.getEverbie().getIntelligence() + "");
+		    	
+		    	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(Everbie.getEverbie().getFullness());
+		    	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(Everbie.getEverbie().getHappiness());
+		    	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(Everbie.getEverbie().getToxicity());
+		    	((ProgressBar)findViewById(R.id.healthBar)).setMax(Everbie.getEverbie().getMaxHealth());
+		    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(Everbie.getEverbie().getHealth());
+		    	break;
+		}
+	}
+
+	public void onDoubleTap() {
+		//Do nothing
+	}
+	
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent me){
+		detector.onTouchEvent(me);
+		return super.dispatchTouchEvent(me);
+	}
 }

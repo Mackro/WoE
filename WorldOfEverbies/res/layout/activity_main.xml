@@ -8,7 +8,8 @@
         android:id="@+id/mainImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="false"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
@@ -17,7 +18,7 @@
         android:minWidth="280dp"
         android:src="@drawable/ic_launcher"
         android:onClick="change" />
-
+
     <TextView
         android:id="@+id/log"
         android:layout_width="wrap_content"
@@ -29,7 +30,9 @@
         android:layout_marginTop="14dp"
         android:clickable="false"
         android:ems="10"
+        android:focusable="true"
         android:gravity="bottom"
+        android:longClickable="false"
         android:scrollHorizontally="false"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"

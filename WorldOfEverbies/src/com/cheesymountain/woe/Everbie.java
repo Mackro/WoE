@@ -33,8 +33,9 @@ public class Everbie {
 	private int imageId = 0; 
 	public static final String DEFAULT_NAME = "Eibreve";
 	public static final int DEFAULT_IMAGE_ID = 0;
+	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
-	public static final int STARTING_MONEY = 100;
+	public static final int STARTING_MONEY = 0;
 	private String name;
 	private int maxHealthModifier, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
@@ -42,18 +43,18 @@ public class Everbie {
 	private long occupiedSeconds = 0;
 	private int starvation, standardStarvation;
 
-	private Everbie(String name, int imageId) {
+	private Everbie(String name, int imageId, Race race) {
 		alive = true;
 		this.name = name;
-		health = maxHealthModifier = 20;
-		strength = 1;
-		intelligence = 1;
-		stamina = 1;
-		charm = 1;
+		health = maxHealthModifier = race.getMaxHealth();
+		strength = race.getStrength();
+		intelligence = race.getIntelligence();
+		stamina = race.getStamina();
+		charm = race.getCharm();
 		fullness = 50;
 		happiness = 50;
 		toxicity = 0;
-		cuteness = 1;
+		cuteness = race.getCuteness();
 		money = STARTING_MONEY;
 		this.imageId = imageId;
 		starvation = standardStarvation = 1;
@@ -66,9 +67,9 @@ public class Everbie {
 	 * @param name - the name of the Everbie to be created
 	 * @param imageId - the image's id of the Everbie to be created
 	 */
-	public synchronized static void createEverbie (String name, int imageId){
+	public synchronized static void createEverbie (String name, int imageId, Race race){
 		if(!Everbie.exists()){
-			everbie = new Everbie(name, imageId);
+			everbie = new Everbie(name, imageId, race);
 		}
 	}
 	
@@ -79,7 +80,7 @@ public class Everbie {
 	 */
 	public synchronized static Everbie getEverbie(){
 		if (!Everbie.exists()){
-			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE_ID);
+			everbie = new Everbie(DEFAULT_NAME, DEFAULT_IMAGE_ID, DEFAULT_RACE);
 		}
 		return everbie;
 	}
@@ -453,6 +454,12 @@ public class Everbie {
 	 */
 	public boolean isOccupied(){
 		return occupiedSeconds > 0;
+	}
+	
+	
+	// method only used during testing
+	public void resetOccupied(){
+		occupiedSeconds = 0;
 	}
 	
 	/**
