@@ -19,6 +19,9 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.util.Log;
 
+import com.cheesymountain.woe.Races.Mogno;
+import com.cheesymountain.woe.Races.Race;
+
 
 /**
  * A representation of an Everbie.
