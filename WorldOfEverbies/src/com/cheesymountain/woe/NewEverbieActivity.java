@@ -31,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
+import com.cheesymountain.woe.Races.Race;
 
 /**
  * Controller class when creating a new Everbie that handles swipe events
