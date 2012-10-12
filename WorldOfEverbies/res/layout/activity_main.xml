@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/centerRadio"
+        android:clickable="false"
         android:checked="true"
         android:text="" />
 
@@ -24,9 +25,10 @@
         android:id="@+id/rightRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
         android:layout_toRightOf="@+id/centerRadio"
         android:layout_alignParentTop="true"
+        android:clickable="false"
+        android:checked="false"
         android:text="" />
     
     <ImageView
