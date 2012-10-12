@@ -81,7 +81,7 @@ public class Log {
 		if (logList.size() > 19) {
 			logList.removeFirst();
 		}
-		logList.addLast("Not enough Oi!");
+		logList.addLast("Not enough Oi! \n");
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class Log {
 			logList.removeFirst();
 		}
 		logList.addLast(everbie.getName() + " is busy at the moment but will be ready within " + 
-		everbie.getOccupiedMinutes() + 1);
+		everbie.getOccupiedMinutes() + 1 + "\n");
 	}
 	
 	/**

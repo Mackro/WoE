@@ -41,7 +41,7 @@ public class Use {
 			Log.getLog().isBusy();
 			return;
 		}
-		if(Everbie.getEverbie().getMoney() - food.getCost() > 0){
+		if(Everbie.getEverbie().getMoney() - food.getCost() >= 0){
 			Log.getLog().foodGiven(food);
 			Everbie.getEverbie().changeMoney(-food.getCost());
 			Everbie.getEverbie().changeFullness(food.getFullnessModifier());
@@ -81,7 +81,7 @@ public class Use {
 			Log.getLog().isBusy();
 			return;
 		}
-		if(Everbie.getEverbie().getMoney() - item.getCost() > 0){
+		if(Everbie.getEverbie().getMoney() - item.getCost() >= 0){
 			Log.getLog().itemUsed(item);
 			Everbie.getEverbie().changeMoney(-item.getCost());
 			Everbie.getEverbie().changeStrength(item.getStrengthModifier());
