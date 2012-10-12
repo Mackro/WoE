@@ -41,7 +41,7 @@ import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
 public class NewEverbieActivity extends Activity implements SimpleGestureListener {
 
 	
-	private int selectedImage = 0;
+	private int selectedRace = 0;
 	private static final int DIALOG_INVALIDNAME_ID = 0;
 	
 	private ImageView pictures;
@@ -62,9 +62,9 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		setContentView(R.layout.activity_new_everbie);
 		
 		description = ((TextView)findViewById(R.id.everbieLongText));
-		description.setText(RaceDescription.IMAGE_DESCRIPTION[0] + RaceDescription.SWIPE_DESCRIPTION);
+		description.setText(Race.RACELIST[selectedRace].getDescription() + RaceDescription.SWIPE_DESCRIPTION);
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
-		pictures.setImageResource(RaceDescription.IMAGE_ID[0]);
+		pictures.setImageResource(Race.RACELIST[selectedRace].getImageId());
 		name = (EditText)findViewById(R.id.everbieNameText);
 		name.setHint("Enter Name Here");
 
@@ -101,7 +101,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 			showDialog(DIALOG_INVALIDNAME_ID);
 			return;
 		}
-		Everbie.createEverbie(name, RaceDescription.IMAGE_ID[selectedImage]);
+		Everbie.createEverbie(name, Race.RACELIST[selectedRace]);
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
 		finish();
@@ -132,17 +132,17 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	public void onSwipe(int direction){
 		switch(direction){
 			case SimpleGestureFilter.SWIPE_RIGHT:
-				if(selectedImage > 0){
-					pictures.setImageResource(RaceDescription.IMAGE_ID[--selectedImage]);
+				if(selectedRace > 0){
+					pictures.setImageResource(Race.RACELIST[--selectedRace].getImageId());
 				}
 				break;
 			case SimpleGestureFilter.SWIPE_LEFT:
-				if(selectedImage < RaceDescription.IMAGE_ID.length-1){
-					pictures.setImageResource(RaceDescription.IMAGE_ID[++selectedImage]);
+				if(selectedRace < Race.RACELIST.length-1){
+					pictures.setImageResource(Race.RACELIST[++selectedRace].getImageId());
 				}
 				break;
 		}
-		description.setText(RaceDescription.IMAGE_DESCRIPTION[selectedImage] + RaceDescription.SWIPE_DESCRIPTION);
+		description.setText(Race.RACELIST[selectedRace].getDescription() + RaceDescription.SWIPE_DESCRIPTION);
 	}
 	
 	/**

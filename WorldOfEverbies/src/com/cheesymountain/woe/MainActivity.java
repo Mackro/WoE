@@ -93,7 +93,8 @@ public class MainActivity extends Activity implements SimpleGestureListener{
         return super.onPrepareOptionsMenu(menu);
     }
     
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void onBackPressed(){
     	showDialog(DIALOG_EXIT_APP_ID);
     }
