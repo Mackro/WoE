@@ -52,7 +52,7 @@ public class Use {
 			Everbie.getEverbie().changeMoney(work.getSalary());
 			Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 			Everbie.getEverbie().changeHealth(work.getHealthModifier());
-			if(!Everbie.getEverbie().isOccupied()){
+			if(Everbie.getEverbie().isOccupied()){
 				Log.getLog().isBusy();
 			}
 			Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
