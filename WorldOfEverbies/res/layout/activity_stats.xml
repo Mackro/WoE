@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/centerRadio"
+        android:clickable="false"
         android:checked="false"
         android:text="" />
     
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/centerRadio"
+        android:clickable="false"
         android:checked="true"
         android:text="" />
     

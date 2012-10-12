@@ -26,9 +26,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
 import com.cheesymountain.woe.Races.Race;
@@ -49,6 +47,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	private EditText name;
 	private TextView description;
 	private SimpleGestureFilter detector; 
+	private RadioButton[] orientationDots = new RadioButton[Race.RACELIST.length];
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -63,13 +62,18 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		setContentView(R.layout.activity_new_everbie);
 		
 		description = ((TextView)findViewById(R.id.everbieLongText));
-		description.setText(Race.RACELIST[selectedRace].getDescription() + RaceDescription.SWIPE_DESCRIPTION);
+		description.setText(Race.RACELIST[selectedRace].getDescription());
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
 		pictures.setImageResource(Race.RACELIST[selectedRace].getImageId());
 		name = (EditText)findViewById(R.id.everbieNameText);
 		name.setHint("Enter Name Here");
+		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
 
         detector = new SimpleGestureFilter(this,this);
+        orientationDots[0] = (RadioButton)(findViewById(R.id.Radio0));
+        orientationDots[1] = (RadioButton)(findViewById(R.id.Radio1));
+        orientationDots[2] = (RadioButton)(findViewById(R.id.Radio2));
+        orientationDots[3] = (RadioButton)(findViewById(R.id.Radio3));
 	}
     
     @Override
@@ -143,7 +147,14 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 				}
 				break;
 		}
-		description.setText(Race.RACELIST[selectedRace].getDescription() + RaceDescription.SWIPE_DESCRIPTION);
+		description.setText(Race.RACELIST[selectedRace].getDescription());
+		setDotOrientation(selectedRace);
+	}
+	
+	private void setDotOrientation(int selectedDot){
+		for(int i = 0; i < orientationDots.length; i++){
+			orientationDots[i].setChecked(selectedDot==i);
+		}
 	}
 	
 	/**
