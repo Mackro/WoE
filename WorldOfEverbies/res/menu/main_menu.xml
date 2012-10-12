@@ -40,5 +40,4 @@
             <item android:id="@+id/motelCleaning" android:menuCategory="alternative" android:title="MotelCleaning" android:enabled="true" android:orderInCategory="5" android:visible="true" android:titleCondensed="Motel Cleaning"/>
         </menu>
     </item>
-    <item android:id="@+id/return_menu"  android:titleCondensed="Return" android:visible="true" android:title="@string/menu_return" android:menuCategory="alternative" android:orderInCategory="6" android:enabled="true" />
 </menu>

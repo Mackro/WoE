@@ -28,7 +28,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -93,10 +93,11 @@ public class MainActivity extends Activity implements SimpleGestureListener{
         return super.onPrepareOptionsMenu(menu);
     }
     
-    @SuppressWarnings("deprecation")
 	@Override
     public void onBackPressed(){
-    	showDialog(DIALOG_EXIT_APP_ID);
+		Intent intent = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
+		startActivity(intent);
+		finish();
     }
     
     @Override
@@ -121,10 +122,6 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
-			case R.id.return_menu:
-				Intent intent = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
-				startActivity(intent);
-				finish();
 			case R.id.BreadAndWater:
 				use.activate(new BreadAndWater());
 	    		break;
@@ -231,13 +228,13 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		switch(direction){
 			case SimpleGestureFilter.SWIPE_RIGHT:
 				this.setContentView(R.layout.activity_main);
-		        ((ImageButton)findViewById(R.id.mainImage)).setImageResource(Everbie.getEverbie().getImageId());
+		        ((ImageView)findViewById(R.id.mainImage)).setImageResource(Everbie.getEverbie().getImageId());
 		    	updateLog();
 		    	break;
 			case SimpleGestureFilter.SWIPE_LEFT:
 				this.setContentView(R.layout.activity_stats);
 		    	
-		    	 ((ImageButton)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
+		    	 ((ImageView)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
 		    	
 		    	((TextView)findViewById(R.id.nameText)).setText(Everbie.getEverbie().getName() + "");
 		    	((TextView)findViewById(R.id.moneyText)).setText(Everbie.getEverbie().getMoney() + "");
