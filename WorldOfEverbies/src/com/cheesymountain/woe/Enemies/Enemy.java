@@ -52,5 +52,9 @@ public abstract class Enemy {
 	public static void setAdditionalItemReward(Item item) {
 		additionalItemReward = item;
 	}
+	
+	public void changeHealth(int healthModifier){
+		health -= healthModifier; 
+	}
 
 }
