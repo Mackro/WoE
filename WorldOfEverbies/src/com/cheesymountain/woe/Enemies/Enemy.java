@@ -1,5 +1,7 @@
 package com.cheesymountain.woe.Enemies;
 
+import com.cheesymountain.woe.item.Item;
+
 public abstract class Enemy {
 	
 	private String name;
@@ -8,6 +10,7 @@ public abstract class Enemy {
 	private int stamina;
 	private int intelligence;
 	private int baseMoneyReward;
+	private static Item additionalItemReward;
 	
 	public Enemy(String name, int health, int strength, int stamina, int intelligence, int baseMoneyReward){
 		this.name = name;
@@ -40,6 +43,14 @@ public abstract class Enemy {
 	
 	public int getBaseMoneyReward(){
 		return baseMoneyReward;
+	}
+	
+	public Item getAdditionalItemReward(){
+		return additionalItemReward;
+	}
+
+	public static void setAdditionalItemReward(Item item) {
+		additionalItemReward = item;
 	}
 
 }
