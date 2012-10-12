@@ -83,8 +83,17 @@ public class MainActivity extends Activity implements SimpleGestureListener{
         return true;
     }
     
-    @SuppressWarnings("deprecation")
-	@Override
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem feedLabel = ((MenuItem)(menu.findItem(R.id.menuOiFeed)));
+        feedLabel.setTitle("Oi: " + Everbie.getEverbie().getMoney());
+        
+        MenuItem storeLabel = ((MenuItem)(menu.findItem(R.id.menuOiStore)));
+        storeLabel.setTitle("Oi: " + Everbie.getEverbie().getMoney());
+        return super.onPrepareOptionsMenu(menu);
+    }
+    
+    @Override
     public void onBackPressed(){
     	showDialog(DIALOG_EXIT_APP_ID);
     }
