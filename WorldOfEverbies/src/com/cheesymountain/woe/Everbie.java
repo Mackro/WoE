@@ -48,7 +48,7 @@ public class Everbie {
 	private Everbie(String name, Race race) {
 		alive = true;
 		this.name = name;
-		health = maxHealthModifier = race.getMaxHealth();
+		maxHealthModifier = race.getMaxHealth();
 		strength = race.getStrength();
 		intelligence = race.getIntelligence();
 		stamina = race.getStamina();
@@ -60,6 +60,7 @@ public class Everbie {
 		money = STARTING_MONEY;
 		this.imageId = race.getImageId();
 		starvation = standardStarvation = 1;
+		health = getMaxHealth();
 		
 		new Hunger().start();
 	}
