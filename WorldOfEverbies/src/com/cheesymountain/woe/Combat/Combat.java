@@ -1,6 +1,7 @@
 package com.cheesymountain.woe.Combat;
 
 import com.cheesymountain.woe.Everbie;
+import com.cheesymountain.woe.Use;
 import com.cheesymountain.woe.Enemies.Enemy;
 
 /**
@@ -8,7 +9,7 @@ import com.cheesymountain.woe.Enemies.Enemy;
  * 
  * 
  * @author Emil Åhsberg
- *
+ * 
  */
 
 public class Combat {
@@ -23,37 +24,62 @@ public class Combat {
 		this.fightingStyle = fightingstyle;
 		doCombat(enemy, fightingStyle);
 	}
-	
-	
+
 	/**
 	 * 
-	 * combat is done by multiplying a variable such as  strength with a random number [0 , 1)
-	 * the sum of 3 calculations of this type is then compared to determine the winner.
+	 * combat is done by multiplying a variable such as strength with a random
+	 * number [0 , 1) the sum of 3 calculations of this type is then compared to
+	 * determine the winner.
 	 * 
-	 * @param enemy - The chosen enemy for the combat.
-	 * @param fightingStyle - The chosen fightingstyle for the combat.
+	 * @param enemy
+	 *            - The chosen enemy for the combat.
+	 * @param fightingStyle
+	 *            - The chosen fightingstyle for the combat.
 	 */
 
 	private void doCombat(Enemy enemy, FightingStyle fightingStyle) {
-		while (Everbie.getEverbie().getHealth() > 1) {
+		int health = Everbie.getEverbie().getHealth();
+		int turn = 0;
+		int everbieDmg = 0, everbieDef = 0, enemyDmg = 0, enemyDef = 0, dmg = 0;
 
-			int everbieDmgCompNbr = (int) (Everbie.getEverbie().getStrength()
-					* Math.random() + Everbie.getEverbie().getStamina()
-					* Math.random() + Everbie.getEverbie().getIntelligence()
-					* Math.random());
-			int enemyDmgCompNbr = (int) (enemy.getStrength() * Math.random()
-					+ enemy.getStamina() * Math.random() + enemy
-					.getIntelligence() * Math.random());
+		while (Everbie.getEverbie().getHealth() > 0 && enemy.getHealth() > 0) {
+			// Everbie attacking enemy defending
+			if (turn == 0) {
 
-			if (everbieDmgCompNbr > enemyDmgCompNbr) {
-				enemy.changeHealth(everbieDmgCompNbr - enemyDmgCompNbr);
-			} else if (everbieDmgCompNbr < enemyDmgCompNbr) {
-				Everbie.getEverbie().changeHealth(
-						enemyDmgCompNbr - everbieDmgCompNbr);
-				if (Everbie.getEverbie().getHealth() < 1) {
-					Everbie.getEverbie().setHealth(1);
+				everbieDmg = rollDice(Everbie.getEverbie().getStrength(),
+						Everbie.getEverbie().getIntelligence());
+				enemyDef = rollDice(enemy.getStamina(), enemy.getIntelligence());
+				dmg = everbieDmg - enemyDef;
+				if (dmg > 0) {
+					enemy.changeHealth(dmg);
 				}
+				turn = 1;
 			}
+
+			// Enemy attacking Everbie Defending
+			else if (turn == 1) {
+
+				enemyDmg = rollDice(enemy.getStrength(),
+						enemy.getIntelligence());
+				everbieDef = rollDice(Everbie.getEverbie().getStamina(),
+						Everbie.getEverbie().getIntelligence());
+				dmg = enemyDmg - everbieDef;
+				if (dmg > 0) {
+					Everbie.getEverbie().changeHealth(dmg);
+					}
+				}
+				turn = 0;
+			}
+		if(health > 0 && enemy.getAdditionalItemReward() != null){
+			Use.activate(enemy.getAdditionalItemReward());
 		}
+	}
+
+	private int rollDice(int sides, int dices) {
+		int diceSum = 0;
+		for (int i = 0; i < dices; i++) {
+			diceSum += (int) ((Math.random() * sides) + 0.5);
+		}
+		return diceSum;
 	}
 }

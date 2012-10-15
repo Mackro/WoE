@@ -6,7 +6,7 @@ public class FightingStyle {
 	private double staminaModifier;
 	private double intelligenceModifier;
 	
-	public FightingStyle(int strengthModifier, int staminaModifier, int intelligenceModifier){
+	public FightingStyle(double strengthModifier, double staminaModifier, double intelligenceModifier){
 		this.StrengthModifier = strengthModifier;
 		this.staminaModifier = staminaModifier;
 		this.intelligenceModifier = intelligenceModifier;
