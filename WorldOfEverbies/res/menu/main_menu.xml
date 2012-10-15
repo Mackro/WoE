@@ -40,4 +40,12 @@
             <item android:id="@+id/motelCleaning" android:menuCategory="alternative" android:title="MotelCleaning" android:enabled="true" android:orderInCategory="5" android:visible="true" android:titleCondensed="Motel Cleaning"/>
         </menu>
     </item>
+    <item android:id="@+id/fight_menu" android:titleCondensed="Fight" android:visible="true" android:title="@string/menu_fight" android:menuCategory="alternative" android:orderInCategory="6" android:enabled="true" >"
+        <menu>
+            <item android:id="@+id/gnome" android:title="Garden Gnome" />
+            <item android:id="@+id/golem" android:title="Garbage Golem" />
+            <item android:id="@+id/spider" android:title="Oversized Spider" />
+            <item android:id="@+id/titan" android:title="Scrap Metal Titan" />
+        </menu>
+    </item>
 </menu>

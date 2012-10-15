@@ -14,6 +14,6 @@
     <string name="everbie_pic">This is your Everbie</string>
     <string name="title_activity_create">Create Everbie</string>
     <string name="title_activity_start">World of Everbies</string>
-    <string name="menu_return">Main Menu</string>
+    <string name="menu_fight">Fight</string>
 
 </resources>
