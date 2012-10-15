@@ -39,10 +39,10 @@ import com.cheesymountain.woe.Races.Race;
  */
 public class NewEverbieActivity extends Activity implements SimpleGestureListener {
 
-	
+
 	private int selectedRace = 0;
 	private static final int DIALOG_INVALIDNAME_ID = 0;
-	
+
 	private ImageView pictures;
 	private EditText name;
 	private TextView description;
@@ -52,15 +52,13 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		if(savedInstanceState != null){
-		if(savedInstanceState.get("name")!=null){
-			onRestoreInstanceState(savedInstanceState);
-			Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
-			startActivity(main);
-		}
+		if(savedInstanceState != null && savedInstanceState.get("name")!=null){
+				onRestoreInstanceState(savedInstanceState);
+				Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
+				startActivity(main);
 		}
 		setContentView(R.layout.activity_new_everbie);
-		
+
 		description = ((TextView)findViewById(R.id.everbieLongText));
 		description.setText(Race.RACELIST[selectedRace].getDescription());
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
@@ -69,31 +67,31 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		name.setHint("Enter Name Here");
 		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
 
-        detector = new SimpleGestureFilter(this,this);
-        orientationDots[0] = (RadioButton)(findViewById(R.id.Radio0));
-        orientationDots[1] = (RadioButton)(findViewById(R.id.Radio1));
-        orientationDots[2] = (RadioButton)(findViewById(R.id.Radio2));
-        orientationDots[3] = (RadioButton)(findViewById(R.id.Radio3));
+		detector = new SimpleGestureFilter(this,this);
+		orientationDots[0] = (RadioButton)(findViewById(R.id.Radio0));
+		orientationDots[1] = (RadioButton)(findViewById(R.id.Radio1));
+		orientationDots[2] = (RadioButton)(findViewById(R.id.Radio2));
+		orientationDots[3] = (RadioButton)(findViewById(R.id.Radio3));
 	}
-    
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState){
-    	super.onRestoreInstanceState(savedInstanceState);
-    	int[] values = {savedInstanceState.getInt("maxHealth"),
-    	savedInstanceState.getInt("health"),
-    	savedInstanceState.getInt("Strength"),
-    	savedInstanceState.getInt("intelligence"),
-    	savedInstanceState.getInt("stamina"),
-    	savedInstanceState.getInt("charm"),
-    	savedInstanceState.getInt("fullness"),
-    	savedInstanceState.getInt("happiness"),
-    	savedInstanceState.getInt("toxicity"),
-    	savedInstanceState.getInt("cuteness"),
-    	savedInstanceState.getInt("money")};
-    	Everbie.getEverbie().restoreEverbie(savedInstanceState.getString("Name"), values,
-    			savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));	
-    }
-	
+
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState){
+		super.onRestoreInstanceState(savedInstanceState);
+		int[] values = {savedInstanceState.getInt("maxHealth"),
+				savedInstanceState.getInt("health"),
+				savedInstanceState.getInt("Strength"),
+				savedInstanceState.getInt("intelligence"),
+				savedInstanceState.getInt("stamina"),
+				savedInstanceState.getInt("charm"),
+				savedInstanceState.getInt("fullness"),
+				savedInstanceState.getInt("happiness"),
+				savedInstanceState.getInt("toxicity"),
+				savedInstanceState.getInt("cuteness"),
+				savedInstanceState.getInt("money")};
+		Everbie.getEverbie().restoreEverbie(savedInstanceState.getString("Name"), values,
+				savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));	
+	}
+
 	/**
 	 * Is called automatically when pressing the create button.
 	 * @param view - the view from which create button was pressed
@@ -111,22 +109,22 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		startActivity(main);
 		finish();
 	}
-	
+
 	@Override
 	public Dialog onCreateDialog(int i){
 		switch(i){
-			case DIALOG_INVALIDNAME_ID:
-				Builder builder = new Builder(this);
-				builder.setMessage("Please enter a valid name.");
-				builder.setCancelable(false);
-				builder.setNeutralButton("Okay, I will", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
-					}
-				});
-				return builder.create();
-			default:
-				return null;
+		case DIALOG_INVALIDNAME_ID:
+			Builder builder = new Builder(this);
+			builder.setMessage("Please enter a valid name.");
+			builder.setCancelable(false);
+			builder.setNeutralButton("Okay, I will", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			});
+			return builder.create();
+		default:
+			return null;
 		}
 	}
 
@@ -136,33 +134,33 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	 */
 	public void onSwipe(int direction){
 		switch(direction){
-			case SimpleGestureFilter.SWIPE_RIGHT:
-				if(selectedRace > 0){
-					pictures.setImageResource(Race.RACELIST[--selectedRace].getImageId());
-				}
-				break;
-			case SimpleGestureFilter.SWIPE_LEFT:
-				if(selectedRace < Race.RACELIST.length-1){
-					pictures.setImageResource(Race.RACELIST[++selectedRace].getImageId());
-				}
-				break;
+		case SimpleGestureFilter.SWIPE_RIGHT:
+			if(selectedRace > 0){
+				pictures.setImageResource(Race.RACELIST[--selectedRace].getImageId());
+			}
+			break;
+		case SimpleGestureFilter.SWIPE_LEFT:
+			if(selectedRace < Race.RACELIST.length-1){
+				pictures.setImageResource(Race.RACELIST[++selectedRace].getImageId());
+			}
+			break;
 		}
 		description.setText(Race.RACELIST[selectedRace].getDescription());
 		setDotOrientation(selectedRace);
 	}
-	
+
 	private void setDotOrientation(int selectedDot){
 		for(int i = 0; i < orientationDots.length; i++){
 			orientationDots[i].setChecked(selectedDot==i);
 		}
 	}
-	
+
 	/**
 	 * Is called automatically when pressing the exit button
 	 * @param view - the view from which exit button was pressed
 	 */
 	public void exit(View view){
-    	Intent start = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
+		Intent start = new Intent("com.cheesymountain.woe.STARTSCREENACTIVITY");
 		startActivity(start);
 		finish();
 	}
@@ -179,5 +177,5 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		this.detector.onTouchEvent(me);
 		return super.dispatchTouchEvent(me); 
 	}
-	
+
 }
