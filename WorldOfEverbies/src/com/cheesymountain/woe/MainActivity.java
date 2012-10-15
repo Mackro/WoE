@@ -187,27 +187,25 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     }
     
     @Override
-	public Dialog onCreateDialog(int i){
-		switch(i){
-			case DIALOG_EXIT_APP_ID:
-				Builder builder = new Builder(this);
-				builder.setMessage("Are you sure you want to Exit World of Everbies?");
-				builder.setCancelable(true);
-				builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						finish();
-					}
-				});
-				builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
-					}
-				});
-				return builder.create();
-			default:
-				return null;
-		}
-	}
+    public Dialog onCreateDialog(int i){
+    	if(i==DIALOG_EXIT_APP_ID){
+    		Builder builder = new Builder(this);
+    		builder.setMessage("Are you sure you want to Exit World of Everbies?");
+    		builder.setCancelable(true);
+    		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    			public void onClick(DialogInterface dialog, int which) {
+    				finish();
+    			}
+    		});
+    		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+    			public void onClick(DialogInterface dialog, int which) {
+    				dialog.cancel();
+    			}
+    		});
+    		return builder.create();
+    	}
+    	return null;
+    }
     
     @Override
     public void onOptionsMenuClosed(Menu menu) {
@@ -225,32 +223,30 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     }
 
 	public void onSwipe(int direction) {
-		switch(direction){
-			case SimpleGestureFilter.SWIPE_RIGHT:
-				this.setContentView(R.layout.activity_main);
-		        ((ImageView)findViewById(R.id.mainImage)).setImageResource(Everbie.getEverbie().getImageId());
-		    	updateLog();
-		    	break;
-			case SimpleGestureFilter.SWIPE_LEFT:
-				this.setContentView(R.layout.activity_stats);
-		    	
-		    	 ((ImageView)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
-		    	
-		    	((TextView)findViewById(R.id.nameText)).setText(Everbie.getEverbie().getName() + "");
-		    	((TextView)findViewById(R.id.moneyText)).setText(Everbie.getEverbie().getMoney() + "");
-		    	((TextView)findViewById(R.id.charmText)).setText(Everbie.getEverbie().getCharm() + "");
-		    	((TextView)findViewById(R.id.cuteText)).setText(Everbie.getEverbie().getCuteness() + "");
-		    	((TextView)findViewById(R.id.levelText)).setText(Everbie.getEverbie().getLevel() + "");
-		    	((TextView)findViewById(R.id.strengthText)).setText(Everbie.getEverbie().getStrength() + "");
-		    	((TextView)findViewById(R.id.staminaText)).setText(Everbie.getEverbie().getStamina() + "");
-		    	((TextView)findViewById(R.id.intelligenceText)).setText(Everbie.getEverbie().getIntelligence() + "");
-		    	
-		    	((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(Everbie.getEverbie().getFullness());
-		    	((ProgressBar)findViewById(R.id.happinessBar)).setProgress(Everbie.getEverbie().getHappiness());
-		    	((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(Everbie.getEverbie().getToxicity());
-		    	((ProgressBar)findViewById(R.id.healthBar)).setMax(Everbie.getEverbie().getMaxHealth());
-		    	((ProgressBar)findViewById(R.id.healthBar)).setProgress(Everbie.getEverbie().getHealth());
-		    	break;
+		if(direction == SimpleGestureFilter.SWIPE_RIGHT){
+			this.setContentView(R.layout.activity_main);
+			((ImageView)findViewById(R.id.mainImage)).setImageResource(Everbie.getEverbie().getImageId());
+			updateLog();
+		}
+		if(direction == SimpleGestureFilter.SWIPE_LEFT){
+			this.setContentView(R.layout.activity_stats);
+
+			((ImageView)findViewById(R.id.statsImage)).setImageResource(Everbie.getEverbie().getImageId());
+
+			((TextView)findViewById(R.id.nameText)).setText(Everbie.getEverbie().getName() + "");
+			((TextView)findViewById(R.id.moneyText)).setText(Everbie.getEverbie().getMoney() + "");
+			((TextView)findViewById(R.id.charmText)).setText(Everbie.getEverbie().getCharm() + "");
+			((TextView)findViewById(R.id.cuteText)).setText(Everbie.getEverbie().getCuteness() + "");
+			((TextView)findViewById(R.id.levelText)).setText(Everbie.getEverbie().getLevel() + "");
+			((TextView)findViewById(R.id.strengthText)).setText(Everbie.getEverbie().getStrength() + "");
+			((TextView)findViewById(R.id.staminaText)).setText(Everbie.getEverbie().getStamina() + "");
+			((TextView)findViewById(R.id.intelligenceText)).setText(Everbie.getEverbie().getIntelligence() + "");
+
+			((ProgressBar)findViewById(R.id.fullnessBar)).setProgress(Everbie.getEverbie().getFullness());
+			((ProgressBar)findViewById(R.id.happinessBar)).setProgress(Everbie.getEverbie().getHappiness());
+			((ProgressBar)findViewById(R.id.toxicityBar)).setProgress(Everbie.getEverbie().getToxicity());
+			((ProgressBar)findViewById(R.id.healthBar)).setMax(Everbie.getEverbie().getMaxHealth());
+			((ProgressBar)findViewById(R.id.healthBar)).setProgress(Everbie.getEverbie().getHealth());
 		}
 	}
 
