@@ -67,7 +67,10 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 
 	private Use use;
 	private SimpleGestureFilter detector;
+	private Enemy enemy;
 	private static final int DIALOG_EXIT_APP_ID = 1;
+	private static final int DIALOG_FIGHT_ID = 10;
+	private static final int DIALOG_OI_ID = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -179,6 +182,22 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	    	case R.id.sellLemonade:
 	    		use.activate(new SellLemonade());
 	    		break;
+	    	case R.id.gnome:
+	    		enemy = new GardenGnome();
+	    		onCreateDialog(DIALOG_FIGHT_ID);
+	    		break;
+	    	case R.id.golem:
+	    		enemy = new GarbageGolem();
+	    		enCreateDialog(DIALOG_FIGHT_ID);
+	    		break;
+	    	case R.id.spider:
+	    		enemy = new OversizedSpider();
+	    		onCreateDialog(DIALOG_FIGHT_ID);
+	    		break;
+	    	case R.id.titan:
+	    		enemy = new ScrapMetalTitan();
+	    		onCreateDialog(DIALOG_FIGHT_ID);
+	    		break;
 	    	default:
 	    		return false;
 		}
@@ -203,6 +222,41 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     			}
     		});
     		return builder.create();
+    	}else if(i == DIALOG_FIGHT_ID){
+    		Builder builder = new Builder(this);
+    		builder.setMessage("How do you wish to fight?");
+    		builder.setCancelable(false);
+    		builder.setPositiveButton("Offensive", new DialogInterface.OnClickListener() {
+				
+				public void onClick(DialogInterface dialog, int which) {
+					new Combat(enemy, new Offensive());
+					dialog.cancel();
+				}
+			});
+			builder.setNeutralButton("Defensive", new DialogInterface.OnClickListener() {
+				
+				public void onClick(DialogInterface dialog, int which) {
+					new Combat(enemy, new Defensive());
+					dialog.cancel();
+				}
+			});
+			builder.setNegativeButton("Tactical", new DialogInterface.OnClickListener() {
+				
+				public void onClick(DialogInterface dialog, int which) {
+					new Combat(enemy, new Tactical());
+					dialog.cancel();
+				}
+			});
+    	}else if(i == DIALOG_OI_ID){
+    		Builder builder = new Builder(this);
+    		builder.setMessage("Ooops, you do not have enough Oi to buy that.");
+    		builder.setCancelable(true);
+    		builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+				
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			});
     	}
     	return null;
     }
