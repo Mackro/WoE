@@ -6,267 +6,268 @@
     android:clickable="true"
     android:orientation="vertical" >
 
-    <RadioButton
-        android:id="@+id/leftRadio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/centerRadio"
-        android:clickable="false"
-        android:checked="false"
-        android:text="" />
-    
     <TextView
         android:id="@+id/centerRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-
-    <RadioButton
-        android:id="@+id/rightRadio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/centerRadio"
-        android:clickable="false"
-        android:checked="true"
-        android:text="" />
-    
+
     <ImageView
         android:id="@+id/statsImage"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/rightRadio"
         android:layout_gravity="fill_horizontal" />
+
+    <ScrollView
+        android:id="@+id/statsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/leftRadio"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/statsImage" >
+
+        <RelativeLayout
+            android:id="@id/statsScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" >
 
-    <TextView
-        android:id="@+id/statsNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsImage"
-        android:layout_below="@+id/statsImage"
-        android:layout_marginTop="14dp"
-        android:text="Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="43dp"
+                android:text="Name:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsLevelLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsMoneyLabel"
-        android:text="Level:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-     <TextView
-        android:id="@+id/statsMoneyLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsNameLabel"
-        android:text="Money:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+                android:id="@+id/statsLevelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsNameLabel"
+                android:text="Level:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsHealthLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsLevelLabel"
-        android:text="Health:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsMoneyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsLevelLabel"
+                android:text="Money:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsHappinessLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsHealthLabel"
-        android:text="Happiness:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsHealthLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsMoneyLabel"
+                android:text="Health:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsFullnessLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsHappinessLabel"
-        android:text="Fullness:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsHappinessLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsHealthLabel"
+                android:text="Happiness:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsToxicityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsFullnessLabel"
-        android:text="Toxcity:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsFullnessLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsHappinessLabel"
+                android:text="Fullness:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsStrengthLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsToxicityLabel"
-        android:text="Strength:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsToxicityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsFullnessLabel"
+                android:text="Toxcity:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsStaminaLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsStrengthLabel"
-        android:text="Stamina:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsStrengthLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsToxicityLabel"
+                android:text="Strength:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsIntelligenceLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsStaminaLabel"
-        android:text="Intelligence:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsStaminaLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsStrengthLabel"
+                android:text="Stamina:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsCutenessLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsIntelligenceLabel"
-        android:text="Cuteness:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsIntelligenceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsStaminaLabel"
+                android:text="Intelligence:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/statsCharmLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statsNameLabel"
-        android:layout_below="@+id/statsCutenessLabel"
-        android:text="Charm:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsCutenessLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsIntelligenceLabel"
+                android:text="Cuteness:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/nameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/statsNameLabel"
-        android:layout_alignBottom="@+id/statsNameLabel"
-        android:layout_toRightOf="@+id/statsIntelligenceLabel"
-        android:text="nameText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <TextView
-        android:id="@+id/moneyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/statsMoneyLabel"
-        android:layout_alignBottom="@+id/statsMoneyLabel"
-        android:layout_toRightOf="@+id/statsMoneyLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:text="moneyText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/statsCharmLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statsCutenessLabel"
+                android:text="Charm:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/levelText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/statsHealthLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:text="LevelText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="nameText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ProgressBar
-        android:id="@+id/healthBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nameText"
-        android:layout_alignRight="@+id/imageButton1"
-        android:layout_alignTop="@+id/statsHealthLabel"
-        android:progress="100" />
-
-    <ProgressBar
-        android:id="@+id/fullnessBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/statsToxicityLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:layout_alignRight="@+id/fullnessBar"
-        android:layout_toRightOf="@+id/statsIntelligenceLabel"
-        android:progress="50" />
-
-    <ProgressBar
-        android:id="@+id/happinessBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/statsHappinessLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:layout_alignRight="@+id/healthBar"
-        android:progress="50" />
+            <TextView
+                android:id="@+id/levelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/statsLevelLabel"
+                android:layout_alignLeft="@+id/nameText"
+                android:text="LevelText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/moneyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/statsMoneyLabel"
+                android:layout_alignBottom="@+id/statsMoneyLabel"
+                android:layout_alignLeft="@+id/levelText"
+                android:text="moneyText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ProgressBar
+                android:id="@+id/healthBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/statsHealthLabel"
+                android:layout_alignLeft="@+id/moneyText"
+                android:progress="100" />
+
+            <ProgressBar
+                android:id="@+id/happinessBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/statsHappinessLabel"
+                android:layout_alignLeft="@+id/healthBar"
+                android:progress="50" />
+
+            <ProgressBar
+                android:id="@+id/fullnessBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/statsFullnessLabel"
+                android:layout_alignLeft="@+id/happinessBar"
+                android:progress="50" />
+
+            <ProgressBar
+                android:id="@+id/toxicityBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/statsToxicityLabel"
+                android:layout_alignLeft="@+id/fullnessBar" />
+
+            <TextView
+                android:id="@+id/strengthText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/statsStaminaLabel"
+                android:layout_alignLeft="@+id/toxicityBar"
+                android:text="StrengthText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/staminaText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/statsIntelligenceLabel"
+                android:layout_alignLeft="@+id/strengthText"
+                android:text="StaminaText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/intelligenceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/statsIntelligenceLabel"
+                android:layout_alignBottom="@+id/statsIntelligenceLabel"
+                android:layout_alignLeft="@+id/staminaText"
+                android:text="IntelligenceText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/cuteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/statsCutenessLabel"
+                android:layout_alignBottom="@+id/statsCutenessLabel"
+                android:layout_alignLeft="@+id/intelligenceText"
+                android:text="CuteText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/statsNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Name:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/charmText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/cuteText"
+                android:layout_alignParentBottom="true"
+                android:text="CharmText"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
-    <ProgressBar
-        android:id="@+id/toxicityBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <RadioButton
+        android:id="@+id/leftRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/statsToxicityLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:layout_alignRight="@+id/happinessBar" />
-
-    <TextView
-        android:id="@+id/strengthText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/statsStrengthLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:layout_toRightOf="@+id/statsIntelligenceLabel"
-        android:text="StrengthText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/staminaText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/statsIntelligenceLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:layout_toRightOf="@+id/statsIntelligenceLabel"
-        android:text="StaminaText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/intelligenceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/statsIntelligenceLabel"
-        android:layout_alignBottom="@+id/statsIntelligenceLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:text="IntelligenceText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/cuteText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/statsCharmLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:text="CuteText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/centerRadio"
+        android:checked="false"
+        android:clickable="false" />
 
-    <TextView
-        android:id="@+id/charmText"
+    <RadioButton
+        android:id="@+id/rightRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/statsCharmLabel"
-        android:layout_alignBottom="@+id/statsCharmLabel"
-        android:layout_alignLeft="@+id/nameText"
-        android:text="CharmText"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
+        android:layout_alignBaseline="@+id/leftRadio"
+        android:layout_alignLeft="@+id/centerRadio"
+        android:layout_alignParentBottom="true"
+        android:checked="true"
+        android:clickable="false" />
+
 </RelativeLayout>
