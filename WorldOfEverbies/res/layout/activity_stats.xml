@@ -16,7 +16,7 @@
     <ImageView
         android:id="@+id/statsImage"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="200dp"
         android:layout_alignParentLeft="true"
         android:layout_gravity="fill_horizontal" />
 
@@ -48,13 +48,13 @@
                 android:layout_below="@id/statsNameLabel"
                 android:text="Level:"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
             <TextView
                 android:id="@+id/statsMoneyLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/statsLevelLabel"
-                android:text="Money:"
+                android:text="Oi:"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView

@@ -19,8 +19,7 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.util.Log;
 
-import com.cheesymountain.woe.Races.Mogno;
-import com.cheesymountain.woe.Races.Race;
+import com.cheesymountain.woe.Races.*;
 
 
 /**
@@ -35,7 +34,6 @@ public class Everbie {
 	
 	private int imageId = 0; 
 	public static final String DEFAULT_NAME = "Eibreve";
-	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 0;
 	private String name;
@@ -48,9 +46,9 @@ public class Everbie {
 	private Everbie(String name, Race race) {
 		alive = true;
 		this.name = name;
-		maxHealthModifier = race.getMaxHealth();
-		strength = race.getStrength();
-		intelligence = race.getIntelligence();
+		maxHealthModifier = race.MAXHEALTHMODIFIER;
+		strength = race.STRENGTH;
+		intelligence = race.INTELLIGENCE;
 		stamina = race.getStamina();
 		charm = race.getCharm();
 		fullness = 50;
@@ -481,7 +479,6 @@ public class Everbie {
 	}
 
 	private class Occupied extends Thread{
-				
 		@Override
 		public void run(){
 			while(Everbie.getEverbie().isAlive() && Everbie.getEverbie().occupiedSeconds > 0){
@@ -506,7 +503,7 @@ public class Everbie {
 				try{
 					Thread.sleep(600000);
 				}catch(InterruptedException ie){}
-				Everbie.getEverbie().fullness -= Everbie.getEverbie().starvation;
+				Everbie.getEverbie().changeFullness(-Everbie.getEverbie().starvation);
 				Log.d("Loop", fullness + "");
 			}
 		}
