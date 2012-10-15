@@ -3,50 +3,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarAlwaysDrawVerticalTrack="true" >
-
+
     <RadioButton
         android:id="@+id/leftRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/rightRadio"
         android:layout_toLeftOf="@+id/centerRadio"
-        android:clickable="false"
         android:checked="true"
+        android:clickable="false"
         android:text="" />
-
+
     <TextView
         android:id="@+id/centerRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-    
+
     <RadioButton
         android:id="@+id/rightRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="false"
         android:layout_toRightOf="@+id/centerRadio"
-        android:layout_alignParentTop="true"
-        android:clickable="false"
         android:checked="false"
+        android:clickable="false"
         android:text="" />
-    
-    <ImageView
-        android:id="@+id/mainImage"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/rightRadio"
-        android:layout_gravity="fill_horizontal" />
 
     <TextView
         android:id="@+id/log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mainImage"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/mainImage"
-        android:layout_below="@+id/mainImage"
+        android:layout_above="@id/leftRadio"
+        android:layout_alignParentBottom="false"
         android:layout_marginTop="14dp"
         android:clickable="false"
         android:ems="10"
@@ -57,9 +49,15 @@
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
         android:selectAllOnFocus="false" >
-
-        <requestFocus android:layout_width="wrap_content" />
 
+        <requestFocus android:layout_width="wrap_content" />
     </TextView>
+
+    <ImageView
+        android:id="@+id/mainImage"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
