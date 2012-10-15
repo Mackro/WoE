@@ -32,13 +32,16 @@
         android:checked="false"
         android:clickable="false"
         android:text="" />
-
+
     <TextView
         android:id="@+id/log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/leftRadio"
         android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/mainImage"
         android:layout_marginTop="14dp"
         android:clickable="false"
         android:ems="10"
