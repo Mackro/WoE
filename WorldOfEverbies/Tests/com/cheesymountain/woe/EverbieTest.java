@@ -1,7 +1,5 @@
 package com.cheesymountain.woe;
 
-import java.security.InvalidParameterException;
-
 import android.util.Log;
 
 public class EverbieTest {
@@ -15,7 +13,6 @@ public class EverbieTest {
 		everbie = Everbie.getEverbie();
 		
 		testConstructor();
-		testName();
 		testStartingVariables();
 		testChangeVariables();
 		testOccupiedSeconds();
@@ -105,7 +102,7 @@ public class EverbieTest {
 		everbie.changeHappiness(5);
 		everbie.changeHealth(5);
 		everbie.changeIntelligence(5);
-		everbie.changeMaxhealth(5);
+		everbie.changeMaxHealth(5);
 		everbie.changeMoney(5);
 		everbie.changeStamina(5);
 		everbie.changeStrength(5);
