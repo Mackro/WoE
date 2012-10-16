@@ -40,25 +40,25 @@ public class Combat {
 
 	private void doCombat(Enemy enemy, FightingStyle fightingStyle) {
 		int health = Everbie.getEverbie().getHealth();
-		int turn = (int)(Math.random() + 0.5);
+		int turn = (int) (Math.random() + 0.5);
 		int everbieDmg = 0, everbieDef = 0, enemyDmg = 0, enemyDef = 0, dmg = 0;
 
 		while (health > 0 && enemy.getHealth() > 0) {
-			// Everbie attacking enemy defending
+			// Everbie attacking enemy defending:
 			if (turn == 0) {
 
 				everbieDmg = rollDice(Everbie.getEverbie().getStrength(),
 						Everbie.getEverbie().getIntelligence());
 				enemyDef = rollDice(enemy.getStamina(), enemy.getIntelligence());
 				dmg = everbieDmg - enemyDef;
-				
+
 				if (dmg > 0) {
 					enemy.changeHealth(dmg);
 				}
 				turn = 1;
 			}
 
-			// Enemy attacking Everbie Defending
+			// Enemy attacking Everbie Defending:
 			else if (turn == 1) {
 
 				enemyDmg = rollDice(enemy.getStrength(),
@@ -66,22 +66,25 @@ public class Combat {
 				everbieDef = rollDice(Everbie.getEverbie().getStamina(),
 						Everbie.getEverbie().getIntelligence());
 				dmg = enemyDmg - everbieDef;
-				
+
 				if (dmg > 0) {
 					health -= dmg;
-					if(health < 1){
+					if (health < 1) {
 						Everbie.getEverbie().setHealth(1);
 					}
-					}
 				}
-				turn = 0;
 			}
-		if(health > 0 && enemy.getHealth() < 0 && enemy.getAdditionalItemReward() != null){
+			turn = 0;
+		}
+		if (health > 0 && enemy.getHealth() < 0
+				&& enemy.getAdditionalItemReward() != null) {
 			use.activate(enemy.getAdditionalItemReward());
-			Everbie.getEverbie().changeMoney(enemy.getBaseMoneyReward() * Everbie.getEverbie().getLevel());
+			Everbie.getEverbie().changeMoney(
+					enemy.getBaseMoneyReward()
+							* Everbie.getEverbie().getLevel());
 		}
 	}
-	
+
 	private int rollDice(int sides, int dices) {
 		int diceSum = 0;
 		for (int i = 0; i < dices; i++) {
