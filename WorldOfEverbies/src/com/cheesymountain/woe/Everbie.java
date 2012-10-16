@@ -17,9 +17,8 @@ package com.cheesymountain.woe;
  * You should have received a copy of the GNU General Public License
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
-import android.util.Log;
-
-import com.cheesymountain.woe.race.*;
+import com.cheesymountain.woe.race.Mogno;
+import com.cheesymountain.woe.race.Race;
 
 
 /**
@@ -32,7 +31,7 @@ import com.cheesymountain.woe.race.*;
  */
 public class Everbie {
 	
-	private int imageId = 0; 
+	private int imageId = 0;
 	public static final String DEFAULT_NAME = "Eibreve";
 	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
@@ -40,8 +39,8 @@ public class Everbie {
 	private String name;
 	private int maxHealthModifier, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
-	private boolean alive;
-	private long occupiedSeconds = 0;
+	private boolean alive, fainted;
+	private int occupiedSeconds = 0, faintedTime = 0;
 	private int starvation, standardStarvation;
 	private Occupationable occupation;
 
@@ -61,8 +60,7 @@ public class Everbie {
 		this.imageId = race.getImageID();
 		starvation = standardStarvation = 1;
 		health = getMaxHealth();
-		
-		new Hunger().start();
+		new Ticker().start();
 	}
 	
 	/**
@@ -220,7 +218,7 @@ public class Everbie {
 	 * Returns the amount of time the Everbie is occupied
 	 * @return seconds - the amount of seconds occupied
 	 */
-	public long getOccupiedSeconds(){
+	public int getOccupiedSeconds(){
 		return occupiedSeconds;
 	}
 
@@ -248,6 +246,14 @@ public class Everbie {
 		return occupation;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public int getFaintedTime(){
+		return faintedTime*10;
+	}
+	
 	/**
 	 * Changes the maximum amount of health points the current Everbie can have 
 	 * @param i - the value to de-/increase by
@@ -417,7 +423,7 @@ public class Everbie {
 	 * Sets the amount of time the Everbie should be occupied
 	 * @param seconds - the amount of seconds to be occupied
 	 */
-	public void setOccupiedSeconds(long seconds){
+	public void setOccupiedSeconds(int seconds){
 		if(seconds > 0){
 			this.occupiedSeconds = seconds;
 		}
@@ -471,6 +477,16 @@ public class Everbie {
 	}
 
 	/**
+	 * A method to set the Everbie to be fainted.
+	 * @param fainted
+	 */
+	public void setFainted(boolean fainted) {
+		this.fainted = fainted;
+		faintedTime = getLevel();
+	}
+
+
+	/**
 	 * Puts the Everbie to rest to have it restore his/her health
 	 * and reduce his/her toxicity level
 	 */
@@ -504,15 +520,23 @@ public class Everbie {
 	}
 	
 	/**
-	 * Returns an boolean to determine if the Everbie is alive or not
+	 * Returns an boolean to determine if the Everbie is alive or not.
 	 * @return <code>true</code> if the Everbie is alive, <code>false</code> otherwise
 	 */
-	public boolean  isAlive(){
+	public boolean isAlive(){
 		return alive;
+	}
+	
+	/**
+	 * Returns a boolean representing if the Everbie is fainted or not.
+	 * @return <code>true</code> if the Everbie is awaken, <code>false</code> otherwise
+	 */
+	public boolean isFainted(){
+		return fainted;
 	}
 
 	/**
-	 * Returns an boolean to determine if the Everbie is occupied or not
+	 * Returns an boolean to determine if the Everbie is occupied or not.
 	 * @return <code>true</code> if the Everbie is occupied, <code>false</code> otherwise
 	 */
 	public boolean isOccupied(){
@@ -541,8 +565,7 @@ public class Everbie {
 	}
 	
 	
-	private class Hunger extends Thread{
-				
+	private class Ticker extends Thread{
 		@Override
 		public void run(){
 			while(Everbie.getEverbie().isAlive()){
@@ -550,10 +573,13 @@ public class Everbie {
 					Thread.sleep(600000);
 				}catch(InterruptedException ie){}
 				Everbie.getEverbie().changeFullness(-Everbie.getEverbie().starvation);
-				Log.d("Loop", fullness + " fullness, " +
-				starvation + " starvation");
+				if(fainted){
+					faintedTime--;
+					if(faintedTime < 1){
+						setFainted(false);
+					}
+				}
 			}
 		}
 	}
-	
 }
