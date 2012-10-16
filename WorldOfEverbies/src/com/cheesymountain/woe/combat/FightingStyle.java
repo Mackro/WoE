@@ -2,25 +2,25 @@ package com.cheesymountain.woe.combat;
 
 public class FightingStyle {
 	
-	private double StrengthModifier;
-	private double staminaModifier;
-	private double intelligenceModifier;
+	private int StrengthModifier;
+	private int staminaModifier;
+	private int intelligenceModifier;
 	
-	public FightingStyle(double strengthModifier, double staminaModifier, double intelligenceModifier){
+	public FightingStyle(int strengthModifier, int staminaModifier, int intelligenceModifier){
 		this.StrengthModifier = strengthModifier;
 		this.staminaModifier = staminaModifier;
 		this.intelligenceModifier = intelligenceModifier;
 	}
 
-	public double getStrengthModifier(){
+	public int getStrengthModifier(){
 		return StrengthModifier;
 	}
 	
-	public double getStaminaModifier(){
+	public int getStaminaModifier(){
 		return staminaModifier;
 	}
 	
-	public double getIntelligenceModifier(){
+	public int getIntelligenceModifier(){
 		return intelligenceModifier;
 	}
 }

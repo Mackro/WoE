@@ -47,8 +47,8 @@ public class Combat {
 			// Everbie attacking enemy defending:
 			if (turn == 0) {
 
-				everbieDmg = rollDice(Everbie.getEverbie().getStrength(),
-						Everbie.getEverbie().getIntelligence());
+				everbieDmg = rollDice(Everbie.getEverbie().getStrength() + fightingStyle.getStrengthModifier(),
+						Everbie.getEverbie().getIntelligence() + fightingStyle.getIntelligenceModifier());
 				enemyDef = rollDice(enemy.getStamina(), enemy.getIntelligence());
 				dmg = everbieDmg - enemyDef;
 
@@ -63,8 +63,8 @@ public class Combat {
 
 				enemyDmg = rollDice(enemy.getStrength(),
 						enemy.getIntelligence());
-				everbieDef = rollDice(Everbie.getEverbie().getStamina(),
-						Everbie.getEverbie().getIntelligence());
+				everbieDef = rollDice(Everbie.getEverbie().getStamina() + fightingStyle.getStaminaModifier(),
+						Everbie.getEverbie().getIntelligence() + fightingStyle.getIntelligenceModifier());
 				dmg = enemyDmg - everbieDef;
 
 				if (dmg > 0) {
@@ -78,6 +78,7 @@ public class Combat {
 		}
 		if (health > 0 && enemy.getHealth() < 0
 				&& enemy.getAdditionalItemReward() != null) {
+			Everbie.getEverbie().setHealth(health);
 			use.activate(enemy.getAdditionalItemReward());
 			Everbie.getEverbie().changeMoney(
 					enemy.getBaseMoneyReward()

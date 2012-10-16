@@ -235,7 +235,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 					dialog.cancel();
 				}
 			});
-			return builder.create();
+    		return builder.create();
     	}else if(i == DIALOG_OI_ID){
     		Builder builder = new Builder(this);
     		builder.setMessage("Ooops, you do not have enough Oi to buy that.");
