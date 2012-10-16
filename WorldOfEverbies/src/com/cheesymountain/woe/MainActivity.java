@@ -114,6 +114,8 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	@Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
+		
+				//Food
 			case R.id.BreadAndWater:
 				if(use.activate(new BreadAndWater()) == Use.NOT_ENOUGH_OI){
 					showDialog(DIALOG_OI_ID);
@@ -129,6 +131,8 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 					showDialog(DIALOG_OI_ID);
 				}
 	    		break;
+	    		
+	    		//Interaction
 			case R.id.chat:
 				use.activate(new Chat());
 	    		break;
@@ -138,6 +142,14 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 			case R.id.snuggle:
 				use.activate(new Snuggle());
 	    		break;
+			case R.id.playCards:
+				use.activate(new PlayCards());
+				break;
+			case R.id.takeABath:
+				use.activate(new TakeABath());
+				break;
+				
+				//Item
 			case R.id.book:
 				if(use.activate(new Book()) == Use.NOT_ENOUGH_OI){
 					showDialog(DIALOG_OI_ID);
@@ -163,6 +175,8 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 					showDialog(DIALOG_OI_ID);
 				}
 	    		break;
+	    		
+	    		//Training
 			case R.id.chess:
 				use.activate(new Chess());
 	    		break;
@@ -172,6 +186,13 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 			case R.id.workingOut:
 				use.activate(new WorkingOut());
 	    		break;
+			case R.id.squash:
+				use.activate(new Squash());
+				break;
+			case R.id.swimming:
+				use.activate(new Swimming());
+	    		
+	    		//Work
 	    	case R.id.consulting:
 	    		use.activate(new Consulting());
 	    		break;
@@ -185,8 +206,12 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				use.activate(new Plumbing());
 	    		break;
 	    	case R.id.sellLemonade:
-	    		use.activate(new SellLemonade());
+	    		int specificSalary = (int)((Everbie.getEverbie().getCharm() + Everbie.getEverbie().getCuteness()
+	    				+ (Everbie.getEverbie().getIntelligence()/2))*Math.random() + 42);
+	    		use.activate(new SellLemonade(specificSalary));
 	    		break;
+	    		
+	    		//Fight
 	    	case R.id.gnome:
 	    		enemy = new GardenGnome();
 	    		showDialog(DIALOG_FIGHT_ID);
@@ -203,6 +228,8 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	    		enemy = new ScrapMetalTitan();
 	    		showDialog(DIALOG_FIGHT_ID);
 	    		break;
+	    		
+	    		//Default
 	    	default:
 	    		return false;
 		}
