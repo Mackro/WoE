@@ -132,7 +132,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 			case R.id.chat:
 				use.activate(new Chat());
 	    		break;
-			case R.id.comb:
+			case R.id.pamper:
 				use.activate(new Pamper());
 	    		break;
 			case R.id.snuggle:
@@ -234,10 +234,10 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     		builder.setPositiveButton("Offensive", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
 					Combat combat = new Combat(enemy, new Offensive());
 					Log.getLog().combatLog(combat.doFight());
 					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
-					dialog.cancel();
 				}
 			});
 			builder.setNeutralButton("Defensive", new DialogInterface.OnClickListener() {
@@ -252,10 +252,10 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 			builder.setNegativeButton("Tactical", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
 					Combat combat = new Combat(enemy, new Tactical());
 					Log.getLog().combatLog(combat.doFight());
 					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
-					dialog.cancel();
 				}
 			});
     		return builder.create();
