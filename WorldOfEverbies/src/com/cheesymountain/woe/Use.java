@@ -34,7 +34,7 @@ public class Use {
 	 * Activates the desired event which could be a food,
 	 * an item or an activity.
 	 * 
-	 * @param o	the instance of what should happen
+	 * @param food - the food that should be consumed
 	 */
 	public void activate(Food food){
 		if(Everbie.getEverbie().isOccupied()){
@@ -48,19 +48,30 @@ public class Use {
 		Everbie.getEverbie().changeToxicity(food.getToxicityModifier());
 	}
 
-
+	/**
+	 * Activates the desired event which could be a food,
+	 * an item or an activity.
+	 * 
+	 * @param work - the work that should be started
+	 */
 	public void activate(Work work){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 			return;
 		}
-		Log.getLog().workStarted(work);
-		Everbie.getEverbie().changeMoney(work.getSalary());
-		Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
-		Everbie.getEverbie().changeHealth(work.getHealthModifier());
+		Log.getLog().started(work);
+		Everbie.getEverbie().setOccupation(work);
+		Everbie.getEverbie().setStarvation(work.getStarvationModifier());
 		Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
+		new Occupation().start();
 	}
 
+	/**
+	 * Activates the desired event which could be a food,
+	 * an item or an activity.
+	 * 
+	 * @param interact - the interaction that should be made
+	 */
 	public void activate(Interaction interact){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
@@ -72,6 +83,12 @@ public class Use {
 		Everbie.getEverbie().changeHappiness(interact.getHappinessModifier());
 	}
 
+	/**
+	 * Activates the desired event which could be a food,
+	 * an item or an activity.
+	 * 
+	 * @param item - the item that should be consumed
+	 */
 	public void activate(Item item){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
@@ -89,17 +106,55 @@ public class Use {
 		Everbie.getEverbie().changeToxicity(item.getToxicityModifier());
 	}
 
+	/**
+	 * Activates the desired event which could be a food,
+	 * an item or an activity.
+	 * 
+	 * @param training - the training that should be started
+	 */
 	public void activate(Training train){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 			return;
 		}
-		Log.getLog().trainingStarted(train);
+		Log.getLog().started(train);
+		Everbie.getEverbie().setOccupation(train);
+		Everbie.getEverbie().setStarvation(train.getStarvationModifier());
+		Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
+		new Occupation().start();
+	}
+	
+	/**
+	 * Called when the Everbie is done with the corresponding occupation
+	 * @param occupation - the work or training done
+	 */
+	public void done(Occupationable occupation){
+		if(occupation instanceof Work){
+			done((Work)occupation);
+		}else if(occupation instanceof Training){
+			done((Training)occupation);
+		}
+	}
+
+	/**
+	 * Called when the Everbie is done with work
+	 * @param occupation - the work done
+	 */
+	public void done(Work work){
+		Everbie.getEverbie().changeMoney(work.getSalary());
+		Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
+		Everbie.getEverbie().changeHealth(work.getHealthModifier());
+	}
+	
+
+	/**
+	 * Called when the Everbie is done with the training
+	 * @param occupation - the training done
+	 */
+	public void done(Training train){
 		Everbie.getEverbie().changeStrength(train.getStrengthModifier());
 		Everbie.getEverbie().changeStamina(train.getStaminaModifier());
 		Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
-		Everbie.getEverbie().changeFullness(train.getFullnessModifier());
-		Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
 	}
 }
 
