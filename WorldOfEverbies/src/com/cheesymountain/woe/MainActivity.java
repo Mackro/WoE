@@ -98,7 +98,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	@Override
 	public void onPause(){
 		super.onPause();
-		bgMusic.pause();
+		bgMusic.release();
 	}
 	
 	@Override
@@ -107,11 +107,6 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		bgMusic.release();
 	}
 	
-	@Override
-	public void onResume(){
-		super.onResume();
-		bgMusic.start();
-	}
     
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
