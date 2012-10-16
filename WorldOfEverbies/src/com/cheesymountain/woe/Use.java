@@ -35,6 +35,7 @@ public class Use {
 	public static final int NOT_ENOUGH_OI = 2;
 	public static final int EVERBIE_IS_BUSY = 20;
 	public static final int SUCCESS = 200;
+	public static final int EVERBIE_IS_FAINTED = 2000;
 	
 	/**
 	 * Activates the desired event which could be a food,
@@ -47,6 +48,9 @@ public class Use {
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 			return EVERBIE_IS_BUSY;
+		}else if(Everbie.getEverbie().isFainted()){
+			Log.getLog().isFainted();
+			return EVERBIE_IS_FAINTED;
 		}
 		if(Everbie.getEverbie().changeMoney(-food.getCost())){
 			Log.getLog().foodGiven(food);
@@ -70,6 +74,9 @@ public class Use {
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 			return EVERBIE_IS_BUSY;
+		}else if(Everbie.getEverbie().isFainted()){
+			Log.getLog().isFainted();
+			return EVERBIE_IS_FAINTED;
 		}
 		Log.getLog().started(work);
 		Everbie.getEverbie().setOccupation(work);
@@ -90,6 +97,9 @@ public class Use {
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 			return EVERBIE_IS_BUSY;
+		}else if(Everbie.getEverbie().isFainted()){
+			Log.getLog().isFainted();
+			return EVERBIE_IS_FAINTED;
 		}
 		Log.getLog().interactionMade(interact);
 		Everbie.getEverbie().changeCharm(interact.getCharmModifier());
@@ -109,6 +119,9 @@ public class Use {
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 			return EVERBIE_IS_BUSY;
+		}else if(Everbie.getEverbie().isFainted()){
+			Log.getLog().isFainted();
+			return EVERBIE_IS_FAINTED;
 		}
 		if(Everbie.getEverbie().changeMoney(-item.getCost())){
 			Log.getLog().itemUsed(item);
@@ -137,6 +150,9 @@ public class Use {
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 			return EVERBIE_IS_BUSY;
+		}else if(Everbie.getEverbie().isFainted()){
+			Log.getLog().isFainted();
+			return EVERBIE_IS_FAINTED;
 		}
 		Log.getLog().started(train);
 		Everbie.getEverbie().setOccupation(train);

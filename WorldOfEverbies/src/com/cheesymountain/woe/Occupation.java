@@ -8,7 +8,7 @@ public class Occupation extends Thread {
 			try{
 				Thread.sleep(1000);
 			}catch(InterruptedException ie){}
-			Everbie.getEverbie().setOccupiedSeconds(Everbie.getEverbie().getOccupiedSeconds()-1);
+			Everbie.getEverbie().decreaseOccupiedSeconds();
 			if(Everbie.getEverbie().getOccupiedSeconds() <= 0 &&
 					Everbie.getEverbie().getStarvation() != Everbie.getEverbie().getStandardStarvation()){
 				Everbie.getEverbie().setStarvation(Everbie.getEverbie().getStandardStarvation());

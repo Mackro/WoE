@@ -41,15 +41,15 @@ public class Log {
 	LinkedList<String> logList;
 	Everbie everbie;
 	Time time = new Time();
-	
+
 
 	private Log() {
 		logList = new LinkedList<String>();
 		everbie = Everbie.getEverbie();
 		time.set(System.currentTimeMillis());
 	}
-	
-	
+
+
 	/**
 	 * Returns a pointer that references to the Log if one exists otherwise creates a new one
 	 * @return a pointer to the log
@@ -60,7 +60,7 @@ public class Log {
 		}
 		return log;
 	}
-	
+
 	/**
 	 * Returns a plain String containing the text that will be displayed
 	 * @return a long text
@@ -72,24 +72,35 @@ public class Log {
 			logString += entry[i];
 		}
 		return logString;
-		
+
 	}
-	
+
 	/**
 	 * Is called when the Everbie is busy when the owner has tried to 
-	 * use some other activity and the Log should be configured 
-	 * correctly
+	 * use some other activity and the Log should be configured correctly.
 	 */
 	public void isBusy(){
-		String time = (everbie.getOccupiedHours()==0?"":everbie.getOccupiedHours() + "h ") +
-				(everbie.getOccupiedMinutes()-everbie.getOccupiedHours()*60) + "m " +
-				(everbie.getOccupiedSeconds()-everbie.getOccupiedMinutes()*60) + "s.";
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
-		logList.addLast(everbie.getName() + " is busy at the moment but will be ready in " + time + "\n");
+		String time = (everbie.getOccupiedHours()==0?"":everbie.getOccupiedHours() + "h ")
+				+ (everbie.getOccupiedMinutes()-everbie.getOccupiedHours()*60) + "m "
+				+ (everbie.getOccupiedSeconds()-everbie.getOccupiedMinutes()*60) + "s.";
+		firstRemoval();
+		logList.addLast(everbie.getName() + " is busy at the moment but will be ready in "
+				+ time + "\n");
 	}
-	
+
+	/**
+	 * Is called when the Everbie is fainted when the owner has tried to 
+	 * use some other activity and the Log should be configured correctly.
+	 */
+	public void isFainted(){
+		String time = ((everbie.getFaintedTime()/3600)==0?"":everbie.getFaintedTime()/3600 + "h ")
+				+ (everbie.getFaintedTime()%3600)/60 + "m "
+				+ (everbie.getFaintedTime()%3600)%60 + "s.";
+		firstRemoval();
+		logList.addLast(everbie.getName() + " is fainted at the moment but will wake up within "
+				+ time + "\n");
+	}
+
 	/**
 	 * Is called when training is started to the Everbie to configure the 
 	 * log correctly
@@ -97,7 +108,8 @@ public class Log {
 	 */
 	public void started(Training train){
 		firstRemoval();
-		logList.addLast(getTime() + everbie.getName() +" began to workout by starting with " + train.getName() + "\n");
+		logList.addLast(getTime() + everbie.getName() +" began to workout by starting with "
+				+ train.getName() + "\n");
 	}
 
 
@@ -108,7 +120,8 @@ public class Log {
 	 */
 	public void started(Work work){
 		firstRemoval();
-		logList.addLast(getTime() + everbie.getName() +" started to work as " + work.getName() + "\n");
+		logList.addLast(getTime() + everbie.getName() +" started to work with "
+				+ work.getName() + "\n");
 	}
 
 	/**
@@ -118,12 +131,15 @@ public class Log {
 	 */
 	public void foodGiven(Food food) {
 		firstRemoval();
-		logList.addLast(getTime() + everbie.getName()+ " ate som " + food.getName() + " and is now"
-				+ (food.getHappinessModifier()>0?" happier": (food.getHappinessModifier()<0?" angrier":" the same"))
-				+ (food.getToxicityModifier()>0?" but became sicker":(food.getToxicityModifier()<0?" and became healthier":"")) 
+		logList.addLast(getTime() + everbie.getName()+ " ate som " + food.getName() 
+				+ " and is now"
+				+ (food.getHappinessModifier()>0?" happier": (food.getHappinessModifier()<0?
+					" angrier":" the same"))
+				+ (food.getToxicityModifier()>0?" but became sicker":
+					(food.getToxicityModifier()<0?" and became healthier":"")) 
 				+ " than before and not as hungry \n");
 	}
-	
+
 	/**
 	 * Is called when work is given to the Everbie to configure the 
 	 * String correctly
@@ -131,12 +147,13 @@ public class Log {
 	 */
 	public void doneWith(Work work){
 		firstRemoval();
-		logList.addLast(getTime() + everbie.getName() + " worked as " + work.getName() + " for " + work.getTime() 
-				+ " hours and has now become " + 
-				(work.getHappinessModifier()>0?" happier": (work.getHappinessModifier()<0?" angrier":" tired"))
-				+ " and earned " + work.getSalary());
+		logList.addLast(getTime() + everbie.getName() + " worked with " + work.getName() + " for "
+				+ work.getTime() + " hours and has now become "
+				+ (work.getHappinessModifier()>0?" happier": (work.getHappinessModifier()<0?
+					" angrier":" tired"))
+				+ " and earned " + work.getSalary() + " Oi\n");
 	}
-	
+
 	/**
 	 * Is called when training is completed by the Everbie to configure the 
 	 * String correctly
@@ -144,14 +161,18 @@ public class Log {
 	 */
 	public void doneWith(Training train){
 		firstRemoval();
-		
-		logList.addLast(getTime() + everbie.getName() + " worked out by doing some " + train.getName() + " and now " + everbie.getName()
-				+ " gained" + (train.getStrengthModifier()>0?" increased":train.getStrengthModifier()<0?" decreased":" no")
-				+ " strength and gained" + (train.getStaminaModifier()>0?" increased":train.getStaminaModifier()<0?" decreased":" no")
-				+ " stamina  and gained" + (train.getIntelligenceModifier()>0?" increased":train.getIntelligenceModifier()<0?" decreased":" no")
-				+ " intelligence and grew hungrier");
+
+		logList.addLast(getTime() + everbie.getName() + " worked out by doing some "
+				+ train.getName() + " and now " + everbie.getName()	+ " gained" 
+				+ (train.getStrengthModifier()>0?" increased":train.getStrengthModifier()<0?
+					" decreased":" no")
+				+ " strength and gained" + (train.getStaminaModifier()>0?" increased":
+					train.getStaminaModifier()<0?" decreased":" no")
+				+ " stamina  and gained" + (train.getIntelligenceModifier()>0?" increased":
+					train.getIntelligenceModifier()<0?" decreased":" no")
+				+ " intelligence and grew hungrier\n");
 	}
-	
+
 	/**
 	 * Is called when training is completed by the Everbie to configure the 
 	 * String correctly
@@ -165,7 +186,7 @@ public class Log {
 		}
 
 	}
-	
+
 	/**
 	 * Is called when the user interacts with the Everbie to configure the 
 	 * String correctly
@@ -174,13 +195,16 @@ public class Log {
 	public void interactionMade(Interaction interact){
 		firstRemoval();
 
-		logList.addLast(getTime() + "You and " + everbie.getName() + " " + interact.getName() + " and now " + everbie.getName()
-				+ (interact.getCutenessModifier()>0?" became cuter":interact.getCutenessModifier()<0?" became uglier":" confused")
-				+ (interact.getCharmModifier()>0?" and whinks at you":interact.getCharmModifier()<0?" and gestures angrily at you"
-				:" and hugs you") + ", " + everbie.getName() + " is now"
-				+ (interact.getHappinessModifier()>0?" happier than":interact.getHappinessModifier()<0?" angrier than":" the same as") + " before");
+		logList.addLast(getTime() + "You and " + everbie.getName() + " " + interact.getName()
+				+ " and now " + everbie.getName()	+ (interact.getCutenessModifier()>0?
+					" became cuter":interact.getCutenessModifier()<0?" became uglier":" confused")
+				+ (interact.getCharmModifier()>0?" and whinks at you":
+					interact.getCharmModifier()<0?" and gestures angrily at you":" and hugs you")
+				+ ", " + everbie.getName() + " is now" + (interact.getHappinessModifier()>0?
+					" happier than":interact.getHappinessModifier()<0?" angrier than":" the same as")
+				+ " before\n");
 	}
-	
+
 	/**
 	 * Is called when item is given to the Everbie to configure the 
 	 * String correctly.
@@ -189,15 +213,15 @@ public class Log {
 	public void itemUsed(Item item){
 		firstRemoval();
 		logList.addLast(getTime() + everbie.getName() + " used a " + item.getName() +  
-		(item.getStrengthModifier()>0?" and became stronger":(item.getStrengthModifier()<0?" and became weaker":"")) + 
-		(item.getStaminaModifier()>0?" and became tougher":(item.getStaminaModifier()<0?" and became less fit":"")) + 
-		(item.getIntelligenceModifier()>0?" and became smarter":(item.getIntelligenceModifier()<0?" and became dumber":"")) +
-		(item.getCharmModifier()>0?" and became more charming":(item.getStrengthModifier()<0?" and became less charming":"")) +
-		(item.getCutenessModifier()>0?" and became cuter":(item.getCutenessModifier()<0?" and became uglier":"")) +
-		(item.getHealthModifier()>0?" and regained health":(item.getHealthModifier()<0?" and lost health":"")) +
-		(item.getToxicityModifier()>0?" and got sicker":(item.getStrengthModifier()<0?" and became healthier":"")) + "\n");
+				(item.getStrengthModifier()>0?" and became stronger":(item.getStrengthModifier()<0?" and became weaker":"")) + 
+				(item.getStaminaModifier()>0?" and became tougher":(item.getStaminaModifier()<0?" and became less fit":"")) + 
+				(item.getIntelligenceModifier()>0?" and became smarter":(item.getIntelligenceModifier()<0?" and became dumber":"")) +
+				(item.getCharmModifier()>0?" and became more charming":(item.getStrengthModifier()<0?" and became less charming":"")) +
+				(item.getCutenessModifier()>0?" and became cuter":(item.getCutenessModifier()<0?" and became uglier":"")) +
+				(item.getHealthModifier()>0?" and regained health":(item.getHealthModifier()<0?" and lost health":"")) +
+				(item.getToxicityModifier()>0?" and got sicker":(item.getStrengthModifier()<0?" and became healthier":"")) + "\n");
 	}
-	
+
 	/**
 	 * Is called when the Everbie has fought an enemy.
 	 * @param log - the custom string to add
@@ -206,7 +230,7 @@ public class Log {
 		firstRemoval();
 		logList.addLast(log);
 	}
-	
+
 	/**
 	 * Removes the oldest addition to the log if needed.
 	 */
@@ -215,7 +239,7 @@ public class Log {
 			logList.removeFirst();
 		}
 	}
-	
+
 	/**
 	 * Returns the current time.
 	 * @return 

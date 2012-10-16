@@ -234,21 +234,24 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     		builder.setPositiveButton("Offensive", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
-					Log.getLog().combatLog(new Combat(enemy, new Offensive()));
+					Combat combat = new Combat(enemy, new Offensive());
+					Log.getLog().combatLog(combat.doFight());
 					dialog.cancel();
 				}
 			});
 			builder.setNeutralButton("Defensive", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
-					Log.getLog().combatLog(new Combat(enemy, new Defensive()));
+					Combat combat = new Combat(enemy, new Defensive());
+					Log.getLog().combatLog(combat.doFight());
 					dialog.cancel();
 				}
 			});
 			builder.setNegativeButton("Tactical", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
-					Log.getLog().combatLog(new Combat(enemy, new Tactical()));
+					Combat combat = new Combat(enemy, new Tactical());
+					Log.getLog().combatLog(combat.doFight());
 					dialog.cancel();
 				}
 			});
