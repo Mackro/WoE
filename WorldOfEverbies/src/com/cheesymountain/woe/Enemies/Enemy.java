@@ -10,7 +10,7 @@ public abstract class Enemy {
 	private int stamina;
 	private int intelligence;
 	private int baseMoneyReward;
-	private static Item additionalItemReward;
+	private Item additionalItemReward;
 	
 	public Enemy(String name, int health, int strength, int stamina, int intelligence, int baseMoneyReward){
 		this.name = name;
@@ -49,12 +49,12 @@ public abstract class Enemy {
 		return additionalItemReward;
 	}
 
-	public static void setAdditionalItemReward(Item item) {
-		additionalItemReward = item;
-	}
-	
 	public void changeHealth(int healthModifier){
 		health -= healthModifier; 
+	}
+
+	public void setAdditionalItemReward(Item item) {
+		additionalItemReward = item;
 	}
 
 }
