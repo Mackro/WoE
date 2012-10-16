@@ -18,6 +18,8 @@ package com.cheesymountain.woe;
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.LinkedList;
 import android.text.format.*;
 
@@ -214,9 +216,14 @@ public class Log {
 		(item.getToxicityModifier()>0?" and got sicker":(item.getStrengthModifier()<0?" and became healthier":"")) + "\n");
 	}
 	
-	
+	/**
+	 * Returns the current time.
+	 * @return 
+	 */
 	private String getTime() {
-		String timeString = "\n"+time.monthDay+"/"+time.month+" "+time.hour+":"+time.minute+" - ";
+		NumberFormat formatter = new DecimalFormat("00");
+		String timeString = "\n"+time.monthDay+"/"+(time.month+1)%12+" "+
+				formatter.format(time.hour)+":"+formatter.format(time.minute)+" - ";
 		return timeString;
 	}
 }

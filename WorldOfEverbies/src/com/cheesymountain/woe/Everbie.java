@@ -420,7 +420,6 @@ public class Everbie {
 	public void setOccupiedSeconds(long seconds){
 		if(seconds > 0){
 			this.occupiedSeconds = seconds;
-			this.starvation = 3;
 		}
 	}
 
