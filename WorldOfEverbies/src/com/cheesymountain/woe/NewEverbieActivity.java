@@ -28,8 +28,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 
-import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
+import com.cheesymountain.woe.R;
 import com.cheesymountain.woe.race.Race;
+import com.cheesymountain.woe.util.SimpleGestureFilter;
+import com.cheesymountain.woe.util.SimpleGestureFilter.SimpleGestureListener;
 
 /**
  * Controller class when creating a new Everbie that handles swipe events
@@ -97,6 +99,9 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		if(name == null || name.equals("")){
 			showDialog(DIALOG_INVALIDNAME_ID);
 			return;
+		}
+		if(Everbie.exists()){
+			Everbie.getEverbie().reset();	
 		}
 		Everbie.createEverbie(name, Race.RACELIST[selectedRace]);
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");

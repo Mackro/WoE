@@ -27,6 +27,7 @@ import com.cheesymountain.woe.food.Food;
 import com.cheesymountain.woe.interact.Interaction;
 import com.cheesymountain.woe.item.Item;
 import com.cheesymountain.woe.training.Training;
+import com.cheesymountain.woe.util.Occupationable;
 import com.cheesymountain.woe.work.Work;
 
 /**

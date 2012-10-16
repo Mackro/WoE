@@ -1,7 +1,6 @@
-package com.cheesymountain.woe.combat;
+package com.cheesymountain.woe;
 
-import com.cheesymountain.woe.Everbie;
-import com.cheesymountain.woe.Use;
+import com.cheesymountain.woe.combat.FightingStyle;
 import com.cheesymountain.woe.enemies.Enemy;
 
 /**

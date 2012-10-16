@@ -1,5 +1,7 @@
 package com.cheesymountain.woe;
 
+import com.cheesymountain.woe.Everbie;
+
 import android.util.Log;
 
 public class EverbieTest {

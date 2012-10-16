@@ -1,4 +1,4 @@
-package com.cheesymountain.woe;
+package com.cheesymountain.woe.util;
 
 /**
  * Interface for all things that can occupy an Everbie.

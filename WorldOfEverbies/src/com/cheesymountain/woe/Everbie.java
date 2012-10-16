@@ -19,6 +19,7 @@ package com.cheesymountain.woe;
 ================================================================*/
 import com.cheesymountain.woe.race.Mogno;
 import com.cheesymountain.woe.race.Race;
+import com.cheesymountain.woe.util.Occupationable;
 
 
 /**
