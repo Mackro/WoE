@@ -23,6 +23,7 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
@@ -56,6 +57,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	private Use use;
 	private SimpleGestureFilter detector;
 	private Enemy enemy;
+	private MediaPlayer bgMusic;
 	private static final int DIALOG_EXIT_APP_ID = 1;
 	private static final int DIALOG_FIGHT_ID = 10;
 	private static final int DIALOG_OI_ID = 100;
@@ -64,6 +66,8 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	this.onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
+    	bgMusic = MediaPlayer.create(MainActivity.this, R.raw.shire);
+    	bgMusic.start();
         use = new Use();
         detector = new SimpleGestureFilter(this, this);
     }
@@ -90,6 +94,24 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		startActivity(intent);
 		finish();
     }
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		bgMusic.pause();
+	}
+	
+	@Override
+	public void onStop(){
+		super.onStop();
+		bgMusic.release();
+	}
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		bgMusic.start();
+	}
     
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
