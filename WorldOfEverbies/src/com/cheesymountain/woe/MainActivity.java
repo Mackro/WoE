@@ -31,27 +31,15 @@ import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
-import com.cheesymountain.woe.food.BreadAndWater;
-import com.cheesymountain.woe.food.Melon;
-import com.cheesymountain.woe.food.RibEyeSteak;
-import com.cheesymountain.woe.interact.Chat;
-import com.cheesymountain.woe.interact.Comb;
-import com.cheesymountain.woe.interact.Snuggle;
-import com.cheesymountain.woe.item.Book;
-import com.cheesymountain.woe.item.HealthPotion;
-import com.cheesymountain.woe.item.Kettlebell;
-import com.cheesymountain.woe.item.Ribbon;
-import com.cheesymountain.woe.item.SkippingRope;
-import com.cheesymountain.woe.training.Chess;
-import com.cheesymountain.woe.training.Running;
-import com.cheesymountain.woe.training.WorkingOut;
-import com.cheesymountain.woe.work.Consulting;
-import com.cheesymountain.woe.work.DogWalking;
-import com.cheesymountain.woe.work.MotelCleaning;
-import com.cheesymountain.woe.work.Plumbing;
-import com.cheesymountain.woe.work.SellLemonade;
+
+import com.cheesymountain.woe.combat.*;
+import com.cheesymountain.woe.enemies.*;
+import com.cheesymountain.woe.food.*;
+import com.cheesymountain.woe.interact.*;
+import com.cheesymountain.woe.item.*;
+import com.cheesymountain.woe.training.*;
+import com.cheesymountain.woe.work.*;
 
 @SuppressLint("NewApi")
 /**
@@ -188,7 +176,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	    		break;
 	    	case R.id.golem:
 	    		enemy = new GarbageGolem();
-	    		enCreateDialog(DIALOG_FIGHT_ID);
+	    		onCreateDialog(DIALOG_FIGHT_ID);
 	    		break;
 	    	case R.id.spider:
 	    		enemy = new OversizedSpider();
