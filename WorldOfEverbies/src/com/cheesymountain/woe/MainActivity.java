@@ -230,12 +230,13 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     	}else if(i == DIALOG_FIGHT_ID){
     		Builder builder = new Builder(this);
     		builder.setMessage("How do you wish to fight?");
-    		builder.setCancelable(false);
+    		builder.setCancelable(true);
     		builder.setPositiveButton("Offensive", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
 					Combat combat = new Combat(enemy, new Offensive());
 					Log.getLog().combatLog(combat.doFight());
+					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 					dialog.cancel();
 				}
 			});
@@ -244,6 +245,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				public void onClick(DialogInterface dialog, int which) {
 					Combat combat = new Combat(enemy, new Defensive());
 					Log.getLog().combatLog(combat.doFight());
+					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 					dialog.cancel();
 				}
 			});
@@ -252,6 +254,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				public void onClick(DialogInterface dialog, int which) {
 					Combat combat = new Combat(enemy, new Tactical());
 					Log.getLog().combatLog(combat.doFight());
+					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 					dialog.cancel();
 				}
 			});
