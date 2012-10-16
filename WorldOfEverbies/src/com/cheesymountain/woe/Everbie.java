@@ -408,6 +408,15 @@ public class Everbie {
 		if(hours > 0 && hours*60 > 0)
 			setOccupiedMinutes(hours*60);
 	}
+	
+	/**
+	 * Sets the Everbies heath
+	 * @param health - the amount of health the everbie should have after method being called
+	 */
+	
+	public void setHealth(int health){
+		this.health = health;
+	}
 
 	/**
 	 * Puts the Everbie to rest to have it restore his/her health
