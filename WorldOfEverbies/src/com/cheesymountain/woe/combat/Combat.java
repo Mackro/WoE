@@ -1,8 +1,8 @@
-package com.cheesymountain.woe.tillfälligtcombat;
+package com.cheesymountain.woe.combat;
 
 import com.cheesymountain.woe.Everbie;
 import com.cheesymountain.woe.Use;
-import com.cheesymountain.woe.tillfälligtenemies.Enemy;
+import com.cheesymountain.woe.enemies.Enemy;
 
 /**
  * 
@@ -85,7 +85,7 @@ public class Combat {
 	private int rollDice(int sides, int dices) {
 		int diceSum = 0;
 		for (int i = 0; i < dices; i++) {
-			diceSum += (int) ((Math.random() * sides) + 0.5);
+			diceSum += (int) ((Math.random() * sides) + 1);
 		}
 		return diceSum;
 	}

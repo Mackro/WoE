@@ -1,4 +1,4 @@
-package com.cheesymountain.woe.tillfälligtenemies;
+package com.cheesymountain.woe.enemies;
 
 public class GardenGnome extends Enemy {
 	
