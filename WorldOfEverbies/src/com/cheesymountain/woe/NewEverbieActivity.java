@@ -60,9 +60,9 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		setContentView(R.layout.activity_new_everbie);
 
 		description = ((TextView)findViewById(R.id.everbieLongText));
-		description.setText(Race.RACELIST[selectedRace].getDescription());
+		description.setText(Race.RACELIST[selectedRace].DESCRIPTION);
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
-		pictures.setImageResource(Race.RACELIST[selectedRace].getImageId());
+		pictures.setImageResource(Race.RACELIST[selectedRace].IMAGEID);
 		name = (EditText)findViewById(R.id.everbieNameText);
 		name.setHint("Enter Name Here");
 		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
@@ -136,16 +136,16 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		switch(direction){
 		case SimpleGestureFilter.SWIPE_RIGHT:
 			if(selectedRace > 0){
-				pictures.setImageResource(Race.RACELIST[--selectedRace].getImageId());
+				pictures.setImageResource(Race.RACELIST[--selectedRace].IMAGEID);
 			}
 			break;
 		case SimpleGestureFilter.SWIPE_LEFT:
 			if(selectedRace < Race.RACELIST.length-1){
-				pictures.setImageResource(Race.RACELIST[++selectedRace].getImageId());
+				pictures.setImageResource(Race.RACELIST[++selectedRace].IMAGEID);
 			}
 			break;
 		}
-		description.setText(Race.RACELIST[selectedRace].getDescription());
+		description.setText(Race.RACELIST[selectedRace].DESCRIPTION);
 		setDotOrientation(selectedRace);
 	}
 

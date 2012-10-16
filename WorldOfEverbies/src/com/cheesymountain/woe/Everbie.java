@@ -34,8 +34,9 @@ public class Everbie {
 	
 	private int imageId = 0; 
 	public static final String DEFAULT_NAME = "Eibreve";
+	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
-	public static final int STARTING_MONEY = 0;
+	public static final int STARTING_MONEY = 0, STARTING_FULLNESS = 50, STARTING_HAPPINESS = 50;
 	private String name;
 	private int maxHealthModifier, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
@@ -49,14 +50,14 @@ public class Everbie {
 		maxHealthModifier = race.MAXHEALTHMODIFIER;
 		strength = race.STRENGTH;
 		intelligence = race.INTELLIGENCE;
-		stamina = race.getStamina();
-		charm = race.getCharm();
-		fullness = 50;
-		happiness = 50;
+		stamina = race.INTELLIGENCE;
+		charm = race.CHARM;
+		cuteness = race.CUTENESS;
+		fullness = STARTING_FULLNESS;
+		happiness = STARTING_HAPPINESS;
 		toxicity = 0;
-		cuteness = race.getCuteness();
 		money = STARTING_MONEY;
-		this.imageId = race.getImageId();
+		this.imageId = race.IMAGEID;
 		starvation = standardStarvation = 1;
 		health = getMaxHealth();
 		
@@ -504,7 +505,8 @@ public class Everbie {
 					Thread.sleep(600000);
 				}catch(InterruptedException ie){}
 				Everbie.getEverbie().changeFullness(-Everbie.getEverbie().starvation);
-				Log.d("Loop", fullness + "");
+				Log.d("Loop", fullness + " fullness, " +
+				starvation + " starvation");
 			}
 		}
 	}
