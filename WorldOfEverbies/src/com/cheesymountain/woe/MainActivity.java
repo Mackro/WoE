@@ -17,6 +17,8 @@ package com.cheesymountain.woe;
  * You should have received a copy of the GNU General Public License
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
+import java.io.IOException;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
@@ -67,7 +69,15 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     	super.onCreate(savedInstanceState);
     	this.onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
     	bgMusic = MediaPlayer.create(MainActivity.this, R.raw.shire);
-    	bgMusic.start();
+    	try {
+			bgMusic.prepare();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         use = new Use();
         detector = new SimpleGestureFilter(this, this);
     }
@@ -98,13 +108,13 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	@Override
 	public void onPause(){
 		super.onPause();
-		bgMusic.release();
+		bgMusic.pause();
 	}
 	
 	@Override
-	public void onStop(){
-		super.onStop();
-		bgMusic.release();
+	public void onResume(){
+		bgMusic.start();
+		super.onResume();
 	}
 	
     
