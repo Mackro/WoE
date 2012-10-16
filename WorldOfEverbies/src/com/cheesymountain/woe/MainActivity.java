@@ -110,17 +110,24 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     	savedInstanceState.putInt("imagePath", Everbie.getEverbie().getImageId());
     }
     
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
 			case R.id.BreadAndWater:
-				use.activate(new BreadAndWater());
+				if(use.activate(new BreadAndWater()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.Melon:
-				use.activate(new Melon());
+				if(use.activate(new Melon()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.ribEyeStake:
-				use.activate(new RibEyeSteak());
+				if(use.activate(new RibEyeSteak()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.chat:
 				use.activate(new Chat());
@@ -132,19 +139,29 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				use.activate(new Snuggle());
 	    		break;
 			case R.id.book:
-				use.activate(new Book());
+				if(use.activate(new Book()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.healthPotion:
-				use.activate(new HealthPotion());
+				if(use.activate(new HealthPotion()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.kettleBell:
-				use.activate(new Kettlebell());
+				if(use.activate(new Kettlebell()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.ribbon:
-				use.activate(new Ribbon());
+				if(use.activate(new Ribbon()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.skippingRope:
-				use.activate(new SkippingRope());
+				if(use.activate(new SkippingRope()) == Use.NOT_ENOUGH_OI){
+					showDialog(DIALOG_OI_ID);
+				}
 	    		break;
 			case R.id.chess:
 				use.activate(new Chess());
@@ -172,19 +189,19 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	    		break;
 	    	case R.id.gnome:
 	    		enemy = new GardenGnome();
-	    		onCreateDialog(DIALOG_FIGHT_ID);
+	    		showDialog(DIALOG_FIGHT_ID);
 	    		break;
 	    	case R.id.golem:
 	    		enemy = new GarbageGolem();
-	    		onCreateDialog(DIALOG_FIGHT_ID);
+	    		showDialog(DIALOG_FIGHT_ID);
 	    		break;
 	    	case R.id.spider:
 	    		enemy = new OversizedSpider();
-	    		onCreateDialog(DIALOG_FIGHT_ID);
+	    		showDialog(DIALOG_FIGHT_ID);
 	    		break;
 	    	case R.id.titan:
 	    		enemy = new ScrapMetalTitan();
-	    		onCreateDialog(DIALOG_FIGHT_ID);
+	    		showDialog(DIALOG_FIGHT_ID);
 	    		break;
 	    	default:
 	    		return false;
@@ -217,21 +234,21 @@ public class MainActivity extends Activity implements SimpleGestureListener{
     		builder.setPositiveButton("Offensive", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
-					new Combat(enemy, new Offensive());
+					Log.getLog().combatLog(new Combat(enemy, new Offensive()));
 					dialog.cancel();
 				}
 			});
 			builder.setNeutralButton("Defensive", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
-					new Combat(enemy, new Defensive());
+					Log.getLog().combatLog(new Combat(enemy, new Defensive()));
 					dialog.cancel();
 				}
 			});
 			builder.setNegativeButton("Tactical", new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
-					new Combat(enemy, new Tactical());
+					Log.getLog().combatLog(new Combat(enemy, new Tactical()));
 					dialog.cancel();
 				}
 			});
