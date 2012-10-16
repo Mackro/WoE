@@ -28,9 +28,10 @@ public class Consulting extends Work {
 	private static int happinessModifier = -3;
 	private static int healthModifier = -1;
 	private static int minutesWorking = 180;
+	private static int starvationModifier = -2;
 	
 	public Consulting() {
-		super(time, salary, happinessModifier, healthModifier, minutesWorking);
+		super(time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier);
 	}
 
 	@Override

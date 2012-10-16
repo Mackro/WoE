@@ -27,12 +27,12 @@ public class Running extends Training {
 	private static int strengthModifier = 0;
 	private static int staminaModifier = 2;
 	private static int intelligenceModifier = 0;
-	private static int fullnessModifier = -2;
+	private static int starvationModifier = -2;
 	private static int minutesTraining = 45;
 
 	public Running() {
 		
-		super(strengthModifier, intelligenceModifier, staminaModifier, fullnessModifier, minutesTraining);
+		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier, minutesTraining);
 		
 	}
 

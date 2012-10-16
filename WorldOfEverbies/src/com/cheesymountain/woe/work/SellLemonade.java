@@ -31,9 +31,10 @@ public class SellLemonade extends Work {
 	private static int happinessModifier = -8;
 	private static int healthModifier = 0;
 	private static int minutesWorking = 60;
+	private static int starvationModifier = -1;
 	
 	public SellLemonade() {
-		super(time, salary, happinessModifier, healthModifier, minutesWorking);
+		super(time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier);
 	}
 	
 	@Override

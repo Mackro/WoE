@@ -28,9 +28,10 @@ public class DogWalking extends Work {
 	private static int happinessModifier = -5;
 	private static int healthModifier = 2;
 	private static int minutesWorking = 30;
+	private static int starvationModifier = -2;
 	
 	public DogWalking() {
-		super(time, salary, happinessModifier, healthModifier, minutesWorking);
+		super(time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier);
 	}
 
 	@Override

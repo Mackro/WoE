@@ -28,9 +28,10 @@ public class Plumbing extends Work {
 	private static int happinessModifier = -5;
 	private static int healthModifier = 0;
 	private static int minutesWorking = 120;
+	private static int starvationModifier = -2;
 	
 	public Plumbing() {
-		super(time, salary, happinessModifier, healthModifier,minutesWorking);
+		super(time, salary, happinessModifier, healthModifier,minutesWorking, starvationModifier);
 	}
 
 	@Override

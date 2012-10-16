@@ -24,31 +24,35 @@ package com.cheesymountain.woe.training;
  * 
  * @author Rickard Hallberg
  */
-public abstract class Training {
+public abstract class Training implements Occupationable {
 	
-	private int strengthModifier, intelligenceModifier, staminaModifier, fullnessModifier, minutesTraining;
+	private int strengthModifier, intelligenceModifier, staminaModifier, starvationModifier, minutesTraining;
 	
 	/**
 	 * This is the constructor that is called for from all subclasses.
 	 * 
-	 * @param strengthModifier
-	 * @param intelligenceModifier
-	 * @param staminaModifier
-	 * @param fullnessModifier
+	 * @param strengthModifier is the int variable of how much the strength will be changed by the given training
+	 * @param intelligenceModifier is the int variable of how much the intelligence will be changed by the given training
+	 * @param staminaModifier is the int variable of how much the stamina will be changed by the given training
+	 * @param fullnessModifier is the int variable of how much the fullness will be changed by the given training
 	 */
-	public Training(int strengthModifier, int intelligenceModifier, int staminaModifier, int fullnessModifier, int minutesTraining){
-		this.fullnessModifier = fullnessModifier;
+	public Training(int strengthModifier, int intelligenceModifier, int staminaModifier, int starvationModifier, int minutesTraining){
+		this.starvationModifier = starvationModifier;
 		this.intelligenceModifier = intelligenceModifier;
 		this.staminaModifier = staminaModifier;
 		this.strengthModifier = strengthModifier;
 		this.minutesTraining = minutesTraining;
 	}
 	/**
+	 * A method for returning the name of the training session
+	 * 
 	 * @return a string with the name of the type of training
 	 */
 	public abstract String getName();
 
 	/**
+	 * A method for returning the strengthModifier of the training session
+	 * 
 	 * @return the strengthmodifier of the given training as an int
 	 */
 	public int getStrengthModifier(){
@@ -56,6 +60,8 @@ public abstract class Training {
 	}
 	
 	/**
+	 * A method for returning the intelligenceModifier of the training session
+	 * 
 	 * @return the intelligencemodifier of the given training as an int
 	 */
 	public int getIntelligenceModifier(){
@@ -63,6 +69,8 @@ public abstract class Training {
 	}
 	
 	/**
+	 * A method for returning the staminaModifier of the training session
+	 * 
 	 * @return the staminamodifier of the given training as an int
 	 */
 	public int getStaminaModifier(){
@@ -70,12 +78,19 @@ public abstract class Training {
 	}
 	
 	/**
-	 * @return the fullnessmodifier of the given training as an int
+	 * A method for returning the starvationModifier of the training session
+	 * 
+	 * @return the starvationmodifier of the given training as an int
 	 */
-	public int getFullnessModifier(){
-		return fullnessModifier;
+	public int getStarvationModifier(){
+		return starvationModifier;
 	}
 	
+	/**
+	 * A method for returning the number of minutes that the training session requires
+	 * 
+	 * @return	the fullnessmodifier of the given training as an int
+	 */
 	public int getMinutesTraining(){
 		return minutesTraining;
 	}
