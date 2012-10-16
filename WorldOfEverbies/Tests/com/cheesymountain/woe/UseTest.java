@@ -79,7 +79,7 @@ public class UseTest {
 					work = new Plumbing();
 					break;
 				case 4:
-					work = new SellLemonade();
+					work = new SellLemonade(0);
 					break;
 				default:
 					Log.e("Error", "Wrong int in testFood for-loop");	
