@@ -105,7 +105,7 @@ public class Combat {
 				combatString += "\nYou also find a "+enemy.getAdditionalItemReward().getName();
 			}
 		}
-		combatString += "\n--End of Combat--";
+		combatString += "\n\n--End of Combat--\n";
 	}
 
 	private int rollDice(int sides, int dices) {

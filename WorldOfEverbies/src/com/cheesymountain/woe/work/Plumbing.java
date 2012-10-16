@@ -36,7 +36,7 @@ public class Plumbing extends Work {
 
 	@Override
 	public String getName() {
-		return "Plumbing";
+		return "plumbing";
 	}
 
 }

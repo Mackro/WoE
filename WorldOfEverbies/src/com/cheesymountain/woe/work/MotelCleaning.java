@@ -36,7 +36,7 @@ public class MotelCleaning extends Work {
 
 	@Override
 	public String getName() {
-		return "MotelCleaning";
+		return "motel cleaning";
 	}
 
 }

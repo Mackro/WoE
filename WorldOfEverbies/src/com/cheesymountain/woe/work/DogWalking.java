@@ -36,7 +36,7 @@ public class DogWalking extends Work {
 
 	@Override
 	public String getName() {
-		return "Dogwalking";
+		return "dogwalking";
 	}
 
 }

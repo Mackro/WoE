@@ -9,6 +9,6 @@ public class TakeABath extends Interaction {
 
 	@Override
 	public String getName() {
-		return "Take a bath";
+		return "take a bath";
 	}
 }

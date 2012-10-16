@@ -9,7 +9,7 @@ public class PlayCards extends Interaction {
 
 	@Override
 	public String getName() {
-		return "Play Cards";
+		return "play cards";
 	}
 	
 }

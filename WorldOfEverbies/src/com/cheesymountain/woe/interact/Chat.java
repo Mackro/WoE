@@ -27,6 +27,6 @@ public class Chat extends Interaction {
 
 	@Override
 	public String getName() {
-		return "Chat";
+		return "chat";
 	}
 }

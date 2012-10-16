@@ -26,7 +26,7 @@ public class Snuggle extends Interaction {
 
 	@Override
 	public String getName() {
-		return "Snuggle";
+		return "snuggle";
 	}
 
 }

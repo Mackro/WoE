@@ -27,7 +27,7 @@ public class Pamper extends Interaction {
 
 	@Override
 	public String getName() {
-		return "Comb";
+		return "pamper";
 	}
 	
 }
