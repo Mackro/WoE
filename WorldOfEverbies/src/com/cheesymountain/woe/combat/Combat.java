@@ -18,7 +18,7 @@ public class Combat {
 	private FightingStyle fightingStyle;
 	private Use use = new Use();
 	private int totalHPloss;
-	private String combatString = "";
+	private String combatString = "\n--Combat Starts--\n";
 
 	public Combat(Enemy enemy, FightingStyle fightingstyle) {
 		this.enemy = enemy;
@@ -61,7 +61,7 @@ public class Combat {
 					combatString += "\n"+Everbie.getEverbie().getName()+" hit "+enemy.getName()+
 							" for "+dmg+" damage.";
 				}else{
-					combatString += Everbie.getEverbie().getName()+" missed "+enemy.getName();
+					combatString += "\n"+Everbie.getEverbie().getName()+" missed "+enemy.getName();
 				}
 				turn = 1;
 			}
@@ -80,31 +80,32 @@ public class Combat {
 						Everbie.getEverbie().setFainted(true);
 						combatString += "\nYour Everbie has fainted.";
 					}else{
-						combatString += enemy.getName()+" hit "+Everbie.getEverbie().getName()+
+						combatString += "\n"+enemy.getName()+" hit "+Everbie.getEverbie().getName()+
 								" for "+dmg+" damage.";
 					}
 				}else{
-					combatString += enemy.getName()+" misses "+Everbie.getEverbie().getName();
+					combatString += "\n"+Everbie.getEverbie().getName()+" blocks "+enemy.getName()
+							+"'s attack";
 				}
+				turn = 0;
 			}
-			turn = 0;
 		}
-		if (health > 0 && enemy.getHealth() < 0
-				&& enemy.getAdditionalItemReward() != null) {
+		if (health > 0 && enemy.getHealth() < 1){
 			totalHPloss = Everbie.getEverbie().getHealth()-health;
 			Everbie.getEverbie().setHealth(health);
-			use.activate(enemy.getAdditionalItemReward());
 			Everbie.getEverbie().changeMoney(
 					enemy.getBaseMoneyReward()
 					* Everbie.getEverbie().getLevel());
-			combatString += Everbie.getEverbie().getName()+" has successfully defeated the "+
+			combatString += "\n"+Everbie.getEverbie().getName()+" has successfully defeated the "+
 					enemy.getName()+" and took "+totalHPloss+" Damage." +
 					"\nThe enemy leaves behind "+enemy.getBaseMoneyReward()*
 					Everbie.getEverbie().getLevel()+" Oi";
 			if(enemy.getAdditionalItemReward()!=null){
+				use.activate(enemy.getAdditionalItemReward());
 				combatString += "\nYou also find a "+enemy.getAdditionalItemReward().getName();
 			}
 		}
+		combatString += "\n--End of Combat--";
 	}
 
 	private int rollDice(int sides, int dices) {

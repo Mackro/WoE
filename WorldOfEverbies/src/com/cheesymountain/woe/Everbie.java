@@ -395,7 +395,7 @@ public class Everbie {
 	 * @return <code>true</code> if money was added or subtracted correctly, <code>false</code> otherwise
 	 */
 	public boolean changeMoney(int i) {
-		if(money + i > 0){
+		if(money + i >= 0){
 			money += i;
 			return true;
 		}
