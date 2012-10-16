@@ -1,8 +1,8 @@
-package com.cheesymountain.woe.Combat;
+package com.cheesymountain.woe.tillfälligtcombat;
 
 import com.cheesymountain.woe.Everbie;
 import com.cheesymountain.woe.Use;
-import com.cheesymountain.woe.Enemies.Enemy;
+import com.cheesymountain.woe.tillfälligtenemies.Enemy;
 
 /**
  * 

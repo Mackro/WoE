@@ -1,4 +1,4 @@
-package com.cheesymountain.woe.Enemies;
+package com.cheesymountain.woe.tillfälligtenemies;
 
 public class OversizedSpider extends Enemy {
 	

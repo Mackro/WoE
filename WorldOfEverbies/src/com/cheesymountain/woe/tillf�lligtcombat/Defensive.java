@@ -1,4 +1,4 @@
-package com.cheesymountain.woe.Combat;
+package com.cheesymountain.woe.tillfälligtcombat;
 
 public class Defensive extends FightingStyle {
 
