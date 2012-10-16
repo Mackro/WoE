@@ -29,7 +29,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
-import com.cheesymountain.woe.Races.Race;
+import com.cheesymountain.woe.smallRinc.Race;
 
 /**
  * Controller class when creating a new Everbie that handles swipe events
@@ -60,9 +60,9 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		setContentView(R.layout.activity_new_everbie);
 
 		description = ((TextView)findViewById(R.id.everbieLongText));
-		description.setText(Race.RACELIST[selectedRace].getDescription());
+		description.setText(Race.RACELIST[selectedRace].DESCRIPTION);
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
-		pictures.setImageResource(Race.RACELIST[selectedRace].getImageId());
+		pictures.setImageResource(Race.RACELIST[selectedRace].IMAGEID);
 		name = (EditText)findViewById(R.id.everbieNameText);
 		name.setHint("Enter Name Here");
 		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
@@ -89,7 +89,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 				savedInstanceState.getInt("cuteness"),
 				savedInstanceState.getInt("money")};
 		Everbie.getEverbie().restoreEverbie(savedInstanceState.getString("Name"), values,
-				savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));	
+				savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));
 	}
 
 	/**
@@ -129,23 +129,23 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	}
 
 	/**
-	 * Is called when the user swipes across the screen
+	 * Is called when the user swipes across the screen.
 	 * @param direction - the direction in which the user swipes
 	 */
 	public void onSwipe(int direction){
 		switch(direction){
 		case SimpleGestureFilter.SWIPE_RIGHT:
 			if(selectedRace > 0){
-				pictures.setImageResource(Race.RACELIST[--selectedRace].getImageId());
+				pictures.setImageResource(Race.RACELIST[--selectedRace].IMAGEID);
 			}
 			break;
 		case SimpleGestureFilter.SWIPE_LEFT:
 			if(selectedRace < Race.RACELIST.length-1){
-				pictures.setImageResource(Race.RACELIST[++selectedRace].getImageId());
+				pictures.setImageResource(Race.RACELIST[++selectedRace].IMAGEID);
 			}
 			break;
 		}
-		description.setText(Race.RACELIST[selectedRace].getDescription());
+		description.setText(Race.RACELIST[selectedRace].DESCRIPTION);
 		setDotOrientation(selectedRace);
 	}
 
@@ -156,7 +156,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	}
 
 	/**
-	 * Is called automatically when pressing the exit button
+	 * Is called automatically when pressing the exit button.
 	 * @param view - the view from which exit button was pressed
 	 */
 	public void exit(View view){
@@ -166,14 +166,14 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	}
 
 	/**
-	 * Inherited from SimpleGestureListener (not used)
+	 * Inherited from SimpleGestureListener (not used).
 	 */
 	public void onDoubleTap() {
 		/* Do nothing */
 	}
 
 	@Override
-	public boolean dispatchTouchEvent(MotionEvent me){ 
+	public boolean dispatchTouchEvent(MotionEvent me){
 		this.detector.onTouchEvent(me);
 		return super.dispatchTouchEvent(me); 
 	}

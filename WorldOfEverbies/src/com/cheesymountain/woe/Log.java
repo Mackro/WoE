@@ -74,27 +74,18 @@ public class Log {
 	}
 	
 	/**
-	 * Is called when there is unsufficent money to buy items or food 
-	 * and the Log should be configured correctly
-	 */
-	public void notEnoughMoney(){
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
-		logList.addLast("Not enough Oi! \n");
-	}
-	
-	/**
 	 * Is called when the Everbie is busy when the owner has tried to 
 	 * use some other activity and the Log should be configured 
 	 * correctly
 	 */
 	public void isBusy(){
+		String time = (everbie.getOccupiedHours()==0?"":everbie.getOccupiedHours() + "h ") +
+				(everbie.getOccupiedMinutes()-everbie.getOccupiedHours()*60) + "m " +
+				(everbie.getOccupiedSeconds()-everbie.getOccupiedMinutes()*60) + "s.";
 		if (logList.size() > 19) {
 			logList.removeFirst();
 		}
-		logList.addLast(everbie.getName() + " is busy at the moment but will be ready within " + 
-		everbie.getOccupiedMinutes() + 1 + "\n");
+		logList.addLast(everbie.getName() + " is busy at the moment but will be ready in " + time + "\n");
 	}
 	
 	/**
@@ -196,7 +187,6 @@ public class Log {
 	 * @param item - the item given
 	 */
 	public void itemUsed(Item item){
-
 		if (logList.size() > 19) {
 			logList.removeFirst();
 		}
@@ -208,6 +198,10 @@ public class Log {
 		(item.getCutenessModifier()>0?" and became cuter":(item.getCutenessModifier()<0?" and became uglier":"")) +
 		(item.getHealthModifier()>0?" and regained health":(item.getHealthModifier()<0?" and lost health":"")) +
 		(item.getToxicityModifier()>0?" and got sicker":(item.getStrengthModifier()<0?" and became healthier":"")) + "\n");
+	}
+	
+	public void fight(){
+		
 	}
 	
 	private String getTime() {

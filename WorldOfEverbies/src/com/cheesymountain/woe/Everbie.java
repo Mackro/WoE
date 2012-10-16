@@ -19,8 +19,7 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.util.Log;
 
-import com.cheesymountain.woe.Races.Mogno;
-import com.cheesymountain.woe.Races.Race;
+import com.cheesymountain.woe.smallRinc.*;
 
 
 /**
@@ -37,7 +36,7 @@ public class Everbie {
 	public static final String DEFAULT_NAME = "Eibreve";
 	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
-	public static final int STARTING_MONEY = 0;
+	public static final int STARTING_MONEY = 0, STARTING_FULLNESS = 50, STARTING_HAPPINESS = 50;
 	private String name;
 	private int maxHealthModifier, health, strength, intelligence, stamina,
 			charm, fullness, happiness, toxicity, cuteness, money;
@@ -48,17 +47,17 @@ public class Everbie {
 	private Everbie(String name, Race race) {
 		alive = true;
 		this.name = name;
-		maxHealthModifier = race.getMaxHealth();
-		strength = race.getStrength();
-		intelligence = race.getIntelligence();
-		stamina = race.getStamina();
-		charm = race.getCharm();
-		fullness = 50;
-		happiness = 50;
+		maxHealthModifier = race.MAXHEALTHMODIFIER;
+		strength = race.STRENGTH;
+		intelligence = race.INTELLIGENCE;
+		stamina = race.INTELLIGENCE;
+		charm = race.CHARM;
+		cuteness = race.CUTENESS;
+		fullness = STARTING_FULLNESS;
+		happiness = STARTING_HAPPINESS;
 		toxicity = 0;
-		cuteness = race.getCuteness();
 		money = STARTING_MONEY;
-		this.imageId = race.getImageId();
+		this.imageId = race.IMAGEID;
 		starvation = standardStarvation = 1;
 		health = getMaxHealth();
 		
@@ -409,6 +408,15 @@ public class Everbie {
 		if(hours > 0 && hours*60 > 0)
 			setOccupiedMinutes(hours*60);
 	}
+	
+	/**
+	 * Sets the Everbies heath
+	 * @param health - the amount of health the everbie should have after method being called
+	 */
+	
+	public void setHealth(int health){
+		this.health = health;
+	}
 
 	/**
 	 * Puts the Everbie to rest to have it restore his/her health
@@ -481,7 +489,6 @@ public class Everbie {
 	}
 
 	private class Occupied extends Thread{
-				
 		@Override
 		public void run(){
 			while(Everbie.getEverbie().isAlive() && Everbie.getEverbie().occupiedSeconds > 0){
@@ -506,8 +513,9 @@ public class Everbie {
 				try{
 					Thread.sleep(600000);
 				}catch(InterruptedException ie){}
-				Everbie.getEverbie().fullness -= Everbie.getEverbie().starvation;
-				Log.d("Loop", fullness + "");
+				Everbie.getEverbie().changeFullness(-Everbie.getEverbie().starvation);
+				Log.d("Loop", fullness + " fullness, " +
+				starvation + " starvation");
 			}
 		}
 	}

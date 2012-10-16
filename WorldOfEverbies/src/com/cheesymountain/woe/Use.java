@@ -41,15 +41,11 @@ public class Use {
 			Log.getLog().isBusy();
 			return;
 		}
-		if(Everbie.getEverbie().getMoney() - food.getCost() >= 0){
-			Log.getLog().foodGiven(food);
-			Everbie.getEverbie().changeMoney(-food.getCost());
-			Everbie.getEverbie().changeFullness(food.getFullnessModifier());
-			Everbie.getEverbie().changeHappiness(food.getHappinessModifier());
-			Everbie.getEverbie().changeToxicity(food.getToxicityModifier());
-			return;
-		}
-		Log.getLog().notEnoughMoney();
+		Log.getLog().foodGiven(food);
+		Everbie.getEverbie().changeMoney(-food.getCost());
+		Everbie.getEverbie().changeFullness(food.getFullnessModifier());
+		Everbie.getEverbie().changeHappiness(food.getHappinessModifier());
+		Everbie.getEverbie().changeToxicity(food.getToxicityModifier());
 	}
 
 
@@ -81,20 +77,16 @@ public class Use {
 			Log.getLog().isBusy();
 			return;
 		}
-		if(Everbie.getEverbie().getMoney() - item.getCost() >= 0){
-			Log.getLog().itemUsed(item);
-			Everbie.getEverbie().changeMoney(-item.getCost());
-			Everbie.getEverbie().changeStrength(item.getStrengthModifier());
-			Everbie.getEverbie().changeIntelligence(item.getIntelligenceModifier());
-			Everbie.getEverbie().changeCharm(item.getCharmModifier());
-			Everbie.getEverbie().changeCuteness(item.getCutenessModifier());
-			Everbie.getEverbie().changeHappiness(item.getHappinessModifier());
-			Everbie.getEverbie().changeHealth(item.getHealthModifier());
-			Everbie.getEverbie().changeStamina(item.getStaminaModifier());
-			Everbie.getEverbie().changeToxicity(item.getToxicityModifier());
-			return;
-		}
-		Log.getLog().notEnoughMoney();
+		Log.getLog().itemUsed(item);
+		Everbie.getEverbie().changeMoney(-item.getCost());
+		Everbie.getEverbie().changeStrength(item.getStrengthModifier());
+		Everbie.getEverbie().changeIntelligence(item.getIntelligenceModifier());
+		Everbie.getEverbie().changeCharm(item.getCharmModifier());
+		Everbie.getEverbie().changeCuteness(item.getCutenessModifier());
+		Everbie.getEverbie().changeHappiness(item.getHappinessModifier());
+		Everbie.getEverbie().changeHealth(item.getHealthModifier());
+		Everbie.getEverbie().changeStamina(item.getStaminaModifier());
+		Everbie.getEverbie().changeToxicity(item.getToxicityModifier());
 	}
 
 	public void activate(Training train){
