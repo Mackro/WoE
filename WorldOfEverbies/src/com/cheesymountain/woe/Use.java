@@ -54,11 +54,13 @@ public class Use {
 			Log.getLog().isBusy();
 			return;
 		}
-		Log.getLog().workStarted(work);
+		Log.getLog().started(work);
+		Everbie.getEverbie().setOccupation(work);
 		Everbie.getEverbie().changeMoney(work.getSalary());
 		Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 		Everbie.getEverbie().changeHealth(work.getHealthModifier());
 		Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
+		new Occupation().start();
 	}
 
 	public void activate(Interaction interact){
@@ -94,12 +96,14 @@ public class Use {
 			Log.getLog().isBusy();
 			return;
 		}
-		Log.getLog().trainingStarted(train);
+		Log.getLog().started(train);
+		Everbie.getEverbie().setOccupation(train);
 		Everbie.getEverbie().changeStrength(train.getStrengthModifier());
 		Everbie.getEverbie().changeStamina(train.getStaminaModifier());
 		Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
 		Everbie.getEverbie().changeFullness(train.getFullnessModifier());
 		Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
+		new Occupation().start();
 	}
 }
 

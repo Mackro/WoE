@@ -43,6 +43,7 @@ public class Everbie {
 	private boolean alive;
 	private long occupiedSeconds = 0;
 	private int starvation, standardStarvation;
+	private Occupationable occupation;
 
 	private Everbie(String name, Race race) {
 		alive = true;
@@ -128,6 +129,22 @@ public class Everbie {
 	}
 
 	/**
+	 * Returns the current level of starvation of the current Everbie
+	 * @return the current level of starvation
+	 */
+	public int getStarvation() {
+		return starvation;
+	}
+
+	/**
+	 * Returns the standard level of starvation of the current Everbie
+	 * @return the standard level of starvation
+	 */
+	public int getStandardStarvation() {
+		return standardStarvation;
+	}
+
+	/**
 	 * Returns the current level of intelligence of the current Everbie
 	 * @return the current level of intelligence
 	 */
@@ -201,7 +218,7 @@ public class Everbie {
 
 	/**
 	 * Returns the amount of time the Everbie is occupied
-	 * @param seconds - the amount of seconds occupied
+	 * @return seconds - the amount of seconds occupied
 	 */
 	public long getOccupiedSeconds(){
 		return occupiedSeconds;
@@ -209,7 +226,7 @@ public class Everbie {
 
 	/**
 	 * Returns the amount of time the Everbie should is occupied
-	 * @param minutes - the amount of minutes occupied
+	 * @return minutes - the amount of minutes occupied
 	 */
 	public int getOccupiedMinutes(){
 		return (int) (getOccupiedSeconds()/60);
@@ -217,10 +234,18 @@ public class Everbie {
 
 	/**
 	 * Returns the amount of time the Everbie should is occupied
-	 * @param hours - the amount of hours occupied
+	 * @return hours - the amount of hours occupied
 	 */
 	public int getOccupiedHours(){
 		return getOccupiedMinutes()/60;
+	}
+
+	/**
+	 * Returns the amount of time the Everbie should is occupied
+	 * @return Occupationable - the work or training the Everbie is occupied with
+	 */
+	public Occupationable getOccupation(){
+		return occupation;
 	}
 
 	/**
@@ -372,6 +397,15 @@ public class Everbie {
 	}
 	
 	/**
+	 * Decreases the amount of seconds the Everbie should be occupied by one
+	 */
+	public void decreaseOccupiedSeconds(){
+		if(this.occupiedSeconds > 0){
+			this.occupiedSeconds--;
+		}
+	}
+	
+	/**
 	 * Sets the name of the Everbie
 	 * @param name - the new name
 	 */
@@ -387,7 +421,6 @@ public class Everbie {
 		if(seconds > 0){
 			this.occupiedSeconds = seconds;
 			this.starvation = 3;
-			new Occupied().start();
 		}
 	}
 
@@ -396,8 +429,9 @@ public class Everbie {
 	 * @param minutes - the amount of minutes to be occupied
 	 */
 	public void setOccupiedMinutes(int minutes){
-		if(minutes > 0 && minutes*60 > 0)
+		if(minutes > 0 && minutes*60 > 0){
 			setOccupiedSeconds(minutes*60);
+		}
 	}
 
 	/**
@@ -405,8 +439,27 @@ public class Everbie {
 	 * @param hours - the amount of hours to be occupied
 	 */
 	public void setOccupiedHours(int hours){
-		if(hours > 0 && hours*60 > 0)
+		if(hours > 0 && hours*60 > 0){
 			setOccupiedMinutes(hours*60);
+		}
+	}
+
+	/**
+	 * Sets the work or training the Everbie should be occupied with
+	 * @param occupation - the work or training to be occupied with
+	 */
+	public void setOccupation(Occupationable occupation){
+		this.occupation = occupation;
+	}
+
+	/**
+	 * Sets the amount of starvation the Everbie should have currently
+	 * @param star - the amount of starvation
+	 */
+	public void setStarvation(int star){
+		if(star > 0){
+			starvation = star;
+		}
 	}
 
 	/**
@@ -477,22 +530,6 @@ public class Everbie {
 	 */
 	public synchronized void reset(){
 		everbie = null;
-	}
-
-	private class Occupied extends Thread{
-		@Override
-		public void run(){
-			while(Everbie.getEverbie().isAlive() && Everbie.getEverbie().occupiedSeconds > 0){
-				try{
-					Thread.sleep(1000);
-				}catch(InterruptedException ie){}
-				Everbie.getEverbie().occupiedSeconds--;
-				if(Everbie.getEverbie().occupiedSeconds <= 0 && starvation != standardStarvation){
-					starvation = standardStarvation;
-				}
-				Log.d("Loop", occupiedSeconds + "");
-			}
-		}
 	}
 	
 	

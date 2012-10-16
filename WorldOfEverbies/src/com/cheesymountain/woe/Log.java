@@ -93,7 +93,7 @@ public class Log {
 	 * log correctly
 	 * @param train - the type of training started
 	 */
-	public void trainingStarted(Training train){
+	public void started(Training train){
 		if (logList.size() > 19) {
 			logList.removeFirst();
 		}
@@ -106,7 +106,7 @@ public class Log {
 	 * log correctly
 	 * @param work - the kind of work started
 	 */
-	public void workStarted(Work work){
+	public void started(Work work){
 		if (logList.size() > 19) {
 			logList.removeFirst();
 		}
@@ -134,7 +134,7 @@ public class Log {
 	 * String correctly
 	 * @param work - the work to do
 	 */
-	public void workDone(Work work){
+	public void doneWith(Work work){
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -150,7 +150,7 @@ public class Log {
 	 * String correctly
 	 * @param train
 	 */
-	public void trainingDone(Training train){
+	public void doneWith(Training train){
 
 		if (logList.size() > 19) {
 			logList.removeFirst();
@@ -161,6 +161,20 @@ public class Log {
 				+ " strength and gained" + (train.getStaminaModifier()>0?" increased":train.getStaminaModifier()<0?" decreased":" no")
 				+ " stamina  and gained" + (train.getIntelligenceModifier()>0?" increased":train.getIntelligenceModifier()<0?" decreased":" no")
 				+ " intelligence and grew hungrier");
+	}
+	
+	/**
+	 * Is called when training is completed by the Everbie to configure the 
+	 * String correctly
+	 * @param occupation - the occupation that is done
+	 */
+	public void doneWith(Occupationable occupation){
+		if(occupation instanceof Work){
+			doneWith((Work)occupation);
+		}else if(occupation instanceof Training){
+			doneWith((Training)occupation);
+		}
+
 	}
 	
 	/**
@@ -200,9 +214,6 @@ public class Log {
 		(item.getToxicityModifier()>0?" and got sicker":(item.getStrengthModifier()<0?" and became healthier":"")) + "\n");
 	}
 	
-	public void fight(){
-		
-	}
 	
 	private String getTime() {
 		String timeString = "\n"+time.monthDay+"/"+time.month+" "+time.hour+":"+time.minute+" - ";
