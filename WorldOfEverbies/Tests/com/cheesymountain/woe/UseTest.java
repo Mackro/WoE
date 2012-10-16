@@ -107,7 +107,7 @@ public class UseTest {
 					interaction = new Chat();
 					break;
 				case 1:
-					interaction = new Comb();
+					interaction = new Pamper();
 					break;
 				case 2:
 					interaction = new Snuggle();

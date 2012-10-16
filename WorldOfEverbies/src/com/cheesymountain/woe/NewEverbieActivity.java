@@ -52,13 +52,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		if(savedInstanceState != null && savedInstanceState.get("name")!=null){
-				onRestoreInstanceState(savedInstanceState);
-				Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
-				startActivity(main);
-		}
 		setContentView(R.layout.activity_new_everbie);
-
 		description = ((TextView)findViewById(R.id.everbieLongText));
 		description.setText(Race.RACELIST[selectedRace].getDescription());
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);

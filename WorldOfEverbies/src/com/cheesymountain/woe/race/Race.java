@@ -4,38 +4,38 @@ import com.cheesymountain.woe.R;
 
 public abstract class Race {
 	
-	private String NAME = "Eibreve";
-	private String DESCRIPTION = "The plain Everbie without any boost, not choosable at the moment";
-	private int IMAGEID = R.drawable.mogno;
-	private int MAXHEALTHMODIFIER = 20, STRENGTH = 1, INTELLIGENCE = 1, STAMINA  = 1,
-			CHARM = 1, CUTENESS = 1;
+	protected String name = "Eibreve";
+	protected String description = "The plain Everbie without any boost, not choosable at the moment";
+	protected int imageID = R.drawable.mogno;
+	protected int maxHealthModifier = 20, strength = 1, intelligence = 1, stamina  = 1,
+			charm = 1, cuteness = 1;
 	public static final Race[] RACELIST = {new Mogno(), new Rokash(), new Skrom(), new Tragani()};
 
 	public String getName() {
-		return NAME;
+		return name;
 	}
 	public String getDescription() {
-		return DESCRIPTION;
+		return description;
 	}
 	public int getImageID() {
-		return IMAGEID;
+		return imageID;
 	}
 	public int getMaxHealthModifier() {
-		return MAXHEALTHMODIFIER;
+		return maxHealthModifier;
 	}
 	public int getStrength() {
-		return STRENGTH;
+		return strength;
 	}
 	public int getIntelligence() {
-		return INTELLIGENCE;
+		return intelligence;
 	}
 	public int getStamina() {
-		return STAMINA;
+		return stamina;
 	}
 	public int getCharm() {
-		return CHARM;
+		return charm;
 	}
 	public int getCuteness() {
-		return CUTENESS;
+		return cuteness;
 	}
 }

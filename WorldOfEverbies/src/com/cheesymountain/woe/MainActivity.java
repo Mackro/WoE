@@ -126,7 +126,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				use.activate(new Chat());
 	    		break;
 			case R.id.comb:
-				use.activate(new Comb());
+				use.activate(new Pamper());
 	    		break;
 			case R.id.snuggle:
 				use.activate(new Snuggle());
@@ -235,6 +235,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 					dialog.cancel();
 				}
 			});
+			return builder.create();
     	}else if(i == DIALOG_OI_ID){
     		Builder builder = new Builder(this);
     		builder.setMessage("Ooops, you do not have enough Oi to buy that.");
@@ -245,6 +246,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 					dialog.cancel();
 				}
 			});
+    		return builder.create();
     	}
     	return null;
     }

@@ -18,9 +18,9 @@ package com.cheesymountain.woe.interact;
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
 
-public class Comb extends Interaction {
+public class Pamper extends Interaction {
 
-	public Comb(){
+	public Pamper(){
 		super(-2);
 		super.setCutenessMod(1);
 	}

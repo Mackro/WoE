@@ -11,12 +11,16 @@ import com.cheesymountain.woe.R;
  */
 
 public class Skrom extends Race{
-
-	public final String NAME = "Skrom";
-	public final int IMAGEID = R.drawable.skrom;
-	public final int MAXHEALTHMODIFIER = 20, STRENGTH = 1,
-			INTELLIGENCE = 3, STAMINA = 1, CHARM = 2, CUTENESS = 1;
-	public final String DESCRIPTION = "The most intelligent race among the Everbies" +
-			" are the Skrom but their constant studying have resulted in severe obesity";
-
+	public Skrom(){
+		name = "Skrom";
+		description = "The most intelligent race among the Everbies" +
+				" are the Skrom but their constant studying have resulted in severe obesity";
+		imageID = R.drawable.skrom;
+		maxHealthModifier = 20;
+		strength = 1;
+		intelligence = 3;
+		stamina = 1;
+		charm = 2;
+		cuteness = 1;
+	}
 }
