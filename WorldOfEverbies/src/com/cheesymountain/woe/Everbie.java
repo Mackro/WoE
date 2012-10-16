@@ -19,7 +19,7 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.util.Log;
 
-import com.cheesymountain.woe.smallRinc.*;
+import com.cheesymountain.woe.race.*;
 
 
 /**
@@ -48,17 +48,17 @@ public class Everbie {
 	private Everbie(String name, Race race) {
 		alive = true;
 		this.name = name;
-		maxHealthModifier = race.MAXHEALTHMODIFIER;
-		strength = race.STRENGTH;
-		intelligence = race.INTELLIGENCE;
-		stamina = race.INTELLIGENCE;
-		charm = race.CHARM;
-		cuteness = race.CUTENESS;
+		maxHealthModifier = race.getMaxHealthModifier();
+		strength = race.getStrength();
+		intelligence = race.getIntelligence();
+		stamina = race.getStamina();
+		charm = race.getCharm();
+		cuteness = race.getCuteness();
 		fullness = STARTING_FULLNESS;
 		happiness = STARTING_HAPPINESS;
 		toxicity = 0;
 		money = STARTING_MONEY;
-		this.imageId = race.IMAGEID;
+		this.imageId = race.getImageID();
 		starvation = standardStarvation = 1;
 		health = getMaxHealth();
 		

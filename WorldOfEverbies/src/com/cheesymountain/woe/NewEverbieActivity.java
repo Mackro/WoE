@@ -29,7 +29,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.cheesymountain.woe.SimpleGestureFilter.SimpleGestureListener;
-import com.cheesymountain.woe.smallRinc.Race;
+import com.cheesymountain.woe.race.Race;
 
 /**
  * Controller class when creating a new Everbie that handles swipe events
@@ -60,9 +60,9 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		setContentView(R.layout.activity_new_everbie);
 
 		description = ((TextView)findViewById(R.id.everbieLongText));
-		description.setText(Race.RACELIST[selectedRace].DESCRIPTION);
+		description.setText(Race.RACELIST[selectedRace].getDescription());
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
-		pictures.setImageResource(Race.RACELIST[selectedRace].IMAGEID);
+		pictures.setImageResource(Race.RACELIST[selectedRace].getImageID());
 		name = (EditText)findViewById(R.id.everbieNameText);
 		name.setHint("Enter Name Here");
 		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
@@ -136,16 +136,16 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		switch(direction){
 		case SimpleGestureFilter.SWIPE_RIGHT:
 			if(selectedRace > 0){
-				pictures.setImageResource(Race.RACELIST[--selectedRace].IMAGEID);
+				pictures.setImageResource(Race.RACELIST[--selectedRace].getImageID());
 			}
 			break;
 		case SimpleGestureFilter.SWIPE_LEFT:
 			if(selectedRace < Race.RACELIST.length-1){
-				pictures.setImageResource(Race.RACELIST[++selectedRace].IMAGEID);
+				pictures.setImageResource(Race.RACELIST[++selectedRace].getImageID());
 			}
 			break;
 		}
-		description.setText(Race.RACELIST[selectedRace].DESCRIPTION);
+		description.setText(Race.RACELIST[selectedRace].getDescription());
 		setDotOrientation(selectedRace);
 	}
 
