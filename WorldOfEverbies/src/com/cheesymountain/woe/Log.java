@@ -96,9 +96,7 @@ public class Log {
 	 * @param train - the type of training started
 	 */
 	public void started(Training train){
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
+		firstRemoval();
 		logList.addLast(getTime() + everbie.getName() +" began to workout by starting with " + train.getName() + "\n");
 	}
 
@@ -109,9 +107,7 @@ public class Log {
 	 * @param work - the kind of work started
 	 */
 	public void started(Work work){
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
+		firstRemoval();
 		logList.addLast(getTime() + everbie.getName() +" started to work as " + work.getName() + "\n");
 	}
 
@@ -121,10 +117,7 @@ public class Log {
 	 * @param food - the food given
 	 */
 	public void foodGiven(Food food) {
-
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
+		firstRemoval();
 		logList.addLast(getTime() + everbie.getName()+ " ate som " + food.getName() + " and is now"
 				+ (food.getHappinessModifier()>0?" happier": (food.getHappinessModifier()<0?" angrier":" the same"))
 				+ (food.getToxicityModifier()>0?" but became sicker":(food.getToxicityModifier()<0?" and became healthier":"")) 
@@ -137,10 +130,7 @@ public class Log {
 	 * @param work - the work to do
 	 */
 	public void doneWith(Work work){
-
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
+		firstRemoval();
 		logList.addLast(getTime() + everbie.getName() + " worked as " + work.getName() + " for " + work.getTime() 
 				+ " hours and has now become " + 
 				(work.getHappinessModifier()>0?" happier": (work.getHappinessModifier()<0?" angrier":" tired"))
@@ -153,10 +143,7 @@ public class Log {
 	 * @param train
 	 */
 	public void doneWith(Training train){
-
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
+		firstRemoval();
 		
 		logList.addLast(getTime() + everbie.getName() + " worked out by doing some " + train.getName() + " and now " + everbie.getName()
 				+ " gained" + (train.getStrengthModifier()>0?" increased":train.getStrengthModifier()<0?" decreased":" no")
@@ -185,10 +172,7 @@ public class Log {
 	 * @param interact - the interaction choosen
 	 */
 	public void interactionMade(Interaction interact){
-
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
+		firstRemoval();
 
 		logList.addLast(getTime() + "You and " + everbie.getName() + " " + interact.getName() + " and now " + everbie.getName()
 				+ (interact.getCutenessModifier()>0?" became cuter":interact.getCutenessModifier()<0?" became uglier":" confused")
@@ -199,13 +183,11 @@ public class Log {
 	
 	/**
 	 * Is called when item is given to the Everbie to configure the 
-	 * String correctly
+	 * String correctly.
 	 * @param item - the item given
 	 */
 	public void itemUsed(Item item){
-		if (logList.size() > 19) {
-			logList.removeFirst();
-		}
+		firstRemoval();
 		logList.addLast(getTime() + everbie.getName() + " used a " + item.getName() +  
 		(item.getStrengthModifier()>0?" and became stronger":(item.getStrengthModifier()<0?" and became weaker":"")) + 
 		(item.getStaminaModifier()>0?" and became tougher":(item.getStaminaModifier()<0?" and became less fit":"")) + 
@@ -214,6 +196,24 @@ public class Log {
 		(item.getCutenessModifier()>0?" and became cuter":(item.getCutenessModifier()<0?" and became uglier":"")) +
 		(item.getHealthModifier()>0?" and regained health":(item.getHealthModifier()<0?" and lost health":"")) +
 		(item.getToxicityModifier()>0?" and got sicker":(item.getStrengthModifier()<0?" and became healthier":"")) + "\n");
+	}
+	
+	/**
+	 * Is called when the Everbie has fought an enemy.
+	 * @param log - the custom string to add
+	 */
+	public void combatLog(String log){
+		firstRemoval();
+		logList.addLast(log);
+	}
+	
+	/**
+	 * Removes the oldest addition to the log if needed.
+	 */
+	private void firstRemoval(){
+		if (logList.size() > 19) {
+			logList.removeFirst();
+		}
 	}
 	
 	/**
