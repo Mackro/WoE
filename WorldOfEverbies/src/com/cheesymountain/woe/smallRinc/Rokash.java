@@ -1,4 +1,4 @@
-package com.cheesymountain.woe.Races;
+package com.cheesymountain.woe.smallRinc;
 
 import com.cheesymountain.woe.R;
 

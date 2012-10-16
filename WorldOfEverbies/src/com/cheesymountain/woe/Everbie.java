@@ -19,7 +19,7 @@ package com.cheesymountain.woe;
 ================================================================*/
 import android.util.Log;
 
-import com.cheesymountain.woe.Races.*;
+import com.cheesymountain.woe.smallRinc.*;
 
 
 /**
