@@ -18,23 +18,21 @@ package com.cheesymountain.woe.work;
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
 
-import com.cheesymountain.woe.Everbie;
-
 /**
  * @author Karl-Agnes
  */
 public class SellLemonade extends Work {
 
 	private static int time = 2;
-	private static int salary = (int) ((Everbie.getEverbie().getCharm() + Everbie.getEverbie().getCuteness()+ 
-											(Everbie.getEverbie().getIntelligence()/2))*(Math.random()) + 42 + 8); //HHGTTG
 	private static int happinessModifier = -8;
 	private static int healthModifier = 0;
 	private static int minutesWorking = 60;
 	private static int starvationModifier = -1;
+	private static int strengthReq = 1, staminaReq = 1, intelligenceReq = 1;
 	
-	public SellLemonade() {
-		super(time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier);
+	public SellLemonade(int salary) {
+		super(time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier,
+				strengthReq, staminaReq, intelligenceReq);
 	}
 	
 	@Override

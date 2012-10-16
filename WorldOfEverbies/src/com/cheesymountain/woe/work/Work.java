@@ -30,7 +30,8 @@ import com.cheesymountain.woe.Occupationable;
  */
 public abstract class Work implements Occupationable{
 
-	private int time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier;
+	private int time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier,
+			strengthReq, staminaReq, intelligenceReq;
 	
 	/**
 	 * The public constructor that is called from all subclasses with the specific
@@ -43,7 +44,8 @@ public abstract class Work implements Occupationable{
 	 * @param healthModifier an int describing how your Everbies health will be affected
 	 * 		from working
 	 */
-	public Work(int time, int salary, int happinessModifier, int healthModifier, int minutesWorking, int starvationModifier){
+	public Work(int time, int salary, int happinessModifier, int healthModifier, int minutesWorking,
+			int starvationModifier, int strengthReq, int staminaReq, int intelligenceReq){
 		this.time = time;
 		this.salary = salary;
 		this.happinessModifier = happinessModifier;
@@ -111,5 +113,32 @@ public abstract class Work implements Occupationable{
 	 */
 	public int getStarvationModifier(){
 		return starvationModifier;
+	}
+	
+	/**
+	 * A getter for the Strength Requirement of this Work.
+	 * 
+	 * @return the least amount of strength required
+	 */
+	public int getStrengthReq(){
+		return strengthReq;
+	}
+	
+	/**
+	 * A getter for the Stamina Requirement of this Work.
+	 * 
+	 * @return the least amount of stamina required
+	 */
+	public int getStaminaReq(){
+		return staminaReq;
+	}
+	
+	/**
+	 * A getter for the Intelligence Requirement of this Work.
+	 * 
+	 * @return the least amount of intelligence required
+	 */
+	public int getIntelligenceReq(){
+		return intelligenceReq;
 	}
 }

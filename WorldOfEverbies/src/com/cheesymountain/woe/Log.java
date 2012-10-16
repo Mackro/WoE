@@ -249,4 +249,22 @@ public class Log {
 				formatter.format(time.hour)+":"+formatter.format(time.minute)+" - ";
 		return timeString;
 	}
+
+
+	public void tooWeak(int strengthReq) {
+		logList.addLast(Everbie.getEverbie().getName()+" is too weak, "
+				+strengthReq+" strength is required");		
+	}
+
+
+	public void tooLazy(int staminaReq) {
+		logList.addLast(Everbie.getEverbie().getName()+" is too lazy, "
+				+staminaReq+" stamina is required");
+	}
+
+
+	public void tooDumb(int intelligenceReq) {
+		logList.addLast(Everbie.getEverbie().getName()+" is too stupid, "
+				+intelligenceReq+" intelligence is required");
+	}
 }

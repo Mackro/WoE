@@ -1,53 +1,55 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/feed_menu" android:titleCondensed="Feed" android:title="@string/menu_feed" android:orderInCategory="1" android:menuCategory="alternative" android:visible="true" android:enabled="true">
         <menu>
-            <item android:id="@+id/BreadAndWater" android:menuCategory="alternative" android:titleCondensed="Free Food!!" android:title="Bread &amp; Water   Free" android:enabled="true" android:visible="true"/>
-            <item android:id="@+id/Melon" android:enabled="true" android:visible="true" android:orderInCategory="2" android:titleCondensed="A juicy fruit" android:menuCategory="alternative" android:title="Melon   25 OI"/>
-            <item android:id="@+id/ribEyeStake" android:menuCategory="alternative" android:title="Rib-Eye Steak   200 OI" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Rib-Eye Steak"/>
+            <item android:id="@+id/BreadAndWater" android:menuCategory="alternative" android:titleCondensed="Free Food!!" android:title="free!  Bread &amp; Water" android:enabled="true" android:visible="true"/>
+            <item android:id="@+id/Melon" android:enabled="true" android:visible="true" android:orderInCategory="2" android:titleCondensed="A juicy fruit" android:menuCategory="alternative" android:title=" 25 Oi  Melon"/>
+            <item android:id="@+id/ribEyeStake" android:menuCategory="alternative" android:title="200 Oi  Rib-Eye Steak" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Rib-Eye Steak"/>
         	<item android:id="@+id/menuOiFeed" android:menuCategory="alternative" android:checkable="false" android:enabled="false" android:visible="true" android:title="Oi: " android:orderInCategory="4" />
         </menu>
     </item>
     <item android:id="@+id/store_menu" android:menuCategory="alternative" android:titleCondensed="Store" android:visible="true" android:title="@string/menu_store" android:orderInCategory="2" android:enabled="true">
         <menu>
-            <item android:id="@+id/healthPotion" android:titleCondensed="Health Potion" android:visible="true" android:title="150 OI  Health Potion" android:menuCategory="alternative" android:orderInCategory="1" android:enabled="true"/>
-            <item android:id="@+id/kettleBell" android:titleCondensed="Kettle Bell" android:visible="true" android:title="400 OI  Kettle Bell" android:menuCategory="alternative" android:orderInCategory="2" android:enabled="true"/>
-            <item android:id="@+id/ribbon" android:titleCondensed="Ribbon" android:visible="true" android:title="250 OI  Ribbon" android:menuCategory="alternative" android:orderInCategory="3" android:enabled="true"/>
-            <item android:id="@+id/book" android:titleCondensed="Book" android:visible="true" android:title="250 OI  Book" android:menuCategory="alternative" android:orderInCategory="4" android:enabled="true"/>
-            <item android:id="@+id/skippingRope" android:titleCondensed="SkippingRope" android:visible="true" android:title="250 OI  Skipping Rope" android:menuCategory="alternative" android:orderInCategory="5" android:enabled="true"/>
+            <item android:id="@+id/healthPotion" android:titleCondensed="Health Potion" android:visible="true" android:title="150 Oi  Health Potion" android:menuCategory="alternative" android:orderInCategory="1" android:enabled="true"/>
+            <item android:id="@+id/kettleBell" android:titleCondensed="Kettle Bell" android:visible="true" android:title="400 Oi  Kettle Bell" android:menuCategory="alternative" android:orderInCategory="2" android:enabled="true"/>
+            <item android:id="@+id/ribbon" android:titleCondensed="Ribbon" android:visible="true" android:title="250 Oi  Ribbon" android:menuCategory="alternative" android:orderInCategory="3" android:enabled="true"/>
+            <item android:id="@+id/book" android:titleCondensed="Book" android:visible="true" android:title="250 Oi  Book" android:menuCategory="alternative" android:orderInCategory="4" android:enabled="true"/>
+            <item android:id="@+id/skippingRope" android:titleCondensed="SkippingRope" android:visible="true" android:title="250 Oi  Skipping Rope" android:menuCategory="alternative" android:orderInCategory="5" android:enabled="true"/>
         	<item android:id="@+id/menuOiStore" android:menuCategory="alternative" android:checkable="false" android:enabled="false" android:visible="true" android:title="Oi: " android:orderInCategory="6" />
         </menu>
     </item>
     <item android:id="@+id/training_menu" android:title="@string/menu_training" android:menuCategory="alternative" android:orderInCategory="3" android:titleCondensed="Training" android:visible="true" android:enabled="true">
         <menu>
-            <item android:id="@+id/chess" android:enabled="true" android:title="Chess" android:visible="true" android:titleCondensed="Chess" android:orderInCategory="1" android:menuCategory="alternative"/>
-            <item android:id="@+id/running" android:enabled="true" android:title="Running" android:visible="true" android:titleCondensed="Running" android:orderInCategory="2" android:menuCategory="alternative"/>
-            <item android:id="@+id/workingOut" android:enabled="true" android:title="Working Out" android:visible="true" android:titleCondensed="Working Out" android:orderInCategory="3" android:menuCategory="alternative"/>
+            <item android:id="@+id/chess" android:enabled="true" android:title="50 min  Chess (int)" android:visible="true" android:titleCondensed="Chess" android:orderInCategory="1" android:menuCategory="alternative"/>
+            <item android:id="@+id/running" android:enabled="true" android:title="45 min  Running (sta)" android:visible="true" android:titleCondensed="Running" android:orderInCategory="2" android:menuCategory="alternative"/>
+            <item android:id="@+id/workingOut" android:enabled="true" android:title="90 min  Working Out (str, sta)" android:visible="true" android:titleCondensed="Working Out" android:orderInCategory="3" android:menuCategory="alternative"/>
+            <item android:id="@+id/squash" android:title="50 min  Squash (sta, str)" android:menuCategory="alternative" android:orderInCategory="4" android:titleCondensed="Squash" android:enabled="true" android:visible="true"/>
+            <item android:id="@+id/swimming" android:title="90 min  Swimming (sta,str)" android:menuCategory="alternative" android:titleCondensed="Swimming" android:orderInCategory="5" android:enabled="true" android:visible="true"/>
         </menu>
     </item>
     <item android:id="@+id/interact_menu" android:title="@string/menu_inter" android:menuCategory="alternative" android:orderInCategory="4" android:titleCondensed="Interact" android:visible="true" android:enabled="true">
         <menu>
-            <item android:id="@+id/chat" android:menuCategory="alternative" android:title="Chat" android:enabled="true" android:orderInCategory="1" android:visible="true" android:titleCondensed="Chat"/>
-            <item android:id="@+id/pamper" android:menuCategory="alternative" android:title="Pamper" android:enabled="true" android:orderInCategory="2" android:visible="true" android:titleCondensed="Pamper"/>
-            <item android:id="@+id/snuggle" android:menuCategory="alternative" android:title="Snuggle" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Snuggle"/>
-            <item android:id="@+id/playCards" android:orderInCategory="4" android:menuCategory="alternative" android:title="Play Cards" android:titleCondensed="Play Cards" android:enabled="true" android:visible="true"/>
-            <item android:id="@+id/takeABath" android:menuCategory="alternative" android:orderInCategory="5" android:title="Take A Bath" android:enabled="true" android:titleCondensed="Take A Bath" android:visible="true"/>
+            <item android:id="@+id/chat" android:menuCategory="alternative" android:title="Chat (charm)" android:enabled="true" android:orderInCategory="1" android:visible="true" android:titleCondensed="Chat"/>
+            <item android:id="@+id/pamper" android:menuCategory="alternative" android:title="Pamper (cute)" android:enabled="true" android:orderInCategory="2" android:visible="true" android:titleCondensed="Pamper"/>
+            <item android:id="@+id/snuggle" android:menuCategory="alternative" android:title="Snuggle (hap)" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Snuggle"/>
+            <item android:id="@+id/playCards" android:orderInCategory="4" android:menuCategory="alternative" android:title="Play Cards (hap, -charm)" android:titleCondensed="Play Cards" android:enabled="true" android:visible="true"/>
+            <item android:id="@+id/takeABath" android:menuCategory="alternative" android:orderInCategory="5" android:title="Take A Bath (hap, -cute)" android:enabled="true" android:titleCondensed="Take A Bath" android:visible="true"/>
         </menu>
     </item>
     <item android:id="@+id/work_menu" android:titleCondensed="Work" android:visible="true" android:title="@string/menu_work" android:menuCategory="alternative" android:orderInCategory="5" android:enabled="true">
         <menu>
-            <item android:id="@+id/dogWalking" android:menuCategory="alternative" android:visible="true" android:title="Dog Walking" android:orderInCategory="1" android:enabled="true" android:titleCondensed="Dog Walking"/>
-            <item android:id="@+id/sellLemonade" android:menuCategory="alternative" android:orderInCategory="2" android:title="Sell Lemonade" android:enabled="true" android:visible="true" android:titleCondensed="Sell Lemonade"/>
-            <item android:id="@+id/consulting" android:menuCategory="alternative" android:title="Consulting" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Consulting"/>
-            <item android:id="@+id/plumbing" android:menuCategory="alternative" android:title="Plumbing" android:enabled="true" android:orderInCategory="4" android:visible="true" android:titleCondensed="Plumbing"/>
-            <item android:id="@+id/motelCleaning" android:menuCategory="alternative" android:title="MotelCleaning" android:enabled="true" android:orderInCategory="5" android:visible="true" android:titleCondensed="Motel Cleaning"/>
+            <item android:id="@+id/dogWalking" android:menuCategory="alternative" android:visible="true" android:title="30 min  Dog Walking (40 Oi)" android:orderInCategory="1" android:enabled="true" android:titleCondensed="Dog Walking"/>
+            <item android:id="@+id/sellLemonade" android:menuCategory="alternative" android:orderInCategory="2" android:title=" 60 min  Sell Lemonade (depends)" android:enabled="true" android:visible="true" android:titleCondensed="Sell Lemonade"/>
+            <item android:id="@+id/consulting" android:menuCategory="alternative" android:title="180 min  Consulting (400 Oi)" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Consulting"/>
+            <item android:id="@+id/plumbing" android:menuCategory="alternative" android:title="120 min  Plumbing (220 Oi)" android:enabled="true" android:orderInCategory="4" android:visible="true" android:titleCondensed="Plumbing"/>
+            <item android:id="@+id/motelCleaning" android:menuCategory="alternative" android:title="90 min  MotelCleaning (60 Oi)" android:enabled="true" android:orderInCategory="5" android:visible="true" android:titleCondensed="Motel Cleaning"/>
         </menu>
     </item>
     <item android:id="@+id/fight_menu" android:titleCondensed="Fight" android:visible="true" android:title="@string/menu_fight" android:menuCategory="alternative" android:orderInCategory="6" android:enabled="true" >
         <menu>
-            <item android:id="@+id/gnome" android:title="Garden Gnome" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="1" android:visible="true" />
-            <item android:id="@+id/golem" android:title="Garbage Golem" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="2" android:visible="true" />
-            <item android:id="@+id/spider" android:title="Oversized Spider" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="3" android:visible="true" />
-            <item android:id="@+id/titan" android:title="Scrap Metal Titan" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="4" android:visible="true" />
+            <item android:id="@+id/gnome" android:title="Garden Gnome (easy)" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="1" android:visible="true" />
+            <item android:id="@+id/spider" android:title="Oversized Spider (medium)" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="2" android:visible="true" /><item android:id="@+id/golem" android:title="Garbage Golem (hard)" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="3" android:visible="true" />
+            
+            <item android:id="@+id/titan" android:title="Scrap Metal Titan (bosslike)" android:menuCategory="alternative" android:enabled="true" android:orderInCategory="4" android:visible="true" />
         </menu>
     </item>
 </menu>

@@ -33,9 +33,9 @@ import com.cheesymountain.woe.work.Work;
 public class Use {
 	
 	public static final int NOT_ENOUGH_OI = 2;
-	public static final int EVERBIE_IS_BUSY = 20;
-	public static final int SUCCESS = 200;
-	public static final int EVERBIE_IS_FAINTED = 2000;
+	public static final int SUCCESS = 20;
+	public static final int EVERBIE_IS_BUSY = 200, EVERBIE_IS_FAINTED = 201;
+	public static final int EVERBIE_TOO_WEAK = 2000, EVERBIE_TOO_LAZY = 2001, EVERBIE_TOO_DUMB = 2003;
 	
 	/**
 	 * Activates the desired event which could be a food,
@@ -77,6 +77,15 @@ public class Use {
 		}else if(Everbie.getEverbie().isFainted()){
 			Log.getLog().isFainted();
 			return EVERBIE_IS_FAINTED;
+		}else if(work.getStrengthReq()>Everbie.getEverbie().getStrength()){
+			Log.getLog().tooWeak(work.getStrengthReq());
+			return EVERBIE_TOO_WEAK;
+		}else if(work.getStaminaReq()>Everbie.getEverbie().getStamina()){
+			Log.getLog().tooLazy(work.getStaminaReq());
+			return EVERBIE_TOO_LAZY;
+		}else if(work.getIntelligenceReq()>Everbie.getEverbie().getIntelligence()){
+			Log.getLog().tooDumb(work.getIntelligenceReq());
+			return EVERBIE_TOO_DUMB;
 		}
 		Log.getLog().started(work);
 		Everbie.getEverbie().setOccupation(work);
