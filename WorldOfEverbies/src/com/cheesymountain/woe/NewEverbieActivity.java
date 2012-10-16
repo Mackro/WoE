@@ -89,7 +89,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 				savedInstanceState.getInt("cuteness"),
 				savedInstanceState.getInt("money")};
 		Everbie.getEverbie().restoreEverbie(savedInstanceState.getString("Name"), values,
-				savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));	
+				savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	}
 
 	/**
-	 * Is called when the user swipes across the screen
+	 * Is called when the user swipes across the screen.
 	 * @param direction - the direction in which the user swipes
 	 */
 	public void onSwipe(int direction){
@@ -156,7 +156,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	}
 
 	/**
-	 * Is called automatically when pressing the exit button
+	 * Is called automatically when pressing the exit button.
 	 * @param view - the view from which exit button was pressed
 	 */
 	public void exit(View view){
@@ -166,14 +166,14 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 	}
 
 	/**
-	 * Inherited from SimpleGestureListener (not used)
+	 * Inherited from SimpleGestureListener (not used).
 	 */
 	public void onDoubleTap() {
 		/* Do nothing */
 	}
 
 	@Override
-	public boolean dispatchTouchEvent(MotionEvent me){ 
+	public boolean dispatchTouchEvent(MotionEvent me){
 		this.detector.onTouchEvent(me);
 		return super.dispatchTouchEvent(me); 
 	}

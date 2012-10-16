@@ -31,12 +31,15 @@ public abstract class Work {
 	private int time, salary, happinessModifier, healthModifier, minutesWorking;
 	
 	/**
-	 * The public constructor that is called from all subclasses with the specific values of that subclass.
+	 * The public constructor that is called from all subclasses with the specific
+	 * values of that subclass.
 	 * 
 	 * @param time the amount of hours the Everbie will spend working
 	 * @param salary the amount of money your Everbie will earn
-	 * @param happinessModifier an int describing how the Everbies happiness will be affected from working
-	 * @param healthModifier an int describing how your Everbies health will be affected from working
+	 * @param happinessModifier an int describing how the Everbies happiness will be
+	 * 		affected from working
+	 * @param healthModifier an int describing how your Everbies health will be affected
+	 * 		from working
 	 */
 	public Work(int time, int salary, int happinessModifier, int healthModifier, int minutesWorking){
 		this.time = time;
