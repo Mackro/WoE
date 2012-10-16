@@ -18,6 +18,7 @@ package com.cheesymountain.woe;
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
 
+
 import com.cheesymountain.woe.food.Food;
 import com.cheesymountain.woe.interact.Interaction;
 import com.cheesymountain.woe.item.Item;
@@ -30,22 +31,32 @@ import com.cheesymountain.woe.work.Work;
  * A class for activating/using different items or activities.
  */
 public class Use {
+	
+	public static final int NOT_ENOUGH_OI = 2;
+	public static final int EVERBIE_IS_BUSY = 20;
+	public static final int SUCCESS = 200;
+	
 	/**
 	 * Activates the desired event which could be a food,
 	 * an item or an activity.
 	 * 
 	 * @param food - the food that should be consumed
+	 * @return if this method was success fully completed or not
 	 */
-	public void activate(Food food){
+	public int activate(Food food){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
-			return;
+			return EVERBIE_IS_BUSY;
 		}
-		Log.getLog().foodGiven(food);
-		Everbie.getEverbie().changeMoney(-food.getCost());
-		Everbie.getEverbie().changeFullness(food.getFullnessModifier());
-		Everbie.getEverbie().changeHappiness(food.getHappinessModifier());
-		Everbie.getEverbie().changeToxicity(food.getToxicityModifier());
+		if(Everbie.getEverbie().changeMoney(-food.getCost())){
+			Log.getLog().foodGiven(food);
+			Everbie.getEverbie().changeFullness(food.getFullnessModifier());
+			Everbie.getEverbie().changeHappiness(food.getHappinessModifier());
+			Everbie.getEverbie().changeToxicity(food.getToxicityModifier());
+			return SUCCESS;
+		}else{
+			return NOT_ENOUGH_OI;
+		}
 	}
 
 	/**
@@ -53,17 +64,19 @@ public class Use {
 	 * an item or an activity.
 	 * 
 	 * @param work - the work that should be started
+	 * @return if this method was success fully completed or not
 	 */
-	public void activate(Work work){
+	public int activate(Work work){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
-			return;
+			return EVERBIE_IS_BUSY;
 		}
 		Log.getLog().started(work);
 		Everbie.getEverbie().setOccupation(work);
 		Everbie.getEverbie().setStarvation(work.getStarvationModifier());
 		Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
 		new Occupation().start();
+		return SUCCESS;
 	}
 
 	/**
@@ -71,16 +84,18 @@ public class Use {
 	 * an item or an activity.
 	 * 
 	 * @param interact - the interaction that should be made
+	 * @return if this method was success fully completed or not
 	 */
-	public void activate(Interaction interact){
+	public int activate(Interaction interact){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
-			return;
+			return EVERBIE_IS_BUSY;
 		}
 		Log.getLog().interactionMade(interact);
 		Everbie.getEverbie().changeCharm(interact.getCharmModifier());
 		Everbie.getEverbie().changeCuteness(interact.getCutenessModifier());
 		Everbie.getEverbie().changeHappiness(interact.getHappinessModifier());
+		return SUCCESS;
 	}
 
 	/**
@@ -88,22 +103,27 @@ public class Use {
 	 * an item or an activity.
 	 * 
 	 * @param item - the item that should be consumed
+	 * @return if this method was success fully completed or not
 	 */
-	public void activate(Item item){
+	public int activate(Item item){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
-			return;
+			return EVERBIE_IS_BUSY;
 		}
-		Log.getLog().itemUsed(item);
-		Everbie.getEverbie().changeMoney(-item.getCost());
-		Everbie.getEverbie().changeStrength(item.getStrengthModifier());
-		Everbie.getEverbie().changeIntelligence(item.getIntelligenceModifier());
-		Everbie.getEverbie().changeCharm(item.getCharmModifier());
-		Everbie.getEverbie().changeCuteness(item.getCutenessModifier());
-		Everbie.getEverbie().changeHappiness(item.getHappinessModifier());
-		Everbie.getEverbie().changeHealth(item.getHealthModifier());
-		Everbie.getEverbie().changeStamina(item.getStaminaModifier());
-		Everbie.getEverbie().changeToxicity(item.getToxicityModifier());
+		if(Everbie.getEverbie().changeMoney(-item.getCost())){
+			Log.getLog().itemUsed(item);
+			Everbie.getEverbie().changeStrength(item.getStrengthModifier());
+			Everbie.getEverbie().changeIntelligence(item.getIntelligenceModifier());
+			Everbie.getEverbie().changeCharm(item.getCharmModifier());
+			Everbie.getEverbie().changeCuteness(item.getCutenessModifier());
+			Everbie.getEverbie().changeHappiness(item.getHappinessModifier());
+			Everbie.getEverbie().changeHealth(item.getHealthModifier());
+			Everbie.getEverbie().changeStamina(item.getStaminaModifier());
+			Everbie.getEverbie().changeToxicity(item.getToxicityModifier());
+			return SUCCESS;
+		}else{
+			return NOT_ENOUGH_OI;
+		}
 	}
 
 	/**
@@ -111,21 +131,23 @@ public class Use {
 	 * an item or an activity.
 	 * 
 	 * @param training - the training that should be started
+	 * @return if this method was success fully completed or not
 	 */
-	public void activate(Training train){
+	public int activate(Training train){
 		if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
-			return;
+			return EVERBIE_IS_BUSY;
 		}
 		Log.getLog().started(train);
 		Everbie.getEverbie().setOccupation(train);
 		Everbie.getEverbie().setStarvation(train.getStarvationModifier());
 		Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
 		new Occupation().start();
+		return SUCCESS;
 	}
 	
 	/**
-	 * Called when the Everbie is done with the corresponding occupation
+	 * Called when the Everbie is done with the corresponding occupation.
 	 * @param occupation - the work or training done
 	 */
 	public void done(Occupationable occupation){
@@ -137,7 +159,7 @@ public class Use {
 	}
 
 	/**
-	 * Called when the Everbie is done with work
+	 * Called when the Everbie is done with work.
 	 * @param occupation - the work done
 	 */
 	public void done(Work work){
@@ -148,7 +170,7 @@ public class Use {
 	
 
 	/**
-	 * Called when the Everbie is done with the training
+	 * Called when the Everbie is done with the training.
 	 * @param occupation - the training done
 	 */
 	public void done(Training train){
