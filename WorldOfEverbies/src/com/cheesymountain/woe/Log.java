@@ -93,9 +93,8 @@ public class Log {
 	 * use some other activity and the Log should be configured correctly.
 	 */
 	public void isFainted(){
-		String time = ((everbie.getFaintedTime()/3600)==0?"":everbie.getFaintedTime()/3600 + "h ")
-				+ (everbie.getFaintedTime()%3600)/60 + "m "
-				+ (everbie.getFaintedTime()%3600)%60 + "s.";
+		String time = ((everbie.getFaintedTime()/60)==0?"":everbie.getFaintedTime()/60 + "h ")
+				+ (everbie.getFaintedTime()%60) + "m ";
 		firstRemoval();
 		logList.addLast(everbie.getName() + " is fainted at the moment but will wake up within "
 				+ time + "\n");
