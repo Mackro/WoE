@@ -197,7 +197,7 @@ public class UseTest {
 			if(everbie.getStrength() != 1+training.getStrengthModifier() ||
 				everbie.getIntelligence() != 1+training.getIntelligenceModifier() ||
 				everbie.getStamina() != 1+training.getStaminaModifier() ||
-				everbie.getFullness() != (50+training.getFullnessModifier())){
+				everbie.getFullness() != (50+training.getStarvationModifier())){
 				Log.e("Error", "Not changed attributes correctly when doing: "+training.getName());
 			}
 		}

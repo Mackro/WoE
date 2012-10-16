@@ -1,4 +1,6 @@
 package com.cheesymountain.woe.training;
+
+import com.cheesymountain.woe.Occupationable;
 /*=============================================================
  * Copyright 2012, Cheesy Mountain Production
  * 

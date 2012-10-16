@@ -1,4 +1,6 @@
 package com.cheesymountain.woe.work;
+
+import com.cheesymountain.woe.Occupationable;
 /*=============================================================
  * Copyright 2012, Cheesy Mountain Production
  * 
@@ -26,7 +28,7 @@ package com.cheesymountain.woe.work;
  * @author Karl-Agnes
  * 
  */
-public abstract class Work Occupationable{
+public abstract class Work implements Occupationable{
 
 	private int time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier;
 	
