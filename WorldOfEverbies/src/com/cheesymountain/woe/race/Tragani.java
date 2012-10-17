@@ -11,12 +11,7 @@ import com.cheesymountain.woe.R;
  */
 
 public class Tragani extends Race{
-	
-	public final String NAME = "Tragani";
-	public final int IMAGEID = R.drawable.tragani;
-	public final int MAXHEALTHMODIFIER = 20, STRENGTH = 1, INTELLIGENCE = 1, STAMINA  = 3,
-			CHARM = 2, CUTENESS = 1;
-	public final String DESCRIPTION = "The Traganis are know for their exceptional running speed and their total lack of common sense";
+
 	public Tragani(){
 		name = "Tragani";
 		description = "The Traganis are know for their exceptional running speed" +
@@ -26,7 +21,7 @@ public class Tragani extends Race{
 		strength = 1;
 		intelligence = 1;
 		stamina  = 3;
-		charm = 2;
+		charm = 3;
 		cuteness = 1;
 	}
 }

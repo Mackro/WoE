@@ -20,7 +20,7 @@ public class Rokash extends Race {
 		strength = 1;
 		stamina  = 1;
 		intelligence = 1;
-		charm = 2;
-		cuteness = 3;
+		charm = 3;
+		cuteness = 5;
 	}
 }

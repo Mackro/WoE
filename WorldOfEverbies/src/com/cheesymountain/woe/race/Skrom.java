@@ -20,7 +20,7 @@ public class Skrom extends Race{
 		strength = 1;
 		intelligence = 3;
 		stamina = 1;
-		charm = 2;
+		charm = 3;
 		cuteness = 1;
 	}
 }

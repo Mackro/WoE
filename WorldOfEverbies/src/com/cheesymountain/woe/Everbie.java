@@ -42,7 +42,7 @@ public class Everbie {
 			charm, fullness, happiness, toxicity, cuteness, money;
 	private boolean alive, fainted;
 	private int occupiedSeconds = 0, faintedTime = 0;
-	private int starvation, standardStarvation;
+	private int starvation, standardStarvation, depression, standardDepression;
 	private Occupationable occupation;
 
 	private Everbie(String name, Race race) {
@@ -60,6 +60,7 @@ public class Everbie {
 		money = STARTING_MONEY;
 		this.imageId = race.getImageID();
 		starvation = standardStarvation = 1;
+		depression = standardDepression = 1;
 		health = getMaxHealth();
 		new Ticker().start();
 	}
@@ -144,6 +145,22 @@ public class Everbie {
 	}
 
 	/**
+	 * Returns the current depression level of the current Everbie
+	 * @return the current level of depression
+	 */
+	public int getDepression(){
+		return depression;
+	}
+	
+	/**
+	 * Returns the standard level of depression of the current Everbie
+	 * @return the standard level of depression
+	 */
+	public int getStandardDepression(){
+		return standardDepression;
+	}
+	
+	/**
 	 * Returns the current level of intelligence of the current Everbie
 	 * @return the current level of intelligence
 	 */
@@ -212,7 +229,7 @@ public class Everbie {
 	 * @return the current level
 	 */
 	public int getLevel(){
-		return (strength + intelligence + stamina + Math.abs(charm) + Math.abs(cuteness))/5;
+		return (strength + intelligence + stamina + Math.abs(charm/2) + Math.abs(cuteness/2))/5;
 	}
 
 	/**
@@ -358,6 +375,7 @@ public class Everbie {
 	public void changeHappiness(int i) {
 		if(happiness + i < 1){
 			happiness = 0;
+			Everbie.getEverbie().changeHealth(-1);
 		}
 		else if (happiness + i < 100){
 			happiness += i;
@@ -468,6 +486,12 @@ public class Everbie {
 		}
 	}
 	
+	public void setDepression(int dep){
+		if(dep > 0){
+			depression = dep;
+		}
+	}
+	
 	/**
 	 * Sets the Everbies heath
 	 * @param health - the amount of health the everbie should have after method being called
@@ -573,6 +597,7 @@ public class Everbie {
 				try{
 					Thread.sleep(600000);
 				}catch(InterruptedException ie){}
+				Everbie.getEverbie().changeHappiness(-Everbie.getEverbie().depression);
 				Everbie.getEverbie().changeFullness(-Everbie.getEverbie().starvation);
 				if(fainted){
 					faintedTime--;
