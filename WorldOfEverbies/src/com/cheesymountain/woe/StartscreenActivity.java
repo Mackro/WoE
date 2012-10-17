@@ -47,6 +47,7 @@ public class StartscreenActivity extends Activity {
 		finish();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void newGame(View view){
 		if(Everbie.exists() && Everbie.getEverbie().isAlive()){
 			showDialog(EVERBIE_ALREADY_ALIVE );
