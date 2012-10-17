@@ -32,8 +32,8 @@ import com.cheesymountain.woe.R;
 public class Skrom extends Race{
 	public Skrom(){
 		name = "Skrom";
-		description = "The most intelligent race among the Everbies" +
-				" are the Skrom but their constant studying have resulted in severe obesity";
+		description = "Skrom:\nThe most intelligent race among the Everbies" +
+				" are the Skrom but their constant studying have resulted in severe obesity.";
 		imageID = R.drawable.skrom;
 		maxHealthModifier = 20;
 		strength = 1;

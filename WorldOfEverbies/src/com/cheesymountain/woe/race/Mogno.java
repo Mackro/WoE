@@ -32,7 +32,7 @@ import com.cheesymountain.woe.R;
 public class Mogno extends Race {
 	public Mogno(){
 		name = "Mogno";
-		description = "The mognos are known for their sharp claws and short temper";
+		description = "Mogno:\nThe mognos are known for their sharp claws and short temper.";
 		imageID = R.drawable.mogno;
 		maxHealthModifier = 20;
 		strength = 3;

@@ -1,5 +1,11 @@
 package com.cheesymountain.woe;
 
+/**
+ * Thread responsible for everything that takes up real life time. such as work or training.
+ * @author WarBorn
+ *
+ */
+
 
 public class Occupation extends Thread {
 	@Override

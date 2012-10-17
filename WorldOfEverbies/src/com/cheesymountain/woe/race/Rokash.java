@@ -32,7 +32,7 @@ import com.cheesymountain.woe.R;
 public class Rokash extends Race {	
 	public Rokash(){
 		name = "Rokash";
-		description = "the Rokash race is the cutest and most charming of all Everbies..." +
+		description = "Rokash:\nThe Rokash race is the cutest and most charming of all Everbies..." +
 				"but also the most hostile";
 		imageID = R.drawable.rokash;
 		maxHealthModifier = 20;
