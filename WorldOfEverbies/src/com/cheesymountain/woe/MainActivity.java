@@ -263,12 +263,16 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		return true;
 	}
 	
+	/**
+	 * Checks wheter the everbie is alive and available (i.e. not fainted nor occupied).
+	 * @return <code>true</code> if Everbie is alive and available, <code>false</code> otherwise.
+	 */
 	private boolean checkEverbieStatus(){
-		if(Everbie.getEverbie().isAlive()){
+		if(!Everbie.getEverbie().isAlive()){
 			Log.getLog().isDead();
-		}else if(!Everbie.getEverbie().isFainted()){
+		}else if(Everbie.getEverbie().isFainted()){
 			Log.getLog().isFainted();
-		}else if(!Everbie.getEverbie().isOccupied()){
+		}else if(Everbie.getEverbie().isOccupied()){
 			Log.getLog().isBusy();
 		}else{
 			return true;
