@@ -227,18 +227,30 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 
 			//Fight
 		case R.id.gnome:
+			if(!checkEverbieStatus()){
+				break;
+			}
 			enemy = new GardenGnome();
 			showDialog(DIALOG_FIGHT_ID);
 			break;
 		case R.id.golem:
+			if(!checkEverbieStatus()){
+				break;
+			}
 			enemy = new GarbageGolem();
 			showDialog(DIALOG_FIGHT_ID);
 			break;
 		case R.id.spider:
+			if(!checkEverbieStatus()){
+				break;
+			}
 			enemy = new OversizedSpider();
 			showDialog(DIALOG_FIGHT_ID);
 			break;
 		case R.id.titan:
+			if(!checkEverbieStatus()){
+				break;
+			}
 			enemy = new ScrapMetalTitan();
 			showDialog(DIALOG_FIGHT_ID);
 			break;
@@ -249,6 +261,19 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		}
 		onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 		return true;
+	}
+	
+	private boolean checkEverbieStatus(){
+		if(Everbie.getEverbie().isAlive()){
+			Log.getLog().isDead();
+		}else if(!Everbie.getEverbie().isFainted()){
+			Log.getLog().isFainted();
+		}else if(!Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+		}else{
+			return true;
+		}
+		return false;
 	}
 
 	@Override
