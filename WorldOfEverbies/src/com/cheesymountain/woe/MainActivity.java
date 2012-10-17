@@ -100,6 +100,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	@Override
 	public void onResume(){
 		bgMusic.start();
+		bgMusic.setLooping(true);
 		super.onResume();
 	}
 

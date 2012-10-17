@@ -50,8 +50,11 @@ public class Combat {
 			// Everbie attacking, enemy defending:
 			if (turn == 0) {
 
-				everbieDmg = rollDice(Everbie.getEverbie().getStrength() + fightingStyle.getStrengthModifier(),
-						1+(Everbie.getEverbie().getIntelligence() + fightingStyle.getIntelligenceModifier())/4);
+				everbieDmg = rollDice((Math.random()>0.04?Everbie.getEverbie().getStrength()+
+						Everbie.getEverbie().getStamina() + fightingStyle.getStrengthModifier()+
+						fightingStyle.getStaminaModifier():Everbie.getEverbie().getStrength()+
+						fightingStyle.getStrengthModifier()), 1+(Everbie.getEverbie().getIntelligence()+
+						fightingStyle.getIntelligenceModifier())/4);
 				enemyDef = rollDice(enemy.getStamina(), enemy.getIntelligence());
 				dmg = everbieDmg - enemyDef;
 
@@ -67,8 +70,8 @@ public class Combat {
 
 			// Enemy attacking, Everbie Defending:
 			else if (turn == 1) {
-				enemyDmg = rollDice(enemy.getStrength(),
-						enemy.getIntelligence());
+				enemyDmg = rollDice((Math.random()>0.04?enemy.getStrength()+
+						enemy.getStamina():enemy.getStrength()), enemy.getIntelligence());
 				everbieDef = rollDice(Everbie.getEverbie().getStamina() + fightingStyle.getStaminaModifier(),
 						1+(Everbie.getEverbie().getIntelligence() + fightingStyle.getIntelligenceModifier())/4);
 				dmg = enemyDmg - everbieDef;
