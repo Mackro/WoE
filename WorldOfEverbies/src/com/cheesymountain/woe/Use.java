@@ -35,8 +35,8 @@ public class Use {
 	
 	public static final int NOT_ENOUGH_OI = 2;
 	public static final int SUCCESS = 20;
-	public static final int EVERBIE_IS_BUSY = 200, EVERBIE_IS_FAINTED = 201;
-	public static final int EVERBIE_TOO_WEAK = 2000, EVERBIE_TOO_LAZY = 2001, EVERBIE_TOO_DUMB = 2003;
+	public static final int EVERBIE_IS_BUSY = 200, EVERBIE_IS_FAINTED = 201, EVERBIE_IS_DEAD = 202;
+	public static final int EVERBIE_TOO_WEAK = 2000, EVERBIE_TOO_LAZY = 2001, EVERBIE_TOO_DUMB = 2002;
 	
 	/**
 	 * Activates the desired event which could be a food,
@@ -46,12 +46,15 @@ public class Use {
 	 * @return if this method was success fully completed or not
 	 */
 	public int activate(Food food){
-		if(Everbie.getEverbie().isOccupied()){
-			Log.getLog().isBusy();
-			return EVERBIE_IS_BUSY;
+		if(!Everbie.getEverbie().isAlive()){
+			Log.getLog().isDead();
+			return EVERBIE_IS_DEAD;
 		}else if(Everbie.getEverbie().isFainted()){
 			Log.getLog().isFainted();
 			return EVERBIE_IS_FAINTED;
+		}else if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return EVERBIE_IS_BUSY;
 		}
 		if(Everbie.getEverbie().changeMoney(-food.getCost())){
 			Log.getLog().foodGiven(food);
@@ -72,12 +75,15 @@ public class Use {
 	 * @return if this method was success fully completed or not
 	 */
 	public int activate(Work work){
-		if(Everbie.getEverbie().isOccupied()){
-			Log.getLog().isBusy();
-			return EVERBIE_IS_BUSY;
+		if(!Everbie.getEverbie().isAlive()){
+			Log.getLog().isDead();
+			return EVERBIE_IS_DEAD;
 		}else if(Everbie.getEverbie().isFainted()){
 			Log.getLog().isFainted();
 			return EVERBIE_IS_FAINTED;
+		}else if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return EVERBIE_IS_BUSY;
 		}else if(work.getStrengthReq()>Everbie.getEverbie().getStrength()){
 			Log.getLog().tooWeak(work.getStrengthReq());
 			return EVERBIE_TOO_WEAK;
@@ -104,12 +110,15 @@ public class Use {
 	 * @return if this method was success fully completed or not
 	 */
 	public int activate(Interaction interact){
-		if(Everbie.getEverbie().isOccupied()){
-			Log.getLog().isBusy();
-			return EVERBIE_IS_BUSY;
+		if(!Everbie.getEverbie().isAlive()){
+			Log.getLog().isDead();
+			return EVERBIE_IS_DEAD;
 		}else if(Everbie.getEverbie().isFainted()){
 			Log.getLog().isFainted();
 			return EVERBIE_IS_FAINTED;
+		}else if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return EVERBIE_IS_BUSY;
 		}
 		Log.getLog().interactionMade(interact);
 		Everbie.getEverbie().changeCharm(interact.getCharmModifier());
@@ -126,12 +135,15 @@ public class Use {
 	 * @return if this method was success fully completed or not
 	 */
 	public int activate(Item item){
-		if(Everbie.getEverbie().isOccupied()){
-			Log.getLog().isBusy();
-			return EVERBIE_IS_BUSY;
+		if(!Everbie.getEverbie().isAlive()){
+			Log.getLog().isDead();
+			return EVERBIE_IS_DEAD;
 		}else if(Everbie.getEverbie().isFainted()){
 			Log.getLog().isFainted();
 			return EVERBIE_IS_FAINTED;
+		}else if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return EVERBIE_IS_BUSY;
 		}
 		if(Everbie.getEverbie().changeMoney(-item.getCost())){
 			Log.getLog().itemUsed(item);
@@ -157,12 +169,15 @@ public class Use {
 	 * @return if this method was success fully completed or not
 	 */
 	public int activate(Training train){
-		if(Everbie.getEverbie().isOccupied()){
-			Log.getLog().isBusy();
-			return EVERBIE_IS_BUSY;
+		if(!Everbie.getEverbie().isAlive()){
+			Log.getLog().isDead();
+			return EVERBIE_IS_DEAD;
 		}else if(Everbie.getEverbie().isFainted()){
 			Log.getLog().isFainted();
 			return EVERBIE_IS_FAINTED;
+		}else if(Everbie.getEverbie().isOccupied()){
+			Log.getLog().isBusy();
+			return EVERBIE_IS_BUSY;
 		}
 		Log.getLog().started(train);
 		Everbie.getEverbie().setOccupation(train);

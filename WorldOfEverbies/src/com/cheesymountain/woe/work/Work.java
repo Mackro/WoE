@@ -34,6 +34,9 @@ public abstract class Work implements Occupationable{
 		this.healthModifier = healthModifier;
 		this.minutesWorking = minutesWorking;
 		this.starvationModifier = starvationModifier;
+		this.strengthReq = strengthReq;
+		this.staminaReq = staminaReq;
+		this.intelligenceReq = intelligenceReq;
 	}
 	
 	/**
