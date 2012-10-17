@@ -27,6 +27,7 @@ import android.view.GestureDetector.SimpleOnGestureListener;
  * This class is taken from Amir's blog:
  * http://android-journey.blogspot.se
  * Released under public domain.
+ * Modified by Cheesy Mountain.
  * @author Amir
  *
  */
