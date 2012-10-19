@@ -60,7 +60,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
 		pictures.setImageResource(Race.RACELIST[selectedRace].getImageID());
 		name = (EditText)findViewById(R.id.everbieNameText);
-		name.setHint("Enter Name Here");
+		name.setHint("Enter your name");
 		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
 
 		detector = new SimpleGestureFilter(this,this);
