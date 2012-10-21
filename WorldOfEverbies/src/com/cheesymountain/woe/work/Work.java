@@ -45,13 +45,12 @@ public abstract class Work implements Occupationable{
 	 * @param healthModifier an int describing how your Everbies health will be affected
 	 * 		from working
 	 */
-	public Work(int time, int salary, int happinessModifier, int healthModifier, int minutesWorking,
+	public Work(int time, int salary, int happinessModifier, int healthModifier,
 			int starvationModifier, int strengthReq, int staminaReq, int intelligenceReq){
 		this.time = time;
 		this.salary = salary;
 		this.happinessModifier = happinessModifier;
 		this.healthModifier = healthModifier;
-		this.minutesWorking = minutesWorking;
 		this.starvationModifier = starvationModifier;
 		this.strengthReq = strengthReq;
 		this.staminaReq = staminaReq;

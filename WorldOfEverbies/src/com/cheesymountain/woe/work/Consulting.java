@@ -27,12 +27,11 @@ public class Consulting extends Work {
 	private static int salary = 400;
 	private static int happinessModifier = -3;
 	private static int healthModifier = -1;
-	private static int minutesWorking = 180;
 	private static int starvationModifier = -2;
 	private static int strengthReq = 1, staminaReq = 1, intelligenceReq = 15;
 	
 	public Consulting() {
-		super(time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier,
+		super(time, salary, happinessModifier, healthModifier, starvationModifier,
 				strengthReq, staminaReq, intelligenceReq);
 	}
 
@@ -41,4 +40,9 @@ public class Consulting extends Work {
 		return "consulting";
 	}
 
+	@Override
+	public int getTime(){
+		return 180;
+		
+	}
 }

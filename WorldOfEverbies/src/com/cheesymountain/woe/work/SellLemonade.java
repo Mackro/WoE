@@ -26,18 +26,23 @@ public class SellLemonade extends Work {
 	private static int time = 2;
 	private static int happinessModifier = -8;
 	private static int healthModifier = 0;
-	private static int minutesWorking = 60;
 	private static int starvationModifier = -1;
 	private static int strengthReq = 1, staminaReq = 1, intelligenceReq = 1;
 	
 	public SellLemonade(int salary) {
-		super(time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier,
+		super(time, salary, happinessModifier, healthModifier, starvationModifier,
 				strengthReq, staminaReq, intelligenceReq);
 	}
 	
 	@Override
 	public String getName() {
 		return "SellLemonade";
+	}
+	
+	@Override
+	public int getTime(){
+		return 60;
+		
 	}
 
 }
