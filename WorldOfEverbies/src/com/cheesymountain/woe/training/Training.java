@@ -30,6 +30,7 @@ import com.cheesymountain.woe.util.Occupationable;
 public abstract class Training implements Occupationable {
 	
 	private int strengthModifier, intelligenceModifier, staminaModifier, starvationModifier;
+	public static final String[] TRAININGS = {"Chess","Running","Squash","Swimming","WorkingOut"};
 	
 	/**
 	 * This is the constructor that is called for from all subclasses.

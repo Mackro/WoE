@@ -19,7 +19,9 @@ package com.cheesymountain.woe;
 ================================================================*/
 import com.cheesymountain.woe.race.Mogno;
 import com.cheesymountain.woe.race.Race;
+import com.cheesymountain.woe.training.Training;
 import com.cheesymountain.woe.util.Occupationable;
+import com.cheesymountain.woe.work.Work;
 
 
 /**
@@ -39,10 +41,11 @@ public class Everbie {
 	public static final int STARTING_MONEY = 0, STARTING_FULLNESS = 50, STARTING_HAPPINESS = 50;
 	private String name;
 	private int maxHealthModifier, health, strength, intelligence, stamina,
-			charm, fullness, happiness, toxicity, cuteness, money;
+			charm, cuteness, fullness, happiness, toxicity, money;
 	private boolean alive, fainted;
 	private int occupiedSeconds = 0, faintedTime = 0;
-	private int starvation, standardStarvation, depression, standardDepression;
+	private static final int standardStarvation = 1, standardDepression = 1;
+	private int starvation, depression;
 	private Occupationable occupation;
 
 	private Everbie(String name, Race race) {
@@ -59,8 +62,8 @@ public class Everbie {
 		happiness = STARTING_HAPPINESS;
 		toxicity = 0;
 		money = STARTING_MONEY;
-		starvation = standardStarvation = 1;
-		depression = standardDepression = 1;
+		starvation = standardStarvation;
+		depression = standardDepression;
 		health = getMaxHealth();
 		new Ticker().start();
 	}
@@ -95,6 +98,20 @@ public class Everbie {
 	public int getImageId(){
 		return race.getImageID();
 	}
+	
+	/**
+	 * Returns the int that represents the position of the current race in the static racelist
+	 * @return an integer representing the races position in Race.RACELIST
+	 */
+	public int getRaceId(){
+		for (int i=0;i<4;i++){
+			if(race.getName().equalsIgnoreCase(Race.RACELIST[i].getName())){
+				return i;
+			}
+		}
+		return 0;
+	}
+	
 
 	/**
 	 * Returns the name of the current Everbie
@@ -110,6 +127,14 @@ public class Everbie {
 	 */
 	public int getMaxHealth() {
 		return (int)(maxHealthModifier + (stamina/2 + strength/4)*Math.PI);
+	}
+	
+	/**
+	 * Returns the base modifier for the Everbies maximun health
+	 * @return the base bodifier for maxHealth
+	 */
+	public int getMaxHealthMod() {
+		return maxHealthModifier;
 	}
 
 	/**
@@ -505,8 +530,8 @@ public class Everbie {
 	 * A method to set the Everbie to be fainted.
 	 * @param fainted
 	 */
-	public void setFainted(boolean fainted) {
-		this.fainted = fainted;
+	public void faint() {
+		this.fainted = true;
 		faintedTime = getLevel();
 	}
 
@@ -521,13 +546,16 @@ public class Everbie {
 	}
 	
 	/**
-	 * Restores the Everbie after the game has been closed and restarted
-	 * @param name - the name of the Everbie
-	 * @param values - an array with all stats
-	 * @param alive - a boolean to determine if the Everbie is alive
-	 * @param imageId - the image's id number
+	 * Restores the Everbie after the game has restarted.
+	 * @param name the name of the everbie
+	 * @param values an array containing eleven integers
+	 * @param alive a boolean to say whether the everbie is alive or not
+	 * @param fainted a boolean to say whether the everbie is fainted or not
+	 * @param race
+	 * @param occupation
 	 */
-	public void restoreEverbie(String name, int[] values, boolean alive, Race race){
+	public void restoreEverbie(String name, int[] values, boolean alive, boolean fainted, Race race,
+			String occupation){
 		setName(name);
 		maxHealthModifier = values[0];
 		health = values[1];
@@ -535,13 +563,21 @@ public class Everbie {
 		intelligence = values[3];
 		stamina = values[4];
 		charm = values[5];
-		fullness = values[6];
-		happiness = values[7];
-		toxicity = values[8];
-		cuteness = values[9];
+		cuteness = values[6];
+		fullness = values[7];
+		happiness = values[8];
+		toxicity = values[9];
 		money = values[10];
 		this.alive = alive;
+		this.fainted = fainted;
 		this.race = race;
+		for(int i=0;i<5;i++){
+			if(occupation.equalsIgnoreCase(Training.TRAININGS[i])){
+				
+			}else if(occupation.equalsIgnoreCase(Work.WORKS[i])){
+				
+			}
+		}
 	}
 	
 	/**
@@ -602,7 +638,7 @@ public class Everbie {
 				if(fainted){
 					faintedTime--;
 					if(faintedTime < 1){
-						setFainted(false);
+						everbie.fainted = false;
 					}
 				}
 			}

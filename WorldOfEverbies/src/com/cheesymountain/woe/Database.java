@@ -55,13 +55,13 @@ public class Database {
 	private DbHelper helper;
 	private final Context context;
 	private SQLiteDatabase database;
+	private Use use;
 	
 	
 	private static class DbHelper extends SQLiteOpenHelper{
 
 		public DbHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
-			// TODO Auto-generated constructor stub
 		}
 
 		@Override
@@ -88,6 +88,7 @@ public class Database {
 	
 	public Database(Context context){
 		this.context = context;
+		use = new Use();
 	}
 	
 	public Database open(){
@@ -169,7 +170,7 @@ public class Database {
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
 				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION));
 		if(c.getInt(iOCCUPIEDSEC)>0){
-			new Use.Occupation().start();
+			 use.new Occupation().start();
 		}
 		
 	}

@@ -254,7 +254,7 @@ public class EverbieTest {
 		
 		int[] values = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 		
-		everbie.restoreEverbie("Nalle", values, true, new Mogno());
+		everbie.restoreEverbie("Nalle", values, false, false, new Mogno(), null);
 		
 		if(everbie == null){
 			Log.e("Error", "Restoring everbie failed");

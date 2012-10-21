@@ -27,4 +27,6 @@ package com.cheesymountain.woe.util;
 public interface Occupationable {
 	
 	public int getTime();
+	
+	public String getName();
 }

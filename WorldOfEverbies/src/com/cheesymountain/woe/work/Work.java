@@ -33,6 +33,8 @@ public abstract class Work implements Occupationable{
 
 	private int time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier,
 			strengthReq, staminaReq, intelligenceReq;
+	public static final String[] WORKS = {"Consulting","DogWalking","MotelCleaning","Plumbing",
+		"SellLemonade"};
 	
 	/**
 	 * The public constructor that is called from all subclasses with the specific

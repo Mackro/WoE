@@ -150,7 +150,7 @@ public class Combat {
 			health -= dmg;
 			if (health < 1) {
 				Everbie.getEverbie().setHealth(1);
-				Everbie.getEverbie().setFainted(true);
+				Everbie.getEverbie().faint();
 				combatString += "\nYour Everbie has fainted.";
 			} else {
 				combatString += "\n" + enemy.getName() + " hit "
