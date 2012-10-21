@@ -28,10 +28,10 @@ public class Chess extends Training{
 	private static int staminaModifier = 0;
 	private static int intelligenceModifier = 2;
 	private static int starvationModifier = -3;
-	private static int minutesTraining = 50;
+
 	
 	public Chess() {
-		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier, minutesTraining);
+		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier);
 
 	}
 
@@ -39,6 +39,12 @@ public class Chess extends Training{
 	public String getName() {
 
 		return name;
+	}
+	
+	@Override
+	public int getTime(){
+		return 50;
+		
 	}
 
 }

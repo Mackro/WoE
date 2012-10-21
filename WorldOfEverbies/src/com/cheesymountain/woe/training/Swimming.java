@@ -29,10 +29,9 @@ public class Swimming extends Training{
 	private static int staminaModifier = 3;
 	private static int intelligenceModifier = 0;
 	private static int starvationModifier = -3;
-	private static int minutesTraining = 90;
 	
 	public Swimming() {
-		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier, minutesTraining);
+		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier);
 
 	}
 
@@ -40,6 +39,12 @@ public class Swimming extends Training{
 	public String getName() {
 
 		return name;
+	}
+	
+	@Override
+	public int getTime(){
+		return 90;
+		
 	}
 
 }

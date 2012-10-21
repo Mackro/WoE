@@ -28,17 +28,22 @@ public class Running extends Training {
 	private static int staminaModifier = 2;
 	private static int intelligenceModifier = 0;
 	private static int starvationModifier = -2;
-	private static int minutesTraining = 45;
 
 	public Running() {
 		
-		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier, minutesTraining);
+		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier);
 		
 	}
 
 	@Override
 	public String getName() {
 		return name;
+	}
+	
+	@Override
+	public int getTime(){
+		return 45;
+		
 	}
 
 }

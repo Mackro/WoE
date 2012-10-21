@@ -182,7 +182,7 @@ public class Use {
 		Log.getLog().started(train);
 		Everbie.getEverbie().setOccupation(train);
 		Everbie.getEverbie().setStarvation(train.getStarvationModifier());
-		Everbie.getEverbie().setOccupiedMinutes(train.getMinutesTraining());
+		Everbie.getEverbie().setOccupiedMinutes(train.getTime());
 		new Occupation().start();
 		return SUCCESS;
 	}
@@ -191,7 +191,7 @@ public class Use {
 	 * Called when the Everbie is done with the corresponding occupation.
 	 * @param occupation - the work or training done
 	 */
-	public void done(Occupationable occupation){
+	public static void done(Occupationable occupation){
 		if(occupation instanceof Work){
 			done((Work)occupation);
 		}else if(occupation instanceof Training){
@@ -203,7 +203,7 @@ public class Use {
 	 * Called when the Everbie is done with work.
 	 * @param occupation - the work done
 	 */
-	public void done(Work work){
+	public static void done(Work work){
 		Everbie.getEverbie().changeMoney(work.getSalary());
 		Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 		Everbie.getEverbie().changeHealth(work.getHealthModifier());
@@ -214,7 +214,7 @@ public class Use {
 	 * Called when the Everbie is done with the training.
 	 * @param occupation - the training done
 	 */
-	public void done(Training train){
+	public static void done(Training train){
 		Everbie.getEverbie().changeStrength(train.getStrengthModifier());
 		Everbie.getEverbie().changeStamina(train.getStaminaModifier());
 		Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
