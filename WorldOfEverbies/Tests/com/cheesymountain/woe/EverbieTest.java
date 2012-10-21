@@ -1,6 +1,7 @@
 package com.cheesymountain.woe;
 
 import com.cheesymountain.woe.Everbie;
+import com.cheesymountain.woe.race.Mogno;
 
 import android.util.Log;
 
@@ -253,7 +254,7 @@ public class EverbieTest {
 		
 		int[] values = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 		
-		everbie.restoreEverbie("Nalle", values, true, 1);
+		everbie.restoreEverbie("Nalle", values, true, new Mogno());
 		
 		if(everbie == null){
 			Log.e("Error", "Restoring everbie failed");
