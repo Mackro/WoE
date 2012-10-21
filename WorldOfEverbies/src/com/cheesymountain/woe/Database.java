@@ -18,7 +18,6 @@ package com.cheesymountain.woe;
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
 import com.cheesymountain.woe.race.Race;
-import com.cheesymountain.woe.race.Skrom;
 import com.cheesymountain.woe.util.Occupationable;
 
 import android.content.ContentValues;
@@ -27,6 +26,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Handles database for saving and loading data about the Everbie to avoid restarting the game
+ * every time you start the application.
+ * @author Markus Otterberg
+ *
+ */
 public class Database {
 
 	private static final String KEY_ROWID = "_id";						//Saved as:
@@ -43,8 +48,8 @@ public class Database {
 	private static final String KEY_TOX = "toxicity";					//int
 	private static final String KEY_OI = "oi";							//int
 	private static final String KEY_OCCUPIEDSEC = "occupiedsec"; 		//int
-	private static final String KEY_ALIVE = "alive";					//"boolean"(1=true, 0=false)
-	private static final String KEY_FAINTED = "fainted";				//"boolean"(1=true, 0=false)
+	private static final String KEY_ALIVE = "alive";					//"boolean"(1=true,0=false)
+	private static final String KEY_FAINTED = "fainted";				//"boolean"(1=true,0=false)
 	private static final String KEY_RACE = "race";						//int
 	private static final String KEY_OCCUPATION = "occupation";			//String
 
@@ -57,7 +62,13 @@ public class Database {
 	private SQLiteDatabase database;
 	private Use use;
 	
-	
+	/**
+	 * A helper class to help with database handling.
+	 * Taken from tutorials at:
+	 * http://thenewboston.com
+	 * @author Travis
+	 *
+	 */
 	private static class DbHelper extends SQLiteOpenHelper{
 
 		public DbHelper(Context context) {
@@ -91,16 +102,26 @@ public class Database {
 		use = new Use();
 	}
 	
-	public Database open(){
+	/**
+	 * Opens the database to be able to read/write from/to it.
+	 * Should be called prior to using save or load.
+	 */
+	public void open(){
 		helper = new DbHelper(this.context);
 		database = helper.getWritableDatabase();
-		return this;
 	}
 	
+	/**
+	 * Closes the database, should be called as soon as there is no further need for it.
+	 */
 	public void close(){
 		helper.close();
 	}
 	
+	/**
+	 * Saves the current Everbie to be retrieved later.
+	 * @param everbie - the Everbie to be saved
+	 */
 	public void save(Everbie everbie){
 		database.delete(DATABASE_TABLE, null, null);
 		ContentValues values = new ContentValues();
@@ -126,13 +147,16 @@ public class Database {
 		values.put(KEY_TOX, everbie.getToxicity());
 		values.put(KEY_OI, everbie.getMoney());
 		values.put(KEY_OCCUPIEDSEC, everbie.getOccupiedSeconds());
-		values.put(KEY_ALIVE, everbie.isAlive());
-		values.put(KEY_FAINTED, everbie.isFainted());
+		values.put(KEY_ALIVE, everbie.isAlive()?1:0);
+		values.put(KEY_FAINTED, everbie.isFainted()?1:0);
 		values.put(KEY_RACE, everbie.getRaceId());
 		values.put(KEY_OCCUPATION, occupationName);
 		database.insert(DATABASE_TABLE, null, values);
 	}
 	
+	/**
+	 * Loads the currently saved Everbie unless there already exists one, or if none are saved.
+	 */
 	public void load(){
 		if(Everbie.exists()){
 			return;
