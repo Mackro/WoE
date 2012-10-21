@@ -181,9 +181,13 @@ public class Combat {
 					+ "\nThe enemy leaves behind " + enemy.getBaseMoneyReward()
 					* Everbie.getEverbie().getLevel() + " Oi";
 			if (enemy.getAdditionalItemReward() != null) {
-				use.activate(enemy.getAdditionalItemReward());
 				combatString += "\nYou also find a "
 						+ enemy.getAdditionalItemReward().getName();
+				Log.getLog().combatLog(combatString);
+				Everbie.getEverbie().changeMoney(enemy.getAdditionalItemReward().getCost());
+				use.activate(enemy.getAdditionalItemReward());
+			}else{
+				Log.getLog().combatLog(combatString);
 			}
 		}
 	}
