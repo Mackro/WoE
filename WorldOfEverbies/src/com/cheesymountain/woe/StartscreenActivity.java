@@ -35,6 +35,10 @@ public class StartscreenActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_startscreen);
+		Database db = new Database(this);
+		db.open();
+		db.load();
+		db.close();
 		if(!Everbie.exists()){
 			findViewById(R.id.startContinueText).setClickable(false);
 			findViewById(R.id.startContinueText).setEnabled(false);

@@ -66,6 +66,10 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		bgMusic = MediaPlayer.create(MainActivity.this, R.raw.everbiebgm);
 		use = new Use();
 		detector = new SimpleGestureFilter(this, this);
+		Database db = new Database(this);
+		db.open();
+		db.load();
+		db.close();
 	}
 
 	@Override
@@ -95,6 +99,11 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	public void onPause(){
 		super.onPause();
 		bgMusic.pause();
+
+		Database db = new Database(this);
+		db.open();
+		db.save(Everbie.getEverbie());
+		db.close();
 	}
 
 	@Override
