@@ -502,7 +502,7 @@ public class Everbie {
 	 * Sets the work or training the Everbie should be occupied with
 	 * @param occupation - the work or training to be occupied with
 	 */
-	public void setOccupation(Occupationable occupation, long OccupationStartTime){
+	public void setOccupation(Occupationable occupation, long occupationStartTime){
 		this.occupation = occupation;
 		this.occupationStartTime = occupationStartTime;
 	}
