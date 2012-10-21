@@ -33,7 +33,9 @@ public class Mogno extends Race {
 	public Mogno(){
 		name = "Mogno";
 		description = "Mogno:\nThe mognos are known for their sharp claws and short temper.";
-		imageID = R.drawable.mogno;
+		imageIDMin = R.drawable.mognoalt;
+		imageIDMed = R.drawable.mognoalt;
+		imageIDMax = R.drawable.mognoalt;
 		maxHealthModifier = 20;
 		strength = 3;
 		intelligence = 1;

@@ -35,7 +35,9 @@ public class Tragani extends Race{
 		name = "Tragani";
 		description = "Tragani:\nThe Traganis are know for their exceptional running speed" +
 				"and their total lack of common sense.";
-		imageID = R.drawable.tragani;
+		imageIDMin = R.drawable.traganimi;
+		imageIDMed = R.drawable.traganime;
+		imageIDMax = R.drawable.traganima;
 		maxHealthModifier = 20;
 		strength = 1;
 		intelligence = 1;
