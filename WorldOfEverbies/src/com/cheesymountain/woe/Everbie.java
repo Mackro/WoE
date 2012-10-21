@@ -32,7 +32,7 @@ import com.cheesymountain.woe.util.Occupationable;
  */
 public class Everbie {
 	
-	private int imageId = 0;
+	private Race race;
 	public static final String DEFAULT_NAME = "Eibreve";
 	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
@@ -47,6 +47,7 @@ public class Everbie {
 
 	private Everbie(String name, Race race) {
 		alive = true;
+		this.race = race;
 		this.name = name;
 		maxHealthModifier = race.getMaxHealthModifier();
 		strength = race.getStrength();
@@ -58,7 +59,6 @@ public class Everbie {
 		happiness = STARTING_HAPPINESS;
 		toxicity = 0;
 		money = STARTING_MONEY;
-		this.imageId = race.getImageID();
 		starvation = standardStarvation = 1;
 		depression = standardDepression = 1;
 		health = getMaxHealth();
@@ -67,8 +67,8 @@ public class Everbie {
 	
 	/**
 	 * Creates an Everbie unless one already exists.
-	 * @param name - the name of the Everbie to be created
-	 * @param imageId - the image's id of the Everbie to be created
+	 * @param name - the name of the Everbie that is to be created
+	 * @param race - the desired race of the Everbie 
 	 */
 	public synchronized static void createEverbie (String name, Race race){
 		if(!Everbie.exists()){
@@ -93,7 +93,7 @@ public class Everbie {
 	 * @return the image's id number
 	 */
 	public int getImageId(){
-		return imageId;
+		return race.getImageID();
 	}
 
 	/**
@@ -527,7 +527,7 @@ public class Everbie {
 	 * @param alive - a boolean to determine if the Everbie is alive
 	 * @param imageId - the image's id number
 	 */
-	public void restoreEverbie(String name, int[] values, boolean alive, int imageId){
+	public void restoreEverbie(String name, int[] values, boolean alive, Race race){
 		setName(name);
 		maxHealthModifier = values[0];
 		health = values[1];
@@ -541,7 +541,7 @@ public class Everbie {
 		cuteness = values[9];
 		money = values[10];
 		this.alive = alive;
-		this.imageId = imageId;
+		this.race = race;
 	}
 	
 	/**

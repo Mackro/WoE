@@ -33,8 +33,10 @@ public class Skrom extends Race{
 	public Skrom(){
 		name = "Skrom";
 		description = "Skrom:\nThe most intelligent race among the Everbies" +
-				" are the Skrom but their constant studying have resulted in severe obesity.";
-		imageID = R.drawable.skrom;
+				" are the Skrom but their constant studying have resulted in severely degenerated hygiene.";
+		imageIDMin = R.drawable.raterbiemi;
+		imageIDMed = R.drawable.raterbieme;
+		imageIDMax = R.drawable.raterbiema;
 		maxHealthModifier = 20;
 		strength = 1;
 		intelligence = 3;

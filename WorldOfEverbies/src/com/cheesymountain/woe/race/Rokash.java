@@ -34,7 +34,9 @@ public class Rokash extends Race {
 		name = "Rokash";
 		description = "Rokash:\nThe Rokash race is the cutest and most charming of all Everbies..." +
 				"but also the most hostile";
-		imageID = R.drawable.rokash;
+		imageIDMin = R.drawable.rokash;
+		imageIDMed = R.drawable.rokash;
+		imageIDMax = R.drawable.rokash;
 		maxHealthModifier = 20;
 		strength = 1;
 		stamina  = 1;

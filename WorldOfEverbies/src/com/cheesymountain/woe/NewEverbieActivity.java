@@ -60,7 +60,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
 		pictures.setImageResource(Race.RACELIST[selectedRace].getImageID());
 		name = (EditText)findViewById(R.id.everbieNameText);
-		name.setHint("Enter your name");
+		name.setHint("Enter name");
 		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
 
 		detector = new SimpleGestureFilter(this,this);
@@ -68,24 +68,6 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		orientationDots[1] = (RadioButton)(findViewById(R.id.Radio1));
 		orientationDots[2] = (RadioButton)(findViewById(R.id.Radio2));
 		orientationDots[3] = (RadioButton)(findViewById(R.id.Radio3));
-	}
-
-	@Override
-	public void onRestoreInstanceState(Bundle savedInstanceState){
-		super.onRestoreInstanceState(savedInstanceState);
-		int[] values = {savedInstanceState.getInt("maxHealth"),
-				savedInstanceState.getInt("health"),
-				savedInstanceState.getInt("Strength"),
-				savedInstanceState.getInt("intelligence"),
-				savedInstanceState.getInt("stamina"),
-				savedInstanceState.getInt("charm"),
-				savedInstanceState.getInt("fullness"),
-				savedInstanceState.getInt("happiness"),
-				savedInstanceState.getInt("toxicity"),
-				savedInstanceState.getInt("cuteness"),
-				savedInstanceState.getInt("money")};
-		Everbie.getEverbie().restoreEverbie(savedInstanceState.getString("Name"), values,
-				savedInstanceState.getBoolean("alive"), savedInstanceState.getInt("imagePath"));
 	}
 
 	/**
