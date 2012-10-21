@@ -95,7 +95,7 @@ public class Use {
 			return EVERBIE_TOO_DUMB;
 		}
 		Log.getLog().started(work);
-		Everbie.getEverbie().setOccupation(work);
+		Everbie.getEverbie().setOccupation(work, System.currentTimeMillis());
 		Everbie.getEverbie().setStarvation(work.getStarvationModifier());
 		Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
 		new Occupation().start();
@@ -180,7 +180,7 @@ public class Use {
 			return EVERBIE_IS_BUSY;
 		}
 		Log.getLog().started(train);
-		Everbie.getEverbie().setOccupation(train);
+		Everbie.getEverbie().setOccupation(train, System.currentTimeMillis());
 		Everbie.getEverbie().setStarvation(train.getStarvationModifier());
 		Everbie.getEverbie().setOccupiedMinutes(train.getTime());
 		new Occupation().start();
@@ -231,8 +231,11 @@ public class Use {
 
 		public long startingTime;
 
+		@Override
 		public void start(){
-			startingTime = System.currentTimeMillis();
+			startingTime = Everbie.getEverbie().getOccupationStartTime();
+			Everbie.getEverbie().setOccupiedSeconds((int)((Everbie.getEverbie().getOccupation().getTime()*60) 
+					- ((System.currentTimeMillis() - startingTime)/1000)));
 			super.start();
 		}
 
@@ -244,7 +247,6 @@ public class Use {
 				}catch(InterruptedException ie){}
 				Everbie.getEverbie().setOccupiedSeconds((int)((Everbie.getEverbie().getOccupation().getTime()*60) 
 						- ((System.currentTimeMillis() - startingTime)/1000)));
-				android.util.Log.d("Time", Everbie.getEverbie().getOccupiedSeconds() + "");
 				if(Everbie.getEverbie().getOccupiedSeconds() <= 0 &&
 						Everbie.getEverbie().getStarvation() != Everbie.getEverbie().getStandardStarvation()){
 					Everbie.getEverbie().setStarvation(Everbie.getEverbie().getStandardStarvation());

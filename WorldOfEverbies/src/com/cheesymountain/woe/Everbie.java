@@ -19,9 +19,9 @@ package com.cheesymountain.woe;
 ================================================================*/
 import com.cheesymountain.woe.race.Mogno;
 import com.cheesymountain.woe.race.Race;
-import com.cheesymountain.woe.training.Training;
+import com.cheesymountain.woe.training.*;
+import com.cheesymountain.woe.work.*;
 import com.cheesymountain.woe.util.Occupationable;
-import com.cheesymountain.woe.work.Work;
 
 
 /**
@@ -47,6 +47,7 @@ public class Everbie {
 	private static final int standardStarvation = 1, standardDepression = 1;
 	private int starvation, depression;
 	private Occupationable occupation;
+	private long occupationStartTime;
 
 	private Everbie(String name, Race race) {
 		alive = true;
@@ -288,6 +289,10 @@ public class Everbie {
 	public Occupationable getOccupation(){
 		return occupation;
 	}
+	
+	public long getOccupationStartTime(){
+		return occupationStartTime;
+	}
 
 	/**
 	 * 
@@ -497,8 +502,9 @@ public class Everbie {
 	 * Sets the work or training the Everbie should be occupied with
 	 * @param occupation - the work or training to be occupied with
 	 */
-	public void setOccupation(Occupationable occupation){
+	public void setOccupation(Occupationable occupation, long OccupationStartTime){
 		this.occupation = occupation;
+		this.occupationStartTime = occupationStartTime;
 	}
 
 	/**
@@ -551,8 +557,8 @@ public class Everbie {
 	 * @param values an array containing eleven integers
 	 * @param alive a boolean to say whether the everbie is alive or not
 	 * @param fainted a boolean to say whether the everbie is fainted or not
-	 * @param race
-	 * @param occupation
+	 * @param race the everbie's race
+	 * @param occupation a String 
 	 */
 	public void restoreEverbie(String name, int[] values, boolean alive, boolean fainted, Race race,
 			String occupation){
@@ -568,14 +574,46 @@ public class Everbie {
 		happiness = values[8];
 		toxicity = values[9];
 		money = values[10];
+		occupationStartTime = values[11];
 		this.alive = alive;
 		this.fainted = fainted;
 		this.race = race;
 		for(int i=0;i<5;i++){
 			if(occupation.equalsIgnoreCase(Training.TRAININGS[i])){
-				
+				switch(i){
+				case 0:
+					this.occupation = new Chess();
+					break;
+				case 1:
+					this.occupation = new Running();
+					break;
+				case 2:
+					this.occupation = new Squash();
+					break;
+				case 3:
+					this.occupation = new Swimming();
+					break;
+				case 4:
+					this.occupation = new WorkingOut();
+				}
 			}else if(occupation.equalsIgnoreCase(Work.WORKS[i])){
-				
+				switch(i){
+				case 0:
+					this.occupation = new Consulting();
+					break;
+				case 1:
+					this.occupation = new DogWalking();
+					break;
+				case 2:
+					this.occupation = new MotelCleaning();
+					break;
+				case 3:
+					this.occupation = new Plumbing();
+					break;
+				case 4:
+					this.occupation = new SellLemonade((int)(charm + cuteness + (intelligence/2)
+							*Math.random() + 42));
+				}
 			}
 		}
 	}
