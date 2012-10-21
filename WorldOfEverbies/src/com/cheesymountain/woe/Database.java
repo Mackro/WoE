@@ -47,7 +47,7 @@ public class Database {
 	private static final String KEY_HAPPINESS = "happiness";			//int
 	private static final String KEY_TOX = "toxicity";					//int
 	private static final String KEY_OI = "oi";							//int
-	private static final String KEY_OCCUPIEDSEC = "occupiedsec"; 		//int
+	private static final String KEY_OCCUPATIONSTART = "occupationstart";//int
 	private static final String KEY_ALIVE = "alive";					//"boolean"(1=true,0=false)
 	private static final String KEY_FAINTED = "fainted";				//"boolean"(1=true,0=false)
 	private static final String KEY_RACE = "race";						//int
@@ -84,7 +84,7 @@ public class Database {
 					KEY_STA + " INTEGER, " + KEY_CHARM + " INTEGER, " + KEY_CUTENESS +
 					" INTEGER, " + KEY_FULLNESS + " INTEGER, " + KEY_HAPPINESS +
 					" INTEGER, " + KEY_TOX + " INTEGER, " + KEY_OI + " INTEGER, " +
-					KEY_OCCUPIEDSEC + " INTEGER, " + KEY_ALIVE + " BOOLEAN, " + KEY_FAINTED +
+					KEY_OCCUPATIONSTART + " INTEGER, " + KEY_ALIVE + " BOOLEAN, " + KEY_FAINTED +
 					" BOOLEAN, " + KEY_RACE + " INTEGER, " + KEY_OCCUPATION + " TEXT);"
 			);
 		}
@@ -146,7 +146,7 @@ public class Database {
 		values.put(KEY_HAPPINESS, everbie.getHappiness());
 		values.put(KEY_TOX, everbie.getToxicity());
 		values.put(KEY_OI, everbie.getMoney());
-		values.put(KEY_OCCUPIEDSEC, everbie.getOccupiedSeconds());
+		values.put(KEY_OCCUPATIONSTART, everbie.getOccupiedSeconds());
 		values.put(KEY_ALIVE, everbie.isAlive()?1:0);
 		values.put(KEY_FAINTED, everbie.isFainted()?1:0);
 		values.put(KEY_RACE, everbie.getRaceId());
@@ -180,7 +180,7 @@ public class Database {
 		int iHAPPINESS = c.getColumnIndex(KEY_HAPPINESS);
 		int iTOX = c.getColumnIndex(KEY_TOX);
 		int iOI = c.getColumnIndex(KEY_OI);
-		int iOCCUPIEDSEC = c.getColumnIndex(KEY_OCCUPIEDSEC);
+		int iOCCUPATIONSTART = c.getColumnIndex(KEY_OCCUPATIONSTART);
 		
 		int iALIVE = c.getColumnIndex(KEY_ALIVE);
 		int iFAINTED = c.getColumnIndex(KEY_FAINTED);
@@ -190,10 +190,11 @@ public class Database {
 		int[] values = {c.getInt(iMAXHEALTHMOD), c.getInt(iHEALTH), c.getInt(iSTR),
 				c.getInt(iINT), c.getInt(iSTA), c.getInt(iCHARM),
 				c.getInt(iCUTENESS), c.getInt(iFULLNESS), c.getInt(iHAPPINESS),
-				c.getInt(iTOX), c.getInt(iOI), c.getInt(iOCCUPIEDSEC)};
+				c.getInt(iTOX), c.getInt(iOI), c.getInt(iOCCUPATIONSTART)};
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
 				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION));
-		if(c.getInt(iOCCUPIEDSEC)>0){
+		
+		if(!c.getString(iOCCUPATION).equalsIgnoreCase("null")){
 			 use.new Occupation().start();
 		}
 		
