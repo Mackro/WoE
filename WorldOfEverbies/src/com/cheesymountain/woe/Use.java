@@ -219,5 +219,39 @@ public class Use {
 		Everbie.getEverbie().changeStamina(train.getStaminaModifier());
 		Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
 	}
-}
 
+	/**
+	 * Thread responsible for everything that takes up real life time. such as work or training.
+	 * @author Cheesy Mountain
+	 *
+	 */
+
+
+	public class Occupation extends Thread {
+
+		public long startingTime;
+
+		public void start(){
+			startingTime = System.currentTimeMillis();
+			super.start();
+		}
+
+		@Override
+		public void run(){
+			while(Everbie.getEverbie().isAlive() && Everbie.getEverbie().getOccupiedSeconds() > 0){
+				try{
+					Thread.sleep(1000);
+				}catch(InterruptedException ie){}
+				Everbie.getEverbie().setOccupiedSeconds((int)((Everbie.getEverbie().getOccupation().getTime()*60) 
+						- ((System.currentTimeMillis() - startingTime)/1000)));
+				android.util.Log.d("Time", Everbie.getEverbie().getOccupiedSeconds() + "");
+				if(Everbie.getEverbie().getOccupiedSeconds() <= 0 &&
+						Everbie.getEverbie().getStarvation() != Everbie.getEverbie().getStandardStarvation()){
+					Everbie.getEverbie().setStarvation(Everbie.getEverbie().getStandardStarvation());
+				}
+			}
+			Use.done(Everbie.getEverbie().getOccupation());
+		}
+	}
+
+}
