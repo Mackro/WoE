@@ -356,4 +356,8 @@ public class Log {
 		logList.addLast(Everbie.getEverbie().getName() + " is too stupid, "
 				+ intelligenceReq + " intelligence is required");
 	}
+	
+	public void reset(){
+		logList.removeAll(logList);
+	}
 }
