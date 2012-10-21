@@ -40,9 +40,9 @@ public abstract class Race {
 		return description;
 	}
 	public int getImageID() {
-		if(Everbie.getEverbie().getLevel()<3){
+		if(Everbie.getEverbie().getLevel()<5){
 			return imageIDMin;
-		}else if(Everbie.getEverbie().getLevel()>8){
+		}else if(Everbie.getEverbie().getLevel()>14){
 			return imageIDMax;
 		}else{
 			return imageIDMed;
