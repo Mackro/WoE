@@ -25,6 +25,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Handles database for saving and loading data about the Everbie to avoid restarting the game
@@ -55,7 +56,7 @@ public class Database {
 
 	private static final String DATABASE_NAME = "Everbiedb";
 	private static final String DATABASE_TABLE = "EverbieTable";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	
 	private DbHelper helper;
 	private final Context context;
@@ -64,7 +65,7 @@ public class Database {
 	
 	/**
 	 * A helper class to help with database handling.
-	 * Taken from tutorials at:
+	 * Taken look from tutorials at:
 	 * http://thenewboston.com
 	 * @author Travis
 	 *
@@ -161,8 +162,23 @@ public class Database {
 		if(Everbie.exists()){
 			return;
 		}
-		String[] columns = new String[]{ KEY_ROWID, KEY_NAME };
-		Cursor c = database.query(DATABASE_TABLE, columns, null, null, null, null, null);
+		String[] columns = new String[]{ KEY_NAME, KEY_MAXHEALTHMOD, KEY_HEALTH, KEY_STR, KEY_INT,
+				KEY_STA, KEY_CHARM, KEY_CUTENESS, KEY_FULLNESS, KEY_HAPPINESS, KEY_TOX, KEY_OI,
+				KEY_OCCUPATIONSTART, KEY_ALIVE, KEY_FAINTED, KEY_RACE, KEY_OCCUPATION };
+		
+		Cursor c = null;
+		try{
+			c = database.query(DATABASE_TABLE, columns, null, null, null, null, null);
+		}catch(android.database.sqlite.SQLiteException sqlE){
+			if(sqlE.getMessage().contains("no such column:")){
+				//invalid database
+				helper.onUpgrade(database, DATABASE_VERSION-1, DATABASE_VERSION);
+				return;
+			}
+			//other error
+			Log.d("database", sqlE.getMessage());
+			return;
+		}
 		c.moveToLast();
 		if(c.isAfterLast() || c.isBeforeFirst()){
 			return;
