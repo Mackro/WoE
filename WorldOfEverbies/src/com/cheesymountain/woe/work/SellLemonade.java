@@ -23,7 +23,7 @@ package com.cheesymountain.woe.work;
  */
 public class SellLemonade extends Work {
 
-	private static int time = 2;
+	private static int time = 60;
 	private static int healthModifier = 0;
 	private static int strengthReq = 1, staminaReq = 1, intelligenceReq = 1;
 	
@@ -33,13 +33,6 @@ public class SellLemonade extends Work {
 	
 	@Override
 	public String getName() {
-		return "SellLemonade";
+		return "selllemonade";
 	}
-	
-	@Override
-	public int getTime(){
-		return 60;
-		
-	}
-
 }

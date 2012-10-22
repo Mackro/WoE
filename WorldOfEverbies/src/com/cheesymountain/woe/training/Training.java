@@ -84,7 +84,5 @@ public abstract class Training implements Occupationable {
 	 * 
 	 * @return	the number of minutes this training requires in an int
 	 */
-	public int getTime(){
-		return 0;
-	}
+	public abstract int getTime();
 }

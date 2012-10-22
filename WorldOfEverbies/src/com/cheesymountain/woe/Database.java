@@ -220,7 +220,7 @@ public class Database {
 			 android.util.Log.d("database", "calling use...");
 			 use.resume();
 		}
-		
+		android.util.Log.d("database", "Loading successful");
 	}
 	
 }

@@ -522,6 +522,7 @@ public class Everbie {
 	 */
 	public void restoreEverbie(String name, int[] values, boolean alive, boolean fainted, Race race,
 			String occupation, long occupationStartTime, long everbieStopTime){
+		android.util.Log.d("restoreEverbie()", occupation+" "+occupationStartTime);
 		setName(name);
 		maxHealthModifier = values[0];
 		health = values[1];
@@ -538,7 +539,7 @@ public class Everbie {
 		this.alive = alive;
 		this.fainted = fainted;
 		this.race = race;
-
+		this.occupation = null;
 		for(int i=0;i<5;i++){
 			if(occupation.equalsIgnoreCase(Training.TRAININGS[i])){
 				switch(i){
@@ -556,6 +557,7 @@ public class Everbie {
 					break;
 				case 4:
 					this.occupation = new WorkingOut();
+					break;
 				}
 			}else if(occupation.equalsIgnoreCase(Work.WORKS[i])){
 				switch(i){
@@ -574,14 +576,13 @@ public class Everbie {
 				case 4:
 					this.occupation = new SellLemonade((int)(charm + cuteness + (intelligence/2)
 							*Math.random() + 42));
+					break;
 				}
-			}else{
-				this.occupation = null;
 			}
 		}
 		
-		changeFullness(((int)(-(System.currentTimeMillis()-everbieStopTime)/600000))*STARVATION);
-		changeHappiness((int) (-(System.currentTimeMillis()-everbieStopTime)/600000));
+		changeFullness(((int)(-(android.os.SystemClock.elapsedRealtime()-everbieStopTime)/600000))*STARVATION);
+		changeHappiness((int) (-(android.os.SystemClock.elapsedRealtime()-everbieStopTime)/600000));
 	}
 	
 	/**

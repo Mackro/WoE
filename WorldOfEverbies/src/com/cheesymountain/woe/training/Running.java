@@ -29,7 +29,6 @@ public class Running extends Training {
 	private static int intelligenceModifier = 0;
 
 	public Running() {
-		
 		super(strengthModifier, intelligenceModifier, staminaModifier);
 		
 	}

@@ -32,8 +32,8 @@ import com.cheesymountain.woe.util.Occupationable;
 public abstract class Work implements Occupationable{
 
 	private int time, salary, healthModifier, strengthReq, staminaReq, intelligenceReq;
-	public static final String[] WORKS = {"Consulting","DogWalking","MotelCleaning","Plumbing",
-		"SellLemonade"};
+	public static final String[] WORKS = {"consulting","dogwalking","motelcleaning","plumbing",
+		"selllemonade"};
 	
 	/**
 	 * The public constructor that is called from all subclasses with the specific

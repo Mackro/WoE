@@ -96,7 +96,7 @@ public class Use {
 			return EVERBIE_TOO_DUMB;
 		}
 		Log.getLog().started(work);
-		Everbie.getEverbie().setOccupation(work, System.currentTimeMillis());
+		Everbie.getEverbie().setOccupation(work, android.os.SystemClock.elapsedRealtime());
 		Everbie.getEverbie().setOccupiedMinutes(work.getTime());
 		currentOccupation = new Occupation();
 		currentOccupation.start();
@@ -181,7 +181,7 @@ public class Use {
 			return EVERBIE_IS_BUSY;
 		}
 		Log.getLog().started(train);
-		Everbie.getEverbie().setOccupation(train, System.currentTimeMillis());
+		Everbie.getEverbie().setOccupation(train, android.os.SystemClock.elapsedRealtime());
 		Everbie.getEverbie().setOccupiedMinutes(train.getTime());
 		currentOccupation = new Occupation();
 		currentOccupation.start();
@@ -197,13 +197,22 @@ public class Use {
 	 * @param startTime the timestamp of the occupation.
 	 */
 	public void resume(){
-		if(Everbie.getEverbie().getOccupation()!=null){
-			if(System.currentTimeMillis()-Everbie.getEverbie().getOccupationStartTime()>
-			Everbie.getEverbie().getOccupation().getTime()){
+		android.util.Log.d("RESUME/use", "resume started");
+		if(Everbie
+				.getEverbie()
+				.getOccupation()
+				!=null){
+			android.util.Log.d("use", "occupation not null");
+			if((((android.os.SystemClock.elapsedRealtime()-Everbie.getEverbie().getOccupationStartTime())/60000))>
+			(Everbie.getEverbie().getOccupation().getTime())){
+				android.util.Log.d("use", "calling done...");
 				done(Everbie.getEverbie().getOccupation());
 			}else{
+				android.util.Log.d("use", "starting thread...");
 				new Occupation().start();
 			}
+
+			android.util.Log.d("use", "resume successful");
 		}
 	}
 	
@@ -212,9 +221,13 @@ public class Use {
 	 * @param occupation - the work or training done
 	 */
 	public static void done(Occupationable occupation){
+
+		android.util.Log.d("done", occupation.getName());
 		if(occupation instanceof Work){
+			android.util.Log.d("done", "work");
 			done((Work)occupation);
 		}else if(occupation instanceof Training){
+			android.util.Log.d("done", "train");
 			done((Training)occupation);
 		}
 	}
@@ -257,7 +270,7 @@ public class Use {
 		public void start(){
 			startingTime = Everbie.getEverbie().getOccupationStartTime();
 			Everbie.getEverbie().setOccupiedSeconds((int)((Everbie.getEverbie().getOccupation().getTime()*60) 
-					- ((System.currentTimeMillis() - startingTime)/1000)));
+					- ((android.os.SystemClock.elapsedRealtime() - startingTime)/1000)));
 			super.start();
 		}
 
@@ -267,11 +280,14 @@ public class Use {
 				try{
 					Thread.sleep(1000);
 				}catch(InterruptedException ie){}
-				Everbie.getEverbie().setOccupiedSeconds((int)((Everbie.getEverbie().getOccupation().getTime()*60) 
-						- ((System.currentTimeMillis() - startingTime)/1000)));
+				Everbie.getEverbie().setOccupiedSeconds((int)
+						((Everbie.getEverbie().getOccupation().getTime()*60)
+						- ((android.os.SystemClock.elapsedRealtime() - startingTime)/1000)));
 			}
-			Use.done(Everbie.getEverbie().getOccupation());
-			Everbie.getEverbie().removeOccupation();
+			if(Everbie.getEverbie().isAlive()){
+				Use.done(Everbie.getEverbie().getOccupation());
+				Everbie.getEverbie().removeOccupation();
+			}
 		}
 	}
 }

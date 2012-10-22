@@ -85,6 +85,12 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 			return;
 		}
 		if(Everbie.exists()){
+			Everbie.getEverbie().kill();
+			try {
+				//Waiting for Occupation-thread to die
+				Thread.sleep(1050);
+			}catch(InterruptedException e) {//Just wait
+			}
 			Everbie.getEverbie().reset();	
 		}
 		Everbie.createEverbie(name, Race.RACELIST[selectedRace]);
