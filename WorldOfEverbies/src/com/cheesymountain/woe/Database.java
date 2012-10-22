@@ -164,10 +164,6 @@ public class Database {
 	 * Loads the currently saved Everbie unless there already exists one, or if none are saved.
 	 */
 	public void load(){
-		//Checks if the Everbie exists and is not the default Everbie
-		if(Everbie.exists() && !(Everbie.getEverbie().getName().equals(""))){
-			return;
-		}
 		String[] columns = new String[]{ KEY_NAME, KEY_MAXHEALTHMOD, KEY_HEALTH, KEY_STR, KEY_INT,
 				KEY_STA, KEY_CHARM, KEY_CUTENESS, KEY_FULLNESS, KEY_HAPPINESS, KEY_TOX, KEY_OI,
 				KEY_OCCUPATIONSTART, KEY_ALIVE, KEY_FAINTED, KEY_RACE, KEY_OCCUPATION, KEY_TIMESAVED };
@@ -217,9 +213,9 @@ public class Database {
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
 				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION), c.getLong(iTIMESAVED));
 
-		Log.d("database", "load successfull");
+		Log.d("database", "load successful");
 		if(!c.getString(iOCCUPATION).equalsIgnoreCase("null")){
-			 use.new Occupation().start();
+			 use.resume(c.getString(iOCCUPATION), c.getLong(iOCCUPATIONSTART));
 		}
 		
 	}

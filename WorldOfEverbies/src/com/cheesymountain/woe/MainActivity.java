@@ -105,7 +105,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		db.save(Everbie.getEverbie());
 		db.close();
 		use.stopOccupation();
-		Everbie.getEverbie().reset();
+		Everbie.getEverbie().kill();
 	}
 
 	@Override

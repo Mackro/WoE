@@ -47,7 +47,6 @@ public class Everbie {
 	public static final int STARVATION = 2, DEPRESSION = 1;
 	private Occupationable occupation;
 	private long occupationStartTime;
-	private Ticker everbieTicker = new Ticker();
 
 	private Everbie(String name, Race race) {
 		alive = true;
@@ -481,6 +480,11 @@ public class Everbie {
 		this.occupationStartTime = occupationStartTime;
 	}
 	
+	public void removeOccupation(){
+		occupation = null;
+		occupationStartTime = 0;
+	}
+	
 	/**
 	 * Sets the Everbies heath
 	 * @param health - the amount of health the everbie should have after method being called
@@ -488,6 +492,13 @@ public class Everbie {
 	
 	public void setHealth(int health){
 		this.health = health;
+	}
+	
+	/**
+	 * A method to kill the Everbie.
+	 */
+	public void kill(){
+		alive = false;
 	}
 
 	/**
@@ -621,9 +632,7 @@ public class Everbie {
 	/**
 	 * Resets (kills) the current Everbie, to be able to start a new one
 	 */
-	@SuppressWarnings("deprecation")
 	public synchronized void reset(){
-		everbieTicker.stop();
 		everbie = null;
 	}
 	

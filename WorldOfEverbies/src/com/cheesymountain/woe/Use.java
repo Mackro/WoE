@@ -22,8 +22,18 @@ package com.cheesymountain.woe;
 import com.cheesymountain.woe.food.Food;
 import com.cheesymountain.woe.interact.Interaction;
 import com.cheesymountain.woe.item.Item;
+import com.cheesymountain.woe.training.Chess;
+import com.cheesymountain.woe.training.Running;
+import com.cheesymountain.woe.training.Squash;
+import com.cheesymountain.woe.training.Swimming;
 import com.cheesymountain.woe.training.Training;
+import com.cheesymountain.woe.training.WorkingOut;
 import com.cheesymountain.woe.util.Occupationable;
+import com.cheesymountain.woe.work.Consulting;
+import com.cheesymountain.woe.work.DogWalking;
+import com.cheesymountain.woe.work.MotelCleaning;
+import com.cheesymountain.woe.work.Plumbing;
+import com.cheesymountain.woe.work.SellLemonade;
 import com.cheesymountain.woe.work.Work;
 
 /**
@@ -37,7 +47,7 @@ public class Use {
 	public static final int SUCCESS = 20;
 	public static final int EVERBIE_IS_BUSY = 200, EVERBIE_IS_FAINTED = 201, EVERBIE_IS_DEAD = 202;
 	public static final int EVERBIE_TOO_WEAK = 2000, EVERBIE_TOO_LAZY = 2001, EVERBIE_TOO_DUMB = 2002;
-	private Occupation currentOccupation = new Occupation();
+	private Occupation currentOccupation;
 	
 	/**
 	 * Activates the desired event which could be a food,
@@ -98,6 +108,7 @@ public class Use {
 		Log.getLog().started(work);
 		Everbie.getEverbie().setOccupation(work, System.currentTimeMillis());
 		Everbie.getEverbie().setOccupiedMinutes(work.getTime());
+		currentOccupation = new Occupation();
 		currentOccupation.start();
 		return SUCCESS;
 	}
@@ -182,8 +193,66 @@ public class Use {
 		Log.getLog().started(train);
 		Everbie.getEverbie().setOccupation(train, System.currentTimeMillis());
 		Everbie.getEverbie().setOccupiedMinutes(train.getTime());
+		currentOccupation = new Occupation();
 		currentOccupation.start();
 		return SUCCESS;
+	}
+	
+	/**
+	 * A method required to properly resume an activity that the Everbie was doing
+	 * upon destruction of the application.
+	 * 
+	 * @param occupation a String representing the Occupationable that the Everbie
+	 * was engaged in at the moment of saving.
+	 * @param startTime the timestamp of the occupation.
+	 */
+	public void resume(String occupationString, long startTime){
+		Occupationable occupation = null;
+		for(int i=0;i<5;i++){
+			if(occupationString.equalsIgnoreCase(Training.TRAININGS[i])){
+				switch(i){
+				case 0:
+					occupation = new Chess();
+					break;
+				case 1:
+					occupation = new Running();
+					break;
+				case 2:
+					occupation = new Squash();
+					break;
+				case 3:
+					occupation = new Swimming();
+					break;
+				case 4:
+					occupation = new WorkingOut();
+				}
+			}else if(occupationString.equalsIgnoreCase(Work.WORKS[i])){
+				switch(i){
+				case 0:
+					occupation = new Consulting();
+					break;
+				case 1:
+					occupation = new DogWalking();
+					break;
+				case 2:
+					occupation = new MotelCleaning();
+					break;
+				case 3:
+					occupation = new Plumbing();
+					break;
+				case 4:
+					occupation = new SellLemonade((int)(Everbie.getEverbie().getCharm()
+							+ Everbie.getEverbie().getCuteness()
+							+ (Everbie.getEverbie().getIntelligence()/2)
+							*Math.random() + 42));
+				}
+			}
+		}
+		if(System.currentTimeMillis()-startTime>0 && occupation != null){
+			Everbie.getEverbie().setOccupation(occupation, startTime);
+		}else{
+			Everbie.getEverbie().removeOccupation();
+		}
 	}
 	
 	/**
@@ -250,6 +319,7 @@ public class Use {
 						- ((System.currentTimeMillis() - startingTime)/1000)));
 			}
 			Use.done(Everbie.getEverbie().getOccupation());
+			Everbie.getEverbie().removeOccupation();
 		}
 	}
 }
