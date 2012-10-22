@@ -24,14 +24,11 @@ package com.cheesymountain.woe.work;
 public class SellLemonade extends Work {
 
 	private static int time = 2;
-	private static int happinessModifier = -8;
 	private static int healthModifier = 0;
-	private static int starvationModifier = -1;
 	private static int strengthReq = 1, staminaReq = 1, intelligenceReq = 1;
 	
 	public SellLemonade(int salary) {
-		super(time, salary, happinessModifier, healthModifier, starvationModifier,
-				strengthReq, staminaReq, intelligenceReq);
+		super(time, salary, healthModifier, strengthReq, staminaReq, intelligenceReq);
 	}
 	
 	@Override

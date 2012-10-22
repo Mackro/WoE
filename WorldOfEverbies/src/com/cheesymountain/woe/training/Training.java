@@ -29,7 +29,7 @@ import com.cheesymountain.woe.util.Occupationable;
  */
 public abstract class Training implements Occupationable {
 	
-	private int strengthModifier, intelligenceModifier, staminaModifier, starvationModifier;
+	private int strengthModifier, intelligenceModifier, staminaModifier;
 	public static final String[] TRAININGS = {"Chess","Running","Squash","Swimming","WorkingOut"};
 	
 	/**
@@ -40,8 +40,7 @@ public abstract class Training implements Occupationable {
 	 * @param staminaModifier is the int variable of how much the stamina will be changed by the given training
 	 * @param fullnessModifier is the int variable of how much the fullness will be changed by the given training
 	 */
-	public Training(int strengthModifier, int intelligenceModifier, int staminaModifier, int starvationModifier){
-		this.starvationModifier = starvationModifier;
+	public Training(int strengthModifier, int intelligenceModifier, int staminaModifier){
 		this.intelligenceModifier = intelligenceModifier;
 		this.staminaModifier = staminaModifier;
 		this.strengthModifier = strengthModifier;
@@ -78,15 +77,6 @@ public abstract class Training implements Occupationable {
 	 */
 	public int getStaminaModifier(){
 		return staminaModifier;
-	}
-	
-	/**
-	 * A method for returning the starvationModifier of the training session
-	 * 
-	 * @return the starvationmodifier of the given training as an int
-	 */
-	public int getStarvationModifier(){
-		return starvationModifier;
 	}
 	
 	/**

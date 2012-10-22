@@ -31,8 +31,7 @@ import com.cheesymountain.woe.util.Occupationable;
  */
 public abstract class Work implements Occupationable{
 
-	private int time, salary, happinessModifier, healthModifier, minutesWorking, starvationModifier,
-			strengthReq, staminaReq, intelligenceReq;
+	private int time, salary, healthModifier, strengthReq, staminaReq, intelligenceReq;
 	public static final String[] WORKS = {"Consulting","DogWalking","MotelCleaning","Plumbing",
 		"SellLemonade"};
 	
@@ -47,13 +46,11 @@ public abstract class Work implements Occupationable{
 	 * @param healthModifier an int describing how your Everbies health will be affected
 	 * 		from working
 	 */
-	public Work(int time, int salary, int happinessModifier, int healthModifier,
-			int starvationModifier, int strengthReq, int staminaReq, int intelligenceReq){
+	public Work(int time, int salary, int healthModifier, int strengthReq, int staminaReq,
+			int intelligenceReq){
 		this.time = time;
 		this.salary = salary;
-		this.happinessModifier = happinessModifier;
 		this.healthModifier = healthModifier;
-		this.starvationModifier = starvationModifier;
 		this.strengthReq = strengthReq;
 		this.staminaReq = staminaReq;
 		this.intelligenceReq = intelligenceReq;
@@ -85,39 +82,12 @@ public abstract class Work implements Occupationable{
 	}
 	
 	/**
-	 * A method for returning the happinessModifier of the work session
-	 * 
-	 * @return the modifier for the Everbies happiness
-	 */
-	public int getHappinessModifier(){
-		return happinessModifier;
-	}
-	
-	/**
 	 * A method for returning the healthModifier of the work session
 	 * 
 	 * @return the modifier for the Everbies health
 	 */
 	public int getHealthModifier(){
 		return healthModifier;
-	}
-	
-	/**
-	 * A method for returning the number of minutes the work session requires
-	 * 
-	 * @return the number of minutes the Everbie is at work
-	 */
-	public int getMinutesWorking(){
-		return minutesWorking;
-	}
-	
-	/**
-	 * A method for returning how much starvation the Everbie suffers from the current work session
-	 * 
-	 * @return the starvationModifier of the work session
-	 */
-	public int getStarvationModifier(){
-		return starvationModifier;
 	}
 	
 	/**

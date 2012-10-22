@@ -25,14 +25,11 @@ public class MotelCleaning extends Work {
 
 	private static int time = 5;
 	private static int salary = 60;
-	private static int happinessModifier = -15;
 	private static int healthModifier = -2;
-	private static int starvationModifier = -2;
 	private static int strengthReq = 1, staminaReq = 2, intelligenceReq = 1;
 	
 	public MotelCleaning() {
-		super(time, salary, happinessModifier, healthModifier, starvationModifier,
-				strengthReq, staminaReq, intelligenceReq);
+		super(time, salary, healthModifier, strengthReq, staminaReq, intelligenceReq);
 	}
 
 	@Override

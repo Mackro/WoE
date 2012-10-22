@@ -27,11 +27,10 @@ public class Chess extends Training{
 	private static int strengthModifier = 0;
 	private static int staminaModifier = 0;
 	private static int intelligenceModifier = 2;
-	private static int starvationModifier = -3;
 
 	
 	public Chess() {
-		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier);
+		super(strengthModifier, intelligenceModifier, staminaModifier);
 
 	}
 

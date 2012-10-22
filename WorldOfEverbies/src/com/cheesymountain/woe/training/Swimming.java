@@ -28,10 +28,9 @@ public class Swimming extends Training{
 	private static int strengthModifier = 1;
 	private static int staminaModifier = 3;
 	private static int intelligenceModifier = 0;
-	private static int starvationModifier = -3;
 	
 	public Swimming() {
-		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier);
+		super(strengthModifier, intelligenceModifier, staminaModifier);
 
 	}
 

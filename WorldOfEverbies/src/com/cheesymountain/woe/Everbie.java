@@ -44,10 +44,10 @@ public class Everbie {
 			charm, cuteness, fullness, happiness, toxicity, money;
 	private boolean alive, fainted;
 	private int occupiedSeconds = 0, faintedTime = 0;
-	private static final int standardStarvation = 1, standardDepression = 1;
-	private int starvation, depression;
+	public static final int STARVATION = 2, DEPRESSION = 1;
 	private Occupationable occupation;
 	private long occupationStartTime;
+	private Ticker everbieTicker = new Ticker();
 
 	private Everbie(String name, Race race) {
 		alive = true;
@@ -63,8 +63,6 @@ public class Everbie {
 		happiness = STARTING_HAPPINESS;
 		toxicity = 0;
 		money = STARTING_MONEY;
-		starvation = standardStarvation;
-		depression = standardDepression;
 		health = getMaxHealth();
 		new Ticker().start();
 	}
@@ -97,7 +95,15 @@ public class Everbie {
 	 * @return the image's id number
 	 */
 	public int getImageId(){
-		return race.getImageID();
+		if(getLevel()<5){
+			return race.getImageIdMin();
+		}
+		else if(getLevel()>14){
+			return race.getImageIdMax();
+		}
+		else{
+			return race.getImageIdMed();
+		}
 	}
 	
 	/**
@@ -152,38 +158,6 @@ public class Everbie {
 	 */
 	public int getStrength() {
 		return strength;
-	}
-
-	/**
-	 * Returns the current level of starvation of the current Everbie
-	 * @return the current level of starvation
-	 */
-	public int getStarvation() {
-		return starvation;
-	}
-
-	/**
-	 * Returns the standard level of starvation of the current Everbie
-	 * @return the standard level of starvation
-	 */
-	public int getStandardStarvation() {
-		return standardStarvation;
-	}
-
-	/**
-	 * Returns the current depression level of the current Everbie
-	 * @return the current level of depression
-	 */
-	public int getDepression(){
-		return depression;
-	}
-	
-	/**
-	 * Returns the standard level of depression of the current Everbie
-	 * @return the standard level of depression
-	 */
-	public int getStandardDepression(){
-		return standardDepression;
 	}
 	
 	/**
@@ -506,22 +480,6 @@ public class Everbie {
 		this.occupation = occupation;
 		this.occupationStartTime = occupationStartTime;
 	}
-
-	/**
-	 * Sets the amount of starvation the Everbie should have currently
-	 * @param star - the amount of starvation
-	 */
-	public void setStarvation(int star){
-		if(star > 0){
-			starvation = star;
-		}
-	}
-	
-	public void setDepression(int dep){
-		if(dep > 0){
-			depression = dep;
-		}
-	}
 	
 	/**
 	 * Sets the Everbies heath
@@ -561,7 +519,7 @@ public class Everbie {
 	 * @param occupation a String 
 	 */
 	public void restoreEverbie(String name, int[] values, boolean alive, boolean fainted, Race race,
-			String occupation){
+			String occupation, long everbieStopTime){
 		setName(name);
 		maxHealthModifier = values[0];
 		health = values[1];
@@ -578,6 +536,7 @@ public class Everbie {
 		this.alive = alive;
 		this.fainted = fainted;
 		this.race = race;
+
 		for(int i=0;i<5;i++){
 			if(occupation.equalsIgnoreCase(Training.TRAININGS[i])){
 				switch(i){
@@ -616,6 +575,9 @@ public class Everbie {
 				}
 			}
 		}
+		
+		changeFullness(((int)(-(System.currentTimeMillis()-everbieStopTime)/600000))*STARVATION);
+		changeHappiness((int) (-(System.currentTimeMillis()-everbieStopTime)/600000));
 	}
 	
 	/**
@@ -659,7 +621,9 @@ public class Everbie {
 	/**
 	 * Resets (kills) the current Everbie, to be able to start a new one
 	 */
+	@SuppressWarnings("deprecation")
 	public synchronized void reset(){
+		everbieTicker.stop();
 		everbie = null;
 	}
 	
@@ -671,8 +635,8 @@ public class Everbie {
 				try{
 					Thread.sleep(600000);
 				}catch(InterruptedException ie){}
-				Everbie.getEverbie().changeHappiness(-Everbie.getEverbie().depression);
-				Everbie.getEverbie().changeFullness(-Everbie.getEverbie().starvation);
+				Everbie.getEverbie().changeHappiness(-Everbie.DEPRESSION);
+				Everbie.getEverbie().changeFullness(-Everbie.STARVATION);
 				if(fainted){
 					faintedTime--;
 					if(faintedTime < 1){

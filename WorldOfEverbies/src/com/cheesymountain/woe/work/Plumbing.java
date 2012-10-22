@@ -25,14 +25,11 @@ public class Plumbing extends Work {
 
 	private static int time = 3;
 	private static int salary = 220;
-	private static int happinessModifier = -5;
 	private static int healthModifier = 0;
-	private static int starvationModifier = -2;
 	private static int strengthReq = 2, staminaReq = 2, intelligenceReq = 3;
 	
 	public Plumbing() {
-		super(time, salary, happinessModifier, healthModifier, starvationModifier,
-				strengthReq, staminaReq, intelligenceReq);
+		super(time, salary, healthModifier, strengthReq, staminaReq, intelligenceReq);
 	}
 
 	@Override

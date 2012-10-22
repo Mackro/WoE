@@ -37,6 +37,7 @@ public class Use {
 	public static final int SUCCESS = 20;
 	public static final int EVERBIE_IS_BUSY = 200, EVERBIE_IS_FAINTED = 201, EVERBIE_IS_DEAD = 202;
 	public static final int EVERBIE_TOO_WEAK = 2000, EVERBIE_TOO_LAZY = 2001, EVERBIE_TOO_DUMB = 2002;
+	private Occupation currentOccupation = new Occupation();
 	
 	/**
 	 * Activates the desired event which could be a food,
@@ -96,9 +97,8 @@ public class Use {
 		}
 		Log.getLog().started(work);
 		Everbie.getEverbie().setOccupation(work, System.currentTimeMillis());
-		Everbie.getEverbie().setStarvation(work.getStarvationModifier());
-		Everbie.getEverbie().setOccupiedMinutes(work.getMinutesWorking());
-		new Occupation().start();
+		Everbie.getEverbie().setOccupiedMinutes(work.getTime());
+		currentOccupation.start();
 		return SUCCESS;
 	}
 
@@ -181,9 +181,8 @@ public class Use {
 		}
 		Log.getLog().started(train);
 		Everbie.getEverbie().setOccupation(train, System.currentTimeMillis());
-		Everbie.getEverbie().setStarvation(train.getStarvationModifier());
 		Everbie.getEverbie().setOccupiedMinutes(train.getTime());
-		new Occupation().start();
+		currentOccupation.start();
 		return SUCCESS;
 	}
 	
@@ -205,7 +204,6 @@ public class Use {
 	 */
 	public static void done(Work work){
 		Everbie.getEverbie().changeMoney(work.getSalary());
-		Everbie.getEverbie().changeHappiness(work.getHappinessModifier());
 		Everbie.getEverbie().changeHealth(work.getHealthModifier());
 	}
 	
@@ -219,13 +217,17 @@ public class Use {
 		Everbie.getEverbie().changeStamina(train.getStaminaModifier());
 		Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
 	}
+	
+	@SuppressWarnings("deprecation")
+	public void stopOccupation(){
+		currentOccupation.stop();
+	}
 
 	/**
 	 * Thread responsible for everything that takes up real life time. such as work or training.
 	 * @author Cheesy Mountain
 	 *
 	 */
-
 
 	public class Occupation extends Thread {
 
@@ -247,13 +249,8 @@ public class Use {
 				}catch(InterruptedException ie){}
 				Everbie.getEverbie().setOccupiedSeconds((int)((Everbie.getEverbie().getOccupation().getTime()*60) 
 						- ((System.currentTimeMillis() - startingTime)/1000)));
-				if(Everbie.getEverbie().getOccupiedSeconds() <= 0 &&
-						Everbie.getEverbie().getStarvation() != Everbie.getEverbie().getStandardStarvation()){
-					Everbie.getEverbie().setStarvation(Everbie.getEverbie().getStandardStarvation());
-				}
 			}
 			Use.done(Everbie.getEverbie().getOccupation());
 		}
 	}
-
 }

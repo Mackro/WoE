@@ -29,10 +29,9 @@ public class Squash extends Training{
 	private static int strengthModifier = 1;
 	private static int staminaModifier = 2;
 	private static int intelligenceModifier = 0;
-	private static int starvationModifier = -3;
 	
 	public Squash() {
-		super(strengthModifier, intelligenceModifier, staminaModifier, starvationModifier);
+		super(strengthModifier, intelligenceModifier, staminaModifier);
 
 	}
 
