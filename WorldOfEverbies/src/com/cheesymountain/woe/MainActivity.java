@@ -55,9 +55,8 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	private SimpleGestureFilter detector;
 	private Enemy enemy;
 	private MediaPlayer bgMusic;
-	private static final int DIALOG_EXIT_APP_ID = 1;
-	private static final int DIALOG_FIGHT_ID = 10;
-	private static final int DIALOG_OI_ID = 100;
+	private static final int DIALOG_FIGHT_ID = 1;
+	private static final int DIALOG_OI_ID = 10;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -119,26 +118,6 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		db.open();
 		db.load();
 		db.close();
-	}
-
-
-	@Override
-	public void onSaveInstanceState(Bundle savedInstanceState){
-		super.onSaveInstanceState(savedInstanceState);
-		savedInstanceState.putString("Name", Everbie.getEverbie().getName());
-		savedInstanceState.putInt("maxHealth", Everbie.getEverbie().getMaxHealth());
-		savedInstanceState.putInt("health", Everbie.getEverbie().getHealth());
-		savedInstanceState.putInt("Strength", Everbie.getEverbie().getStrength());
-		savedInstanceState.putInt("Intelligence", Everbie.getEverbie().getIntelligence());
-		savedInstanceState.putInt("stamina", Everbie.getEverbie().getStamina());
-		savedInstanceState.putInt("charm", Everbie.getEverbie().getCharm());
-		savedInstanceState.putInt("fullness", Everbie.getEverbie().getFullness());
-		savedInstanceState.putInt("happiness", Everbie.getEverbie().getHappiness());
-		savedInstanceState.putInt("toxicity", Everbie.getEverbie().getToxicity());
-		savedInstanceState.putInt("cuteness", Everbie.getEverbie().getCuteness());
-		savedInstanceState.putInt("money", Everbie.getEverbie().getMoney());
-		savedInstanceState.putBoolean("Alive", Everbie.getEverbie().isAlive());
-		savedInstanceState.putInt("imagePath", Everbie.getEverbie().getImageId());
 	}
 
 	@SuppressWarnings("deprecation")
@@ -299,22 +278,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 
 	@Override
 	public Dialog onCreateDialog(int i){
-		if(i==DIALOG_EXIT_APP_ID){
-			Builder builder = new Builder(this);
-			builder.setMessage("Are you sure you want to Exit World of Everbies?");
-			builder.setCancelable(true);
-			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					finish();
-				}
-			});
-			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.cancel();
-				}
-			});
-			return builder.create();
-		}else if(i == DIALOG_FIGHT_ID){
+		if(i == DIALOG_FIGHT_ID){
 			Builder builder = new Builder(this);
 			builder.setMessage("How do you wish to fight?");
 			builder.setCancelable(true);

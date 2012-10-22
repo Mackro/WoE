@@ -53,10 +53,11 @@ public class Database {
 	private static final String KEY_FAINTED = "fainted";				//"boolean"(1=true,0=false)
 	private static final String KEY_RACE = "race";						//int
 	private static final String KEY_OCCUPATION = "occupation";			//String
+	private static final String KEY_TIMESAVED = "timesaved";			//long
 
 	private static final String DATABASE_NAME = "Everbiedb";
 	private static final String DATABASE_TABLE = "EverbieTable";
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 	
 	private DbHelper helper;
 	private final Context context;
@@ -86,7 +87,8 @@ public class Database {
 					" INTEGER, " + KEY_FULLNESS + " INTEGER, " + KEY_HAPPINESS +
 					" INTEGER, " + KEY_TOX + " INTEGER, " + KEY_OI + " INTEGER, " +
 					KEY_OCCUPATIONSTART + " INTEGER, " + KEY_ALIVE + " BOOLEAN, " + KEY_FAINTED +
-					" BOOLEAN, " + KEY_RACE + " INTEGER, " + KEY_OCCUPATION + " TEXT);"
+					" BOOLEAN, " + KEY_RACE + " INTEGER, " + KEY_OCCUPATION + " TEXT, " + 
+					KEY_TIMESAVED + "LONG);"
 			);
 		}
 
@@ -152,6 +154,8 @@ public class Database {
 		values.put(KEY_FAINTED, everbie.isFainted()?1:0);
 		values.put(KEY_RACE, everbie.getRaceId());
 		values.put(KEY_OCCUPATION, occupationName);
+		values.put(KEY_TIMESAVED, System.currentTimeMillis());
+		
 		database.insert(DATABASE_TABLE, null, values);
 	}
 	
@@ -164,7 +168,7 @@ public class Database {
 		}
 		String[] columns = new String[]{ KEY_NAME, KEY_MAXHEALTHMOD, KEY_HEALTH, KEY_STR, KEY_INT,
 				KEY_STA, KEY_CHARM, KEY_CUTENESS, KEY_FULLNESS, KEY_HAPPINESS, KEY_TOX, KEY_OI,
-				KEY_OCCUPATIONSTART, KEY_ALIVE, KEY_FAINTED, KEY_RACE, KEY_OCCUPATION };
+				KEY_OCCUPATIONSTART, KEY_ALIVE, KEY_FAINTED, KEY_RACE, KEY_OCCUPATION, KEY_TIMESAVED };
 		
 		Cursor c = null;
 		try{
@@ -202,13 +206,14 @@ public class Database {
 		int iFAINTED = c.getColumnIndex(KEY_FAINTED);
 		int iRACE = c.getColumnIndex(KEY_RACE);
 		int iOCCUPATION = c.getColumnIndex(KEY_OCCUPATION);
+		int iTIMESAVED = c.getColumnIndex(KEY_TIMESAVED);
 		
 		int[] values = {c.getInt(iMAXHEALTHMOD), c.getInt(iHEALTH), c.getInt(iSTR),
 				c.getInt(iINT), c.getInt(iSTA), c.getInt(iCHARM),
 				c.getInt(iCUTENESS), c.getInt(iFULLNESS), c.getInt(iHAPPINESS),
 				c.getInt(iTOX), c.getInt(iOI), c.getInt(iOCCUPATIONSTART)};
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
-				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION));
+				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION), c.getLong(iTIMESAVED));
 		
 		if(!c.getString(iOCCUPATION).equalsIgnoreCase("null")){
 			 use.new Occupation().start();
