@@ -33,9 +33,9 @@ public class Rokash extends Race {
 	public Rokash(){
 		raceName = "Rokash";
 		description = "Rokash:\nThe Rokash race is the proudest race of them all, though they are not at all concerned to be modest about it. They also have decent stamina.";
-		imageIdMin = R.drawable.rokashmin;
+		/*imageIdMin = R.drawable.rokashmin;
 		imageIdMed = R.drawable.rokashmed;
-		imageIdMax = R.drawable.rokashmax;
+		imageIdMax = R.drawable.rokashmax;*/
 		maxHealthModifier = 20;
 		strength = 1;
 		stamina  = 2;
