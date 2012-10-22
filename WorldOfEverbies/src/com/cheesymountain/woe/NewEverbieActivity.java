@@ -88,6 +88,10 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 			Everbie.getEverbie().reset();	
 		}
 		Everbie.createEverbie(name, Race.RACELIST[selectedRace]);
+		Database db = new Database(this);
+		db.open();
+		db.save(Everbie.getEverbie());
+		db.close();
 		Intent main = new Intent("com.cheesymountain.woe.MAINACTIVITY");
 		startActivity(main);
 		finish();
