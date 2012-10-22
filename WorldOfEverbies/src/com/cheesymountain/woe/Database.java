@@ -126,6 +126,7 @@ public class Database {
 	 * @param everbie - the Everbie to be saved
 	 */
 	public void save(Everbie everbie){
+		android.util.Log.d("database", "Saving started...");
 		helper.onUpgrade(database, DATABASE_VERSION-1, DATABASE_VERSION);
 		ContentValues values = new ContentValues();
 		
@@ -136,6 +137,7 @@ public class Database {
 		}else{
 			occupationName = occupation.getName();
 		}
+		android.util.Log.d("database occupation:", occupationName);
 		
 		values.put(KEY_NAME, everbie.getName());
 		values.put(KEY_MAXHEALTHMOD, everbie.getMaxHealthMod());
@@ -157,13 +159,14 @@ public class Database {
 		values.put(KEY_TIMESAVED, System.currentTimeMillis());
 		
 		database.insert(DATABASE_TABLE, null, values);
-		Log.d("database", "save successfull");
+		Log.d("database", "save successful");
 	}
 	
 	/**
 	 * Loads the currently saved Everbie unless there already exists one, or if none are saved.
 	 */
 	public void load(){
+		android.util.Log.d("database", "Loading started...");
 		String[] columns = new String[]{ KEY_NAME, KEY_MAXHEALTHMOD, KEY_HEALTH, KEY_STR, KEY_INT,
 				KEY_STA, KEY_CHARM, KEY_CUTENESS, KEY_FULLNESS, KEY_HAPPINESS, KEY_TOX, KEY_OI,
 				KEY_OCCUPATIONSTART, KEY_ALIVE, KEY_FAINTED, KEY_RACE, KEY_OCCUPATION, KEY_TIMESAVED };
@@ -211,8 +214,10 @@ public class Database {
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
 				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION),
 				c.getLong(iOCCUPATIONSTART), c.getLong(iTIMESAVED));
+		 android.util.Log.d("database, occupation:", c.getString(iOCCUPATION));
 
 		if(!c.getString(iOCCUPATION).equalsIgnoreCase("null")){
+			 android.util.Log.d("database", "calling use...");
 			 use.resume();
 		}
 		

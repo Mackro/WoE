@@ -23,7 +23,7 @@ package com.cheesymountain.woe.training;
  */
 public class Running extends Training {
 	
-	private static String name = "running";
+	private static String name = "Running";
 	private static int strengthModifier = 0;
 	private static int staminaModifier = 2;
 	private static int intelligenceModifier = 0;
