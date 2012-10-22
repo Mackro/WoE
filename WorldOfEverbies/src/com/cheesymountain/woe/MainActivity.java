@@ -61,6 +61,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 		bgMusic = MediaPlayer.create(MainActivity.this, R.raw.everbiebgm);
 		use = new Use();

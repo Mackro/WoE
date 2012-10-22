@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 public class StartscreenActivity extends Activity {
@@ -36,6 +37,7 @@ public class StartscreenActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_startscreen);
 		Database db = new Database(this);
 		db.open();
