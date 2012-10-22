@@ -5,40 +5,12 @@
     android:background="@drawable/selection_background"
     android:scrollbarAlwaysDrawVerticalTrack="true" >
 
-    <RadioButton
-        android:id="@+id/leftRadio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/rightRadio"
-        android:layout_toLeftOf="@+id/centerRadio"
-        android:checked="true"
-        android:clickable="false"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/centerRadio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <RadioButton
-        android:id="@+id/rightRadio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="false"
-        android:layout_toRightOf="@+id/centerRadio"
-        android:checked="false"
-        android:clickable="false"
-        android:text="" />
 
     <TextView
         android:id="@+id/log"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/leftRadio"
+        android:layout_above="@+id/leftRadio"
         android:layout_alignParentBottom="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -57,7 +29,44 @@
 
         <requestFocus android:layout_width="wrap_content" />
     </TextView>
-
+
+    <RadioButton
+        android:id="@+id/leftRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/rightRadio"
+        android:layout_toLeftOf="@+id/centerRadio"
+	    android:layout_above="@+id/menuButton"
+        android:checked="true"
+        android:clickable="false"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/centerRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioButton
+        android:id="@+id/rightRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_toRightOf="@+id/centerRadio"
+	    android:layout_above="@+id/menuButton"
+        android:checked="false"
+        android:clickable="false"
+        android:text="" />
+    	<Button 
+	    android:id="@+id/menuButton"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+	    android:clickable="true"
+	    android:onClick="menuPressed"
+	    android:text="Menu"
+	    />
     <ImageView
         android:id="@+id/mainImage"
         android:layout_width="fill_parent"

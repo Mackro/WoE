@@ -20,12 +20,12 @@
         android:layout_height="200dp"
         android:layout_alignParentLeft="true"
         android:layout_gravity="fill_horizontal" />
-
+
     <ScrollView
         android:id="@+id/statsScrollView"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@id/leftRadio"
+        android:layout_above="@+id/leftRadio"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/statsImage" >
         <RelativeLayout
@@ -271,13 +271,14 @@
         </RelativeLayout>
 
     </ScrollView>
-
+
+    
     <RadioButton
         android:id="@+id/leftRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/centerRadio"
+	    android:layout_above="@+id/statsMenu"
         android:checked="false"
         android:clickable="false" />
 
@@ -287,8 +288,19 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/leftRadio"
         android:layout_alignLeft="@+id/centerRadio"
-        android:layout_alignParentBottom="true"
+	    android:layout_above="@+id/statsMenu"
         android:checked="true"
         android:clickable="false" />
+    
+
+	<Button 
+	    android:id="@+id/statsMenu"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+	    android:clickable="true"
+	    android:onClick="menuPressed"
+	    android:text="Menu"
+	    />
 
 </RelativeLayout>

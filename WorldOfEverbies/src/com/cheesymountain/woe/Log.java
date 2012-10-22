@@ -355,6 +355,6 @@ public class Log {
 	}
 	
 	public void reset(){
-		logList.removeAll(logList);
+		logList.clear();
 	}
 }

@@ -326,11 +326,6 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		return null;
 	}
 
-	@Override
-	public void onOptionsMenuClosed(Menu menu) {
-		super.onOptionsMenuClosed(menu);
-	}
-
 	/**
 	 * Rewrites the TextArea with the current version
 	 * of the Log.
@@ -339,6 +334,11 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		((TextView)findViewById(R.id.log)).setText(Log.getLog().getLogList());
 		((TextView)findViewById(R.id.log)).setMovementMethod(new ScrollingMovementMethod());
 	}
+	
+	public void menuPressed(View view){
+		openOptionsMenu();
+	}
+	
 
 	public void onSwipe(int direction) {
 		if(direction == SimpleGestureFilter.SWIPE_RIGHT){
