@@ -29,7 +29,7 @@ public class Kettlebell extends Item {
 
 	public Kettlebell() {
 		super(1, 400);
-		setStrengthModifier(2);
+		setStrengthModifier(10);
 	}
 
 	@Override
