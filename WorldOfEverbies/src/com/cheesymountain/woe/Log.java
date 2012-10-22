@@ -167,15 +167,13 @@ public class Log {
 	 * @param work
 	 *            - the work to do
 	 */
-	public void doneWith(Work work) {
+	private void doneWith(Work work) {
 		firstRemoval();
 		logList.addLast("\n" + getTime()
 				+ Everbie.getEverbie().getName()
-				+ " worked with "
+				+ " just completed "
 				+ work.getName()
-				+ " for "
-				+ work.getTime()
-				+ " minutes and earned "
+				+ " and earned "
 				+ work.getSalary() + " Oi");
 	}
 
@@ -185,25 +183,24 @@ public class Log {
 	 * 
 	 * @param train
 	 */
-	public void doneWith(Training train) {
+	private void doneWith(Training train) {
 		firstRemoval();
 
 		logList.addLast("\n" + getTime()
 				+ Everbie.getEverbie().getName()
-				+ " worked out by doing some "
+				+ " is now done with "
 				+ train.getName()
-				+ " and now "
-				+ Everbie.getEverbie().getName()
-				+ " gained"
-				+ (train.getStrengthModifier() > 0 ? " increased" : train
-						.getStrengthModifier() < 0 ? " decreased" : " no")
-				+ " strength and gained"
-				+ (train.getStaminaModifier() > 0 ? " increased" : train
-						.getStaminaModifier() < 0 ? " decreased" : " no")
-				+ " stamina  and gained"
-				+ (train.getIntelligenceModifier() > 0 ? " increased" : train
-						.getIntelligenceModifier() < 0 ? " decreased" : " no")
-				+ " intelligence and grew hungrier");
+				+ " and "
+				+ (train.getStrengthModifier() == 0 ? ""/*print nothing*/ : (train.getStrengthModifier()
+						> 0 ? "gained "	+ train.getStrengthModifier() : "lost "+ -train.getStrengthModifier())
+						+" strength and ")
+				+ (train.getStaminaModifier() == 0 ? ""/*print nothing*/ : (train.getStaminaModifier()
+						> 0 ? "gained "	+ train.getStaminaModifier() : "lost "+ -train.getStaminaModifier())
+						+" stamina and ")
+				+ (train.getIntelligenceModifier() == 0 ? ""/*print nothing*/ : (train.getIntelligenceModifier()
+						> 0 ? "gained "	+ train.getIntelligenceModifier() : "lost "+ -train.getIntelligenceModifier())
+						+" intelligence and ")
+				+ "grew hungrier");
 	}
 
 	/**
@@ -239,18 +236,18 @@ public class Log {
 				+ interact.getName()
 				+ " and now "
 				+ Everbie.getEverbie().getName()
-				+ (interact.getCutenessModifier() > 0 ? " became cuter"
-						: interact.getCutenessModifier() < 0 ? " became uglier"
-								: " confused")
-				+ (interact.getCharmModifier() > 0 ? " and whinks at you"
-						: interact.getCharmModifier() < 0 ? " and gestures angrily at you"
-								: " and hugs you")
-				+ ", "
-				+ Everbie.getEverbie().getName()
-				+ " is now"
-				+ (interact.getHappinessModifier() > 0 ? " happier than"
-						: interact.getHappinessModifier() < 0 ? " angrier than"
-								: " the same as") + " before");
+				+ (interact.getCutenessModifier() > 0 ? " became cuter,"
+				: interact.getCutenessModifier() < 0 ? " became uglier,"
+				: ""/*print nothing*/)
+				+ (interact.getCharmModifier() > 0 ? " whinks at you"
+				: interact.getCharmModifier() < 0 ? " gestures angrily at you"
+				: ""/*print nothing*/)
+				+ ". "
+				+ (interact.getHappinessModifier() > 0 ? Everbie.getEverbie().getName()
+				+ " is now happier than before"
+				: interact.getHappinessModifier() < 0 ? Everbie.getEverbie().getName()
+				+ " is now angrier than before"
+				:""/*print nothing*/));
 	}
 
 	/**

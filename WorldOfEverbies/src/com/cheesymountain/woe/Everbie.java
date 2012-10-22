@@ -441,7 +441,9 @@ public class Everbie {
 	 * @param seconds - the amount of seconds to be occupied
 	 */
 	public void setOccupiedSeconds(int seconds){
-		if(seconds > 0){
+		if(seconds < 0){
+			occupiedSeconds = 0;
+		}else{
 			this.occupiedSeconds = seconds;
 		}
 	}

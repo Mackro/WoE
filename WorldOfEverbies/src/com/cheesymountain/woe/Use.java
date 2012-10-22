@@ -230,6 +230,7 @@ public class Use {
 			android.util.Log.d("done", "train");
 			done((Training)occupation);
 		}
+		Log.getLog().doneWith(occupation);
 	}
 
 	/**
@@ -239,6 +240,7 @@ public class Use {
 	public static void done(Work work){
 		Everbie.getEverbie().changeMoney(work.getSalary());
 		Everbie.getEverbie().changeHealth(work.getHealthModifier());
+		
 	}
 	
 
