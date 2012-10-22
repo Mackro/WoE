@@ -119,15 +119,6 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 		db.load();
 		db.close();
 	}
-	
-	@Override
-	public void onStart(){
-
-		Database db = new Database(this);
-		db.open();
-		db.load();
-		db.close();
-	}
 
 	@SuppressWarnings("deprecation")
 	@Override
