@@ -24,8 +24,10 @@ import android.app.Dialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class StartscreenActivity extends Activity {
 
@@ -43,6 +45,10 @@ public class StartscreenActivity extends Activity {
 			findViewById(R.id.startContinueText).setClickable(false);
 			findViewById(R.id.startContinueText).setEnabled(false);
 		}
+		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/fairydust.ttf"); 
+		((TextView)(findViewById(R.id.startContinueText))).setTypeface(type); 
+		((TextView)(findViewById(R.id.startCreateText))).setTypeface(type); 
+		((TextView)(findViewById(R.id.startExitText))).setTypeface(type);
 	}
 
 	public void continueGame(View view){

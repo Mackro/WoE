@@ -14,7 +14,6 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
         	android:screenOrientation="portrait" >
             <intent-filter >
                 <action android:name="com.cheesymountain.woe.MAINACTIVITY" />
@@ -24,7 +23,6 @@
         
         <activity
             android:name=".NewEverbieActivity"
-            android:label="@string/title_activity_create"
         	android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.cheesymountain.woe.NEWEVERBIEACTIVITY" />
@@ -34,7 +32,6 @@
         
         <activity
             android:name=".StartscreenActivity"
-            android:label="@string/title_activity_start"
         	android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.cheesymountain.woe.STARTSCREENACTIVITY" />
