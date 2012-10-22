@@ -88,7 +88,7 @@ public class Database {
 					" INTEGER, " + KEY_TOX + " INTEGER, " + KEY_OI + " INTEGER, " +
 					KEY_OCCUPATIONSTART + " INTEGER, " + KEY_ALIVE + " BOOLEAN, " + KEY_FAINTED +
 					" BOOLEAN, " + KEY_RACE + " INTEGER, " + KEY_OCCUPATION + " TEXT, " + 
-					KEY_TIMESAVED + "LONG);"
+					KEY_TIMESAVED + " BIGINT);"
 			);
 		}
 
@@ -126,7 +126,7 @@ public class Database {
 	 * @param everbie - the Everbie to be saved
 	 */
 	public void save(Everbie everbie){
-		database.delete(DATABASE_TABLE, null, null);
+		helper.onUpgrade(database, DATABASE_VERSION-1, DATABASE_VERSION);
 		ContentValues values = new ContentValues();
 		
 		String occupationName;
@@ -157,6 +157,7 @@ public class Database {
 		values.put(KEY_TIMESAVED, System.currentTimeMillis());
 		
 		database.insert(DATABASE_TABLE, null, values);
+		Log.d("database", "save successfull");
 	}
 	
 	/**
@@ -214,7 +215,8 @@ public class Database {
 				c.getInt(iTOX), c.getInt(iOI), c.getInt(iOCCUPATIONSTART)};
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
 				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION), c.getLong(iTIMESAVED));
-		
+
+		Log.d("database", "load successfull");
 		if(!c.getString(iOCCUPATION).equalsIgnoreCase("null")){
 			 use.new Occupation().start();
 		}
