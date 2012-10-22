@@ -198,10 +198,7 @@ public class Use {
 	 */
 	public void resume(){
 		android.util.Log.d("RESUME/use", "resume started");
-		if(Everbie
-				.getEverbie()
-				.getOccupation()
-				!=null){
+		if(Everbie.getEverbie().getOccupation()!=null){
 			android.util.Log.d("use", "occupation not null");
 			if((((android.os.SystemClock.elapsedRealtime()-Everbie.getEverbie().getOccupationStartTime())/60000))>
 			(Everbie.getEverbie().getOccupation().getTime())){
@@ -230,6 +227,7 @@ public class Use {
 			android.util.Log.d("done", "train");
 			done((Training)occupation);
 		}
+		Everbie.getEverbie().removeOccupation();
 		Log.getLog().doneWith(occupation);
 	}
 
@@ -287,8 +285,7 @@ public class Use {
 						- ((android.os.SystemClock.elapsedRealtime() - startingTime)/1000)));
 			}
 			if(Everbie.getEverbie().isAlive()){
-				Use.done(Everbie.getEverbie().getOccupation());
-				Everbie.getEverbie().removeOccupation();
+				done(Everbie.getEverbie().getOccupation());
 			}
 		}
 	}
