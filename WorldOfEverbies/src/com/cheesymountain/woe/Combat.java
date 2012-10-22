@@ -38,18 +38,18 @@ public class Combat {
 	private Enemy enemy;
 	private FightingStyle fightingStyle;
 	private Use use = new Use();
+	private boolean myTurn;
 	private int totalHPloss;
-	private String combatString = "\n--Combat Starts--\n";
-	private int health = Everbie.getEverbie().getHealth();
+	private String combatString = "\n\n--Combat Starts--\n";
+	private int health;
 
 	public Combat(Enemy enemy, FightingStyle fightingstyle) {
 		this.enemy = enemy;
 		this.fightingStyle = fightingstyle;
 	}
 
-	public String doFight() {
+	public void doFight() {
 		doCombat(enemy, fightingStyle);
-		return combatString;
 	}
 
 	/**
@@ -64,25 +64,21 @@ public class Combat {
 	 */
 
 	private void doCombat(Enemy enemy, FightingStyle fightingStyle) {
-		int health = Everbie.getEverbie().getHealth();
-		int turn = (int) (Math.random() + 0.5);
+		health = Everbie.getEverbie().getHealth();
+		myTurn = Math.random()<0.5;
 
 		while (health > 0 && enemy.getHealth() > 0) {
-
 			// Everbie attacking, enemy defending:
-			if (turn == 0) {
+			if (myTurn) {
 				everbieAttack();
-				turn = 1;
 			}
-
 			// Enemy attacking, Everbie Defending:
-			else if (turn == 1) {
+			else{
 				enemyAttack();
-				turn = 0;
 			}
+			myTurn = !myTurn;
 		}
 		CombatEnded();
-		combatString += "\n\n--End of Combat--\n";
 	}
 	
 	/**
@@ -93,9 +89,9 @@ public class Combat {
 	 * @return - returns the sum of all dices rolled.
 	 */
 
-	private int rollDice(int sides, int dices) {
+	private int rollDice(int sides, int dice) {
 		int diceSum = 0;
-		for (int i = 0; i < dices; i++) {
+		for (int i = 0; i < dice; i++) {
 			diceSum += (int) ((Math.random() * sides) + 1);
 		}
 		return diceSum;
@@ -128,7 +124,6 @@ public class Combat {
 			combatString += "\n" + Everbie.getEverbie().getName() + " missed "
 					+ enemy.getName();
 		}
-
 	}
 	
 	/**
@@ -151,7 +146,7 @@ public class Combat {
 			if (health < 1) {
 				Everbie.getEverbie().setHealth(1);
 				Everbie.getEverbie().faint();
-				combatString += "\nYour Everbie has fainted.";
+				combatString += "\n"+"Your Everbie has fainted.";
 			} else {
 				combatString += "\n" + enemy.getName() + " hit "
 						+ Everbie.getEverbie().getName() + " for " + dmg
@@ -181,14 +176,19 @@ public class Combat {
 					+ "\nThe enemy leaves behind " + enemy.getBaseMoneyReward()
 					* Everbie.getEverbie().getLevel() + " Oi";
 			if (enemy.getAdditionalItemReward() != null) {
-				combatString += "\nYou also find a "
+				combatString += "\n"+"You also find a "
 						+ enemy.getAdditionalItemReward().getName();
+				combatString += "\n\n--End of Combat--\n";
 				Log.getLog().combatLog(combatString);
 				Everbie.getEverbie().changeMoney(enemy.getAdditionalItemReward().getCost());
 				use.activate(enemy.getAdditionalItemReward());
 			}else{
+				combatString += "\n\n--End of Combat--";
 				Log.getLog().combatLog(combatString);
 			}
+		}else{
+			combatString += "\n\n--End of Combat--";
+			Log.getLog().combatLog(combatString);
 		}
 	}
 }

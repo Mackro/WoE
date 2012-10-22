@@ -425,15 +425,6 @@ public class Everbie {
 	}
 	
 	/**
-	 * Decreases the amount of seconds the Everbie should be occupied by one
-	 */
-	public void decreaseOccupiedSeconds(){
-		if(this.occupiedSeconds > 0){
-			this.occupiedSeconds--;
-		}
-	}
-	
-	/**
 	 * Sets the name of the Everbie
 	 * @param name - the new name
 	 */
@@ -530,7 +521,7 @@ public class Everbie {
 	 * @param occupation a String 
 	 */
 	public void restoreEverbie(String name, int[] values, boolean alive, boolean fainted, Race race,
-			String occupation, long everbieStopTime){
+			String occupation, int occupationStartTime, long everbieStopTime){
 		setName(name);
 		maxHealthModifier = values[0];
 		health = values[1];
@@ -543,7 +534,7 @@ public class Everbie {
 		happiness = values[8];
 		toxicity = values[9];
 		money = values[10];
-		occupationStartTime = values[11];
+		this.occupationStartTime = occupationStartTime;
 		this.alive = alive;
 		this.fainted = fainted;
 		this.race = race;
@@ -584,6 +575,8 @@ public class Everbie {
 					this.occupation = new SellLemonade((int)(charm + cuteness + (intelligence/2)
 							*Math.random() + 42));
 				}
+			}else{
+				this.occupation = null;
 			}
 		}
 		
@@ -612,7 +605,7 @@ public class Everbie {
 	 * @return <code>true</code> if the Everbie is occupied, <code>false</code> otherwise
 	 */
 	public boolean isOccupied(){
-		return occupiedSeconds > 0;
+		return occupation!=null;
 	}
 	
 	

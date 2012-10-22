@@ -177,8 +177,6 @@ public class Database {
 				helper.onUpgrade(database, DATABASE_VERSION-1, DATABASE_VERSION);
 				return;
 			}
-			//other error
-			Log.d("database", sqlE.getMessage());
 			return;
 		}
 		c.moveToLast();
@@ -213,7 +211,6 @@ public class Database {
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
 				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION), c.getLong(iTIMESAVED));
 
-		Log.d("database", "load successful");
 		if(!c.getString(iOCCUPATION).equalsIgnoreCase("null")){
 			 use.resume(c.getString(iOCCUPATION), c.getLong(iOCCUPATIONSTART));
 		}

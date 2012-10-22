@@ -288,7 +288,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.cancel();
 					Combat combat = new Combat(enemy, new Offensive());
-					Log.getLog().combatLog(combat.doFight());
+					combat.doFight();
 					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 				}
 			});
@@ -296,7 +296,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 
 				public void onClick(DialogInterface dialog, int which) {
 					Combat combat = new Combat(enemy, new Defensive());
-					Log.getLog().combatLog(combat.doFight());
+					combat.doFight();
 					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 					dialog.cancel();
 				}
@@ -306,7 +306,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.cancel();
 					Combat combat = new Combat(enemy, new Tactical());
-					Log.getLog().combatLog(combat.doFight());
+					combat.doFight();
 					onSwipe(SimpleGestureFilter.SWIPE_RIGHT);
 				}
 			});

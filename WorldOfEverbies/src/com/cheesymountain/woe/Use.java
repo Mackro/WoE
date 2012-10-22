@@ -206,52 +206,14 @@ public class Use {
 	 * was engaged in at the moment of saving.
 	 * @param startTime the timestamp of the occupation.
 	 */
-	public void resume(String occupationString, long startTime){
-		Occupationable occupation = null;
-		for(int i=0;i<5;i++){
-			if(occupationString.equalsIgnoreCase(Training.TRAININGS[i])){
-				switch(i){
-				case 0:
-					occupation = new Chess();
-					break;
-				case 1:
-					occupation = new Running();
-					break;
-				case 2:
-					occupation = new Squash();
-					break;
-				case 3:
-					occupation = new Swimming();
-					break;
-				case 4:
-					occupation = new WorkingOut();
-				}
-			}else if(occupationString.equalsIgnoreCase(Work.WORKS[i])){
-				switch(i){
-				case 0:
-					occupation = new Consulting();
-					break;
-				case 1:
-					occupation = new DogWalking();
-					break;
-				case 2:
-					occupation = new MotelCleaning();
-					break;
-				case 3:
-					occupation = new Plumbing();
-					break;
-				case 4:
-					occupation = new SellLemonade((int)(Everbie.getEverbie().getCharm()
-							+ Everbie.getEverbie().getCuteness()
-							+ (Everbie.getEverbie().getIntelligence()/2)
-							*Math.random() + 42));
-				}
+	public void resume(){
+		if(Everbie.getEverbie().getOccupation()!=null){
+			if(System.currentTimeMillis()-Everbie.getEverbie().getOccupationStartTime()>
+			Everbie.getEverbie().getOccupation().getTime()){
+				done(Everbie.getEverbie().getOccupation());
+			}else{
+				new Occupation().start();
 			}
-		}
-		if(System.currentTimeMillis()-startTime>0 && occupation != null){
-			Everbie.getEverbie().setOccupation(occupation, startTime);
-		}else{
-			Everbie.getEverbie().removeOccupation();
 		}
 	}
 	
