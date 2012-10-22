@@ -90,8 +90,8 @@ public class Log {
 				+ (Everbie.getEverbie().getOccupiedSeconds() - Everbie
 						.getEverbie().getOccupiedMinutes() * 60) + "s.";
 		firstRemoval();
-		logList.addLast(Everbie.getEverbie().getName()
-				+ " is busy at the moment but will be ready in " + time + "\n");
+		logList.addLast("\n" + Everbie.getEverbie().getName()
+				+ " is busy at the moment but will be ready in " + time);
 	}
 
 	/**
@@ -103,14 +103,14 @@ public class Log {
 				: Everbie.getEverbie().getFaintedTime() / 60 + "h ")
 				+ (Everbie.getEverbie().getFaintedTime() % 60) + "m ";
 		firstRemoval();
-		logList.addLast(Everbie.getEverbie().getName()
-				+ " is fainted at the moment but will wake up in maybe " + time + "\n");
+		logList.addLast("\n" + Everbie.getEverbie().getName()
+				+ " is fainted at the moment but will wake up in maybe " + time);
 	}
 	
 	//Javadoc to come
 	public void isDead(){
 		firstRemoval();
-		logList.addLast(Everbie.getEverbie().getName() + " has unfortunately passed away.\n");
+		logList.addLast("\n" + Everbie.getEverbie().getName() + " has unfortunately passed away.");
 	}
 
 	/**
@@ -122,9 +122,8 @@ public class Log {
 	 */
 	public void started(Training train) {
 		firstRemoval();
-		logList.addLast(getTime() + Everbie.getEverbie().getName()
-				+ " began to workout by starting with " + train.getName()
-				+ "\n");
+		logList.addLast("\n" + getTime() + Everbie.getEverbie().getName()
+				+ " began to workout by starting with " + train.getName());
 	}
 
 	/**
@@ -136,8 +135,8 @@ public class Log {
 	 */
 	public void started(Work work) {
 		firstRemoval();
-		logList.addLast(getTime() + Everbie.getEverbie().getName()
-				+ " started to work with " + work.getName() + "\n");
+		logList.addLast("\n" + getTime() + Everbie.getEverbie().getName()
+				+ " started to work with " + work.getName());
 	}
 
 	/**
@@ -149,7 +148,7 @@ public class Log {
 	 */
 	public void foodGiven(Food food) {
 		firstRemoval();
-		logList.addLast(getTime()
+		logList.addLast("\n" + getTime()
 				+ Everbie.getEverbie().getName()
 				+ " ate som "
 				+ food.getName()
@@ -158,7 +157,7 @@ public class Log {
 						.getHappinessModifier() < 0 ? " angrier" : " the same"))
 				+ (food.getToxicityModifier() > 0 ? " but became sicker"
 						: (food.getToxicityModifier() < 0 ? " and became healthier"
-								: "")) + " than before and not as hungry \n");
+								: "")) + " than before and not as hungry");
 	}
 
 	/**
@@ -170,7 +169,7 @@ public class Log {
 	 */
 	public void doneWith(Work work) {
 		firstRemoval();
-		logList.addLast(getTime()
+		logList.addLast("\n" + getTime()
 				+ Everbie.getEverbie().getName()
 				+ " worked with "
 				+ work.getName()
@@ -179,7 +178,7 @@ public class Log {
 				+ " hours and has now become "
 				+ (work.getHappinessModifier() > 0 ? " happier" : (work
 						.getHappinessModifier() < 0 ? " angrier" : " tired"))
-				+ " and earned " + work.getSalary() + " Oi\n");
+				+ " and earned " + work.getSalary() + " Oi");
 	}
 
 	/**
@@ -191,7 +190,7 @@ public class Log {
 	public void doneWith(Training train) {
 		firstRemoval();
 
-		logList.addLast(getTime()
+		logList.addLast("\n" + getTime()
 				+ Everbie.getEverbie().getName()
 				+ " worked out by doing some "
 				+ train.getName()
@@ -206,7 +205,7 @@ public class Log {
 				+ " stamina  and gained"
 				+ (train.getIntelligenceModifier() > 0 ? " increased" : train
 						.getIntelligenceModifier() < 0 ? " decreased" : " no")
-				+ " intelligence and grew hungrier\n");
+				+ " intelligence and grew hungrier");
 	}
 
 	/**
@@ -235,7 +234,7 @@ public class Log {
 	public void interactionMade(Interaction interact) {
 		firstRemoval();
 
-		logList.addLast(getTime()
+		logList.addLast("\n" + getTime()
 				+ "You and "
 				+ Everbie.getEverbie().getName()
 				+ " "
@@ -253,7 +252,7 @@ public class Log {
 				+ " is now"
 				+ (interact.getHappinessModifier() > 0 ? " happier than"
 						: interact.getHappinessModifier() < 0 ? " angrier than"
-								: " the same as") + " before\n");
+								: " the same as") + " before");
 	}
 
 	/**
@@ -265,7 +264,7 @@ public class Log {
 	 */
 	public void itemUsed(Item item) {
 		firstRemoval();
-		logList.addLast(getTime()
+		logList.addLast("\n" + getTime()
 				+ Everbie.getEverbie().getName()
 				+ " used a "
 				+ item.getName()
@@ -288,7 +287,7 @@ public class Log {
 								: ""))
 				+ (item.getToxicityModifier() > 0 ? " and got sicker" : (item
 						.getStrengthModifier() < 0 ? " and became healthier"
-						: "")) + "\n");
+						: "")));
 	}
 
 	/**
@@ -331,7 +330,7 @@ public class Log {
 	 *            - the strength required
 	 */
 	public void tooWeak(int strengthReq) {
-		logList.addLast(Everbie.getEverbie().getName() + " is too weak, "
+		logList.addLast("\n" + Everbie.getEverbie().getName() + " is too weak, "
 				+ strengthReq + " strength is required");
 	}
 
@@ -342,7 +341,7 @@ public class Log {
 	 *            - the strength required
 	 */
 	public void tooLazy(int staminaReq) {
-		logList.addLast(Everbie.getEverbie().getName() + " is too lazy, "
+		logList.addLast("\n" + Everbie.getEverbie().getName() + " is too lazy, "
 				+ staminaReq + " stamina is required");
 	}
 
@@ -353,7 +352,7 @@ public class Log {
 	 *            - the strength required
 	 */
 	public void tooDumb(int intelligenceReq) {
-		logList.addLast(Everbie.getEverbie().getName() + " is too stupid, "
+		logList.addLast("\n" + Everbie.getEverbie().getName() + " is too stupid, "
 				+ intelligenceReq + " intelligence is required");
 	}
 	
