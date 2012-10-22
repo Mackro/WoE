@@ -37,10 +37,10 @@ public class Mogno extends Race {
 		imageIdMed = R.drawable.mognomed;
 		imageIdMax = R.drawable.mognomax;
 		maxHealthModifier = 20;
-		strength = 3;
-		stamina  = 2;
-		intelligence = 1;
-		charm = 1;
-		cuteness = 1;
+		strength = 4;
+		stamina  = 4;
+		intelligence = 4;
+		charm = 8;
+		cuteness = 8;
 	}
 }

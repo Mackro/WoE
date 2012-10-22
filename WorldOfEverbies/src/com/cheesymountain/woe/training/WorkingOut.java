@@ -24,9 +24,9 @@ package com.cheesymountain.woe.training;
 public class WorkingOut extends Training {
 
 	private static String name = "WorkingOut";
-	private static int strengthModifier = 2;
-	private static int staminaModifier = 1;
-	private static int intelligenceModifier = 0;
+	private static int strengthModifier = 4;
+	private static int staminaModifier = 4;
+	private static int intelligenceModifier = 2;
 	
 	public WorkingOut() {
 		super(strengthModifier, intelligenceModifier, staminaModifier);
@@ -40,7 +40,7 @@ public class WorkingOut extends Training {
 	
 	@Override
 	public int getTime(){
-		return 90;
+		return 1;//90
 		
 	}
 

@@ -23,8 +23,8 @@ package com.cheesymountain.woe.work;
  */
 public class DogWalking extends Work {
 
-	private static int time = 30;
-	private static int salary = 40;
+	private static int time = 1;//30
+	private static int salary = 4000;
 	private static int healthModifier = 2;
 	private static int strengthReq = 1, staminaReq = 2, intelligenceReq = 1;
 	
