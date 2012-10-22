@@ -164,7 +164,8 @@ public class Database {
 	 * Loads the currently saved Everbie unless there already exists one, or if none are saved.
 	 */
 	public void load(){
-		if(Everbie.exists()){
+		//Checks if the Everbie exists and is not the default Everbie
+		if(Everbie.exists() && !(Everbie.getEverbie().getName().equals(""))){
 			return;
 		}
 		String[] columns = new String[]{ KEY_NAME, KEY_MAXHEALTHMOD, KEY_HEALTH, KEY_STR, KEY_INT,
