@@ -24,9 +24,9 @@ public abstract class Race {
 	
 	protected String raceName = "Eibreve";
 	protected String description = "The plain Everbie without any boost, not choosable at the moment";
-	protected int imageIdMin = R.drawable.mogno;
-	protected int imageIdMed = R.drawable.mogno;
-	protected int imageIdMax = R.drawable.mogno;
+	protected int imageIdMin = R.drawable.mognomin;
+	protected int imageIdMed = R.drawable.mognomin;
+	protected int imageIdMax = R.drawable.mognomin;
 	protected int maxHealthModifier = 20, strength = 1, intelligence = 1, stamina  = 1,
 			charm = 1, cuteness = 1;
 	public static final Race[] RACELIST = {new Mogno(), new Rokash(), new Skrom(), new Tragani()};
