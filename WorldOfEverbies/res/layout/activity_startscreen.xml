@@ -5,47 +5,47 @@
     android:layout_height="match_parent"
     android:background="@drawable/start_screen"
     android:orientation="vertical" >
-
+
     <TextView
         android:id="@+id/startContinueText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="30dp"
         android:clickable="true"
         android:onClick="continueGame"
         android:text="Continue Game"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30dp" />
-
+        android:textSize="25dp" />
+
     <TextView
         android:id="@+id/startCreateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/startContinueText"
         android:layout_below="@+id/startContinueText"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="25dp"
         android:clickable="true"
         android:onClick="newGame"
         android:text="Start New Game"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="20dp" />
-
+        android:textSize="25dp" />
+
     <TextView
         android:id="@+id/startExitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/startCreateText"
         android:layout_below="@+id/startCreateText"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="25dp"
         android:clickable="true"
         android:onClick="exitGame"
         android:text="Exit"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25dp" />
 
-"
+"
 
 </RelativeLayout>
