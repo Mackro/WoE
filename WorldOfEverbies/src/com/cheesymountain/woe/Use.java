@@ -22,18 +22,8 @@ package com.cheesymountain.woe;
 import com.cheesymountain.woe.food.Food;
 import com.cheesymountain.woe.interact.Interaction;
 import com.cheesymountain.woe.item.Item;
-import com.cheesymountain.woe.training.Chess;
-import com.cheesymountain.woe.training.Running;
-import com.cheesymountain.woe.training.Squash;
-import com.cheesymountain.woe.training.Swimming;
 import com.cheesymountain.woe.training.Training;
-import com.cheesymountain.woe.training.WorkingOut;
 import com.cheesymountain.woe.util.Occupationable;
-import com.cheesymountain.woe.work.Consulting;
-import com.cheesymountain.woe.work.DogWalking;
-import com.cheesymountain.woe.work.MotelCleaning;
-import com.cheesymountain.woe.work.Plumbing;
-import com.cheesymountain.woe.work.SellLemonade;
 import com.cheesymountain.woe.work.Work;
 
 /**

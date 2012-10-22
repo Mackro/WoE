@@ -521,7 +521,7 @@ public class Everbie {
 	 * @param occupation a String 
 	 */
 	public void restoreEverbie(String name, int[] values, boolean alive, boolean fainted, Race race,
-			String occupation, int occupationStartTime, long everbieStopTime){
+			String occupation, long occupationStartTime, long everbieStopTime){
 		setName(name);
 		maxHealthModifier = values[0];
 		health = values[1];
