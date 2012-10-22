@@ -58,7 +58,7 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		description = ((TextView)findViewById(R.id.everbieLongText));
 		description.setText(Race.RACELIST[selectedRace].getDescription());
 		pictures = (ImageView)findViewById(R.id.everbiePicsImageView);
-		pictures.setImageResource(Race.RACELIST[selectedRace].getImageID());
+		pictures.setImageResource(Race.RACELIST[selectedRace].getImageIdMin());
 		name = (EditText)findViewById(R.id.everbieNameText);
 		name.setHint("Enter name");
 		((RadioButton)(findViewById(R.id.Radio0))).setChecked(true);
@@ -117,12 +117,12 @@ public class NewEverbieActivity extends Activity implements SimpleGestureListene
 		switch(direction){
 		case SimpleGestureFilter.SWIPE_RIGHT:
 			if(selectedRace > 0){
-				pictures.setImageResource(Race.RACELIST[--selectedRace].getImageID());
+				pictures.setImageResource(Race.RACELIST[--selectedRace].getImageIdMin());
 			}
 			break;
 		case SimpleGestureFilter.SWIPE_LEFT:
 			if(selectedRace < Race.RACELIST.length-1){
-				pictures.setImageResource(Race.RACELIST[++selectedRace].getImageID());
+				pictures.setImageResource(Race.RACELIST[++selectedRace].getImageIdMin());
 			}
 			break;
 		}
