@@ -31,17 +31,16 @@ import com.cheesymountain.woe.R;
 
 public class Rokash extends Race {	
 	public Rokash(){
-		name = "Rokash";
-		description = "Rokash:\nThe Rokash race is the cutest and most charming of all Everbies..." +
-				"but also the most hostile";
-		imageIdMin = R.drawable.rokash;
-		imageIdMed = R.drawable.rokash;
-		imageIdMax = R.drawable.rokash;
+		raceName = "Rokash";
+		description = "Rokash:\nThe Rokash race is the proudest race of them all, though they are not at all concerned to be modest about it. They also have decent stamina.";
+		imageIdMin = R.drawable.rokashmin;
+		imageIdMed = R.drawable.rokashmed;
+		imageIdMax = R.drawable.rokashmax;
 		maxHealthModifier = 20;
 		strength = 1;
-		stamina  = 1;
+		stamina  = 2;
 		intelligence = 1;
 		charm = 3;
-		cuteness = 5;
+		cuteness = -5;
 	}
 }

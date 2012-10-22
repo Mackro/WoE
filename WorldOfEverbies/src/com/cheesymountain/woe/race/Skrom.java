@@ -31,16 +31,16 @@ import com.cheesymountain.woe.R;
 
 public class Skrom extends Race{
 	public Skrom(){
-		name = "Skrom";
+		raceName = "Skrom";
 		description = "Skrom:\nThe most intelligent race among the Everbies" +
 				" are the Skrom but their constant studying have resulted in severely degenerated hygiene.";
-		imageIdMin = R.drawable.raterbiemi;
-		imageIdMed = R.drawable.raterbieme;
-		imageIdMax = R.drawable.raterbiema;
+		imageIdMin = R.drawable.skrommin;
+		imageIdMed = R.drawable.skrommed;
+		imageIdMax = R.drawable.skrommax;
 		maxHealthModifier = 20;
 		strength = 1;
-		intelligence = 3;
 		stamina = 1;
+		intelligence = 3;
 		charm = 3;
 		cuteness = 1;
 	}

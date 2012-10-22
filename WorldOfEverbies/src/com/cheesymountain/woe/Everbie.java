@@ -35,7 +35,7 @@ import com.cheesymountain.woe.util.Occupationable;
 public class Everbie {
 	
 	private Race race;
-	public static final String DEFAULT_NAME = "Eibreve";
+	public static final String DEFAULT_NAME = "";
 	public static final Race DEFAULT_RACE = new Mogno();
 	private static Everbie everbie;
 	public static final int STARTING_MONEY = 0, STARTING_FULLNESS = 50, STARTING_HAPPINESS = 50;

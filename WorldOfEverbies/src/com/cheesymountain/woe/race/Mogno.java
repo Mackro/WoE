@@ -31,15 +31,15 @@ import com.cheesymountain.woe.R;
 
 public class Mogno extends Race {
 	public Mogno(){
-		name = "Mogno";
+		raceName = "Mogno";
 		description = "Mogno:\nThe mognos are known for their sharp claws and short temper.";
 		imageIdMin = R.drawable.mognomin;
 		imageIdMed = R.drawable.mognomed;
 		imageIdMax = R.drawable.mognomax;
 		maxHealthModifier = 20;
 		strength = 3;
-		intelligence = 1;
 		stamina  = 2;
+		intelligence = 1;
 		charm = 1;
 		cuteness = 1;
 	}

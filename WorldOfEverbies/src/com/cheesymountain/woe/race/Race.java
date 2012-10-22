@@ -22,7 +22,7 @@ import com.cheesymountain.woe.R;
 
 public abstract class Race {
 	
-	protected String name = "Eibreve";
+	protected String raceName = "Eibreve";
 	protected String description = "The plain Everbie without any boost, not choosable at the moment";
 	protected int imageIdMin = R.drawable.mogno;
 	protected int imageIdMed = R.drawable.mogno;
@@ -32,7 +32,7 @@ public abstract class Race {
 	public static final Race[] RACELIST = {new Mogno(), new Rokash(), new Skrom(), new Tragani()};
 
 	public String getName() {
-		return name;
+		return raceName;
 	}
 	public String getDescription() {
 		return description;

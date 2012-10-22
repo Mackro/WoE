@@ -32,7 +32,7 @@ import com.cheesymountain.woe.R;
 public class Tragani extends Race{
 
 	public Tragani(){
-		name = "Tragani";
+		raceName = "Tragani";
 		description = "Tragani:\nThe Traganis are know for their exceptional running speed" +
 				"and their total lack of common sense.";
 		imageIdMin = R.drawable.traganimi;
@@ -40,8 +40,8 @@ public class Tragani extends Race{
 		imageIdMax = R.drawable.traganima;
 		maxHealthModifier = 20;
 		strength = 1;
-		intelligence = 1;
 		stamina  = 3;
+		intelligence = 1;
 		charm = 3;
 		cuteness = 1;
 	}
