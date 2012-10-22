@@ -142,6 +142,11 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 				showDialog(DIALOG_OI_ID);
 			}
 			break;
+		case R.id.wineAndShrimps:
+			if(use.activate(new WhiteWineAndShrimps()) == Use.NOT_ENOUGH_OI){
+				showDialog(DIALOG_OI_ID);
+			}
+			break;
 
 			//Interaction
 		case R.id.chat:

@@ -4,7 +4,8 @@
             <item android:id="@+id/BreadAndWater" android:menuCategory="alternative" android:titleCondensed="Free Food!!" android:title="free!  Bread &amp; Water" android:enabled="true" android:visible="true"/>
             <item android:id="@+id/Melon" android:enabled="true" android:visible="true" android:orderInCategory="2" android:titleCondensed="A juicy fruit" android:menuCategory="alternative" android:title=" 25 Oi  Melon"/>
             <item android:id="@+id/ribEyeStake" android:menuCategory="alternative" android:title="200 Oi  Rib-Eye Steak" android:enabled="true" android:orderInCategory="3" android:visible="true" android:titleCondensed="Rib-Eye Steak"/>
-        	<item android:id="@+id/menuOiFeed" android:menuCategory="alternative" android:checkable="false" android:enabled="false" android:visible="true" android:title="Oi: " android:orderInCategory="4" />
+        	<item android:id="@+id/wineAndShrimps" android:menuCategory="alternative" android:title="100 Oi  White wine and shrimps" android:enabled="true" android:orderInCategory="4" android:visible="true" android:titleCondensed="White wine and shrimps"/>
+        	<item android:id="@+id/menuOiFeed" android:menuCategory="alternative" android:checkable="false" android:enabled="false" android:visible="true" android:title="Oi: " android:orderInCategory="5" />
         </menu>
     </item>
     <item android:id="@+id/store_menu" android:menuCategory="alternative" android:titleCondensed="Store" android:visible="true" android:title="@string/menu_store" android:orderInCategory="2" android:enabled="true">
