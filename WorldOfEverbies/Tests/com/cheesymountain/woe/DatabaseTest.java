@@ -12,6 +12,6 @@ public class DatabaseTest extends Activity{
 	}
 	
 	private void testDatabase(){
-		
+		//TODO implement Dat shiiiett!
 	}
 }

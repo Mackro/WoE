@@ -84,9 +84,8 @@ public class UseTest {
 				default:
 					Log.e("Error", "Wrong int in testFood for-loop");	
 			}
-			use.activate(work);
+			Use.done(work);
 			if(everbie.getMoney() != work.getSalary() ||
-				everbie.getHappiness() != (50+work.getHappinessModifier()>100?100:(50+work.getHappinessModifier()<0?0:50+work.getHappinessModifier())) ||
 				everbie.getHealth() != (20+work.getHealthModifier()>100?100:(20+work.getHealthModifier()<0?0:20+work.getHealthModifier()))){
 				Log.e("Error", "Not changed attributes correctly when performing: "+work.getName());
 			}
@@ -193,11 +192,10 @@ public class UseTest {
 				default:
 					Log.e("Error", "Wrong int in testItem for-loop");	
 			}
-			use.activate(training);
+			Use.done(training);
 			if(everbie.getStrength() != 1+training.getStrengthModifier() ||
 				everbie.getIntelligence() != 1+training.getIntelligenceModifier() ||
-				everbie.getStamina() != 1+training.getStaminaModifier() ||
-				everbie.getFullness() != (50+training.getStarvationModifier())){
+				everbie.getStamina() != 1+training.getStaminaModifier()){
 				Log.e("Error", "Not changed attributes correctly when doing: "+training.getName());
 			}
 		}
