@@ -218,9 +218,8 @@ public class Use {
 		Everbie.getEverbie().changeIntelligence(train.getIntelligenceModifier());
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void stopOccupation(){
-		currentOccupation.stop();
+		currentOccupation = null;
 	}
 
 	/**
