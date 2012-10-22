@@ -263,13 +263,17 @@ public class Everbie {
 		return occupation;
 	}
 	
+	/**
+	 * This method returns the startTime of the Everbie's current occupation
+	 * @return a long representing the startTime of the current occupation
+	 */
 	public long getOccupationStartTime(){
 		return occupationStartTime;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * a method that return the approximate time until a fainted Everbie awakens
+	 * @return the time until awakening rounded up to closest 10 minute limit
 	 */
 	public int getFaintedTime(){
 		return faintedTime*10;
@@ -464,13 +468,17 @@ public class Everbie {
 
 	/**
 	 * Sets the work or training the Everbie should be occupied with
-	 * @param occupation - the work or training to be occupied with
+	 * @param occupation an instance of the occupationable that the Everbie should be occupied with
+	 * @param occupationStartTime a long representing the startTime of the occupation 
 	 */
 	public void setOccupation(Occupationable occupation, long occupationStartTime){
 		this.occupation = occupation;
 		this.occupationStartTime = occupationStartTime;
 	}
 	
+	/**
+	 * a Method used for making the threads and save/load work properly
+	 */
 	public void removeOccupation(){
 		occupation = null;
 		occupationStartTime = 0;
@@ -609,8 +617,9 @@ public class Everbie {
 		return occupation!=null;
 	}
 	
-	
-	// method only used during testing
+	/**
+	 * This method is only used during testing
+	 */
 	public void resetOccupied(){
 		occupiedSeconds = 0;
 	}
@@ -630,7 +639,10 @@ public class Everbie {
 		everbie = null;
 	}
 	
-	
+	/**
+	 * A Thread-class that ticks down the happiness and fullness constantly. Also ticks down faintedTime
+	 * @author Karl-Agnes
+	 */
 	private class Ticker extends Thread{
 		@Override
 		public void run(){
