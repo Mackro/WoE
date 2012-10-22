@@ -229,7 +229,7 @@ public class MainActivity extends Activity implements SimpleGestureListener{
 			use.activate(new Plumbing());
 			break;
 		case R.id.sellLemonade:
-			int specificSalary = (int)((Everbie.getEverbie().getCharm() + Everbie.getEverbie().getCuteness()
+			int specificSalary = (int)((Math.abs(Everbie.getEverbie().getCharm() + Everbie.getEverbie().getCuteness())
 					+ (Everbie.getEverbie().getIntelligence()/2))*Math.random() + 42);
 			use.activate(new SellLemonade(specificSalary));
 			break;
