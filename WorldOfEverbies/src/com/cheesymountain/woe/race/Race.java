@@ -18,17 +18,15 @@ package com.cheesymountain.woe.race;
  * along with World of Everbies.  If not, see <http://www.gnu.org/licenses/>.
 ================================================================*/
 
-
-import com.cheesymountain.woe.Everbie;
 import com.cheesymountain.woe.R;
 
 public abstract class Race {
 	
 	protected String name = "Eibreve";
 	protected String description = "The plain Everbie without any boost, not choosable at the moment";
-	protected int imageIDMin = R.drawable.mogno;
-	protected int imageIDMed = R.drawable.mogno;
-	protected int imageIDMax = R.drawable.mogno;
+	protected int imageIdMin = R.drawable.mogno;
+	protected int imageIdMed = R.drawable.mogno;
+	protected int imageIdMax = R.drawable.mogno;
 	protected int maxHealthModifier = 20, strength = 1, intelligence = 1, stamina  = 1,
 			charm = 1, cuteness = 1;
 	public static final Race[] RACELIST = {new Mogno(), new Rokash(), new Skrom(), new Tragani()};
@@ -39,14 +37,14 @@ public abstract class Race {
 	public String getDescription() {
 		return description;
 	}
-	public int getImageID() {
-		if(Everbie.getEverbie().getLevel()<5){
-			return imageIDMin;
-		}else if(Everbie.getEverbie().getLevel()>14){
-			return imageIDMax;
-		}else{
-			return imageIDMed;
-		}
+	public int getImageIdMin() {
+		return imageIdMin;
+	}
+	public int getImageIdMed(){
+		return imageIdMed;
+	}
+	public int getImageIdMax(){
+		return imageIdMax;
 	}
 	public int getMaxHealthModifier() {
 		return maxHealthModifier;

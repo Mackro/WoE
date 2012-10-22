@@ -167,14 +167,14 @@ public class EverbieTest {
 			Log.e("Error", "Everbie is occupied without having set occupation time");
 		}
 		
-		everbie.setOccupiedSeconds(0);
-		if(everbie.isOccupied()){
-			Log.e("Error", "Everbie is occupied without having set a correct occupation time");
-		}
-		
 		everbie.setOccupiedSeconds(10);
 		if(!everbie.isOccupied()){
 			Log.e("Error", "Occupation time has been set but the Everbie is still not occupied");
+		}
+		
+		everbie.setOccupiedSeconds(0);
+		if(everbie.isOccupied()){
+			Log.e("Error", "Everbie is occupied without having set a correct occupation time");
 		}
 		
 		Log.i("Complete", "Test occupation seconds complete");
@@ -192,14 +192,14 @@ public class EverbieTest {
 			Log.e("Error", "Everbie is occupied without having set occupation time");
 		}
 		
-		everbie.setOccupiedMinutes(0);
-		if(everbie.isOccupied()){
-			Log.e("Error", "Everbie is occupied without having set a correct occupation time");
-		}
-		
 		everbie.setOccupiedMinutes(10);
 		if(!everbie.isOccupied()){
 			Log.e("Error", "Occupation time has been set but the Everbie is still not occupied");
+		}
+		
+		everbie.setOccupiedMinutes(0);
+		if(everbie.isOccupied()){
+			Log.e("Error", "Everbie is occupied without having set a correct occupation time");
 		}
 		
 		Log.i("Complete", "Test occupation seconds complete");
@@ -252,9 +252,9 @@ public class EverbieTest {
 		
 		Log.i("Start", "Test restore Everbie started");
 		
-		int[] values = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+		int[] values = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 		
-		everbie.restoreEverbie("Nalle", values, false, false, new Mogno(), null);
+		everbie.restoreEverbie("Nalle", values, false, false, new Mogno(), null, 0);
 		
 		if(everbie == null){
 			Log.e("Error", "Restoring everbie failed");

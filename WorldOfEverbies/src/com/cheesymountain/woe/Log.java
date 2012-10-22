@@ -175,10 +175,8 @@ public class Log {
 				+ work.getName()
 				+ " for "
 				+ work.getTime()
-				+ " hours and has now become "
-				+ (work.getHappinessModifier() > 0 ? " happier" : (work
-						.getHappinessModifier() < 0 ? " angrier" : " tired"))
-				+ " and earned " + work.getSalary() + " Oi");
+				+ " minutes and earned "
+				+ work.getSalary() + " Oi");
 	}
 
 	/**
