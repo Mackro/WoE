@@ -86,7 +86,7 @@ public class Database {
 					KEY_STA + " INTEGER, " + KEY_CHARM + " INTEGER, " + KEY_CUTENESS +
 					" INTEGER, " + KEY_FULLNESS + " INTEGER, " + KEY_HAPPINESS +
 					" INTEGER, " + KEY_TOX + " INTEGER, " + KEY_OI + " INTEGER, " +
-					KEY_OCCUPATIONSTART + " INTEGER, " + KEY_ALIVE + " BOOLEAN, " + KEY_FAINTED +
+					KEY_OCCUPATIONSTART + " BIGINT, " + KEY_ALIVE + " BOOLEAN, " + KEY_FAINTED +
 					" BOOLEAN, " + KEY_RACE + " INTEGER, " + KEY_OCCUPATION + " TEXT, " + 
 					KEY_TIMESAVED + " BIGINT);"
 			);
@@ -149,7 +149,7 @@ public class Database {
 		values.put(KEY_HAPPINESS, everbie.getHappiness());
 		values.put(KEY_TOX, everbie.getToxicity());
 		values.put(KEY_OI, everbie.getMoney());
-		values.put(KEY_OCCUPATIONSTART, everbie.getOccupiedSeconds());
+		values.put(KEY_OCCUPATIONSTART, everbie.getOccupationStartTime());
 		values.put(KEY_ALIVE, everbie.isAlive()?1:0);
 		values.put(KEY_FAINTED, everbie.isFainted()?1:0);
 		values.put(KEY_RACE, everbie.getRaceId());
@@ -209,13 +209,14 @@ public class Database {
 		int[] values = {c.getInt(iMAXHEALTHMOD), c.getInt(iHEALTH), c.getInt(iSTR),
 				c.getInt(iINT), c.getInt(iSTA), c.getInt(iCHARM),
 				c.getInt(iCUTENESS), c.getInt(iFULLNESS), c.getInt(iHAPPINESS),
-				c.getInt(iTOX), c.getInt(iOI), c.getInt(iOCCUPATIONSTART)};
+				c.getInt(iTOX), c.getInt(iOI)};
 		Everbie.getEverbie().restoreEverbie(c.getString(iNAME), values, c.getInt(iALIVE)==1,
-				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION), c.getLong(iTIMESAVED));
+				c.getInt(iFAINTED)==1, Race.RACELIST[c.getInt(iRACE)], c.getString(iOCCUPATION),
+				c.getLong(iOCCUPATIONSTART), c.getLong(iTIMESAVED));
 
 		Log.d("database", "load successful");
 		if(!c.getString(iOCCUPATION).equalsIgnoreCase("null")){
-			 use.resume(c.getString(iOCCUPATION), c.getLong(iOCCUPATIONSTART));
+			 use.resume();
 		}
 		
 	}
